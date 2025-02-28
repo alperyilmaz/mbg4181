@@ -246,3 +246,7 @@ The popular `ggplot2` package is part of `tidyverse`. Due to time limit, visuali
 For stunning figures in your publications, reports you're encouraged to use `ggplot2` package
 
 ## {background-image="images/image-20220623121412293.png" background-size=contain}
+
+## Biyoloji ve tidyverse
+
+[Bioconductor paketleri listesinde](https://www.bioconductor.org/packages/release/BiocViews.html#___Software) *"tidy"* kelimesini aratınız.

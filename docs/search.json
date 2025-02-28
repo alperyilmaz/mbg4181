@@ -35,20 +35,6 @@
     "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
   },
   {
-    "objectID": "ders01.html#bir-senaryo",
-    "href": "ders01.html#bir-senaryo",
-    "title": "Veri Analizi Temelleri",
-    "section": "Bir senaryo",
-    "text": "Bir senaryo\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)"
-  },
-  {
-    "objectID": "ders01.html#başka-bir-senaryo",
-    "href": "ders01.html#başka-bir-senaryo",
-    "title": "Veri Analizi Temelleri",
-    "section": "Başka bir senaryo",
-    "text": "Başka bir senaryo"
-  },
-  {
     "objectID": "ders01.html#data-science-veri-bilimi",
     "href": "ders01.html#data-science-veri-bilimi",
     "title": "Veri Analizi Temelleri",
@@ -56,11 +42,11 @@
     "text": "Data Science / Veri Bilimi\n \n\n\nKaynak"
   },
   {
-    "objectID": "ders01.html#section-2",
-    "href": "ders01.html#section-2",
+    "objectID": "ders01.html#tidyverse-paketleri",
+    "href": "ders01.html#tidyverse-paketleri",
     "title": "Veri Analizi Temelleri",
-    "section": "",
-    "text": "https://rpubs.com/ekraichak/data-manipulation"
+    "section": "Tidyverse paketleri",
+    "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
   },
   {
     "objectID": "ders01.html#what-is-tidy",
@@ -77,11 +63,11 @@
     "text": "Pillars of data analysis\n\n\nhttps://www.tychobra.com/posts/2020-05-27-new-dplyr-features/"
   },
   {
-    "objectID": "ders01.html#tidyverse-paketleri",
-    "href": "ders01.html#tidyverse-paketleri",
+    "objectID": "ders01.html#section-2",
+    "href": "ders01.html#section-2",
     "title": "Veri Analizi Temelleri",
-    "section": "Tidyverse paketleri",
-    "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
+    "section": "",
+    "text": "https://rpubs.com/ekraichak/data-manipulation"
   },
   {
     "objectID": "ders01.html#common-dplyr-verbs",
@@ -173,5 +159,12 @@
     "title": "Veri Analizi Temelleri",
     "section": "Visualization",
     "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse. Due to time limit, visualization part is skipped.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
+  },
+  {
+    "objectID": "ders01.html#biyoloji-ve-tidyverse",
+    "href": "ders01.html#biyoloji-ve-tidyverse",
+    "title": "Veri Analizi Temelleri",
+    "section": "Biyoloji ve tidyverse",
+    "text": "Biyoloji ve tidyverse\nBioconductor paketleri listesinde “tidy” kelimesini aratınız."
   }
 ]
