@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link rel="stylesheet" href="custom.css">
@@ -145,12 +210,230 @@ Alper Yılmaz
 
   <p class="date">2025-02-28</p>
 </section>
-<section id="section" class="slide level2">
+<section id="data-science-veri-bilimi" class="slide level2">
+<h2>Data Science / Veri Bilimi</h2>
+<p><br> <br></p>
+
+<img data-src="https://r4ds.hadley.nz/diagrams/data-science/base.png" class="r-stretch"><div class="footer">
+<p><a href="https://r4ds.hadley.nz/intro.html">Kaynak</a></p>
+</div>
+</section>
+<section id="section" class="slide level2" data-background-image="images/brosur-ucgen.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="section-1" class="slide level2" data-background-image="images/text4289-0-9-71.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="tidyverse-paketleri" class="slide level2">
+<h2>Tidyverse paketleri</h2>
+
+<img data-src="images/tidy_workflow.png" class="r-stretch"><div class="footer">
+<p>http://www.seec.uct.ac.za/r-tidyverse</p>
+</div>
+</section>
+<section id="what-is-tidy" class="slide level2">
+<h2>What is tidy?</h2>
+<p><br></p>
+
+<img data-src="images/image-20220623103058943.png" class="r-stretch"><div class="footer">
+<p>R for Data Science https://r4ds.had.co.nz/</p>
+</div>
+</section>
+<section id="pillars-of-data-analysis" class="slide level2">
+<h2>Pillars of data analysis</h2>
+
+<img data-src="images/dplyr_img_jahud7.png" class="r-stretch"><div class="footer">
+<p>https://www.tychobra.com/posts/2020-05-27-new-dplyr-features/</p>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+
+<img data-src="images/dply-verbs-visual.png" class="r-stretch"><div class="footer">
+<p>https://rpubs.com/ekraichak/data-manipulation</p>
+</div>
+</section>
+<section id="common-dplyr-verbs" class="slide level2">
+<h2>Common dplyr verbs</h2>
+<div style="font-size: 18pt;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 19%">
+<col style="width: 65%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">verb</th>
+<th style="text-align: left;">action</th>
+<th style="text-align: left;">example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><code>filter()</code></td>
+<td style="text-align: left;">Select rows based on some criteria</td>
+<td style="text-align: left;"><code>filter(age &gt; 40 &amp; treatment == "drug")</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>arrange()</code></td>
+<td style="text-align: left;">Sort rows</td>
+<td style="text-align: left;"><code>arrange(date, group)</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>select()</code></td>
+<td style="text-align: left;">Select columns (and ignore all others)</td>
+<td style="text-align: left;"><code>select(age, treatment)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>rename()</code></td>
+<td style="text-align: left;">Rename columns</td>
+<td style="text-align: left;"><code>rename(DATE_MONTHS_trial24, date</code>)</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><code>mutate()</code></td>
+<td style="text-align: left;">Add new columns</td>
+<td style="text-align: left;"><code>mutate(height.m = height.cm / 100)</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><code>group_by(), summarise()</code></td>
+<td style="text-align: left;">Group data and then calculate summary statistics</td>
+<td style="text-align: left;"><code>group_by(treatment) %&gt;% summarise(...)</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="helper-functions" class="slide level2">
+<h2>Helper functions</h2>
+<p><code>select</code> might look simple but it becomes very useful with helper functions</p>
+
+<img data-src="images/image-20220623124737846.png" class="r-stretch"><div class="footer">
+<p><a href="https://www.rstudio.com/resources/cheatsheets/">RStudio Cheatsheets: Data transformation with dplyr cheatsheet</a>]</p>
+</div>
+</section>
+<section id="group-by" class="slide level2">
+<h2>Group by</h2>
+
+<img data-src="images/group_by_visual.png" class="r-stretch"><div class="footer">
+<p><a href="https://swcarpentry.github.io/r-novice-gapminder/13-dplyr/index.html">R for Reproducible Scientific Analysis</a></p>
+</div>
+</section>
+<section id="connecting-verbsactions" class="slide level2">
+<h2>Connecting verbs/actions</h2>
+<p><br></p>
+
+<img data-src="images/nest_vs_pipe.jpg" class="r-stretch"><div class="footer">
+<p><a href="https://4va.github.io/biodatasci/r-dplyr-yeast.html">Data Manipulation with dplyr</a></p>
+</div>
+</section>
+<section id="in-other-words" class="slide level2">
+<h2>In other words</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>white_and_yolk <span class="ot">&lt;-</span> <span class="fu">crack</span>(egg, add_seasoning)</span>
+<span id="cb1-2"><a></a>omelette_batter <span class="ot">&lt;-</span> <span class="fu">beat</span>(white_and_yolk)</span>
+<span id="cb1-3"><a></a>omelette_with_chives <span class="ot">&lt;-</span> <span class="fu">cook</span>(omelette_batter,add_chives)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>versus</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a>egg <span class="sc">%&gt;%</span></span>
+<span id="cb2-2"><a></a>  <span class="fu">crack</span>(add_seasoning) <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a></a>  <span class="fu">beat</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a></a>  <span class="fu">cook</span>(add_chives) <span class="ot">-&gt;</span> omelette_with_chives</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="footer">
+<p><a href="http://perso.ens-lyon.fr/lise.vaudor/utiliser-des-pipes-pour-enchainer-des-instructions/">Lise Vaudor’s blog</a></p>
+</div>
+</section>
+<section id="the-pipe" class="slide level2">
+<h2>The pipe</h2>
+</section>
+<section id="reshaping-data" class="slide level2">
+<h2>Reshaping data</h2>
+
+<img data-src="images/image-20220623112040615.png" class="r-stretch"><div class="footer">
+<p>https://datacarpentry.org/R-ecology-lesson/03-dplyr.html</p>
+</div>
+</section>
+<section id="scenario-1" class="slide level2">
+<h2>Scenario 1</h2>
+
+<img data-src="images/transform-organize-aggregate.png" class="r-stretch"><div class="footer">
+<p><a href="https://therbootcamp.github.io/BaselRBootcamp_2018April/_sessions/D2S1_Wrangling/Wrangling_practical_answers.html">BaselRBootcamp April 2018</a></p>
+</div>
+</section>
+<section id="scenario-2" class="slide level2">
+<h2>Scenario 2</h2>
+<h3 id="working-on-multiple-columns">Working on multiple columns</h3>
+<div class="columns">
+<div class="column" style="width:40%;">
+<p><br> <br> <br></p>
+<p><img data-src="https://oliviergimenez.github.io/intro_tidyverse/assets/img/dplyr_across.png"></p>
+</div><div class="column" style="width:60%;">
+<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb3-2"><a></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a></a>  <span class="fu">summarise</span>(<span class="at">a =</span> <span class="fu">mean</span>(a), <span class="at">b =</span> <span class="fu">mean</span>(b), <span class="at">c =</span> <span class="fu">mean</span>(c), <span class="at">d =</span> <span class="fu">mean</span>(c))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>versus</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb4-2"><a></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span></span>
+<span id="cb4-3"><a></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(a<span class="sc">:</span>d, mean))</span>
+<span id="cb4-4"><a></a></span>
+<span id="cb4-5"><a></a><span class="co"># or with a function</span></span>
+<span id="cb4-6"><a></a>df <span class="sc">%&gt;%</span></span>
+<span id="cb4-7"><a></a>  <span class="fu">group_by</span>(g1, g2) <span class="sc">%&gt;%</span></span>
+<span id="cb4-8"><a></a>  <span class="fu">summarise</span>(<span class="fu">across</span>(<span class="fu">where</span>(is.numeric), mean))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div>
+</section>
+<section id="scenario-3" class="slide level2">
+<h2>Scenario 3</h2>
+<h3 id="read-many-files-at-once">Read many files at once</h3>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="sourceCode" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>fs<span class="sc">::</span><span class="fu">dir_ls</span>(data_dir,</span>
+<span id="cb5-2"><a></a>           <span class="at">regexp =</span> <span class="st">"</span><span class="sc">\\</span><span class="st">.csv$"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb5-3"><a></a>  <span class="fu">map_dfr</span>(read_csv)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div><div class="column" style="width:50%;">
+<p><img data-src="images/map_dfr-csv_files-read_csv.png"></p>
+</div></div>
+<div class="footer">
+<p>https://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/</p>
+</div>
+</section>
+<section id="scenario-4" class="slide level2">
+<h2>Scenario 4</h2>
+<h3 id="combine-text-analysis-and-graphnetwork-analysis">Combine text analysis and graph/network analysis</h3>
+<p>There are lots of packages which follow the tidyverse principles which produce and work on tidy data.</p>
+<p>This allows mixing packages/analysis from different domains</p>
+<p><code>tidytext</code> and <code>tidygraph</code> packages are great examples. Former allow text analysis by converting text data to tidy data (<em>very long data frame, one word per row</em>) and latter imports data frames to graphs and allows access to node or edge data with <code>dplyr</code> verbs.</p>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="sourceCode" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>janeaustenr<span class="sc">::</span><span class="fu">austen_books</span>() <span class="sc">%&gt;%</span>                              <span class="co">#tidytext</span></span>
+<span id="cb6-2"><a></a>  <span class="fu">unnest_tokens</span>(bigram, text, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n=</span><span class="dv">2</span>) <span class="sc">%&gt;%</span>     <span class="co">#tidytext</span></span>
+<span id="cb6-3"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(bigram)) <span class="sc">%&gt;%</span>                                 <span class="co">#dplyr</span></span>
+<span id="cb6-4"><a></a>  <span class="fu">separate</span>(bigram, <span class="at">into =</span> <span class="fu">c</span>(<span class="st">"word1"</span>,<span class="st">"word2"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#tidyr</span></span>
+<span id="cb6-5"><a></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word1"</span><span class="ot">=</span><span class="st">"word"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#dplyr</span></span>
+<span id="cb6-6"><a></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word2"</span><span class="ot">=</span><span class="st">"word"</span>)) <span class="sc">%&gt;%</span>            <span class="co">#dplyr</span></span>
+<span id="cb6-7"><a></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort=</span>T) <span class="sc">%&gt;%</span>                            <span class="co">#dplyr</span></span>
+<span id="cb6-8"><a></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">%&gt;%</span>                                           <span class="co">#dplyr</span></span>
+<span id="cb6-9"><a></a>  <span class="fu">as_tbl_graph</span>() <span class="sc">%&gt;%</span>                                         <span class="co">#tidygraph</span></span>
+<span id="cb6-10"><a></a>  <span class="fu">mutate</span>(<span class="at">central=</span><span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"all"</span>)) <span class="sc">%&gt;%</span>        <span class="co">#dplyr/tidygraph</span></span>
+<span id="cb6-11"><a></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">'nicely'</span>) <span class="sc">+</span>                                <span class="co">#ggraph</span></span>
+<span id="cb6-12"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb6-13"><a></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>central)) <span class="sc">+</span></span>
+<span id="cb6-14"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name), <span class="at">repel=</span>T) <span class="sc">+</span></span>
+<span id="cb6-15"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="section-4" class="slide level2" data-background-image="images/image-20220623122330104.png" data-background-size="contain">
+<h2></h2>
+</section>
+<section id="visualization" class="slide level2">
+<h2>Visualization</h2>
+<p><br></p>
+<p>The popular <code>ggplot2</code> package is part of <code>tidyverse</code>. Due to time limit, visualization part is skipped.</p>
+<p>For stunning figures in your publications, reports you’re encouraged to use <code>ggplot2</code> package</p>
+</section>
+<section id="section-5" class="slide level2" data-background-image="images/image-20220623121412293.png" data-background-size="contain">
 <h2></h2>
 
 
-
-<img data-src="https://r4ds.hadley.nz/diagrams/data-science/base.png" class="r-stretch"></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">

@@ -16,22 +16,162 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "FEF3001 Yapay Zekaya Giriş",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
   },
   {
     "objectID": "index.html#kaynaklar",
     "href": "index.html#kaynaklar",
-    "title": "FEF3001 Yapay Zekaya Giriş",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link"
   },
   {
     "objectID": "index.html#ders1",
     "href": "index.html#ders1",
-    "title": "FEF3001 Yapay Zekaya Giriş",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+  },
+  {
+    "objectID": "ders01.html#bir-senaryo",
+    "href": "ders01.html#bir-senaryo",
+    "title": "Veri Analizi Temelleri",
+    "section": "Bir senaryo",
+    "text": "Bir senaryo\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)"
+  },
+  {
+    "objectID": "ders01.html#başka-bir-senaryo",
+    "href": "ders01.html#başka-bir-senaryo",
+    "title": "Veri Analizi Temelleri",
+    "section": "Başka bir senaryo",
+    "text": "Başka bir senaryo"
+  },
+  {
+    "objectID": "ders01.html#data-science-veri-bilimi",
+    "href": "ders01.html#data-science-veri-bilimi",
+    "title": "Veri Analizi Temelleri",
+    "section": "Data Science / Veri Bilimi",
+    "text": "Data Science / Veri Bilimi\n \n\n\nKaynak"
+  },
+  {
+    "objectID": "ders01.html#section-2",
+    "href": "ders01.html#section-2",
+    "title": "Veri Analizi Temelleri",
+    "section": "",
+    "text": "https://rpubs.com/ekraichak/data-manipulation"
+  },
+  {
+    "objectID": "ders01.html#what-is-tidy",
+    "href": "ders01.html#what-is-tidy",
+    "title": "Veri Analizi Temelleri",
+    "section": "What is tidy?",
+    "text": "What is tidy?\n\n\n\nR for Data Science https://r4ds.had.co.nz/"
+  },
+  {
+    "objectID": "ders01.html#pillars-of-data-analysis",
+    "href": "ders01.html#pillars-of-data-analysis",
+    "title": "Veri Analizi Temelleri",
+    "section": "Pillars of data analysis",
+    "text": "Pillars of data analysis\n\n\nhttps://www.tychobra.com/posts/2020-05-27-new-dplyr-features/"
+  },
+  {
+    "objectID": "ders01.html#tidyverse-paketleri",
+    "href": "ders01.html#tidyverse-paketleri",
+    "title": "Veri Analizi Temelleri",
+    "section": "Tidyverse paketleri",
+    "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
+  },
+  {
+    "objectID": "ders01.html#common-dplyr-verbs",
+    "href": "ders01.html#common-dplyr-verbs",
+    "title": "Veri Analizi Temelleri",
+    "section": "Common dplyr verbs",
+    "text": "Common dplyr verbs\n\n\n\n\n\n\n\n\n\nverb\naction\nexample\n\n\n\n\nfilter()\nSelect rows based on some criteria\nfilter(age &gt; 40 & treatment == \"drug\")\n\n\narrange()\nSort rows\narrange(date, group)\n\n\nselect()\nSelect columns (and ignore all others)\nselect(age, treatment)\n\n\nrename()\nRename columns\nrename(DATE_MONTHS_trial24, date)\n\n\nmutate()\nAdd new columns\nmutate(height.m = height.cm / 100)\n\n\ngroup_by(), summarise()\nGroup data and then calculate summary statistics\ngroup_by(treatment) %&gt;% summarise(...)"
+  },
+  {
+    "objectID": "ders01.html#helper-functions",
+    "href": "ders01.html#helper-functions",
+    "title": "Veri Analizi Temelleri",
+    "section": "Helper functions",
+    "text": "Helper functions\nselect might look simple but it becomes very useful with helper functions\n\n\nRStudio Cheatsheets: Data transformation with dplyr cheatsheet]"
+  },
+  {
+    "objectID": "ders01.html#group-by",
+    "href": "ders01.html#group-by",
+    "title": "Veri Analizi Temelleri",
+    "section": "Group by",
+    "text": "Group by\n\n\nR for Reproducible Scientific Analysis"
+  },
+  {
+    "objectID": "ders01.html#connecting-verbsactions",
+    "href": "ders01.html#connecting-verbsactions",
+    "title": "Veri Analizi Temelleri",
+    "section": "Connecting verbs/actions",
+    "text": "Connecting verbs/actions\n\n\n\nData Manipulation with dplyr"
+  },
+  {
+    "objectID": "ders01.html#in-other-words",
+    "href": "ders01.html#in-other-words",
+    "title": "Veri Analizi Temelleri",
+    "section": "In other words",
+    "text": "In other words\nwhite_and_yolk &lt;- crack(egg, add_seasoning)\nomelette_batter &lt;- beat(white_and_yolk)\nomelette_with_chives &lt;- cook(omelette_batter,add_chives)\nversus\negg %&gt;%\n  crack(add_seasoning) %&gt;%\n  beat() %&gt;%\n  cook(add_chives) -&gt; omelette_with_chives\n\nLise Vaudor’s blog"
+  },
+  {
+    "objectID": "ders01.html#the-pipe",
+    "href": "ders01.html#the-pipe",
+    "title": "Veri Analizi Temelleri",
+    "section": "The pipe",
+    "text": "The pipe"
+  },
+  {
+    "objectID": "ders01.html#reshaping-data",
+    "href": "ders01.html#reshaping-data",
+    "title": "Veri Analizi Temelleri",
+    "section": "Reshaping data",
+    "text": "Reshaping data\n\n\nhttps://datacarpentry.org/R-ecology-lesson/03-dplyr.html"
+  },
+  {
+    "objectID": "ders01.html#scenario-1",
+    "href": "ders01.html#scenario-1",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 1",
+    "text": "Scenario 1\n\n\nBaselRBootcamp April 2018"
+  },
+  {
+    "objectID": "ders01.html#scenario-2",
+    "href": "ders01.html#scenario-2",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nWorking on multiple columns\n\n\n  \n\n\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(c))\nversus\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(a:d, mean))\n\n# or with a function\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(where(is.numeric), mean))"
+  },
+  {
+    "objectID": "ders01.html#scenario-3",
+    "href": "ders01.html#scenario-3",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 3",
+    "text": "Scenario 3\nRead many files at once\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)\n\n\n\n\nhttps://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/"
+  },
+  {
+    "objectID": "ders01.html#scenario-4",
+    "href": "ders01.html#scenario-4",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 4",
+    "text": "Scenario 4\nCombine text analysis and graph/network analysis\nThere are lots of packages which follow the tidyverse principles which produce and work on tidy data.\nThis allows mixing packages/analysis from different domains\ntidytext and tidygraph packages are great examples. Former allow text analysis by converting text data to tidy data (very long data frame, one word per row) and latter imports data frames to graphs and allows access to node or edge data with dplyr verbs."
+  },
+  {
+    "objectID": "ders01.html#section-3",
+    "href": "ders01.html#section-3",
+    "title": "Veri Analizi Temelleri",
+    "section": "",
+    "text": "janeaustenr::austen_books() %&gt;%                              #tidytext\n  unnest_tokens(bigram, text, token = \"ngrams\", n=2) %&gt;%     #tidytext\n  filter(!is.na(bigram)) %&gt;%                                 #dplyr\n  separate(bigram, into = c(\"word1\",\"word2\")) %&gt;%            #tidyr\n  anti_join(stop_words, by=c(\"word1\"=\"word\")) %&gt;%            #dplyr\n  anti_join(stop_words, by=c(\"word2\"=\"word\")) %&gt;%            #dplyr\n  count(word1, word2, sort=T) %&gt;%                            #dplyr\n  filter(n&gt;20) %&gt;%                                           #dplyr\n  as_tbl_graph() %&gt;%                                         #tidygraph\n  mutate(central=centrality_degree(mode = \"all\")) %&gt;%        #dplyr/tidygraph\n  ggraph(layout = 'nicely') +                                #ggraph\n  geom_edge_link() +\n  geom_node_point(aes(color=central)) +\n  geom_node_label(aes(label=name), repel=T) +\n  theme_graph()"
+  },
+  {
+    "objectID": "ders01.html#visualization",
+    "href": "ders01.html#visualization",
+    "title": "Veri Analizi Temelleri",
+    "section": "Visualization",
+    "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse. Due to time limit, visualization part is skipped.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
   }
 ]
