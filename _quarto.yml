@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+execute:
+  freeze: auto
+
+website:
+  title: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Ana Sayfa
+      - href: about.qmd
+        text: Hakkında
+format:
+  html:
+    theme: cosmo
+    #css: styles.css
+    toc: true

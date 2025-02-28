@@ -1,0 +1,22 @@
+---
+title: "Veri Analizi Temelleri"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders1"
+author: "Alper Yılmaz"
+date: 2025-02-28
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+---
+
+## 
+
+![](https://r4ds.hadley.nz/diagrams/data-science/base.png)

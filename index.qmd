@@ -1,0 +1,9 @@
+# MBG4181 Biyolojik Veri Analizi ve Görüntüleme
+
+## Kaynaklar
+
+- *R for Data Science*,  Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023  [link](https://r4ds.hadley.nz/)
+
+## Ders1
+
+*28 Şubat 2025 9:30* | **İçerik**: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. [Sunum linki](ders01.qmd)

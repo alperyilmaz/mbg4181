@@ -1,0 +1,8 @@
+# MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları
+
+YTÜ MBG Bölümünde 2025 Bahar döneminde verilen MBG4181 kodlu dersin içerikleri  sayfasıdır.
+
+## Sıkça Sorulan Sorular
+1. Vize soruları test şeklinde mi olacaktır? *Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.*
+2. Yüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? *Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız*
+3. Kaç sınav yapılacaktır? *Cevap: İki vize ve bir final yapılacaktır.*

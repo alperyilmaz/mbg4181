@@ -1,0 +1,56 @@
+/* code box font size and border */
+.reveal pre {
+  font-size: 1.5rem !important;
+  border: 1px solid #ddd !important;
+}
+
+.reveal code {
+  font-size: 0.85em !important;
+}
+
+/* image centering */
+.reveal .slides img,
+.reveal .slides p > img,
+.reveal .slides figure > img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.reveal .slides section.segue {
+  background-color: #222B57 !important;
+}
+
+.reveal .slide-background.segue {
+  background-color: #222B57 !important;
+}
+
+/* Text styling and positioning for segue slides*/
+.reveal .slides section.segue p,
+.reveal .slides section.segue h2 {
+  font-size: 300% !important;
+  font-weight: bold !important;
+  color: #AC966E !important;
+  text-align: left !important;
+  margin-left: 1px !important;  /* Add some padding from the left edge */
+  position: absolute !important;
+  top: 48% !important;
+  transform: translateY(-50%) !important;  /* Center vertically */
+  /*width: calc(100% - 80px) !important;  /* Account for left margin */
+}
+.red-box {
+    background-color: red;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.red {
+  color: red;
+}
+
+.highlight {
+  background-color: yellow;
+  padding: 7px;
+  border-radius: 10px;
+}
