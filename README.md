@@ -1,4 +1,4 @@
-# FEF3001
+# MBG4181
 
 YTÜ MBG 2025 Bahar Dönemi - MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları
 
