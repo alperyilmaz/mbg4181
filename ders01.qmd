@@ -17,6 +17,232 @@ format:
 typora-copy-images-to: images
 ---
 
-## 
+## Data Science / Veri Bilimi
+<br>
+<br>
 
 ![](https://r4ds.hadley.nz/diagrams/data-science/base.png)
+
+:::footer
+[Kaynak](https://r4ds.hadley.nz/intro.html)
+:::
+
+## {background-image="images/brosur-ucgen.png" background-size=contain}
+
+## {background-image="images/text4289-0-9-71.png" background-size=contain}
+
+## Tidyverse paketleri
+
+![](images/tidy_workflow.png)
+
+:::footer
+http://www.seec.uct.ac.za/r-tidyverse
+:::
+
+## What is tidy?
+
+<br>
+
+![](images/image-20220623103058943.png)
+
+:::footer
+R for Data Science https://r4ds.had.co.nz/
+:::
+
+## Pillars of data analysis 
+
+![](images/dplyr_img_jahud7.png)
+
+:::footer
+https://www.tychobra.com/posts/2020-05-27-new-dplyr-features/
+:::
+
+##
+
+![](images/dply-verbs-visual.png)
+
+:::footer
+https://rpubs.com/ekraichak/data-manipulation
+:::
+
+## Common dplyr verbs 
+
+:::{style="font-size: 18pt;"}
+
+| verb| action| example |
+|:---|:----|:----------------|
+|     `filter()`|    Select rows based on some criteria| `filter(age > 40 & treatment == "drug")`|
+|     `arrange()`|    Sort rows| `arrange(date, group)`|
+|     `select()`|    Select columns (and ignore all others)| `select(age, treatment)`|
+|     `rename()`|    Rename columns| `rename(DATE_MONTHS_trial24, date`)|
+|     `mutate()`|    Add new columns| `mutate(height.m = height.cm / 100)`|
+|     `group_by(), summarise()`|   Group data and then calculate summary statistics|`group_by(treatment) %>% summarise(...)` |
+:::
+
+## Helper functions
+
+`select` might look simple but it becomes very useful with helper functions
+
+![](images/image-20220623124737846.png)
+
+:::footer
+[RStudio Cheatsheets: Data transformation with dplyr cheatsheet](https://www.rstudio.com/resources/cheatsheets/)]
+:::
+
+## Group by
+
+![](images/group_by_visual.png)
+
+:::footer
+[R for Reproducible Scientific Analysis](https://swcarpentry.github.io/r-novice-gapminder/13-dplyr/index.html)
+:::
+
+## Connecting verbs/actions
+
+<br>
+
+![](images/nest_vs_pipe.jpg)
+
+:::footer
+[Data Manipulation with dplyr](https://4va.github.io/biodatasci/r-dplyr-yeast.html)
+:::
+
+## In other words
+
+```r
+white_and_yolk <- crack(egg, add_seasoning)
+omelette_batter <- beat(white_and_yolk)
+omelette_with_chives <- cook(omelette_batter,add_chives)
+```
+
+versus
+
+```r
+egg %>%
+  crack(add_seasoning) %>%
+  beat() %>%
+  cook(add_chives) -> omelette_with_chives
+```
+:::footer
+[Lise Vaudor's blog](http://perso.ens-lyon.fr/lise.vaudor/utiliser-des-pipes-pour-enchainer-des-instructions/)
+:::
+
+## The pipe
+
+## Reshaping data
+
+![](images/image-20220623112040615.png)
+
+:::footer
+https://datacarpentry.org/R-ecology-lesson/03-dplyr.html
+:::
+
+## Scenario 1
+
+![](images/transform-organize-aggregate.png)
+
+:::footer
+[BaselRBootcamp April 2018](https://therbootcamp.github.io/BaselRBootcamp_2018April/_sessions/D2S1_Wrangling/Wrangling_practical_answers.html)
+:::
+## Scenario 2
+
+### Working on multiple columns
+
+:::: {.columns}
+
+::: {.column width="40%"}
+<br>
+<br>
+<br>
+
+![](https://oliviergimenez.github.io/intro_tidyverse/assets/img/dplyr_across.png)
+:::
+
+::: {.column width="60%"}
+```r
+df %>%
+  group_by(g1, g2) %>%
+  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(c))
+```
+
+versus
+
+```r
+df %>%
+  group_by(g1, g2) %>%
+  summarise(across(a:d, mean))
+
+# or with a function
+df %>%
+  group_by(g1, g2) %>%
+  summarise(across(where(is.numeric), mean))
+```
+:::
+::::
+
+## Scenario 3
+
+### Read many files at once
+
+:::: {.columns}
+
+::: {.column width="50%"}
+```r
+fs::dir_ls(data_dir,
+           regexp = "\\.csv$") %>%
+  map_dfr(read_csv)
+```
+:::
+
+::: {.column width="50%"}
+![](images/map_dfr-csv_files-read_csv.png)
+:::
+::::
+
+:::footer
+https://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/
+:::
+
+## Scenario 4
+
+### Combine text analysis and graph/network analysis
+
+There are lots of packages which follow the tidyverse principles which produce and work on tidy data.
+
+This allows mixing packages/analysis from different domains
+
+`tidytext` and `tidygraph` packages are great examples. Former allow text analysis by converting text data to tidy data (*very long data frame, one word per row*) and latter imports data frames to graphs and allows access to node or edge data with `dplyr` verbs.
+
+##
+
+
+```r
+janeaustenr::austen_books() %>%                              #tidytext
+  unnest_tokens(bigram, text, token = "ngrams", n=2) %>%     #tidytext
+  filter(!is.na(bigram)) %>%                                 #dplyr
+  separate(bigram, into = c("word1","word2")) %>%            #tidyr
+  anti_join(stop_words, by=c("word1"="word")) %>%            #dplyr
+  anti_join(stop_words, by=c("word2"="word")) %>%            #dplyr
+  count(word1, word2, sort=T) %>%                            #dplyr
+  filter(n>20) %>%                                           #dplyr
+  as_tbl_graph() %>%                                         #tidygraph
+  mutate(central=centrality_degree(mode = "all")) %>%        #dplyr/tidygraph
+  ggraph(layout = 'nicely') +                                #ggraph
+  geom_edge_link() +
+  geom_node_point(aes(color=central)) +
+  geom_node_label(aes(label=name), repel=T) +
+  theme_graph()
+```
+
+
+## {background-image="images/image-20220623122330104.png" background-size=contain}
+
+## Visualization
+
+<br>
+
+The popular `ggplot2` package is part of `tidyverse`. Due to time limit, visualization part is skipped.
+
+For stunning figures in your publications, reports you're encouraged to use `ggplot2` package
+
+## {background-image="images/image-20220623121412293.png" background-size=contain}
