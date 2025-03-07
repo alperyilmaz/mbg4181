@@ -118,7 +118,7 @@ select(unvotes, 1,5)
 
 Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, **relocate()** fonksiyonunu kullanabilirsiniz.
 
-``{webr}
+```{webr}
 #| label: your-turn2
 
 select(unvotes, short_name, country, everythinh()) |>
