@@ -14,25 +14,25 @@
     "text": "Vize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+    "objectID": "ders02.html#önce-keki-yiyelim",
+    "href": "ders02.html#önce-keki-yiyelim",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Önce keki yiyelim",
+    "text": "Önce keki yiyelim\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "index.html#kaynaklar",
-    "href": "index.html#kaynaklar",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "objectID": "ders02.html#section",
+    "href": "ders02.html#section",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link"
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "index.html#ders1",
-    "href": "index.html#ders1",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "objectID": "ders02.html#section-1",
+    "href": "ders02.html#section-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
     "section": "",
-    "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+    "text": "unvotes veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders01.html#data-science-veri-bilimi",
@@ -166,5 +166,26 @@
     "title": "Veri Analizi Temelleri",
     "section": "Biyoloji ve tidyverse",
     "text": "Biyoloji ve tidyverse\nBioconductor paketleri listesinde “tidy” kelimesini aratınız."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+  },
+  {
+    "objectID": "index.html#kaynaklar",
+    "href": "index.html#kaynaklar",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link"
+  },
+  {
+    "objectID": "index.html#ders1",
+    "href": "index.html#ders1",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
   }
 ]
