@@ -426,7 +426,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(country %in% c(\"United Kingdom\", \"United States\", \"Turkey\")) |>\n  mutate(year = year(date)) |>\n  group_by(country, year, issue) |>\n  summarize(percent_yes = mean(vote == \"yes\")) |>\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"6","fig-width":"12","label":"plot-yearly-yes-issue","message":"false","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"list-countries","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(country %in% c(\"United Kingdom\", \"United States\", \"Turkey\")) |>\n  mutate(year = year(date)) |>\n  group_by(country, year, issue) |>\n  summarize(percent_yes = mean(vote == \"yes\")) |>\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"6","fig-width":"12","label":"plot-yearly-yes-issue","message":"false","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"list-countries","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(unvotes)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"col-names","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, 1,5)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -1997,6 +1997,43 @@ Alper Yılmaz
 <p><em>unvotes</em> veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="select" class="slide level2">
+<h2>Select</h2>
+<p>SQL dilinde de önemli yeri olan <strong>SELECT</strong> Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.</p>
+<p>Veri olarak yine <em>unvotes</em> tablosunu kullanalım.</p>
+<div id="qwebr-insertion-location-4"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="select-1" class="slide level2">
+<h2>Select</h2>
+<p><strong>select()</strong> fonksiyonu:</p>
+<ul>
+<li>sütun numarası</li>
+<li>sütun adı</li>
+<li>her ikisi için de aralık (<code>2:5</code> veya <code>country:vote</code> gibi)</li>
+<li>eksi(-) işareti ile sütun almama</li>
+<li>yardımcı fonskiyonlar ile belirli örüntü (<em>starts_with</em>, <em>ends_with</em>)</li>
+<li><em>everything()</em> kısayolu</li>
+</ul>
+<p>ile sütun seçimi yapabilir.</p>
+<p>Sütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak.</p>
+</section>
+<section id="select-2" class="slide level2">
+<h2>Select</h2>
+<p>Bir önceki slaytta belirtilen özellikleri deneyiniz.</p>
+<div id="qwebr-insertion-location-5"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="select-yerine.." class="slide level2">
+<h2>Select yerine..</h2>
+<p><em>select()</em> yardımıyla isim değişikliği <code>select(data, yeni=eski)</code> şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız <strong>rename()</strong> fonksiyonunu kullanabilirsiniz.</p>
+<p>Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, <strong>relocate()</strong> fonksiyonunu kullanabilirsiniz.</p>
+<p>``{webr} #| label: your-turn2</p>
+<p>select(unvotes, short_name, country, everythinh()) |&gt; rename(cc=country_code, imp=importantvote) |&gt; relocate(cc, .after=country) ```</p>
+</section>
+<section id="filter" class="slide level2">
+<h2>Filter</h2>
 
 
 </section>

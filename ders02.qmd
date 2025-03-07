@@ -74,3 +74,56 @@ unvotes |>
 
 unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)
 ```
+
+## Select
+
+SQL dilinde de önemli yeri olan **SELECT** Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.
+
+Veri olarak yine *unvotes* tablosunu kullanalım.
+
+```{webr}
+#| label: col-names
+
+names(unvotes)
+```
+
+## Select
+
+**select()** fonksiyonu:
+
+- sütun numarası
+- sütun adı
+- her ikisi için de aralık (`2:5` veya `country:vote` gibi)
+- eksi(-) işareti ile sütun almama
+- yardımcı fonskiyonlar ile belirli örüntü (*starts_with*, *ends_with*)
+- *everything()* kısayolu
+
+ile sütun seçimi yapabilir.
+
+Sütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak.
+
+## Select
+
+Bir önceki slaytta belirtilen özellikleri deneyiniz.
+
+```{webr}
+#| label: your-turn
+
+select(unvotes, 1,5)
+```
+
+## Select yerine..
+
+*select()* yardımıyla isim değişikliği `select(data, yeni=eski)` şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız **rename()** fonksiyonunu kullanabilirsiniz.
+
+Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, **relocate()** fonksiyonunu kullanabilirsiniz.
+
+``{webr}
+#| label: your-turn2
+
+select(unvotes, short_name, country, everythinh()) |>
+  rename(cc=country_code, imp=importantvote) |>
+  relocate(cc, .after=country)
+```
+
+## Filter

@@ -35,6 +35,41 @@
     "text": "unvotes veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "ders02.html#select",
+    "href": "ders02.html#select",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nSQL dilinde de önemli yeri olan SELECT Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.\nVeri olarak yine unvotes tablosunu kullanalım.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#select-1",
+    "href": "ders02.html#select-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nselect() fonksiyonu:\n\nsütun numarası\nsütun adı\nher ikisi için de aralık (2:5 veya country:vote gibi)\neksi(-) işareti ile sütun almama\nyardımcı fonskiyonlar ile belirli örüntü (starts_with, ends_with)\neverything() kısayolu\n\nile sütun seçimi yapabilir.\nSütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak."
+  },
+  {
+    "objectID": "ders02.html#select-2",
+    "href": "ders02.html#select-2",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nBir önceki slaytta belirtilen özellikleri deneyiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#select-yerine..",
+    "href": "ders02.html#select-yerine..",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select yerine..",
+    "text": "Select yerine..\nselect() yardımıyla isim değişikliği select(data, yeni=eski) şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız rename() fonksiyonunu kullanabilirsiniz.\nAyrıca, amacınız sadece sütunların yerini değiştirmek ise, relocate() fonksiyonunu kullanabilirsiniz.\n``{webr} #| label: your-turn2\nselect(unvotes, short_name, country, everythinh()) |&gt; rename(cc=country_code, imp=importantvote) |&gt; relocate(cc, .after=country) ```"
+  },
+  {
+    "objectID": "ders02.html#filter",
+    "href": "ders02.html#filter",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter"
+  },
+  {
     "objectID": "ders01.html#data-science-veri-bilimi",
     "href": "ders01.html#data-science-veri-bilimi",
     "title": "Veri Analizi Temelleri",
@@ -172,7 +207,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -187,5 +222,12 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders2",
+    "href": "index.html#ders2",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
   }
 ]
