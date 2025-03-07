@@ -29,6 +29,71 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      { color: #003b4f; background-color: #f1f3f5; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #003b4f; } /* Normal */
+    code span.al { color: #ad0000; } /* Alert */
+    code span.an { color: #5e5e5e; } /* Annotation */
+    code span.at { color: #657422; } /* Attribute */
+    code span.bn { color: #ad0000; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #20794d; } /* Char */
+    code span.cn { color: #8f5902; } /* Constant */
+    code span.co { color: #5e5e5e; } /* Comment */
+    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
+    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
+    code span.dt { color: #ad0000; } /* DataType */
+    code span.dv { color: #ad0000; } /* DecVal */
+    code span.er { color: #ad0000; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #ad0000; } /* Float */
+    code span.fu { color: #4758ab; } /* Function */
+    code span.im { color: #00769e; } /* Import */
+    code span.in { color: #5e5e5e; } /* Information */
+    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
+    code span.op { color: #5e5e5e; } /* Operator */
+    code span.ot { color: #003b4f; } /* Other */
+    code span.pp { color: #ad0000; } /* Preprocessor */
+    code span.sc { color: #5e5e5e; } /* SpecialChar */
+    code span.ss { color: #20794d; } /* SpecialString */
+    code span.st { color: #20794d; } /* String */
+    code span.va { color: #111111; } /* Variable */
+    code span.vs { color: #20794d; } /* VerbatimString */
+    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link rel="stylesheet" href="custom.css">
@@ -404,7 +469,7 @@
   // Document level settings ----
 
   // Determine if we need to install R packages
-  globalThis.qwebrInstallRPackagesList = ['dplyr', 'unvotes', 'lubridate', 'scales', 'ggplot2', 'DT'];
+  globalThis.qwebrInstallRPackagesList = ['dplyr', 'unvotes', 'lubridate', 'scales', 'ggplot2', 'gt', 'htmltools', 'stringr'];
 
   // Specify possible locations to search for the repository
   globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -426,7 +491,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(country %in% c(\"United Kingdom\", \"United States\", \"Turkey\")) |>\n  mutate(year = year(date)) |>\n  group_by(country, year, issue) |>\n  summarize(percent_yes = mean(vote == \"yes\")) |>\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"6","fig-width":"12","label":"plot-yearly-yes-issue","message":"false","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"list-countries","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(unvotes)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"col-names","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, 1,5)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, short_name, country, everythinh()) |>\n  rename(cc=country_code, imp=importantvote) |>\n  relocate(cc, .after=country)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(gt)\nlibrary(htmltools)\n\nmy_data <- unvotes |> head(100) |> gt()\nhtml_print(my_data)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(country %in% c(\"United Kingdom\", \"United States\", \"Turkey\")) |>\n  mutate(year = year(date)) |>\n  group_by(country, year, issue) |>\n  summarize(percent_yes = mean(vote == \"yes\")) |>\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"6","fig-width":"12","label":"plot-yearly-yes-issue","message":"false","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"list-countries","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(unvotes)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"col-names","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, 1,5)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, short_name, country, everything()) |>\n  rename(cc=country_code, imp=importantvote) |>\n  relocate(cc, .after=country)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"istedigim_kolonlar <- select(unvotes, short_name, country, everything())\nyeni_isimler <- rename(istedigim_kolonlar, cc=country_code, imp=importantvote)\nson hal <- relocate(yeni_isimler, cc, .after=country)\n\n#eşittir\n\nunvotes |>\n  select(unvotes, short_name, country, everything()) |>\n  rename(cc=country_code, imp=importantvote) |>\n  relocate(cc, .after=country) -> son_hal","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"pipe-hakkinda","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(session > 10)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"filter-giris","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(session > 10, country_code==\"TR\")","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"filter-and","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"test <- c(1,2,3,4,5,NA,8,9,10)\nsum(test)\ntest > 5\ntest == NA","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"na-yutan","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(!is.na(country_code))","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"filter-na","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(between(session, 10, 20)","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"filter-between","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(___)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"filter-tricks","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -1987,22 +2052,27 @@ Alper Yılmaz
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
+<section id="kullanılan-veri" class="slide level2">
+<h2>Kullanılan veri</h2>
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div id="qwebr-insertion-location-2"></div>
+<div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
 <p><em>unvotes</em> veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.</p>
-<div id="qwebr-insertion-location-3"></div>
+<div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="select" class="slide level2">
 <h2>Select</h2>
 <p>SQL dilinde de önemli yeri olan <strong>SELECT</strong> Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.</p>
 <p>Veri olarak yine <em>unvotes</em> tablosunu kullanalım.</p>
-<div id="qwebr-insertion-location-4"></div>
+<div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="select-1" class="slide level2">
@@ -2022,18 +2092,81 @@ Alper Yılmaz
 <section id="select-2" class="slide level2">
 <h2>Select</h2>
 <p>Bir önceki slaytta belirtilen özellikleri deneyiniz.</p>
-<div id="qwebr-insertion-location-5"></div>
+<div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="select-yerine.." class="slide level2">
 <h2>Select yerine..</h2>
 <p><em>select()</em> yardımıyla isim değişikliği <code>select(data, yeni=eski)</code> şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız <strong>rename()</strong> fonksiyonunu kullanabilirsiniz.</p>
 <p>Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, <strong>relocate()</strong> fonksiyonunu kullanabilirsiniz.</p>
-<div id="qwebr-insertion-location-6"></div>
+<div id="qwebr-insertion-location-7"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="pipe-hakkında" class="slide level2">
+<h2>Pipe | hakkında</h2>
+<p>Bir önceki slaytlarda kullandığımız pipe <code>|</code> karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.</p>
+<div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="filter" class="slide level2">
 <h2>Filter</h2>
+<p><strong>filter()</strong> fonksiyonu, SQL’deki <strong>WHERE</strong> komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. Kullanımı <code>filter(data, koşul)</code> şeklindedir. Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:</p>
+<ul>
+<li><code>==</code>, <code>&gt;</code>, <code>&gt;=</code> vs.</li>
+<li><code>&amp;</code>, <code>|</code>, <code>!</code></li>
+<li><code>is.na()</code></li>
+<li><code>between()</code></li>
+</ul>
+</section>
+<section id="filter-1" class="slide level2">
+<h2>Filter</h2>
+<div id="qwebr-insertion-location-9"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Bu işlem aslında</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>istenen_satirlar <span class="ot">&lt;-</span> unvotes<span class="sc">$</span>session <span class="sc">&gt;</span> <span class="dv">10</span></span>
+<span id="cb1-2"><a></a><span class="fu">filter</span>(unvotes, istenen_satirlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>ile aynıdır. <strong>filter()</strong> fonksiyonuna <em>TRUE/FALSE</em> şeklinde bir vektör verilir, <em>TRUE</em> olan satırlar gösterilir. O yüzden, <em>TRUE/FALSE</em> üreten herhangi bir fonskiyonun çıktısı <strong>filter()</strong> fonskiyonu için kullanılabilir.</p>
+</section>
+<section id="filter-2" class="slide level2">
+<h2>Filter</h2>
+<p><code>&amp;</code>, <code>|</code>, <code>,</code> ile birden fazla koşul birleştirilebilir.</p>
+<div id="qwebr-insertion-location-10"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="na" class="slide level2">
+<h2>NA</h2>
+<p>R dilinde <code>NA</code> yutan eleman gibidir.</p>
+<div id="qwebr-insertion-location-11"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Bir değerin <code>NA</code> değerine eşit olup olmadığı <code>is.na()</code> fonksiyonu ile test edilir.</p>
+</section>
+<section id="filter-na" class="slide level2">
+<h2>Filter NA</h2>
+<p><code>is.na()</code> NA olması durumunda <code>TRUE</code> sonuç verdiği için, NA içeren satırları elemek için <code>is.na()</code> çıktısının değilini (<em>not</em>) almak gerekir. R dilinde ünlem işareti ile değil (<em>not</em>) alınmış olur.</p>
+<blockquote>
+<p><code>na.omit()</code> fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.</p>
+</blockquote>
+<div id="qwebr-insertion-location-12"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="between" class="slide level2">
+<h2>Between</h2>
+<p>Normalde, bir aralık için filtre yapılmak istendiğinde <code>session &gt; 10, session &lt; 20</code> şeklinde bir ifade kullanılabilir. Bunun yerine <code>between()</code> fonksiyonu kullanılabilir.</p>
+<div id="qwebr-insertion-location-13"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="filter-3" class="slide level2">
+<h2>Filter</h2>
+<p>Zaman kazandıracak bazı yöntemler:</p>
+<ul>
+<li><code>filter(country=="Turkey", country=="Brazil", country=="Japan")</code> yerine <em>%in%</em> operatörü kullanmak daha pratik olacaktır <code>filter(country %in% c("Turkey","Brazil","Japan")</code></li>
+<li><code>stringr</code> paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. <code>filter(str_detect(descr,"conflict")</code></li>
+</ul>
+<div id="qwebr-insertion-location-14"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<div class="footer">
+<p>karmaşık örüntüler aramayı mümkün kılan <a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect() örnekleri içeren sayfayı</a> ziyaret ediniz</p>
+</div>
 
 
 </section>

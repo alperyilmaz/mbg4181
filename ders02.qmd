@@ -16,7 +16,7 @@ format:
     slide-number: c/t
 typora-copy-images-to: images
 webr:
-  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','DT'] # Install R packages on document open
+  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','gt','htmltools','stringr'] # Install R packages on document open
   autoload-packages: false       # Disable automatic loading of packages
   show-startup-message: true     # Disable displaying status of webR initialization
   #render-df: gt-interactive
@@ -38,6 +38,15 @@ unvotes <- un_votes |>
   inner_join(un_roll_call_issues, by = "rcid")
 ```
 
+## Kullanılan veri
+
+```{webr}
+library(gt)
+library(htmltools)
+
+my_data <- unvotes |> head(100) |> gt()
+html_print(my_data)
+```
 ## 
 
 ```{webr}
@@ -121,9 +130,117 @@ Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, **relocate()**
 ```{webr}
 #| label: your-turn2
 
-select(unvotes, short_name, country, everythinh()) |>
+select(unvotes, short_name, country, everything()) |>
   rename(cc=country_code, imp=importantvote) |>
   relocate(cc, .after=country)
 ```
 
+## Pipe | hakkında
+
+Bir önceki slaytlarda kullandığımız pipe `|` karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.
+
+```{webr}
+#| label: pipe-hakkinda
+istedigim_kolonlar <- select(unvotes, short_name, country, everything())
+yeni_isimler <- rename(istedigim_kolonlar, cc=country_code, imp=importantvote)
+son hal <- relocate(yeni_isimler, cc, .after=country)
+
+#eşittir
+
+unvotes |>
+  select(unvotes, short_name, country, everything()) |>
+  rename(cc=country_code, imp=importantvote) |>
+  relocate(cc, .after=country) -> son_hal
+```
+
 ## Filter
+
+**filter()** fonksiyonu, SQL'deki **WHERE** komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. 
+Kullanımı `filter(data, koşul)` şeklindedir.  Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:
+
+- `==`, `>`, `>=` vs.
+- `&`, `|`, `!`
+- `is.na()`
+- `between()`
+
+## Filter
+
+
+```{webr}
+#| label: filter-giris
+
+unvotes |>
+  filter(session > 10)
+```
+
+Bu işlem aslında
+
+```r
+istenen_satirlar <- unvotes$session > 10
+filter(unvotes, istenen_satirlar)
+```
+
+ile aynıdır. **filter()** fonksiyonuna *TRUE/FALSE* şeklinde bir vektör verilir, *TRUE* olan satırlar gösterilir. O yüzden, *TRUE/FALSE* üreten herhangi bir fonskiyonun çıktısı **filter()** fonskiyonu için kullanılabilir.
+
+## Filter
+
+`&`, `|`, `,` ile birden fazla koşul birleştirilebilir.
+
+```{webr}
+#| label: filter-and
+
+unvotes |>
+  filter(session > 10, country_code=="TR")
+```
+
+## NA
+
+R dilinde `NA` yutan eleman gibidir.
+
+```{webr}
+#| label: na-yutan
+test <- c(1,2,3,4,5,NA,8,9,10)
+sum(test)
+test > 5
+test == NA
+```
+Bir değerin `NA` değerine eşit olup olmadığı `is.na()` fonksiyonu ile test edilir.
+
+## Filter NA
+
+`is.na()` NA olması durumunda `TRUE` sonuç verdiği için, NA içeren satırları elemek için `is.na()` çıktısının değilini (*not*) almak gerekir. R dilinde ünlem işareti ile değil (*not*) alınmış olur. 
+
+> `na.omit()` fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.
+
+```{webr}
+#| label: filter-na
+unvotes |>
+  filter(!is.na(country_code))
+```
+
+## Between
+
+Normalde, bir aralık  için filtre yapılmak istendiğinde `session > 10, session < 20` şeklinde bir ifade kullanılabilir. Bunun yerine `between()` fonksiyonu kullanılabilir.
+
+```{webr}
+#| label: filter-between
+unvotes |>
+  filter(between(session, 10, 20)
+```
+
+## Filter 
+
+Zaman kazandıracak bazı yöntemler:
+
+- `filter(country=="Turkey", country=="Brazil", country=="Japan")` yerine *%in%* operatörü kullanmak daha pratik olacaktır `filter(country %in% c("Turkey","Brazil","Japan")`
+- `stringr` paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. `filter(str_detect(descr,"conflict")`
+
+```{webr}
+#| label: filter-tricks
+unvotes |>
+  filter(___)
+```
+
+:::footer
+karmaşık örüntüler aramayı mümkün kılan [str_detect() örnekleri içeren sayfayı](https://stringr.tidyverse.org/reference/str_detect.html) ziyaret ediniz
+:::

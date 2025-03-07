@@ -21,6 +21,13 @@
     "text": "Önce keki yiyelim\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "ders02.html#kullanılan-veri",
+    "href": "ders02.html#kullanılan-veri",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Kullanılan veri",
+    "text": "Kullanılan veri\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
     "objectID": "ders02.html#section",
     "href": "ders02.html#section",
     "title": "Tidyverse Dosya Okuma, Select/Filter",
@@ -63,11 +70,60 @@
     "text": "Select yerine..\nselect() yardımıyla isim değişikliği select(data, yeni=eski) şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız rename() fonksiyonunu kullanabilirsiniz.\nAyrıca, amacınız sadece sütunların yerini değiştirmek ise, relocate() fonksiyonunu kullanabilirsiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "ders02.html#pipe-hakkında",
+    "href": "ders02.html#pipe-hakkında",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Pipe | hakkında",
+    "text": "Pipe | hakkında\nBir önceki slaytlarda kullandığımız pipe | karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
     "objectID": "ders02.html#filter",
     "href": "ders02.html#filter",
     "title": "Tidyverse Dosya Okuma, Select/Filter",
     "section": "Filter",
-    "text": "Filter"
+    "text": "Filter\nfilter() fonksiyonu, SQL’deki WHERE komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. Kullanımı filter(data, koşul) şeklindedir. Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:\n\n==, &gt;, &gt;= vs.\n&, |, !\nis.na()\nbetween()"
+  },
+  {
+    "objectID": "ders02.html#filter-1",
+    "href": "ders02.html#filter-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBu işlem aslında\nistenen_satirlar &lt;- unvotes$session &gt; 10\nfilter(unvotes, istenen_satirlar)\nile aynıdır. filter() fonksiyonuna TRUE/FALSE şeklinde bir vektör verilir, TRUE olan satırlar gösterilir. O yüzden, TRUE/FALSE üreten herhangi bir fonskiyonun çıktısı filter() fonskiyonu için kullanılabilir."
+  },
+  {
+    "objectID": "ders02.html#filter-2",
+    "href": "ders02.html#filter-2",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\n&, |, , ile birden fazla koşul birleştirilebilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#na",
+    "href": "ders02.html#na",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "NA",
+    "text": "NA\nR dilinde NA yutan eleman gibidir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBir değerin NA değerine eşit olup olmadığı is.na() fonksiyonu ile test edilir."
+  },
+  {
+    "objectID": "ders02.html#filter-na",
+    "href": "ders02.html#filter-na",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter NA",
+    "text": "Filter NA\nis.na() NA olması durumunda TRUE sonuç verdiği için, NA içeren satırları elemek için is.na() çıktısının değilini (not) almak gerekir. R dilinde ünlem işareti ile değil (not) alınmış olur.\n\nna.omit() fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#between",
+    "href": "ders02.html#between",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Between",
+    "text": "Between\nNormalde, bir aralık için filtre yapılmak istendiğinde session &gt; 10, session &lt; 20 şeklinde bir ifade kullanılabilir. Bunun yerine between() fonksiyonu kullanılabilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#filter-3",
+    "href": "ders02.html#filter-3",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\nZaman kazandıracak bazı yöntemler:\n\nfilter(country==\"Turkey\", country==\"Brazil\", country==\"Japan\") yerine %in% operatörü kullanmak daha pratik olacaktır filter(country %in% c(\"Turkey\",\"Brazil\",\"Japan\")\nstringr paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. filter(str_detect(descr,\"conflict\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nkarmaşık örüntüler aramayı mümkün kılan str_detect() örnekleri içeren sayfayı ziyaret ediniz"
   },
   {
     "objectID": "ders01.html#data-science-veri-bilimi",
