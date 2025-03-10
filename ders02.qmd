@@ -225,7 +225,7 @@ Normalde, bir aralık  için filtre yapılmak istendiğinde `session > 10, sessi
 ```{webr}
 #| label: filter-between
 unvotes |>
-  filter(between(session, 10, 20)
+  filter(between(session, 10, 20))
 ```
 
 ## Filter 
@@ -238,7 +238,7 @@ Zaman kazandıracak bazı yöntemler:
 ```{webr}
 #| label: filter-tricks
 unvotes |>
-  filter(___)
+  filter(...)
 ```
 
 :::footer
