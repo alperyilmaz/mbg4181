@@ -11,3 +11,7 @@
 ## Ders2
 
 *7 Mart 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **select** ve **filter** komutları gösterildi. [Sunum linki](ders02.qmd)
+
+## Ders3
+
+*14 Mart 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **mutate** ve **summarize** komutları gösterildi. [Sunum linki](ders03.qmd)

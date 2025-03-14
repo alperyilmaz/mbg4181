@@ -1,129 +1,185 @@
 [
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
-    "section": "",
-    "text": "YTÜ MBG Bölümünde 2025 Bahar döneminde verilen MBG4181 kodlu dersin içerikleri sayfasıdır.\n\n\n\nVize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+    "objectID": "test.html#test",
+    "href": "test.html#test",
+    "title": "webR in Quarto HTML Documents",
+    "section": "test",
+    "text": "test\n\n\n                   mpg cyl  disp  hp drat    wt  qsec vs am gear carb\nMazda RX4         21.0   6 160.0 110 3.90 2.620 16.46  0  1    4    4\nMazda RX4 Wag     21.0   6 160.0 110 3.90 2.875 17.02  0  1    4    4\nDatsun 710        22.8   4 108.0  93 3.85 2.320 18.61  1  1    4    1\nHornet 4 Drive    21.4   6 258.0 110 3.08 3.215 19.44  1  0    3    1\nHornet Sportabout 18.7   8 360.0 175 3.15 3.440 17.02  0  0    3    2\nValiant           18.1   6 225.0 105 2.76 3.460 20.22  1  0    3    1\nDuster 360        14.3   8 360.0 245 3.21 3.570 15.84  0  0    3    4\nMerc 240D         24.4   4 146.7  62 3.69 3.190 20.00  1  0    4    2\nMerc 230          22.8   4 140.8  95 3.92 3.150 22.90  1  0    4    2\n [ reached 'max' / getOption(\"max.print\") -- omitted 23 rows ]"
   },
   {
-    "objectID": "about.html#sıkça-sorulan-sorular",
-    "href": "about.html#sıkça-sorulan-sorular",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
-    "section": "",
-    "text": "Vize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+    "objectID": "ders03.html#kaldığımız-yerden-devam-edelim",
+    "href": "ders03.html#kaldığımız-yerden-devam-edelim",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Kaldığımız yerden devam edelim",
+    "text": "Kaldığımız yerden devam edelim\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#önce-keki-yiyelim",
-    "href": "ders02.html#önce-keki-yiyelim",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Önce keki yiyelim",
-    "text": "Önce keki yiyelim\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#mutate",
+    "href": "ders03.html#mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate",
+    "text": "Mutate\nmutate() fonksiyonu veri setlerine yeni sütunlar eklemek veya var olan sütunları değiştirmek için kullanılır. Orijinal veri setini değiştirmez, yeni bir veri seti olarak döndürür.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#kullanılan-veri",
-    "href": "ders02.html#kullanılan-veri",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Kullanılan veri",
-    "text": "Kullanılan veri\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#mutate-ile-temel-işlemler",
+    "href": "ders03.html#mutate-ile-temel-işlemler",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile temel işlemler",
+    "text": "Mutate ile temel işlemler\nMutate ile yeni sütunlar eklerken mevcut sütunlar üzerinde işlemler yapabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#section",
-    "href": "ders02.html#section",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "",
-    "text": "Please enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#aynı-anda-birden-fazla-sütun",
+    "href": "ders03.html#aynı-anda-birden-fazla-sütun",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Aynı anda birden fazla sütun",
+    "text": "Aynı anda birden fazla sütun\nmutate() aynı anda birden fazla sütunu değiştirmenize veya eklemenize olanak tanır:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#section-1",
-    "href": "ders02.html#section-1",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "",
-    "text": "unvotes veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#koşullu-mutate",
+    "href": "ders03.html#koşullu-mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Koşullu mutate",
+    "text": "Koşullu mutate\ncase_when() ile koşullu değerler atayabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#select",
-    "href": "ders02.html#select",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Select",
-    "text": "Select\nSQL dilinde de önemli yeri olan SELECT Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.\nVeri olarak yine unvotes tablosunu kullanalım.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#mutate-içinde-ifcondition",
+    "href": "ders03.html#mutate-içinde-ifcondition",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate içinde ifcondition",
+    "text": "Mutate içinde ifcondition\nif_else() fonksiyonu basit koşullu ifadeler için kullanılabilir:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#select-1",
-    "href": "ders02.html#select-1",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Select",
-    "text": "Select\nselect() fonksiyonu:\n\nsütun numarası\nsütun adı\nher ikisi için de aralık (2:5 veya country:vote gibi)\neksi(-) işareti ile sütun almama\nyardımcı fonskiyonlar ile belirli örüntü (starts_with, ends_with)\neverything() kısayolu\n\nile sütun seçimi yapabilir.\nSütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak."
+    "objectID": "ders03.html#mutate-ile-matematiksel-işlemler",
+    "href": "ders03.html#mutate-ile-matematiksel-işlemler",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile matematiksel işlemler",
+    "text": "Mutate ile matematiksel işlemler\nMutate ile matematiksel işlemler yapabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#select-2",
-    "href": "ders02.html#select-2",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Select",
-    "text": "Select\nBir önceki slaytta belirtilen özellikleri deneyiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#mutate-ile-string-manipülasyonu",
+    "href": "ders03.html#mutate-ile-string-manipülasyonu",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile string manipülasyonu",
+    "text": "Mutate ile string manipülasyonu\nString işlemleri için stringr paketini kullanabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#select-yerine..",
-    "href": "ders02.html#select-yerine..",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Select yerine..",
-    "text": "Select yerine..\nselect() yardımıyla isim değişikliği select(data, yeni=eski) şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız rename() fonksiyonunu kullanabilirsiniz.\nAyrıca, amacınız sadece sütunların yerini değiştirmek ise, relocate() fonksiyonunu kullanabilirsiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#group_by",
+    "href": "ders03.html#group_by",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by",
+    "text": "Group_by\ngroup_by() fonksiyonu verileri gruplandırmak için kullanılır. Tek başına görsel bir değişiklik yapmaz, ancak sonraki işlemlerin gruplara göre uygulanmasını sağlar.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#pipe-hakkında",
-    "href": "ders02.html#pipe-hakkında",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Pipe | hakkında",
-    "text": "Pipe | hakkında\nBir önceki slaytlarda kullandığımız pipe | karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#group_by-ve-n",
+    "href": "ders03.html#group_by-ve-n",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by ve n()",
+    "text": "Group_by ve n()\nGruplardaki satır sayısını saymak için n() fonksiyonunu kullanabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#filter",
-    "href": "ders02.html#filter",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Filter",
-    "text": "Filter\nfilter() fonksiyonu, SQL’deki WHERE komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. Kullanımı filter(data, koşul) şeklindedir. Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:\n\n==, &gt;, &gt;= vs.\n&, |, !\nis.na()\nbetween()"
+    "objectID": "ders03.html#group_by-ve-summarize",
+    "href": "ders03.html#group_by-ve-summarize",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by ve Summarize",
+    "text": "Group_by ve Summarize\nsummarize() (veya summarise()) fonksiyonu gruplandırılmış verileri özetlemek için kullanılır:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#filter-1",
-    "href": "ders02.html#filter-1",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Filter",
-    "text": "Filter\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBu işlem aslında\nistenen_satirlar &lt;- unvotes$session &gt; 10\nfilter(unvotes, istenen_satirlar)\nile aynıdır. filter() fonksiyonuna TRUE/FALSE şeklinde bir vektör verilir, TRUE olan satırlar gösterilir. O yüzden, TRUE/FALSE üreten herhangi bir fonskiyonun çıktısı filter() fonskiyonu için kullanılabilir."
+    "objectID": "ders03.html#çoklu-group_by",
+    "href": "ders03.html#çoklu-group_by",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Çoklu Group_by",
+    "text": "Çoklu Group_by\nBirden fazla değişkene göre gruplandırma yapabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#filter-2",
-    "href": "ders02.html#filter-2",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Filter",
-    "text": "Filter\n&, |, , ile birden fazla koşul birleştirilebilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#gruplandırılmış-verileri-görselleştirme",
+    "href": "ders03.html#gruplandırılmış-verileri-görselleştirme",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Gruplandırılmış verileri görselleştirme",
+    "text": "Gruplandırılmış verileri görselleştirme\nGruplandırılmış veriler üzerinde yapılan işlemler görselleştirme için çok uygundur:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#na",
-    "href": "ders02.html#na",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "NA",
-    "text": "NA\nR dilinde NA yutan eleman gibidir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBir değerin NA değerine eşit olup olmadığı is.na() fonksiyonu ile test edilir."
+    "objectID": "ders03.html#summarize-fonksiyonları",
+    "href": "ders03.html#summarize-fonksiyonları",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Summarize fonksiyonları",
+    "text": "Summarize fonksiyonları\nÖzet istatistikler için yaygın olarak kullanılan fonksiyonlar:\n\nmean(): Ortalama\nmedian(): Medyan\nmin(), max(): Minimum, maksimum değerler\nsd(), var(): Standart sapma, varyans\nn(): Satır sayısı\nn_distinct(): Benzersiz değer sayısı\nfirst(), last(): İlk ve son değerler\nquantile(): Belirli bir yüzdelik dilim"
   },
   {
-    "objectID": "ders02.html#filter-na",
-    "href": "ders02.html#filter-na",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Filter NA",
-    "text": "Filter NA\nis.na() NA olması durumunda TRUE sonuç verdiği için, NA içeren satırları elemek için is.na() çıktısının değilini (not) almak gerekir. R dilinde ünlem işareti ile değil (not) alınmış olur.\n\nna.omit() fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#summarize-örneği",
+    "href": "ders03.html#summarize-örneği",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Summarize örneği",
+    "text": "Summarize örneği\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#between",
-    "href": "ders02.html#between",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Between",
-    "text": "Between\nNormalde, bir aralık için filtre yapılmak istendiğinde session &gt; 10, session &lt; 20 şeklinde bir ifade kullanılabilir. Bunun yerine between() fonksiyonu kullanılabilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders03.html#group_by-summarize-ve-filter-birlikte",
+    "href": "ders03.html#group_by-summarize-ve-filter-birlikte",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by, Summarize ve Filter birlikte",
+    "text": "Group_by, Summarize ve Filter birlikte\nBu fonksiyonları bir arada kullanabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders02.html#filter-3",
-    "href": "ders02.html#filter-3",
-    "title": "Tidyverse Dosya Okuma, Select/Filter",
-    "section": "Filter",
-    "text": "Filter\nZaman kazandıracak bazı yöntemler:\n\nfilter(country==\"Turkey\", country==\"Brazil\", country==\"Japan\") yerine %in% operatörü kullanmak daha pratik olacaktır filter(country %in% c(\"Turkey\",\"Brazil\",\"Japan\")\nstringr paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. filter(str_detect(descr,\"conflict\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nkarmaşık örüntüler aramayı mümkün kılan str_detect() örnekleri içeren sayfayı ziyaret ediniz"
+    "objectID": "ders03.html#ungroup",
+    "href": "ders03.html#ungroup",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "ungroup()",
+    "text": "ungroup()\nBazen grup işlemlerinden sonra gruplama durumunu kaldırmak isteyebilirsiniz. Bunun için ungroup() kullanabilirsiniz:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-vs-summarize",
+    "href": "ders03.html#mutate-vs-summarize",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate vs Summarize",
+    "text": "Mutate vs Summarize\n\nmutate(): Her satır için yeni sütunlar oluşturur, satır sayısı değişmez\nsummarize(): Grupları özetleyerek yeni bir tablo oluşturur, satır sayısı genellikle azalır\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#gruplandırma-ve-mutate",
+    "href": "ders03.html#gruplandırma-ve-mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Gruplandırma ve mutate",
+    "text": "Gruplandırma ve mutate\ngroup_by() ile mutate() birlikte kullanıldığında, her grup içinde hesaplama yapılır:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
+    "href": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Ülke bazında yıllık oy analizi örneği",
+    "text": "Ülke bazında yıllık oy analizi örneği\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#alıştırma",
+    "href": "ders03.html#alıştırma",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Alıştırma",
+    "text": "Alıştırma\nunvotes veri setini kullanarak:\n\n2000 yılından sonra en çok oy kullanan 10 ülkeyi bulunuz.\nHer konu için, Türkiye’nin yıllara göre evet oy oranını hesaplayıp görselleştiriniz.\nSoğuk Savaş döneminde (1991 öncesi) ve sonrasında ABD ve Rusya’nın oy benzerliğini karşılaştırınız.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test",
+    "href": "ders03.html#test",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test",
+    "text": "test\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test2",
+    "href": "ders03.html#test2",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test2",
+    "text": "test2\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test3",
+    "href": "ders03.html#test3",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test3",
+    "text": "test3\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test4",
+    "href": "ders03.html#test4",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test4",
+    "text": "test4\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders01.html#data-science-veri-bilimi",
@@ -263,7 +319,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -285,5 +341,138 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders3",
+    "href": "index.html#ders3",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
+  },
+  {
+    "objectID": "ders02.html#önce-keki-yiyelim",
+    "href": "ders02.html#önce-keki-yiyelim",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Önce keki yiyelim",
+    "text": "Önce keki yiyelim\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#kullanılan-veri",
+    "href": "ders02.html#kullanılan-veri",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Kullanılan veri",
+    "text": "Kullanılan veri\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#section",
+    "href": "ders02.html#section",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "",
+    "text": "Please enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#section-1",
+    "href": "ders02.html#section-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "",
+    "text": "unvotes veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#select",
+    "href": "ders02.html#select",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nSQL dilinde de önemli yeri olan SELECT Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.\nVeri olarak yine unvotes tablosunu kullanalım.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#select-1",
+    "href": "ders02.html#select-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nselect() fonksiyonu:\n\nsütun numarası\nsütun adı\nher ikisi için de aralık (2:5 veya country:vote gibi)\neksi(-) işareti ile sütun almama\nyardımcı fonskiyonlar ile belirli örüntü (starts_with, ends_with)\neverything() kısayolu\n\nile sütun seçimi yapabilir.\nSütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak."
+  },
+  {
+    "objectID": "ders02.html#select-2",
+    "href": "ders02.html#select-2",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select",
+    "text": "Select\nBir önceki slaytta belirtilen özellikleri deneyiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#select-yerine..",
+    "href": "ders02.html#select-yerine..",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Select yerine..",
+    "text": "Select yerine..\nselect() yardımıyla isim değişikliği select(data, yeni=eski) şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız rename() fonksiyonunu kullanabilirsiniz.\nAyrıca, amacınız sadece sütunların yerini değiştirmek ise, relocate() fonksiyonunu kullanabilirsiniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#pipe-hakkında",
+    "href": "ders02.html#pipe-hakkında",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Pipe | hakkında",
+    "text": "Pipe | hakkında\nBir önceki slaytlarda kullandığımız pipe | karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#filter",
+    "href": "ders02.html#filter",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\nfilter() fonksiyonu, SQL’deki WHERE komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. Kullanımı filter(data, koşul) şeklindedir. Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:\n\n==, &gt;, &gt;= vs.\n&, |, !\nis.na()\nbetween()"
+  },
+  {
+    "objectID": "ders02.html#filter-1",
+    "href": "ders02.html#filter-1",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBu işlem aslında\nistenen_satirlar &lt;- unvotes$session &gt; 10\nfilter(unvotes, istenen_satirlar)\nile aynıdır. filter() fonksiyonuna TRUE/FALSE şeklinde bir vektör verilir, TRUE olan satırlar gösterilir. O yüzden, TRUE/FALSE üreten herhangi bir fonskiyonun çıktısı filter() fonskiyonu için kullanılabilir."
+  },
+  {
+    "objectID": "ders02.html#filter-2",
+    "href": "ders02.html#filter-2",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\n&, |, , ile birden fazla koşul birleştirilebilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#na",
+    "href": "ders02.html#na",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "NA",
+    "text": "NA\nR dilinde NA yutan eleman gibidir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBir değerin NA değerine eşit olup olmadığı is.na() fonksiyonu ile test edilir."
+  },
+  {
+    "objectID": "ders02.html#filter-na",
+    "href": "ders02.html#filter-na",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter NA",
+    "text": "Filter NA\nis.na() NA olması durumunda TRUE sonuç verdiği için, NA içeren satırları elemek için is.na() çıktısının değilini (not) almak gerekir. R dilinde ünlem işareti ile değil (not) alınmış olur.\n\nna.omit() fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#between",
+    "href": "ders02.html#between",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Between",
+    "text": "Between\nNormalde, bir aralık için filtre yapılmak istendiğinde session &gt;= 10, session &lt;= 20 şeklinde bir ifade kullanılabilir. Bunun yerine between() fonksiyonu kullanılabilir.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders02.html#filter-3",
+    "href": "ders02.html#filter-3",
+    "title": "Tidyverse Dosya Okuma, Select/Filter",
+    "section": "Filter",
+    "text": "Filter\nZaman kazandıracak bazı yöntemler:\n\nfilter(country==\"Turkey\", country==\"Brazil\", country==\"Japan\") yerine %in% operatörü kullanmak daha pratik olacaktır filter(country %in% c(\"Turkey\",\"Brazil\",\"Japan\")\nstringr paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. filter(str_detect(descr,\"conflict\")\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nkarmaşık örüntüler aramayı mümkün kılan str_detect() örnekleri içeren sayfayı ziyaret ediniz"
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
+    "section": "",
+    "text": "YTÜ MBG Bölümünde 2025 Bahar döneminde verilen MBG4181 kodlu dersin içerikleri sayfasıdır.\n\n\n\nVize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+  },
+  {
+    "objectID": "about.html#sıkça-sorulan-sorular",
+    "href": "about.html#sıkça-sorulan-sorular",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
+    "section": "",
+    "text": "Vize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
   }
 ]

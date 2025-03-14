@@ -220,7 +220,7 @@ unvotes |>
 
 ## Between
 
-Normalde, bir aralık  için filtre yapılmak istendiğinde `session > 10, session < 20` şeklinde bir ifade kullanılabilir. Bunun yerine `between()` fonksiyonu kullanılabilir.
+Normalde, bir aralık  için filtre yapılmak istendiğinde `session >= 10, session <= 20` şeklinde bir ifade kullanılabilir. Bunun yerine `between()` fonksiyonu kullanılabilir.
 
 ```{webr}
 #| label: filter-between
