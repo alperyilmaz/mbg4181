@@ -164,7 +164,7 @@ TSV (Tab-Separated Values) dosyaları, CSV'ye benzer ancak ayırıcı olarak tab
 
 ```{webr}
 # Bir URL'den TSV veri setini okuyalım
-data_tsv_url <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/states.tsv"
+data_tsv_url <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/iris_part1.tsvq"
 tsv_data <- read_tsv(data_tsv_url)
 
 # İlk birkaç satırı görelim
@@ -337,19 +337,6 @@ tarih_data
 
 # Sütun tiplerini görelim
 glimpse(tarih_data)
-```
-
-## Tarih İşlemleri ile Veri Analizi
-
-```{webr}
-# Tarih verileri üzerinde işlemler
-tarih_data |>
-  mutate(
-    yaş = as.numeric(difftime(Sys.Date(), doğum_tarihi, units = "days") / 365.25),
-    kayıt_ayı = month(kayıt_zamanı, label = TRUE),
-    kayıt_günü = wday(kayıt_zamanı, label = TRUE),
-    kayıt_saati = hour(kayıt_zamanı)
-  )
 ```
 
 ## Birden Fazla Dosya Okuma ve Birleştirme
