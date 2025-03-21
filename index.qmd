@@ -15,3 +15,7 @@
 ## Ders3
 
 *14 Mart 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **mutate** ve **summarize** komutları gösterildi. [Sunum linki](ders03.qmd)
+
+## Ders4
+
+*21 Mart 2025 9:30* | **İçerik**: Dosya okuma komutları gösterildi. [Sunum linki](ders04.qmd)

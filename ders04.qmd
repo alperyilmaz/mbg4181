@@ -1,0 +1,444 @@
+---
+title: "Veri İçe Aktarma (readr ve readxl)"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders4"
+author: "Alper Yılmaz"
+date: 2025-03-21
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+resources:
+  - data
+webr:
+  packages: ['dplyr','readr','readxl','lubridate','scales','ggplot2','gt','htmltools','stringr'] # Install R packages on document open
+  autoload-packages: false       # Disable automatic loading of packages
+  show-startup-message: true     # Disable displaying status of webR initialization
+  render-df: gt-interactive
+  resources:
+    - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv
+    - https://raw.githubusercontent.com/tidyverse/readr/main/inst/extdata/mtcars.csv
+    - https://raw.githubusercontent.com/tidyverse/readr/main/inst/extdata/mtcars.tsv
+filters:
+  - webr
+---
+
+## Veri İçe Aktarma
+
+```{webr-r}
+library(dplyr)
+library(readr)     # CSV, TSV ve diğer text bazlı dosyaları okumak için
+library(readxl)    # Excel dosyalarını okumak için
+library(lubridate)
+library(ggplot2)
+```
+
+## Bu derste
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- readr paketi
+    - read_csv()
+    - read_tsv()
+    - read_delim()
+- readxl paketi
+    - read_excel()
+    - read_xlsx()
+- Veri okumanın incelikleri
+    - Sütun tipleri
+    - NA değerleri
+    - Tarih formatları
+:::
+
+::: {.column width="50%"}
+- URL'den veri okuma
+- Okuma + işleme örnekleri
+    - Pipe | kullanımı
+    - Filtreleme
+    - Dönüştürme
+    - Gruplama
+:::
+
+::::
+
+## Neden readr?
+
+`readr` paketi, base R'daki `read.csv()` fonksiyonuna göre birçok avantaj sunar:
+
+1. Daha **hızlı** - Büyük dosyalarda fark belirgindir
+2. Daha **tutarlı** - Sütun tiplerini otomatik tanır
+3. Daha **esnek** - NA değerleri, sütun isimleri, vb özelleştirilebilir
+4. Tidyverse ile **uyumlu** - Pipe | ile akıcı kod yazımı
+
+## readr Paketi Temel Fonksiyonları
+
+:::{style="font-size: 18pt;"}
+
+| Fonksiyon | Açıklama |
+|:----------|:---------|
+| `read_csv()` | Virgülle ayrılmış değerleri (CSV) okur |
+| `read_csv2()` | Noktalı virgülle ayrılmış değerleri okur (Avrupa formatı) |
+| `read_tsv()` | Tab ile ayrılmış değerleri okur |
+| `read_delim()` | Belirtilen ayırıcı ile ayrılmış dosyaları okur |
+| `read_fwf()` | Sabit genişlikli dosyaları okur |
+| `read_table()` | Beyaz boşlukla ayrılmış tabloları okur |
+| `read_log()` | Log dosyalarını okur |
+
+:::
+
+## Temel CSV Okuma
+
+```{webr}
+# Bir URL'den mtcars veri setini okuyalım
+mtcars_url <- "https://raw.githubusercontent.com/tidyverse/readr/main/inst/extdata/mtcars.csv"
+mtcars_data <- read_csv(mtcars_url)
+
+# İlk birkaç satırı görelim
+head(mtcars_data)
+```
+
+## CSV Okuma Seçenekleri
+
+```{webr}
+# Daha fazla seçenek ile okuma
+read_csv(
+  mtcars_url,
+  col_types = "didddddiiii",
+  na = c("NA", "N/A", ""),  # NA olarak kabul edilecek değerler
+  trim_ws = TRUE,           # Boşlukları kırp
+  skip = 0                  # Atlanacak satır sayısı
+)
+
+# Veri yapısını görelim
+glimpse(mtcars_data)
+```
+
+## Sütun Tipleri
+
+`readr` otomatik olarak sütun tiplerini tahmin eder, ancak manuel olarak da belirtilebilir:
+
+:::{style="font-size: 18pt;"}
+
+| Fonksiyon | Tip |
+|:----------|:----|
+| `col_logical()` | TRUE/FALSE |
+| `col_integer()` | Tam sayı |
+| `col_double()` | Ondalıklı sayı |
+| `col_character()` | Metin |
+| `col_factor()` | Kategorik değişken |
+| `col_date()` | Tarih |
+| `col_datetime()` | Tarih ve saat |
+| `col_time()` | Saat |
+| `col_skip()` | Sütunu atla |
+| `col_guess()` | Otomatik tahmin |
+
+:::
+
+## Sütun tipleri - kısa
+
+* d : col_double() (for mpg, disp, drat, wt, qsec)
+* i : col_integer() (for cyl, hp, vs, am, gear, carb)
+
+Diğer kısaltmalar:
+
+* c  (col_character())
+* l  (col_logical())
+* f  (col_factor())
+* D  (col_date())
+* T  (col_datetime())
+* t  (col_time())
+* n  (integer or double, col_number())
+* _ veya - sütun atlamak için kullanılır (col_skip())
+
+## TSV Dosyası Okuma
+
+TSV (Tab-Separated Values) dosyaları, CSV'ye benzer ancak ayırıcı olarak tab karakteri kullanır.
+
+```{webr}
+# Bir URL'den TSV veri setini okuyalım
+data_tsv_url <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/states.tsv"
+tsv_data <- read_tsv(data_tsv_url)
+
+# İlk birkaç satırı görelim
+head(tsv_data)
+```
+
+## Özel Ayırıcı ile Dosya Okuma
+
+Herhangi bir özel ayırıcı ile dosya okumak için `read_delim()` kullanabilirsiniz:
+
+```{webr}
+url1 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/problematic_file1.txt"
+url2 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/problematic_file2.txt"
+url3 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/problematic_file3.txt"
+
+
+read_delim(___)
+```
+
+## Excel Dosyaları Okuma - readxl
+
+`readxl` paketi, Excel (.xls ve .xlsx) dosyalarını okumak için kullanılır.
+
+```{webr}
+library(readxl)
+
+# readxl kullanımı (webr ortamında çalışması için örnek bir excel dosyası oluşturalım)
+
+# Temel kullanım
+# excel_data <- read_excel("data/ornek.xlsx")
+
+# Belirli bir sayfa okuma
+# excel_data <- read_excel("data/ornek.xlsx", sheet = "Sayfa1")
+```
+
+## readxl Özellikleri
+
+`readxl` ile Excel dosyalarını okurken kullanabileceğiniz özellikler:
+
+:::{style="font-size: 18pt;"}
+
+| Parametre | Açıklama |
+|:----------|:---------|
+| `sheet` | Sayfa adı veya numarası |
+| `range` | Okunacak hücre aralığı (örn. "A1:C10") |
+| `col_names` | Sütun isimleri var mı? |
+| `col_types` | Sütun tiplerini manuel belirleme |
+| `na` | NA olarak kabul edilecek değerler |
+| `skip` | Atlanacak satır sayısı |
+| `n_max` | Okunacak maksimum satır sayısı |
+
+:::
+
+## Hatalı Veri İle Başa Çıkma
+
+Gerçek dünya verileri genellikle hatalı veya eksiktir. `readr` bu durumlar için çözümler sunar:
+
+```{webr}
+# Hatalı veri oluşturalım
+hatalı_csv <- c(
+  "isim,yaş,boy,kilo",
+  "Ali,25,180,75",
+  "Ayşe,30,165,NA", 
+  "Mehmet,hata,175,80",
+  "Zeynep,28,172,65.5"
+)
+writeLines(hatalı_csv, "hatalı_veri.csv")
+
+# Normal okuma deneyelim
+problemli_data <- read_csv("hatalı_veri.csv", show_col_types = FALSE)
+problemli_data
+```
+
+## Sütun Tiplerini Belirterek Çözüm
+
+```{webr}
+# Sütun tiplerini manuel belirterek okuma
+düzeltilmiş_data <- read_csv(
+  "hatalı_veri.csv",
+  col_types = cols(
+    isim = col_character(),
+    yaş = col_integer(), # Sorunlu değerler NA olacak
+    boy = col_double(),
+    kilo = col_double()
+  ),
+  na = c("NA", "hata", "")
+)
+
+düzeltilmiş_data
+```
+
+## Gerçek Dünya Örneği: Genetik Veri
+
+Genom verilerini okuyup analiz edelim:
+
+```{webr}
+genes_data <- read_csv("https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/hg19genes.csv", show_col_types = FALSE)
+
+# Veri yapısını inceleyelim
+glimpse(genes_data)
+```
+
+## Genom Verisi Analizi
+
+```{webr}
+# Gen uzunluklarını hesaplayalım ve bazı filtreleme yapalım
+genes_data |>
+  mutate(
+    length = end - start + 1,
+    gene_size = case_when(
+      length < 1000 ~ "küçük",
+      length < 10000 ~ "orta",
+      TRUE ~ "büyük"
+    )
+  ) |>
+  filter(biotype == "protein_coding") |>
+  group_by(chr, gene_size) |>
+  summarize(
+    gen_sayısı = n(),
+    ort_uzunluk = mean(length),
+    max_uzunluk = max(length),
+    .groups = "drop"
+  ) |>
+  arrange(chr) |>
+  head(10)
+```
+
+## Dosyaları Yazma
+
+`readr` aynı zamanda veri setlerini dosyalara yazmak için de fonksiyonlar sunar:
+
+:::{style="font-size: 18pt;"}
+
+| Fonksiyon | Açıklama |
+|:----------|:---------|
+| `write_csv()` | CSV formatında yazar |
+| `write_tsv()` | TSV formatında yazar |
+| `write_delim()` | Özel ayırıcı ile yazar |
+| `write_excel_csv()` | Excel-uyumlu CSV yazar |
+
+:::
+
+```{webr}
+# Veri setini CSV olarak kaydetme
+mtcars_data |>
+  filter(mpg > 20) |>
+  write_csv("yüksek_mpg_arabalar.csv")
+
+# Yazılan dosyanın ilk satırlarını kontrol edelim
+readLines("yüksek_mpg_arabalar.csv", n = 5)
+```
+
+## Tarih ve Saat Verileri
+
+`readr`, tarih ve saat verilerini otomatik olarak algılar ve dönüştürür:
+
+```{webr}
+# Tarih içeren bir CSV oluşturalım
+tarih_csv <- c(
+  "isim,doğum_tarihi,kayıt_zamanı",
+  "Ali,1990-05-12,2023-01-15 14:30:45",
+  "Ayşe,1985-11-23,2023-02-20 09:15:30",
+  "Mehmet,1992-08-07,2023-03-10 11:45:20"
+)
+writeLines(tarih_csv, "tarih_veri.csv")
+
+# Tarihleri otomatik algılayan okuma
+tarih_data <- read_csv("tarih_veri.csv", show_col_types = FALSE)
+tarih_data
+
+# Sütun tiplerini görelim
+glimpse(tarih_data)
+```
+
+## Tarih İşlemleri ile Veri Analizi
+
+```{webr}
+# Tarih verileri üzerinde işlemler
+tarih_data |>
+  mutate(
+    yaş = as.numeric(difftime(Sys.Date(), doğum_tarihi, units = "days") / 365.25),
+    kayıt_ayı = month(kayıt_zamanı, label = TRUE),
+    kayıt_günü = wday(kayıt_zamanı, label = TRUE),
+    kayıt_saati = hour(kayıt_zamanı)
+  )
+```
+
+## Birden Fazla Dosya Okuma ve Birleştirme
+
+`bind_rows` komutu ile iki farklı data frame birleştirilebilir (aynı sütunlara sahip olmaları gerekir)
+
+```{webr}
+# Örnek birkaç tsv dosyası linki
+url1 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/iris_part1.tsv"
+url2 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/iris_part2.tsv"
+url3 <- "https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/iris_part3.tsv"
+
+data1 <- read_tsv(url1)
+data2 <- read_tsv(url2)
+data3 <- read_tsv(url3)
+
+data1 |>
+  bind_rows(data2) |>
+  bind_rows(data3)
+```
+
+## Birden Fazla Dosya Okuma ve Birleştirme - purrr
+
+`purrr` paketi ile tüm dosyaları okuyup birleştirelim
+
+```{webr}
+
+library(purrr)
+
+linkler <- c(url1, url2, url3)
+
+birleşik_data <- linkler |>
+  map_df(read_csv, show_col_types = FALSE)
+
+birleşik_data
+```
+
+Not: Dosyalar başarılı şekilde okundu mu?
+
+## Alıştırma
+
+Bu linki: `https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/hg19genes.csv` kullanarak, aşağıdaki soruları cevaplayınız:
+
+1. en uzun gen hangisidir?
+2. her bir kromozomda kaç gen vardır?
+
+```{webr}
+read_csv(_____) |>
+  ___________
+```
+
+## Alıştırma 2
+
+İnternette csv ve tsv dosyası bulunuz ve o dosyayı başarılı şekilde okuyunuz.
+
+```{webr}
+read_csv(_____) |>
+  ___________
+```
+
+## Özet
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Öğrendiğimiz Veri Okuma Fonksiyonları
+- `read_csv()`, `read_tsv()` (readr)
+- `read_excel()` (readxl)
+- URL'den veri okuma
+- Sütun tiplerini belirtme
+- NA değerlerini tanımlama
+:::
+
+::: {.column width="50%"}
+### Öğrendiğimiz Veri İşleme Teknikleri
+- Pipe `|>` ile veri işleme akışı
+- Okuma + filtreleme
+- Okuma + mutate
+- Okuma + group_by + summarize
+- Veri yazma fonksiyonları
+:::
+
+::::
+
+## Bir Sonraki Derste
+
+Bir sonraki derste **Tidyr** paketini inceleyeceğiz:
+
+- Veri şekillendirme (pivot_longer, pivot_wider)
+- Veri birleştirme (joins)
+
+İlgili derslere hazırlık için tidyr ve dplyr belgelerini inceleyiniz.
