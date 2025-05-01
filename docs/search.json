@@ -182,720 +182,6 @@
     "text": "Counting word frequencies\ntidytext package has a function called bind_tf_idf() to calculate the TF-IDF. First, let’s prepare counts per book for austen_books.\n\nausten_counts &lt;- austen_books |&gt;\n  unnest_tokens(word, text) |&gt;\n  count(book, word, sort=TRUE)\n\nausten_counts\n\n# A tibble: 40,379 × 3\n   book              word      n\n   &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;\n 1 Mansfield Park    the    6206\n 2 Mansfield Park    to     5475\n 3 Mansfield Park    and    5438\n 4 Emma              to     5239\n 5 Emma              the    5201\n 6 Emma              and    4896\n 7 Mansfield Park    of     4778\n 8 Pride & Prejudice the    4331\n 9 Emma              of     4291\n10 Pride & Prejudice to     4162\n# ℹ 40,369 more rows"
   },
   {
-    "objectID": "ders05-gemini.html#önceki-derslerden-hatırlatmalar",
-    "href": "ders05-gemini.html#önceki-derslerden-hatırlatmalar",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Önceki Derslerden Hatırlatmalar",
-    "text": "Önceki Derslerden Hatırlatmalar\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nGeçtiğimiz derslerde:\n\ndplyr ile veri manipülasyonu (select, filter, mutate, arrange, group_by, summarize)\nreadr ve readxl ile veri okuma\n\nkonularını işledik."
-  },
-  {
-    "objectID": "ders05-gemini.html#bu-dersin-konuları",
-    "href": "ders05-gemini.html#bu-dersin-konuları",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Bu Dersin Konuları",
-    "text": "Bu Dersin Konuları\nBugün, tidyverse ekosistemindeki iki önemli konuya odaklanacağız:\n\nVeri Şekillendirme (Pivoting): tidyr paketini kullanarak tabloları “uzun” (long) ve “geniş” (wide) formatlar arasında dönüştürme.\n\npivot_longer(): Geniş veriyi uzuna çevirme.\npivot_wider(): Uzun veriyi genişe çevirme.\n\nTablo Birleştirme (Joining): dplyr fonksiyonları ile farklı tablolardaki ilişkili verileri bir araya getirme.\n\ninner_join(), left_join(), full_join(), anti_join() vb."
-  },
-  {
-    "objectID": "ders05-gemini.html#neden-veri-şekillendirme",
-    "href": "ders05-gemini.html#neden-veri-şekillendirme",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Neden Veri Şekillendirme?",
-    "text": "Neden Veri Şekillendirme?\nVeriler genellikle iki formatta karşımıza çıkar:\n\nGeniş (Wide) Format: Her gözlem birimi (örneğin hasta, örneklem) bir satırda yer alır ve değişkenler (ölçümler, özellikler) ayrı sütunlarda bulunur. İnsanların okuması genellikle daha kolaydır.\nUzun (Long) / Tidy Format: Her satır bir gözlem biriminin tek bir ölçümünü veya özelliğini temsil eder. Genellikle bir “anahtar” (key) ve bir “değer” (value) sütunu bulunur. ggplot2 gibi görselleştirme araçları ve birçok modelleme fonksiyonu bu formatı tercih eder.\n\n (Basit bir görselleştirme: Solda geniş, sağda uzun format)\n\nGörsel Kaynak: Kendi çiziminiz veya uygun bir online kaynak"
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_longer-genişten-uzuna",
-    "href": "ders05-gemini.html#pivot_longer-genişten-uzuna",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_longer(): Genişten Uzuna",
-    "text": "pivot_longer(): Genişten Uzuna\npivot_longer() fonksiyonu, birden fazla sütunu tek bir anahtar-değer çiftine dönüştürerek veriyi uzatır.\nTemel argümanlar:\n\ndata: Dönüştürülecek veri çerçevesi.\ncols: Uzatılacak sütunlar (örn. genA:genC veya c(genA, genB, genC)).\nnames_to: Yeni oluşturulacak “anahtar” sütununun adı (genellikle bir karakter dizisi).\nvalues_to: Yeni oluşturulacak “değer” sütununun adı (genellikle bir karakter dizisi)."
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_longer-örneği",
-    "href": "ders05-gemini.html#pivot_longer-örneği",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_longer() Örneği",
-    "text": "pivot_longer() Örneği\nBasit bir gen ifadesi verisi düşünelim:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_longer-uygulaması",
-    "href": "ders05-gemini.html#pivot_longer-uygulaması",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_longer() Uygulaması",
-    "text": "pivot_longer() Uygulaması\nŞimdi bu geniş veriyi uzun formata çevirelim:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_longer-ipuçları",
-    "href": "ders05-gemini.html#pivot_longer-ipuçları",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_longer() İpuçları",
-    "text": "pivot_longer() İpuçları\n\ncols argümanında dplyr::select() yardımcılarını kullanabilirsiniz (starts_with(), ends_with(), contains(), everything(), -sutun_adi, vb.).\nnames_pattern ve names_sep argümanları ile sütun isimlerinden birden fazla anahtar sütunu çıkarabilirsiniz (daha ileri düzey).\nvalues_drop_na = TRUE ile eksik (NA) değerleri içeren satırları otomatik olarak kaldırabilirsiniz."
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_wider-uzundan-genişe",
-    "href": "ders05-gemini.html#pivot_wider-uzundan-genişe",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_wider(): Uzundan Genişe",
-    "text": "pivot_wider(): Uzundan Genişe\npivot_wider() fonksiyonu, pivot_longer() işleminin tersini yapar: Bir anahtar ve bir değer sütununu alıp birden fazla yeni sütun oluşturarak veriyi genişletir.\nTemel argümanlar:\n\ndata: Dönüştürülecek uzun veri çerçevesi.\nnames_from: Yeni sütun isimlerinin alınacağı anahtar sütun(lar).\nvalues_from: Yeni sütunlardaki değerlerin alınacağı değer sütun(lar)."
-  },
-  {
-    "objectID": "ders05-gemini.html#pivot_wider-örneği",
-    "href": "ders05-gemini.html#pivot_wider-örneği",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "pivot_wider() Örneği",
-    "text": "pivot_wider() Örneği\nBir önceki örnekteki uzun veriyi tekrar geniş formata çevirelim:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#biyolojik-veri-pivoting-örneği",
-    "href": "ders05-gemini.html#biyolojik-veri-pivoting-örneği",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Biyolojik Veri Pivoting Örneği",
-    "text": "Biyolojik Veri Pivoting Örneği\nFarklı zaman noktalarında yapılan ölçümleri içeren bir veri seti:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nBu veriyi her hasta için bir satır olacak şekilde genişletelim:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#tablo-birleştirme-joining---neden",
-    "href": "ders05-gemini.html#tablo-birleştirme-joining---neden",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Tablo Birleştirme (Joining) - Neden?",
-    "text": "Tablo Birleştirme (Joining) - Neden?\nGenellikle analiz etmek istediğimiz veriler tek bir tabloda bulunmaz. Farklı kaynaklardan gelen veya farklı bilgileri içeren tabloları birleştirmemiz gerekir.\nÖrneğin:\n\nHasta demografik bilgileri (yaş, cinsiyet) tablosu ile hastaların ölçüm sonuçları tablosu.\nGen anotasyon bilgileri (gen fonksiyonu, lokasyonu) tablosu ile gen ifade düzeyleri tablosu.\n\nBirleştirme işlemi, tablolardaki ortak anahtar sütun(lar) üzerinden yapılır."
-  },
-  {
-    "objectID": "ders05-gemini.html#join-türleri-görsel",
-    "href": "ders05-gemini.html#join-türleri-görsel",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Join Türleri (Görsel)",
-    "text": "Join Türleri (Görsel)\n    \n\nKaynak: R for Data Science (2e) - Joins"
-  },
-  {
-    "objectID": "ders05-gemini.html#örnek-veriler-join-için",
-    "href": "ders05-gemini.html#örnek-veriler-join-için",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Örnek Veriler (Join için)",
-    "text": "Örnek Veriler (Join için)\nİki basit tablo oluşturalım: Hastalar ve Ölçümler.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#inner_join",
-    "href": "ders05-gemini.html#inner_join",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "inner_join()",
-    "text": "inner_join()\nSadece her iki tabloda da eşleşen anahtarlara sahip satırları birleştirir. Eşleşmeyen satırlar sonuçta yer almaz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#left_join",
-    "href": "ders05-gemini.html#left_join",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "left_join()",
-    "text": "left_join()\nSoldaki (ilk belirtilen) tablonun tüm satırlarını korur. Sağdaki (ikinci belirtilen) tablodan eşleşen satırları getirir. Eşleşme yoksa, sağ tablodan gelen sütunlara NA değeri atanır.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#right_join",
-    "href": "ders05-gemini.html#right_join",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "right_join()",
-    "text": "right_join()\nSağdaki (ikinci belirtilen) tablonun tüm satırlarını korur. Soldaki (ilk belirtilen) tablodan eşleşen satırları getirir. Eşleşme yoksa, sol tablodan gelen sütunlara NA değeri atanır. (left_join(y, x) ile aynıdır).\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#full_join",
-    "href": "ders05-gemini.html#full_join",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "full_join()",
-    "text": "full_join()\nHer iki tablodaki tüm satırları korur. Eşleşme olanları birleştirir, eşleşme olmayanlar için diğer tablodan gelen sütunlara NA değeri atanır.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#anahtar-sütunları-by",
-    "href": "ders05-gemini.html#anahtar-sütunları-by",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Anahtar Sütunları (by)",
-    "text": "Anahtar Sütunları (by)\n\nby = \"anahtar_sutun\": Her iki tabloda da aynı isimde anahtar sütun varsa.\nby = c(\"sol_sutun\" = \"sag_sutun\"): Anahtar sütun isimleri farklıysa.\nby = join_by(sol_sutun == sag_sutun): Daha esnek eşleşmeler için (örn. &gt;=).\nEğer by belirtilmezse, dplyr her iki tabloda ortak olan tüm sütunları anahtar olarak kullanmaya çalışır (dikkatli olun!)."
-  },
-  {
-    "objectID": "ders05-gemini.html#filtreleyici-joinler",
-    "href": "ders05-gemini.html#filtreleyici-joinler",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Filtreleyici Join’ler",
-    "text": "Filtreleyici Join’ler\nBu join’ler sütun eklemez, sadece filtreleme yaparlar:\n\nsemi_join(x, y, by = ...): x tablosunda olup y tablosunda da eşleşmesi olan satırları x’ten alır.\nanti_join(x, y, by = ...): x tablosunda olup y tablosunda eşleşmesi olmayan satırları x’ten alır.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#akış-içinde-kullanım",
-    "href": "ders05-gemini.html#akış-içinde-kullanım",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Akış İçinde Kullanım",
-    "text": "Akış İçinde Kullanım\nPivoting ve Joining işlemleri genellikle veri hazırlama akışının bir parçasıdır.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#alıştırma-1-pivoting",
-    "href": "ders05-gemini.html#alıştırma-1-pivoting",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Alıştırma 1: Pivoting",
-    "text": "Alıştırma 1: Pivoting\nAşağıdaki geniş formattaki veri setini, deney, ölçüm_tipi ve değer sütunlarını içeren uzun formata çeviriniz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#alıştırma-2-joining",
-    "href": "ders05-gemini.html#alıştırma-2-joining",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Alıştırma 2: Joining",
-    "text": "Alıştırma 2: Joining\nAşağıdaki gen_bilgi ve gen_ifade tablolarını kullanarak, sadece protein kodlayan (“protein_coding”) genlerin ifade değerlerini içeren bir tablo oluşturunuz.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#karmaşık-birleştirme-öncesi-separate_rows",
-    "href": "ders05-gemini.html#karmaşık-birleştirme-öncesi-separate_rows",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Karmaşık Birleştirme Öncesi: separate_rows()",
-    "text": "Karmaşık Birleştirme Öncesi: separate_rows()\nBazen birleştirmek istediğimiz anahtar sütun, tek bir hücrede birden fazla değeri barındırabilir (örn. “genA,genB”). Bu durumda doğrudan join yapmak mümkün olmaz. tidyr::separate_rows() bu değerleri ayrı satırlara bölerek join işlemini mümkün kılar.\nSenaryo: Bir genin etkileşimde olduğu birden fazla partner geni içeren bir tablomuz var ve bu partner genlerin detaylarını eklemek istiyoruz."
-  },
-  {
-    "objectID": "ders05-gemini.html#separate_rows-örneği",
-    "href": "ders05-gemini.html#separate_rows-örneği",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "separate_rows() Örneği",
-    "text": "separate_rows() Örneği\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders05-gemini.html#separate_rows-uygulaması-ve-join",
-    "href": "ders05-gemini.html#separate_rows-uygulaması-ve-join",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "separate_rows() Uygulaması ve Join",
-    "text": "separate_rows() Uygulaması ve Join\nÖnce partner_genler sütununu ayıralım, sonra gen_detaylari ile birleştirelim:\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\nNot: Eğer amaç birden fazla sütuna ayırmak olsaydı (chr1:1000-2000 gibi), o zaman separate() daha uygun olurdu. Ancak join için genellikle her anahtarın kendi satırında olması gerektiğinden separate_rows() daha yaygın kullanılır."
-  },
-  {
-    "objectID": "ders05-gemini.html#özet",
-    "href": "ders05-gemini.html#özet",
-    "title": "Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)",
-    "section": "Özet",
-    "text": "Özet\nBu derste öğrendiklerimiz:\n\ntidyr::pivot_longer(): Geniş veriyi analiz ve görselleştirmeye uygun uzun (tidy) formata dönüştürme.\ntidyr::pivot_wider(): Uzun veriyi, özetleme veya raporlama için geniş formata dönüştürme.\ndplyr Join Fonksiyonları: Farklı tablolardaki ilişkili verileri birleştirmek için güçlü araçlar.\n\ninner_join(): Sadece eşleşenler.\nleft_join(): Sol tablonun tamamı + sağdan eşleşenler.\nfull_join(): Her iki tablonun tamamı.\nanti_join() / semi_join(): Filtreleme amaçlı.\n\n\nBu fonksiyonlar, veri hazırlama sürecinin temel taşlarındandır."
-  },
-  {
-    "objectID": "ders04.html#veri-içe-aktarma",
-    "href": "ders04.html#veri-içe-aktarma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Veri İçe Aktarma",
-    "text": "Veri İçe Aktarma\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#bu-derste",
-    "href": "ders04.html#bu-derste",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Bu derste",
-    "text": "Bu derste\n\n\n\nreadr paketi\n\nread_csv()\nread_tsv()\nread_delim()\n\nreadxl paketi\n\nread_excel()\nread_xlsx()\n\nVeri okumanın incelikleri\n\nSütun tipleri\nNA değerleri\nTarih formatları\n\n\n\n\nURL’den veri okuma\nOkuma + işleme örnekleri\n\nPipe | kullanımı\nFiltreleme\nDönüştürme\nGruplama"
-  },
-  {
-    "objectID": "ders04.html#neden-readr",
-    "href": "ders04.html#neden-readr",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Neden readr?",
-    "text": "Neden readr?\nreadr paketi, base R’daki read.csv() fonksiyonuna göre birçok avantaj sunar:\n\nDaha hızlı - Büyük dosyalarda fark belirgindir\nDaha tutarlı - Sütun tiplerini otomatik tanır\nDaha esnek - NA değerleri, sütun isimleri, vb özelleştirilebilir\nTidyverse ile uyumlu - Pipe | ile akıcı kod yazımı"
-  },
-  {
-    "objectID": "ders04.html#readr-paketi-temel-fonksiyonları",
-    "href": "ders04.html#readr-paketi-temel-fonksiyonları",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "readr Paketi Temel Fonksiyonları",
-    "text": "readr Paketi Temel Fonksiyonları\n\n\n\n\n\n\n\n\nFonksiyon\nAçıklama\n\n\n\n\nread_csv()\nVirgülle ayrılmış değerleri (CSV) okur\n\n\nread_csv2()\nNoktalı virgülle ayrılmış değerleri okur (Avrupa formatı)\n\n\nread_tsv()\nTab ile ayrılmış değerleri okur\n\n\nread_delim()\nBelirtilen ayırıcı ile ayrılmış dosyaları okur\n\n\nread_fwf()\nSabit genişlikli dosyaları okur\n\n\nread_table()\nBeyaz boşlukla ayrılmış tabloları okur\n\n\nread_log()\nLog dosyalarını okur"
-  },
-  {
-    "objectID": "ders04.html#temel-csv-okuma",
-    "href": "ders04.html#temel-csv-okuma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Temel CSV Okuma",
-    "text": "Temel CSV Okuma\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#csv-okuma-seçenekleri",
-    "href": "ders04.html#csv-okuma-seçenekleri",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "CSV Okuma Seçenekleri",
-    "text": "CSV Okuma Seçenekleri\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#sütun-tipleri",
-    "href": "ders04.html#sütun-tipleri",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Sütun Tipleri",
-    "text": "Sütun Tipleri\nreadr otomatik olarak sütun tiplerini tahmin eder, ancak manuel olarak da belirtilebilir:\n\n\n\n\nFonksiyon\nTip\n\n\n\n\ncol_logical()\nTRUE/FALSE\n\n\ncol_integer()\nTam sayı\n\n\ncol_double()\nOndalıklı sayı\n\n\ncol_character()\nMetin\n\n\ncol_factor()\nKategorik değişken\n\n\ncol_date()\nTarih\n\n\ncol_datetime()\nTarih ve saat\n\n\ncol_time()\nSaat\n\n\ncol_skip()\nSütunu atla\n\n\ncol_guess()\nOtomatik tahmin"
-  },
-  {
-    "objectID": "ders04.html#sütun-tipleri---kısa",
-    "href": "ders04.html#sütun-tipleri---kısa",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Sütun tipleri - kısa",
-    "text": "Sütun tipleri - kısa\n\nd : col_double() (for mpg, disp, drat, wt, qsec)\ni : col_integer() (for cyl, hp, vs, am, gear, carb)\n\nDiğer kısaltmalar:\n\nc (col_character())\nl (col_logical())\nf (col_factor())\nD (col_date())\nT (col_datetime())\nt (col_time())\nn (integer or double, col_number())\n_ veya - sütun atlamak için kullanılır (col_skip())"
-  },
-  {
-    "objectID": "ders04.html#tsv-dosyası-okuma",
-    "href": "ders04.html#tsv-dosyası-okuma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "TSV Dosyası Okuma",
-    "text": "TSV Dosyası Okuma\nTSV (Tab-Separated Values) dosyaları, CSV’ye benzer ancak ayırıcı olarak tab karakteri kullanır.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#özel-ayırıcı-ile-dosya-okuma",
-    "href": "ders04.html#özel-ayırıcı-ile-dosya-okuma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Özel Ayırıcı ile Dosya Okuma",
-    "text": "Özel Ayırıcı ile Dosya Okuma\nHerhangi bir özel ayırıcı ile dosya okumak için read_delim() kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#excel-dosyaları-okuma---readxl",
-    "href": "ders04.html#excel-dosyaları-okuma---readxl",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Excel Dosyaları Okuma - readxl",
-    "text": "Excel Dosyaları Okuma - readxl\nreadxl paketi, Excel (.xls ve .xlsx) dosyalarını okumak için kullanılır.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#readxl-özellikleri",
-    "href": "ders04.html#readxl-özellikleri",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "readxl Özellikleri",
-    "text": "readxl Özellikleri\nreadxl ile Excel dosyalarını okurken kullanabileceğiniz özellikler:\n\n\n\n\nParametre\nAçıklama\n\n\n\n\nsheet\nSayfa adı veya numarası\n\n\nrange\nOkunacak hücre aralığı (örn. “A1:C10”)\n\n\ncol_names\nSütun isimleri var mı?\n\n\ncol_types\nSütun tiplerini manuel belirleme\n\n\nna\nNA olarak kabul edilecek değerler\n\n\nskip\nAtlanacak satır sayısı\n\n\nn_max\nOkunacak maksimum satır sayısı"
-  },
-  {
-    "objectID": "ders04.html#hatalı-veri-ile-başa-çıkma",
-    "href": "ders04.html#hatalı-veri-ile-başa-çıkma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Hatalı Veri İle Başa Çıkma",
-    "text": "Hatalı Veri İle Başa Çıkma\nGerçek dünya verileri genellikle hatalı veya eksiktir. readr bu durumlar için çözümler sunar:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#sütun-tiplerini-belirterek-çözüm",
-    "href": "ders04.html#sütun-tiplerini-belirterek-çözüm",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Sütun Tiplerini Belirterek Çözüm",
-    "text": "Sütun Tiplerini Belirterek Çözüm\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#gerçek-dünya-örneği-genetik-veri",
-    "href": "ders04.html#gerçek-dünya-örneği-genetik-veri",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Gerçek Dünya Örneği: Genetik Veri",
-    "text": "Gerçek Dünya Örneği: Genetik Veri\nGenom verilerini okuyup analiz edelim:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#genom-verisi-analizi",
-    "href": "ders04.html#genom-verisi-analizi",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Genom Verisi Analizi",
-    "text": "Genom Verisi Analizi\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#dosyaları-yazma",
-    "href": "ders04.html#dosyaları-yazma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Dosyaları Yazma",
-    "text": "Dosyaları Yazma\nreadr aynı zamanda veri setlerini dosyalara yazmak için de fonksiyonlar sunar:\n\n\n\n\nFonksiyon\nAçıklama\n\n\n\n\nwrite_csv()\nCSV formatında yazar\n\n\nwrite_tsv()\nTSV formatında yazar\n\n\nwrite_delim()\nÖzel ayırıcı ile yazar\n\n\nwrite_excel_csv()\nExcel-uyumlu CSV yazar\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#tarih-ve-saat-verileri",
-    "href": "ders04.html#tarih-ve-saat-verileri",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Tarih ve Saat Verileri",
-    "text": "Tarih ve Saat Verileri\nreadr, tarih ve saat verilerini otomatik olarak algılar ve dönüştürür:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme",
-    "href": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Birden Fazla Dosya Okuma ve Birleştirme",
-    "text": "Birden Fazla Dosya Okuma ve Birleştirme\nbind_rows komutu ile iki farklı data frame birleştirilebilir (aynı sütunlara sahip olmaları gerekir)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme---purrr",
-    "href": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme---purrr",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Birden Fazla Dosya Okuma ve Birleştirme - purrr",
-    "text": "Birden Fazla Dosya Okuma ve Birleştirme - purrr\npurrr paketi ile tüm dosyaları okuyup birleştirelim\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNot: Dosyalar başarılı şekilde okundu mu?"
-  },
-  {
-    "objectID": "ders04.html#alıştırma",
-    "href": "ders04.html#alıştırma",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Alıştırma",
-    "text": "Alıştırma\nBu linki: https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/hg19genes.csv kullanarak, aşağıdaki soruları cevaplayınız:\n\nen uzun gen hangisidir?\nher bir kromozomda kaç gen vardır?\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#alıştırma-2",
-    "href": "ders04.html#alıştırma-2",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Alıştırma 2",
-    "text": "Alıştırma 2\nİnternette csv ve tsv dosyası bulunuz ve o dosyayı başarılı şekilde okuyunuz.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders04.html#özet",
-    "href": "ders04.html#özet",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Özet",
-    "text": "Özet\n\n\nÖğrendiğimiz Veri Okuma Fonksiyonları\n\nread_csv(), read_tsv() (readr)\nread_excel() (readxl)\nURL’den veri okuma\nSütun tiplerini belirtme\nNA değerlerini tanımlama\n\n\nÖğrendiğimiz Veri İşleme Teknikleri\n\nPipe |&gt; ile veri işleme akışı\nOkuma + filtreleme\nOkuma + mutate\nOkuma + group_by + summarize\nVeri yazma fonksiyonları"
-  },
-  {
-    "objectID": "ders04.html#bir-sonraki-derste",
-    "href": "ders04.html#bir-sonraki-derste",
-    "title": "Veri İçe Aktarma (readr ve readxl)",
-    "section": "Bir Sonraki Derste",
-    "text": "Bir Sonraki Derste\nBir sonraki derste Tidyr paketini inceleyeceğiz:\n\nVeri şekillendirme (pivot_longer, pivot_wider)\nVeri birleştirme (joins)\n\nİlgili derslere hazırlık için tidyr ve dplyr belgelerini inceleyiniz."
-  },
-  {
-    "objectID": "ders03.html#kaldığımız-yerden-devam-edelim",
-    "href": "ders03.html#kaldığımız-yerden-devam-edelim",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Kaldığımız yerden devam edelim",
-    "text": "Kaldığımız yerden devam edelim\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate",
-    "href": "ders03.html#mutate",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate",
-    "text": "Mutate\nmutate() fonksiyonu veri setlerine yeni sütunlar eklemek veya var olan sütunları değiştirmek için kullanılır. Orijinal veri setini değiştirmez, yeni bir veri seti olarak döndürür.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate-ile-temel-işlemler",
-    "href": "ders03.html#mutate-ile-temel-işlemler",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate ile temel işlemler",
-    "text": "Mutate ile temel işlemler\nMutate ile yeni sütunlar eklerken mevcut sütunlar üzerinde işlemler yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#aynı-anda-birden-fazla-sütun",
-    "href": "ders03.html#aynı-anda-birden-fazla-sütun",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Aynı anda birden fazla sütun",
-    "text": "Aynı anda birden fazla sütun\nmutate() aynı anda birden fazla sütunu değiştirmenize veya eklemenize olanak tanır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#koşullu-mutate",
-    "href": "ders03.html#koşullu-mutate",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Koşullu mutate",
-    "text": "Koşullu mutate\ncase_when() ile koşullu değerler atayabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate-içinde-ifcondition",
-    "href": "ders03.html#mutate-içinde-ifcondition",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate içinde ifcondition",
-    "text": "Mutate içinde ifcondition\nif_else() fonksiyonu basit koşullu ifadeler için kullanılabilir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate-ile-matematiksel-işlemler",
-    "href": "ders03.html#mutate-ile-matematiksel-işlemler",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate ile matematiksel işlemler",
-    "text": "Mutate ile matematiksel işlemler\nMutate ile matematiksel işlemler yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate-ile-string-manipülasyonu",
-    "href": "ders03.html#mutate-ile-string-manipülasyonu",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate ile string manipülasyonu",
-    "text": "Mutate ile string manipülasyonu\nString işlemleri için stringr paketini kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#group_by",
-    "href": "ders03.html#group_by",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Group_by",
-    "text": "Group_by\ngroup_by() fonksiyonu verileri gruplandırmak için kullanılır. Tek başına görsel bir değişiklik yapmaz, ancak sonraki işlemlerin gruplara göre uygulanmasını sağlar.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#group_by-ve-n",
-    "href": "ders03.html#group_by-ve-n",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Group_by ve n()",
-    "text": "Group_by ve n()\nGruplardaki satır sayısını saymak için n() fonksiyonunu kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#group_by-ve-summarize",
-    "href": "ders03.html#group_by-ve-summarize",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Group_by ve Summarize",
-    "text": "Group_by ve Summarize\nsummarize() (veya summarise()) fonksiyonu gruplandırılmış verileri özetlemek için kullanılır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#çoklu-group_by",
-    "href": "ders03.html#çoklu-group_by",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Çoklu Group_by",
-    "text": "Çoklu Group_by\nBirden fazla değişkene göre gruplandırma yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#gruplandırılmış-verileri-görselleştirme",
-    "href": "ders03.html#gruplandırılmış-verileri-görselleştirme",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Gruplandırılmış verileri görselleştirme",
-    "text": "Gruplandırılmış verileri görselleştirme\nGruplandırılmış veriler üzerinde yapılan işlemler görselleştirme için çok uygundur:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#summarize-fonksiyonları",
-    "href": "ders03.html#summarize-fonksiyonları",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Summarize fonksiyonları",
-    "text": "Summarize fonksiyonları\nÖzet istatistikler için yaygın olarak kullanılan fonksiyonlar:\n\nmean(): Ortalama\nmedian(): Medyan\nmin(), max(): Minimum, maksimum değerler\nsd(), var(): Standart sapma, varyans\nn(): Satır sayısı\nn_distinct(): Benzersiz değer sayısı\nfirst(), last(): İlk ve son değerler\nquantile(): Belirli bir yüzdelik dilim"
-  },
-  {
-    "objectID": "ders03.html#summarize-örneği",
-    "href": "ders03.html#summarize-örneği",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Summarize örneği",
-    "text": "Summarize örneği\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#group_by-summarize-ve-filter-birlikte",
-    "href": "ders03.html#group_by-summarize-ve-filter-birlikte",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Group_by, Summarize ve Filter birlikte",
-    "text": "Group_by, Summarize ve Filter birlikte\nBu fonksiyonları bir arada kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#ungroup",
-    "href": "ders03.html#ungroup",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "ungroup()",
-    "text": "ungroup()\nBazen grup işlemlerinden sonra gruplama durumunu kaldırmak isteyebilirsiniz. Bunun için ungroup() kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#mutate-vs-summarize",
-    "href": "ders03.html#mutate-vs-summarize",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Mutate vs Summarize",
-    "text": "Mutate vs Summarize\n\nmutate(): Her satır için yeni sütunlar oluşturur, satır sayısı değişmez\nsummarize(): Grupları özetleyerek yeni bir tablo oluşturur, satır sayısı genellikle azalır\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#gruplandırma-ve-mutate",
-    "href": "ders03.html#gruplandırma-ve-mutate",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Gruplandırma ve mutate",
-    "text": "Gruplandırma ve mutate\ngroup_by() ile mutate() birlikte kullanıldığında, her grup içinde hesaplama yapılır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
-    "href": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Ülke bazında yıllık oy analizi örneği",
-    "text": "Ülke bazında yıllık oy analizi örneği\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#alıştırma",
-    "href": "ders03.html#alıştırma",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "Alıştırma",
-    "text": "Alıştırma\nunvotes veri setini kullanarak:\n\n2000 yılından sonra en çok oy kullanan 10 ülkeyi bulunuz.\nHer konu için, Türkiye’nin yıllara göre evet oy oranını hesaplayıp görselleştiriniz.\nSoğuk Savaş döneminde (1991 öncesi) ve sonrasında ABD ve Rusya’nın oy benzerliğini karşılaştırınız.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#test",
-    "href": "ders03.html#test",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "test",
-    "text": "test\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#test2",
-    "href": "ders03.html#test2",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "test2",
-    "text": "test2"
-  },
-  {
-    "objectID": "ders03.html#test3",
-    "href": "ders03.html#test3",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "test3",
-    "text": "test3\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders03.html#test4",
-    "href": "ders03.html#test4",
-    "title": "Tidyverse Mutate ve Group_by/Summarize",
-    "section": "test4",
-    "text": "test4\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
-  },
-  {
-    "objectID": "ders01.html#data-science-veri-bilimi",
-    "href": "ders01.html#data-science-veri-bilimi",
-    "title": "Veri Analizi Temelleri",
-    "section": "Data Science / Veri Bilimi",
-    "text": "Data Science / Veri Bilimi\n \n\n\nKaynak"
-  },
-  {
-    "objectID": "ders01.html#tidyverse-paketleri",
-    "href": "ders01.html#tidyverse-paketleri",
-    "title": "Veri Analizi Temelleri",
-    "section": "Tidyverse paketleri",
-    "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
-  },
-  {
-    "objectID": "ders01.html#what-is-tidy",
-    "href": "ders01.html#what-is-tidy",
-    "title": "Veri Analizi Temelleri",
-    "section": "What is tidy?",
-    "text": "What is tidy?\n\n\n\nR for Data Science https://r4ds.had.co.nz/"
-  },
-  {
-    "objectID": "ders01.html#pillars-of-data-analysis",
-    "href": "ders01.html#pillars-of-data-analysis",
-    "title": "Veri Analizi Temelleri",
-    "section": "Pillars of data analysis",
-    "text": "Pillars of data analysis\n\n\nhttps://www.tychobra.com/posts/2020-05-27-new-dplyr-features/"
-  },
-  {
-    "objectID": "ders01.html#section-2",
-    "href": "ders01.html#section-2",
-    "title": "Veri Analizi Temelleri",
-    "section": "",
-    "text": "https://rpubs.com/ekraichak/data-manipulation"
-  },
-  {
-    "objectID": "ders01.html#common-dplyr-verbs",
-    "href": "ders01.html#common-dplyr-verbs",
-    "title": "Veri Analizi Temelleri",
-    "section": "Common dplyr verbs",
-    "text": "Common dplyr verbs\n\n\n\n\n\n\n\n\n\nverb\naction\nexample\n\n\n\n\nfilter()\nSelect rows based on some criteria\nfilter(age &gt; 40 & treatment == \"drug\")\n\n\narrange()\nSort rows\narrange(date, group)\n\n\nselect()\nSelect columns (and ignore all others)\nselect(age, treatment)\n\n\nrename()\nRename columns\nrename(DATE_MONTHS_trial24, date)\n\n\nmutate()\nAdd new columns\nmutate(height.m = height.cm / 100)\n\n\ngroup_by(), summarise()\nGroup data and then calculate summary statistics\ngroup_by(treatment) %&gt;% summarise(...)"
-  },
-  {
-    "objectID": "ders01.html#helper-functions",
-    "href": "ders01.html#helper-functions",
-    "title": "Veri Analizi Temelleri",
-    "section": "Helper functions",
-    "text": "Helper functions\nselect might look simple but it becomes very useful with helper functions\n\n\nRStudio Cheatsheets: Data transformation with dplyr cheatsheet]"
-  },
-  {
-    "objectID": "ders01.html#group-by",
-    "href": "ders01.html#group-by",
-    "title": "Veri Analizi Temelleri",
-    "section": "Group by",
-    "text": "Group by\n\n\nR for Reproducible Scientific Analysis"
-  },
-  {
-    "objectID": "ders01.html#connecting-verbsactions",
-    "href": "ders01.html#connecting-verbsactions",
-    "title": "Veri Analizi Temelleri",
-    "section": "Connecting verbs/actions",
-    "text": "Connecting verbs/actions\n\n\n\nData Manipulation with dplyr"
-  },
-  {
-    "objectID": "ders01.html#in-other-words",
-    "href": "ders01.html#in-other-words",
-    "title": "Veri Analizi Temelleri",
-    "section": "In other words",
-    "text": "In other words\nwhite_and_yolk &lt;- crack(egg, add_seasoning)\nomelette_batter &lt;- beat(white_and_yolk)\nomelette_with_chives &lt;- cook(omelette_batter,add_chives)\nversus\negg %&gt;%\n  crack(add_seasoning) %&gt;%\n  beat() %&gt;%\n  cook(add_chives) -&gt; omelette_with_chives\n\nLise Vaudor’s blog"
-  },
-  {
-    "objectID": "ders01.html#the-pipe",
-    "href": "ders01.html#the-pipe",
-    "title": "Veri Analizi Temelleri",
-    "section": "The pipe",
-    "text": "The pipe"
-  },
-  {
-    "objectID": "ders01.html#reshaping-data",
-    "href": "ders01.html#reshaping-data",
-    "title": "Veri Analizi Temelleri",
-    "section": "Reshaping data",
-    "text": "Reshaping data\n\n\nhttps://datacarpentry.org/R-ecology-lesson/03-dplyr.html"
-  },
-  {
-    "objectID": "ders01.html#scenario-1",
-    "href": "ders01.html#scenario-1",
-    "title": "Veri Analizi Temelleri",
-    "section": "Scenario 1",
-    "text": "Scenario 1\n\n\nBaselRBootcamp April 2018"
-  },
-  {
-    "objectID": "ders01.html#scenario-2",
-    "href": "ders01.html#scenario-2",
-    "title": "Veri Analizi Temelleri",
-    "section": "Scenario 2",
-    "text": "Scenario 2\nWorking on multiple columns\n\n\n  \n\n\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(c))\nversus\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(a:d, mean))\n\n# or with a function\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(where(is.numeric), mean))"
-  },
-  {
-    "objectID": "ders01.html#scenario-3",
-    "href": "ders01.html#scenario-3",
-    "title": "Veri Analizi Temelleri",
-    "section": "Scenario 3",
-    "text": "Scenario 3\nRead many files at once\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)\n\n\n\n\nhttps://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/"
-  },
-  {
-    "objectID": "ders01.html#scenario-4",
-    "href": "ders01.html#scenario-4",
-    "title": "Veri Analizi Temelleri",
-    "section": "Scenario 4",
-    "text": "Scenario 4\nCombine text analysis and graph/network analysis\nThere are lots of packages which follow the tidyverse principles which produce and work on tidy data.\nThis allows mixing packages/analysis from different domains\ntidytext and tidygraph packages are great examples. Former allow text analysis by converting text data to tidy data (very long data frame, one word per row) and latter imports data frames to graphs and allows access to node or edge data with dplyr verbs."
-  },
-  {
-    "objectID": "ders01.html#section-3",
-    "href": "ders01.html#section-3",
-    "title": "Veri Analizi Temelleri",
-    "section": "",
-    "text": "janeaustenr::austen_books() %&gt;%                              #tidytext\n  unnest_tokens(bigram, text, token = \"ngrams\", n=2) %&gt;%     #tidytext\n  filter(!is.na(bigram)) %&gt;%                                 #dplyr\n  separate(bigram, into = c(\"word1\",\"word2\")) %&gt;%            #tidyr\n  anti_join(stop_words, by=c(\"word1\"=\"word\")) %&gt;%            #dplyr\n  anti_join(stop_words, by=c(\"word2\"=\"word\")) %&gt;%            #dplyr\n  count(word1, word2, sort=T) %&gt;%                            #dplyr\n  filter(n&gt;20) %&gt;%                                           #dplyr\n  as_tbl_graph() %&gt;%                                         #tidygraph\n  mutate(central=centrality_degree(mode = \"all\")) %&gt;%        #dplyr/tidygraph\n  ggraph(layout = 'nicely') +                                #ggraph\n  geom_edge_link() +\n  geom_node_point(aes(color=central)) +\n  geom_node_label(aes(label=name), repel=T) +\n  theme_graph()"
-  },
-  {
-    "objectID": "ders01.html#visualization",
-    "href": "ders01.html#visualization",
-    "title": "Veri Analizi Temelleri",
-    "section": "Visualization",
-    "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse. Due to time limit, visualization part is skipped.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
-  },
-  {
-    "objectID": "ders01.html#biyoloji-ve-tidyverse",
-    "href": "ders01.html#biyoloji-ve-tidyverse",
-    "title": "Veri Analizi Temelleri",
-    "section": "Biyoloji ve tidyverse",
-    "text": "Biyoloji ve tidyverse\nBioconductor paketleri listesinde “tidy” kelimesini aratınız."
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki"
-  },
-  {
-    "objectID": "index.html#kaynaklar",
-    "href": "index.html#kaynaklar",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link"
-  },
-  {
-    "objectID": "index.html#ders1",
-    "href": "index.html#ders1",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
-  },
-  {
-    "objectID": "index.html#ders2",
-    "href": "index.html#ders2",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
-  },
-  {
-    "objectID": "index.html#ders3",
-    "href": "index.html#ders3",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
-  },
-  {
-    "objectID": "index.html#ders4",
-    "href": "index.html#ders4",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki"
-  },
-  {
-    "objectID": "index.html#ders5",
-    "href": "index.html#ders5",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
-  },
-  {
-    "objectID": "index.html#ders6",
-    "href": "index.html#ders6",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki"
-  },
-  {
     "objectID": "ders05.html#veri-şekillendirme-ve-birleştirme",
     "href": "ders05.html#veri-şekillendirme-ve-birleştirme",
     "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
@@ -1104,6 +390,538 @@
     "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
     "section": "Bir Sonraki Derste",
     "text": "Bir Sonraki Derste\nBir sonraki derste dplyr paketinin detayları ve veri manipülasyonu işlemlerini daha derinlemesine inceleyeceğiz:\n\nGruplama ve özet istatistikler\nKoşullu işlemler\nPencereleme fonksiyonları (window functions)\nÖrnek uygulamalar\n\nİlgili derslere hazırlık için dplyr belgelerini inceleyiniz."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki"
+  },
+  {
+    "objectID": "index.html#kaynaklar",
+    "href": "index.html#kaynaklar",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link"
+  },
+  {
+    "objectID": "index.html#ders1",
+    "href": "index.html#ders1",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders2",
+    "href": "index.html#ders2",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders3",
+    "href": "index.html#ders3",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders4",
+    "href": "index.html#ders4",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders5",
+    "href": "index.html#ders5",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders6",
+    "href": "index.html#ders6",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki"
+  },
+  {
+    "objectID": "ders01.html#data-science-veri-bilimi",
+    "href": "ders01.html#data-science-veri-bilimi",
+    "title": "Veri Analizi Temelleri",
+    "section": "Data Science / Veri Bilimi",
+    "text": "Data Science / Veri Bilimi\n \n\n\nKaynak"
+  },
+  {
+    "objectID": "ders01.html#tidyverse-paketleri",
+    "href": "ders01.html#tidyverse-paketleri",
+    "title": "Veri Analizi Temelleri",
+    "section": "Tidyverse paketleri",
+    "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
+  },
+  {
+    "objectID": "ders01.html#what-is-tidy",
+    "href": "ders01.html#what-is-tidy",
+    "title": "Veri Analizi Temelleri",
+    "section": "What is tidy?",
+    "text": "What is tidy?\n\n\n\nR for Data Science https://r4ds.had.co.nz/"
+  },
+  {
+    "objectID": "ders01.html#pillars-of-data-analysis",
+    "href": "ders01.html#pillars-of-data-analysis",
+    "title": "Veri Analizi Temelleri",
+    "section": "Pillars of data analysis",
+    "text": "Pillars of data analysis\n\n\nhttps://www.tychobra.com/posts/2020-05-27-new-dplyr-features/"
+  },
+  {
+    "objectID": "ders01.html#section-2",
+    "href": "ders01.html#section-2",
+    "title": "Veri Analizi Temelleri",
+    "section": "",
+    "text": "https://rpubs.com/ekraichak/data-manipulation"
+  },
+  {
+    "objectID": "ders01.html#common-dplyr-verbs",
+    "href": "ders01.html#common-dplyr-verbs",
+    "title": "Veri Analizi Temelleri",
+    "section": "Common dplyr verbs",
+    "text": "Common dplyr verbs\n\n\n\n\n\n\n\n\n\nverb\naction\nexample\n\n\n\n\nfilter()\nSelect rows based on some criteria\nfilter(age &gt; 40 & treatment == \"drug\")\n\n\narrange()\nSort rows\narrange(date, group)\n\n\nselect()\nSelect columns (and ignore all others)\nselect(age, treatment)\n\n\nrename()\nRename columns\nrename(DATE_MONTHS_trial24, date)\n\n\nmutate()\nAdd new columns\nmutate(height.m = height.cm / 100)\n\n\ngroup_by(), summarise()\nGroup data and then calculate summary statistics\ngroup_by(treatment) %&gt;% summarise(...)"
+  },
+  {
+    "objectID": "ders01.html#helper-functions",
+    "href": "ders01.html#helper-functions",
+    "title": "Veri Analizi Temelleri",
+    "section": "Helper functions",
+    "text": "Helper functions\nselect might look simple but it becomes very useful with helper functions\n\n\nRStudio Cheatsheets: Data transformation with dplyr cheatsheet]"
+  },
+  {
+    "objectID": "ders01.html#group-by",
+    "href": "ders01.html#group-by",
+    "title": "Veri Analizi Temelleri",
+    "section": "Group by",
+    "text": "Group by\n\n\nR for Reproducible Scientific Analysis"
+  },
+  {
+    "objectID": "ders01.html#connecting-verbsactions",
+    "href": "ders01.html#connecting-verbsactions",
+    "title": "Veri Analizi Temelleri",
+    "section": "Connecting verbs/actions",
+    "text": "Connecting verbs/actions\n\n\n\nData Manipulation with dplyr"
+  },
+  {
+    "objectID": "ders01.html#in-other-words",
+    "href": "ders01.html#in-other-words",
+    "title": "Veri Analizi Temelleri",
+    "section": "In other words",
+    "text": "In other words\nwhite_and_yolk &lt;- crack(egg, add_seasoning)\nomelette_batter &lt;- beat(white_and_yolk)\nomelette_with_chives &lt;- cook(omelette_batter,add_chives)\nversus\negg %&gt;%\n  crack(add_seasoning) %&gt;%\n  beat() %&gt;%\n  cook(add_chives) -&gt; omelette_with_chives\n\nLise Vaudor’s blog"
+  },
+  {
+    "objectID": "ders01.html#the-pipe",
+    "href": "ders01.html#the-pipe",
+    "title": "Veri Analizi Temelleri",
+    "section": "The pipe",
+    "text": "The pipe"
+  },
+  {
+    "objectID": "ders01.html#reshaping-data",
+    "href": "ders01.html#reshaping-data",
+    "title": "Veri Analizi Temelleri",
+    "section": "Reshaping data",
+    "text": "Reshaping data\n\n\nhttps://datacarpentry.org/R-ecology-lesson/03-dplyr.html"
+  },
+  {
+    "objectID": "ders01.html#scenario-1",
+    "href": "ders01.html#scenario-1",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 1",
+    "text": "Scenario 1\n\n\nBaselRBootcamp April 2018"
+  },
+  {
+    "objectID": "ders01.html#scenario-2",
+    "href": "ders01.html#scenario-2",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 2",
+    "text": "Scenario 2\nWorking on multiple columns\n\n\n  \n\n\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(c))\nversus\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(a:d, mean))\n\n# or with a function\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(where(is.numeric), mean))"
+  },
+  {
+    "objectID": "ders01.html#scenario-3",
+    "href": "ders01.html#scenario-3",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 3",
+    "text": "Scenario 3\nRead many files at once\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)\n\n\n\n\nhttps://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/"
+  },
+  {
+    "objectID": "ders01.html#scenario-4",
+    "href": "ders01.html#scenario-4",
+    "title": "Veri Analizi Temelleri",
+    "section": "Scenario 4",
+    "text": "Scenario 4\nCombine text analysis and graph/network analysis\nThere are lots of packages which follow the tidyverse principles which produce and work on tidy data.\nThis allows mixing packages/analysis from different domains\ntidytext and tidygraph packages are great examples. Former allow text analysis by converting text data to tidy data (very long data frame, one word per row) and latter imports data frames to graphs and allows access to node or edge data with dplyr verbs."
+  },
+  {
+    "objectID": "ders01.html#section-3",
+    "href": "ders01.html#section-3",
+    "title": "Veri Analizi Temelleri",
+    "section": "",
+    "text": "janeaustenr::austen_books() %&gt;%                              #tidytext\n  unnest_tokens(bigram, text, token = \"ngrams\", n=2) %&gt;%     #tidytext\n  filter(!is.na(bigram)) %&gt;%                                 #dplyr\n  separate(bigram, into = c(\"word1\",\"word2\")) %&gt;%            #tidyr\n  anti_join(stop_words, by=c(\"word1\"=\"word\")) %&gt;%            #dplyr\n  anti_join(stop_words, by=c(\"word2\"=\"word\")) %&gt;%            #dplyr\n  count(word1, word2, sort=T) %&gt;%                            #dplyr\n  filter(n&gt;20) %&gt;%                                           #dplyr\n  as_tbl_graph() %&gt;%                                         #tidygraph\n  mutate(central=centrality_degree(mode = \"all\")) %&gt;%        #dplyr/tidygraph\n  ggraph(layout = 'nicely') +                                #ggraph\n  geom_edge_link() +\n  geom_node_point(aes(color=central)) +\n  geom_node_label(aes(label=name), repel=T) +\n  theme_graph()"
+  },
+  {
+    "objectID": "ders01.html#visualization",
+    "href": "ders01.html#visualization",
+    "title": "Veri Analizi Temelleri",
+    "section": "Visualization",
+    "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse. Due to time limit, visualization part is skipped.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
+  },
+  {
+    "objectID": "ders01.html#biyoloji-ve-tidyverse",
+    "href": "ders01.html#biyoloji-ve-tidyverse",
+    "title": "Veri Analizi Temelleri",
+    "section": "Biyoloji ve tidyverse",
+    "text": "Biyoloji ve tidyverse\nBioconductor paketleri listesinde “tidy” kelimesini aratınız."
+  },
+  {
+    "objectID": "ders03.html#kaldığımız-yerden-devam-edelim",
+    "href": "ders03.html#kaldığımız-yerden-devam-edelim",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Kaldığımız yerden devam edelim",
+    "text": "Kaldığımız yerden devam edelim\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate",
+    "href": "ders03.html#mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate",
+    "text": "Mutate\nmutate() fonksiyonu veri setlerine yeni sütunlar eklemek veya var olan sütunları değiştirmek için kullanılır. Orijinal veri setini değiştirmez, yeni bir veri seti olarak döndürür.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-ile-temel-işlemler",
+    "href": "ders03.html#mutate-ile-temel-işlemler",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile temel işlemler",
+    "text": "Mutate ile temel işlemler\nMutate ile yeni sütunlar eklerken mevcut sütunlar üzerinde işlemler yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#aynı-anda-birden-fazla-sütun",
+    "href": "ders03.html#aynı-anda-birden-fazla-sütun",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Aynı anda birden fazla sütun",
+    "text": "Aynı anda birden fazla sütun\nmutate() aynı anda birden fazla sütunu değiştirmenize veya eklemenize olanak tanır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#koşullu-mutate",
+    "href": "ders03.html#koşullu-mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Koşullu mutate",
+    "text": "Koşullu mutate\ncase_when() ile koşullu değerler atayabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-içinde-ifcondition",
+    "href": "ders03.html#mutate-içinde-ifcondition",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate içinde ifcondition",
+    "text": "Mutate içinde ifcondition\nif_else() fonksiyonu basit koşullu ifadeler için kullanılabilir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-ile-matematiksel-işlemler",
+    "href": "ders03.html#mutate-ile-matematiksel-işlemler",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile matematiksel işlemler",
+    "text": "Mutate ile matematiksel işlemler\nMutate ile matematiksel işlemler yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-ile-string-manipülasyonu",
+    "href": "ders03.html#mutate-ile-string-manipülasyonu",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate ile string manipülasyonu",
+    "text": "Mutate ile string manipülasyonu\nString işlemleri için stringr paketini kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#group_by",
+    "href": "ders03.html#group_by",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by",
+    "text": "Group_by\ngroup_by() fonksiyonu verileri gruplandırmak için kullanılır. Tek başına görsel bir değişiklik yapmaz, ancak sonraki işlemlerin gruplara göre uygulanmasını sağlar.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#group_by-ve-n",
+    "href": "ders03.html#group_by-ve-n",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by ve n()",
+    "text": "Group_by ve n()\nGruplardaki satır sayısını saymak için n() fonksiyonunu kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#group_by-ve-summarize",
+    "href": "ders03.html#group_by-ve-summarize",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by ve Summarize",
+    "text": "Group_by ve Summarize\nsummarize() (veya summarise()) fonksiyonu gruplandırılmış verileri özetlemek için kullanılır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#çoklu-group_by",
+    "href": "ders03.html#çoklu-group_by",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Çoklu Group_by",
+    "text": "Çoklu Group_by\nBirden fazla değişkene göre gruplandırma yapabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#gruplandırılmış-verileri-görselleştirme",
+    "href": "ders03.html#gruplandırılmış-verileri-görselleştirme",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Gruplandırılmış verileri görselleştirme",
+    "text": "Gruplandırılmış verileri görselleştirme\nGruplandırılmış veriler üzerinde yapılan işlemler görselleştirme için çok uygundur:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#summarize-fonksiyonları",
+    "href": "ders03.html#summarize-fonksiyonları",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Summarize fonksiyonları",
+    "text": "Summarize fonksiyonları\nÖzet istatistikler için yaygın olarak kullanılan fonksiyonlar:\n\nmean(): Ortalama\nmedian(): Medyan\nmin(), max(): Minimum, maksimum değerler\nsd(), var(): Standart sapma, varyans\nn(): Satır sayısı\nn_distinct(): Benzersiz değer sayısı\nfirst(), last(): İlk ve son değerler\nquantile(): Belirli bir yüzdelik dilim"
+  },
+  {
+    "objectID": "ders03.html#summarize-örneği",
+    "href": "ders03.html#summarize-örneği",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Summarize örneği",
+    "text": "Summarize örneği\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#group_by-summarize-ve-filter-birlikte",
+    "href": "ders03.html#group_by-summarize-ve-filter-birlikte",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Group_by, Summarize ve Filter birlikte",
+    "text": "Group_by, Summarize ve Filter birlikte\nBu fonksiyonları bir arada kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#ungroup",
+    "href": "ders03.html#ungroup",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "ungroup()",
+    "text": "ungroup()\nBazen grup işlemlerinden sonra gruplama durumunu kaldırmak isteyebilirsiniz. Bunun için ungroup() kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#mutate-vs-summarize",
+    "href": "ders03.html#mutate-vs-summarize",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Mutate vs Summarize",
+    "text": "Mutate vs Summarize\n\nmutate(): Her satır için yeni sütunlar oluşturur, satır sayısı değişmez\nsummarize(): Grupları özetleyerek yeni bir tablo oluşturur, satır sayısı genellikle azalır\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#gruplandırma-ve-mutate",
+    "href": "ders03.html#gruplandırma-ve-mutate",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Gruplandırma ve mutate",
+    "text": "Gruplandırma ve mutate\ngroup_by() ile mutate() birlikte kullanıldığında, her grup içinde hesaplama yapılır:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
+    "href": "ders03.html#ülke-bazında-yıllık-oy-analizi-örneği",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Ülke bazında yıllık oy analizi örneği",
+    "text": "Ülke bazında yıllık oy analizi örneği\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#alıştırma",
+    "href": "ders03.html#alıştırma",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "Alıştırma",
+    "text": "Alıştırma\nunvotes veri setini kullanarak:\n\n2000 yılından sonra en çok oy kullanan 10 ülkeyi bulunuz.\nHer konu için, Türkiye’nin yıllara göre evet oy oranını hesaplayıp görselleştiriniz.\nSoğuk Savaş döneminde (1991 öncesi) ve sonrasında ABD ve Rusya’nın oy benzerliğini karşılaştırınız.\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test",
+    "href": "ders03.html#test",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test",
+    "text": "test\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test2",
+    "href": "ders03.html#test2",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test2",
+    "text": "test2"
+  },
+  {
+    "objectID": "ders03.html#test3",
+    "href": "ders03.html#test3",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test3",
+    "text": "test3\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders03.html#test4",
+    "href": "ders03.html#test4",
+    "title": "Tidyverse Mutate ve Group_by/Summarize",
+    "section": "test4",
+    "text": "test4\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#veri-içe-aktarma",
+    "href": "ders04.html#veri-içe-aktarma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Veri İçe Aktarma",
+    "text": "Veri İçe Aktarma\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#bu-derste",
+    "href": "ders04.html#bu-derste",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Bu derste",
+    "text": "Bu derste\n\n\n\nreadr paketi\n\nread_csv()\nread_tsv()\nread_delim()\n\nreadxl paketi\n\nread_excel()\nread_xlsx()\n\nVeri okumanın incelikleri\n\nSütun tipleri\nNA değerleri\nTarih formatları\n\n\n\n\nURL’den veri okuma\nOkuma + işleme örnekleri\n\nPipe | kullanımı\nFiltreleme\nDönüştürme\nGruplama"
+  },
+  {
+    "objectID": "ders04.html#neden-readr",
+    "href": "ders04.html#neden-readr",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Neden readr?",
+    "text": "Neden readr?\nreadr paketi, base R’daki read.csv() fonksiyonuna göre birçok avantaj sunar:\n\nDaha hızlı - Büyük dosyalarda fark belirgindir\nDaha tutarlı - Sütun tiplerini otomatik tanır\nDaha esnek - NA değerleri, sütun isimleri, vb özelleştirilebilir\nTidyverse ile uyumlu - Pipe | ile akıcı kod yazımı"
+  },
+  {
+    "objectID": "ders04.html#readr-paketi-temel-fonksiyonları",
+    "href": "ders04.html#readr-paketi-temel-fonksiyonları",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "readr Paketi Temel Fonksiyonları",
+    "text": "readr Paketi Temel Fonksiyonları\n\n\n\n\n\n\n\n\nFonksiyon\nAçıklama\n\n\n\n\nread_csv()\nVirgülle ayrılmış değerleri (CSV) okur\n\n\nread_csv2()\nNoktalı virgülle ayrılmış değerleri okur (Avrupa formatı)\n\n\nread_tsv()\nTab ile ayrılmış değerleri okur\n\n\nread_delim()\nBelirtilen ayırıcı ile ayrılmış dosyaları okur\n\n\nread_fwf()\nSabit genişlikli dosyaları okur\n\n\nread_table()\nBeyaz boşlukla ayrılmış tabloları okur\n\n\nread_log()\nLog dosyalarını okur"
+  },
+  {
+    "objectID": "ders04.html#temel-csv-okuma",
+    "href": "ders04.html#temel-csv-okuma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Temel CSV Okuma",
+    "text": "Temel CSV Okuma\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#csv-okuma-seçenekleri",
+    "href": "ders04.html#csv-okuma-seçenekleri",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "CSV Okuma Seçenekleri",
+    "text": "CSV Okuma Seçenekleri\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#sütun-tipleri",
+    "href": "ders04.html#sütun-tipleri",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Sütun Tipleri",
+    "text": "Sütun Tipleri\nreadr otomatik olarak sütun tiplerini tahmin eder, ancak manuel olarak da belirtilebilir:\n\n\n\n\nFonksiyon\nTip\n\n\n\n\ncol_logical()\nTRUE/FALSE\n\n\ncol_integer()\nTam sayı\n\n\ncol_double()\nOndalıklı sayı\n\n\ncol_character()\nMetin\n\n\ncol_factor()\nKategorik değişken\n\n\ncol_date()\nTarih\n\n\ncol_datetime()\nTarih ve saat\n\n\ncol_time()\nSaat\n\n\ncol_skip()\nSütunu atla\n\n\ncol_guess()\nOtomatik tahmin"
+  },
+  {
+    "objectID": "ders04.html#sütun-tipleri---kısa",
+    "href": "ders04.html#sütun-tipleri---kısa",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Sütun tipleri - kısa",
+    "text": "Sütun tipleri - kısa\n\nd : col_double() (for mpg, disp, drat, wt, qsec)\ni : col_integer() (for cyl, hp, vs, am, gear, carb)\n\nDiğer kısaltmalar:\n\nc (col_character())\nl (col_logical())\nf (col_factor())\nD (col_date())\nT (col_datetime())\nt (col_time())\nn (integer or double, col_number())\n_ veya - sütun atlamak için kullanılır (col_skip())"
+  },
+  {
+    "objectID": "ders04.html#tsv-dosyası-okuma",
+    "href": "ders04.html#tsv-dosyası-okuma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "TSV Dosyası Okuma",
+    "text": "TSV Dosyası Okuma\nTSV (Tab-Separated Values) dosyaları, CSV’ye benzer ancak ayırıcı olarak tab karakteri kullanır.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#özel-ayırıcı-ile-dosya-okuma",
+    "href": "ders04.html#özel-ayırıcı-ile-dosya-okuma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Özel Ayırıcı ile Dosya Okuma",
+    "text": "Özel Ayırıcı ile Dosya Okuma\nHerhangi bir özel ayırıcı ile dosya okumak için read_delim() kullanabilirsiniz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#excel-dosyaları-okuma---readxl",
+    "href": "ders04.html#excel-dosyaları-okuma---readxl",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Excel Dosyaları Okuma - readxl",
+    "text": "Excel Dosyaları Okuma - readxl\nreadxl paketi, Excel (.xls ve .xlsx) dosyalarını okumak için kullanılır.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#readxl-özellikleri",
+    "href": "ders04.html#readxl-özellikleri",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "readxl Özellikleri",
+    "text": "readxl Özellikleri\nreadxl ile Excel dosyalarını okurken kullanabileceğiniz özellikler:\n\n\n\n\nParametre\nAçıklama\n\n\n\n\nsheet\nSayfa adı veya numarası\n\n\nrange\nOkunacak hücre aralığı (örn. “A1:C10”)\n\n\ncol_names\nSütun isimleri var mı?\n\n\ncol_types\nSütun tiplerini manuel belirleme\n\n\nna\nNA olarak kabul edilecek değerler\n\n\nskip\nAtlanacak satır sayısı\n\n\nn_max\nOkunacak maksimum satır sayısı"
+  },
+  {
+    "objectID": "ders04.html#hatalı-veri-ile-başa-çıkma",
+    "href": "ders04.html#hatalı-veri-ile-başa-çıkma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Hatalı Veri İle Başa Çıkma",
+    "text": "Hatalı Veri İle Başa Çıkma\nGerçek dünya verileri genellikle hatalı veya eksiktir. readr bu durumlar için çözümler sunar:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#sütun-tiplerini-belirterek-çözüm",
+    "href": "ders04.html#sütun-tiplerini-belirterek-çözüm",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Sütun Tiplerini Belirterek Çözüm",
+    "text": "Sütun Tiplerini Belirterek Çözüm\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#gerçek-dünya-örneği-genetik-veri",
+    "href": "ders04.html#gerçek-dünya-örneği-genetik-veri",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Gerçek Dünya Örneği: Genetik Veri",
+    "text": "Gerçek Dünya Örneği: Genetik Veri\nGenom verilerini okuyup analiz edelim:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#genom-verisi-analizi",
+    "href": "ders04.html#genom-verisi-analizi",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Genom Verisi Analizi",
+    "text": "Genom Verisi Analizi\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#dosyaları-yazma",
+    "href": "ders04.html#dosyaları-yazma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Dosyaları Yazma",
+    "text": "Dosyaları Yazma\nreadr aynı zamanda veri setlerini dosyalara yazmak için de fonksiyonlar sunar:\n\n\n\n\nFonksiyon\nAçıklama\n\n\n\n\nwrite_csv()\nCSV formatında yazar\n\n\nwrite_tsv()\nTSV formatında yazar\n\n\nwrite_delim()\nÖzel ayırıcı ile yazar\n\n\nwrite_excel_csv()\nExcel-uyumlu CSV yazar\n\n\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#tarih-ve-saat-verileri",
+    "href": "ders04.html#tarih-ve-saat-verileri",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Tarih ve Saat Verileri",
+    "text": "Tarih ve Saat Verileri\nreadr, tarih ve saat verilerini otomatik olarak algılar ve dönüştürür:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme",
+    "href": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Birden Fazla Dosya Okuma ve Birleştirme",
+    "text": "Birden Fazla Dosya Okuma ve Birleştirme\nbind_rows komutu ile iki farklı data frame birleştirilebilir (aynı sütunlara sahip olmaları gerekir)\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme---purrr",
+    "href": "ders04.html#birden-fazla-dosya-okuma-ve-birleştirme---purrr",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Birden Fazla Dosya Okuma ve Birleştirme - purrr",
+    "text": "Birden Fazla Dosya Okuma ve Birleştirme - purrr\npurrr paketi ile tüm dosyaları okuyup birleştirelim\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNot: Dosyalar başarılı şekilde okundu mu?"
+  },
+  {
+    "objectID": "ders04.html#alıştırma",
+    "href": "ders04.html#alıştırma",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Alıştırma",
+    "text": "Alıştırma\nBu linki: https://raw.githubusercontent.com/alperyilmaz/data/refs/heads/main/hg19genes.csv kullanarak, aşağıdaki soruları cevaplayınız:\n\nen uzun gen hangisidir?\nher bir kromozomda kaç gen vardır?\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#alıştırma-2",
+    "href": "ders04.html#alıştırma-2",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Alıştırma 2",
+    "text": "Alıştırma 2\nİnternette csv ve tsv dosyası bulunuz ve o dosyayı başarılı şekilde okuyunuz.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+  },
+  {
+    "objectID": "ders04.html#özet",
+    "href": "ders04.html#özet",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Özet",
+    "text": "Özet\n\n\nÖğrendiğimiz Veri Okuma Fonksiyonları\n\nread_csv(), read_tsv() (readr)\nread_excel() (readxl)\nURL’den veri okuma\nSütun tiplerini belirtme\nNA değerlerini tanımlama\n\n\nÖğrendiğimiz Veri İşleme Teknikleri\n\nPipe |&gt; ile veri işleme akışı\nOkuma + filtreleme\nOkuma + mutate\nOkuma + group_by + summarize\nVeri yazma fonksiyonları"
+  },
+  {
+    "objectID": "ders04.html#bir-sonraki-derste",
+    "href": "ders04.html#bir-sonraki-derste",
+    "title": "Veri İçe Aktarma (readr ve readxl)",
+    "section": "Bir Sonraki Derste",
+    "text": "Bir Sonraki Derste\nBir sonraki derste Tidyr paketini inceleyeceğiz:\n\nVeri şekillendirme (pivot_longer, pivot_wider)\nVeri birleştirme (joins)\n\nİlgili derslere hazırlık için tidyr ve dplyr belgelerini inceleyiniz."
   },
   {
     "objectID": "ders02.html#önce-keki-yiyelim",
