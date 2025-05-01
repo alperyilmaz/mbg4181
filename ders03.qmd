@@ -26,6 +26,9 @@ webr:
     - https://raw.githubusercontent.com/mwaskom/seaborn-data/master/flights.csv
 filters:
   - webr
+engine: knitr
+execute:
+  echo: true
 ---
 
 ## Kaldığımız yerden devam edelim

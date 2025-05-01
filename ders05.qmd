@@ -1,0 +1,465 @@
+---
+title: "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders5"
+author: "Alper Yılmaz"
+date: 2025-03-28
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+resources:
+  - data
+webr:
+  packages: ['dplyr','tidyr','readr','ggplot2','gt','htmltools'] # Install R packages on document open
+  autoload-packages: false       # Disable automatic loading of packages
+  show-startup-message: true     # Disable displaying status of webR initialization
+  render-df: gt-interactive
+  resources:
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/census.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv
+    - https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv
+filters:
+  - webr
+engine: knitr
+execute:
+  echo: true
+---
+
+## Veri Şekillendirme ve Birleştirme
+
+```{webr-r}
+library(dplyr)
+library(tidyr)
+library(readr)
+library(ggplot2)
+```
+
+## Bu derste
+
+:::: {.columns}
+
+::: {.column width="50%"}
+- tidyr paketi
+    - pivot_longer()
+    - pivot_wider()
+    - Tidy veri nedir?
+    - Geniş ve uzun format
+- Temel örnekler
+    - Veri şekillendirme
+    - Görselleştirme için uygun format
+:::
+
+::: {.column width="50%"}
+- dplyr paketi ile tablolar arası işlemler
+    - inner_join()
+    - left_join()
+    - right_join()
+    - full_join()
+    - semi_join()
+    - anti_join()
+- Uygulama örnekleri
+:::
+
+::::
+
+## Tidy Veri Nedir?
+
+:::: {.columns}
+
+::: {.column width="50%"}
+Tidy veri ilkelerine göre:
+
+1. Her değişken bir sütunda olmalıdır
+2. Her gözlem bir satırda olmalıdır
+3. Her değer kendi hücresindedir
+:::
+
+::: {.column width="50%"}
+![Tidy Veri İlkeleri](https://d33wubrfki0l68.cloudfront.net/6f1ddb544fc5c69a2478e444ab8112fb0eea23f8/91adc/images/tidy-1.png)
+:::
+
+::::
+
+## Yaygın Veri Problemleri
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Geniş Format (Wide)
+- Değişkenler sütun isimlerinde saklanır
+- Analiz için uygun değil
+- Excel'de görüntülemek için uygun
+
+### Uzun Format (Long)
+- Her değişken kendi sütununda
+- Analiz ve görselleştirme için uygun
+- Daha fazla satır içerir
+:::
+
+::: {.column width="50%"}
+![Wide vs Long](https://tidyr.tidyverse.org/articles/pivot-wider-longer_files/figure-html/unnamed-chunk-3-1.png)
+:::
+
+::::
+
+## tidyr ile Format Dönüşümleri
+
+tidyr iki temel fonksiyon sağlar:
+
+- `pivot_longer()`: Geniş formatı uzun formata çevirir
+- `pivot_wider()`: Uzun formatı geniş formata çevirir
+
+```{webr}
+# Örnek veri oluşturalım
+örnek_veri <- tibble(
+  isim = c("Ayşe", "Fatma", "Mehmet"),
+  matematik = c(85, 90, 75),
+  fizik = c(72, 80, 85),
+  biyoloji = c(90, 85, 70)
+)
+
+örnek_veri
+```
+
+## pivot_longer() ile Geniş Formatı Uzun Formata Çevirme
+
+```{webr}
+# Ders sütunlarını uzun formata çevirelim
+uzun_format <- örnek_veri |>
+  pivot_longer(
+    cols = c(matematik, fizik, biyoloji),
+    names_to = "ders",
+    values_to = "not"
+  )
+
+uzun_format
+```
+
+## pivot_wider() ile Uzun Formatı Geniş Formata Çevirme
+
+```{webr}
+# Şimdi tekrar geniş formata dönelim
+geniş_format <- uzun_format |>
+  pivot_wider(
+    names_from = ders,
+    values_from = not
+  )
+
+geniş_format
+```
+
+## Gerçek Veri Örneği: Dini İnanç ve Gelir
+
+```{webr}
+# Dini inanç ve gelir verisi (geniş format)
+relig_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv")
+
+# İlk birkaç satıra bakalım
+head(relig_income)
+```
+
+## Gelir Verilerini Uzun Formata Çevirme
+
+```{webr}
+# Gelir sütunlarını uzun formata çevirelim
+relig_income_uzun <- relig_income |>
+  pivot_longer(
+    cols = -religion,  # religion hariç tüm sütunlar
+    names_to = "gelir_kategorisi",
+    values_to = "kişi_sayısı"
+  )
+
+head(relig_income_uzun, 10)
+```
+
+## Görselleştirme için Uzun Format Avantajı
+
+```{webr}
+# Uzun format ile görselleştirme yapabiliriz
+relig_income_uzun |>
+  filter(religion %in% c("Catholic", "Jewish", "Muslim", "Protestant")) |>
+  ggplot(aes(x = gelir_kategorisi, y = kişi_sayısı, fill = religion)) +
+  geom_col(position = "dodge") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1)) +
+  labs(title = "Dini İnanca Göre Gelir Dağılımı",
+       x = "Gelir Kategorisi",
+       y = "Kişi Sayısı")
+```
+
+## Çoklu Değişkenleri Pivot Etme
+
+Bazen birden fazla sütun, değer sütunu olarak kullanılabilir:
+
+```{webr}
+# ABD kira ve gelir verisi
+us_rent_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv")
+
+head(us_rent_income)
+```
+
+## Karmaşık pivot_wider Örneği
+
+```{webr}
+# Veriyi geniş formata çevirelim
+us_rent_income_geniş <- us_rent_income |>
+  pivot_wider(
+    names_from = variable,
+    values_from = c(estimate, moe)
+  )
+
+head(us_rent_income_geniş)
+```
+
+## Eksik Değerlerle Başa Çıkma
+
+Veri şekillendirilirken eksik değerler ortaya çıkabilir:
+
+```{webr}
+# Eksik değer içeren bir örnek veri
+balık_örnek <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv")
+
+head(balık_örnek)
+```
+
+## pivot_wider ve NA değerleri
+
+```{webr}
+# Geniş formata çevirdiğimizde birçok NA değeri oluşacak
+balık_geniş <- balık_örnek |>
+  pivot_wider(
+    names_from = station,
+    values_from = seen
+  )
+
+balık_geniş
+```
+
+## NA değerlerini belirli bir değerle doldurma
+
+```{webr}
+# NA değerlerini 0 ile dolduralım
+balık_geniş_0 <- balık_örnek |>
+  pivot_wider(
+    names_from = station,
+    values_from = seen,
+    values_fill = 0
+  )
+
+balık_geniş_0
+```
+
+## İki Tablo Nasıl Birleştirilir?
+
+dplyr paketindeki join fonksiyonları ile tablolar birleştirilebilir:
+
+```{webr}
+# İki örnek tablo oluşturalım
+öğrenciler <- tibble(
+  öğrenci_id = 1:5,
+  isim = c("Ali", "Ayşe", "Mehmet", "Zeynep", "Can"),
+  sınıf = c("10A", "10B", "11A", "9C", "12B")
+)
+
+notlar <- tibble(
+  öğrenci_id = c(1, 2, 3, 5, 6),
+  matematik = c(85, 90, 75, 95, 80),
+  fizik = c(70, 85, 80, 90, 75)
+)
+
+öğrenciler
+notlar
+```
+
+## inner_join: Kesişim Birleştirme
+
+Her iki tabloda da eşleşen kayıtları birleştirir:
+
+```{webr}
+# inner_join - yalnızca her iki tabloda da bulunan öğrenciler
+inner_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## left_join: Sol Tabloya Göre Birleştirme
+
+Sol tablodaki tüm kayıtları korur, sağ tabloda eşleşme yoksa NA değerleri ekler:
+
+```{webr}
+# left_join - tüm öğrenciler, not bilgisi yoksa NA
+left_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## right_join: Sağ Tabloya Göre Birleştirme
+
+Sağ tablodaki tüm kayıtları korur, sol tabloda eşleşme yoksa NA değerleri ekler:
+
+```{webr}
+# right_join - tüm not kayıtları, öğrenci bilgisi yoksa NA
+right_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## full_join: Tam Birleştirme
+
+Her iki tablodaki tüm kayıtları korur, eşleşme yoksa NA değerleri ekler:
+
+```{webr}
+# full_join - her iki tablodaki tüm kayıtlar
+full_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## semi_join: Yarı Birleştirme
+
+Sol tablodaki, sağ tabloda eşleşen kayıtları döndürür, ancak sağ tablodaki sütunları almaz:
+
+```{webr}
+# semi_join - notu olan öğrenciler (sadece öğrenci bilgileri)
+semi_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## anti_join: Zıt Birleştirme
+
+Sol tablodaki, sağ tabloda eşleşmeyen kayıtları döndürür:
+
+```{webr}
+# anti_join - notu olmayan öğrenciler
+anti_join(öğrenciler, notlar, by = "öğrenci_id")
+```
+
+## Görsel Özet: Join Türleri
+
+![Join Türleri](https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7c5d2aa08e36f5c4e080a58a2/28f6a/diagrams/join-venn.png)
+
+## Farklı İsimlerde Sütunlar Kullanarak Birleştirme
+
+```{webr}
+# Sütun isimleri farklı olduğunda
+öğrenci_notlar <- tibble(
+  numara = c(1, 2, 3, 5, 6),
+  matematik = c(85, 90, 75, 95, 80),
+  fizik = c(70, 85, 80, 90, 75)
+)
+
+# İsimleri eşleştirerek birleştirme
+inner_join(öğrenciler, öğrenci_notlar, by = c("öğrenci_id" = "numara"))
+```
+
+## Birden Fazla Sütun Kullanarak Birleştirme
+
+```{webr}
+# İki sütunla birleştirme örneği
+sınav1 <- tibble(
+  öğrenci_id = c(1, 2, 3, 4, 5),
+  ders = c("Matematik", "Matematik", "Fizik", "Biyoloji", "Kimya"),
+  not = c(85, 90, 75, 80, 95)
+)
+
+sınav2 <- tibble(
+  öğrenci_id = c(1, 2, 3, 4, 6),
+  ders = c("Matematik", "Matematik", "Fizik", "Biyoloji", "Kimya"),
+  not = c(90, 85, 80, 85, 90)
+)
+
+# İki sütunla birleştirme
+inner_join(sınav1, sınav2, by = c("öğrenci_id", "ders"), suffix = c("_1", "_2"))
+```
+
+## Gerçek Veri Seti Örneği: Star Wars Karakterleri
+
+```{webr}
+# Star Wars veri setini yükleyelim
+starwars <- read_csv("https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv")
+
+# İlk birkaç satıra bakalım
+glimpse(starwars)
+```
+
+## Veri Setini Bölme ve Birleştirme
+
+```{webr}
+# Veri setini iki parçaya bölelim
+karakterler <- starwars |> 
+  select(name, height, mass, gender, homeworld, species)
+
+filmler <- starwars |>
+  select(name, films) |>
+  mutate(film_sayısı = sapply(films, length))
+
+# Şimdi bu iki tabloyu birleştirelim
+karakter_film_bilgisi <- inner_join(karakterler, filmler, by = "name")
+
+head(karakter_film_bilgisi)
+```
+
+## Uygulama: Biyolojik Veri Şekillendirme ve Birleştirme
+
+Genom verileri genellikle farklı tablolarda saklanır ve analiz için birleştirilmesi gerekir:
+
+```{webr}
+# Örnek gen tablosu
+genler <- tibble(
+  gen_id = paste0("G", 1:5),
+  gen_adı = c("TP53", "BRCA1", "EGFR", "KRAS", "PTEN"),
+  kromozom = c("17p13.1", "17q21.31", "7p11.2", "12p12.1", "10q23.31")
+)
+
+# Örnek mutasyon tablosu
+mutasyonlar <- tibble(
+  mut_id = paste0("M", 1:7),
+  gen_id = c("G1", "G1", "G2", "G3", "G3", "G4", "G5"),
+  pozisyon = c(7577121, 7577569, 43071077, 55259515, 55249063, 25398284, 89692905),
+  etki = c("missense", "nonsense", "missense", "missense", "silent", "missense", "frameshift")
+)
+
+# Her gen için mutasyon sayısını bulalım
+gen_mutasyon_sayısı <- mutasyonlar |>
+  group_by(gen_id) |>
+  summarise(mutasyon_sayısı = n()) |>
+  right_join(genler, by = "gen_id") |>
+  arrange(desc(mutasyon_sayısı))
+
+gen_mutasyon_sayısı
+```
+
+## Özet
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Öğrendiğimiz Veri Şekillendirme İşlemleri
+- `pivot_longer()` - Geniş formatı uzun formata çevirme
+- `pivot_wider()` - Uzun formatı geniş formata çevirme
+- Tidy veri prensipleri
+- Eksik değerlerle başa çıkma
+:::
+
+::: {.column width="50%"}
+### Öğrendiğimiz Tablo Birleştirme İşlemleri
+- `inner_join()` - Kesişim birleştirme
+- `left_join()` - Sol tabloya göre birleştirme
+- `right_join()` - Sağ tabloya göre birleştirme
+- `full_join()` - Tam birleştirme
+- `semi_join()` - Yarı birleştirme
+- `anti_join()` - Zıt birleştirme
+:::
+
+::::
+
+## Bir Sonraki Derste
+
+Bir sonraki derste **dplyr** paketinin detayları ve veri manipülasyonu işlemlerini daha derinlemesine inceleyeceğiz:
+
+- Gruplama ve özet istatistikler
+- Koşullu işlemler
+- Pencereleme fonksiyonları (window functions)
+- Örnek uygulamalar
+
+İlgili derslere hazırlık için dplyr belgelerini inceleyiniz.

@@ -19,3 +19,11 @@
 ## Ders4
 
 *21 Mart 2025 9:30* | **İçerik**: Dosya okuma komutları gösterildi. [Sunum linki](ders04.qmd)
+
+## Ders5
+
+*11 Nisan 2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders05.qmd)
+
+## Ders6
+
+*18 Nisan 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders06.qmd)

@@ -22,6 +22,9 @@ webr:
   #render-df: gt-interactive
 filters:
   - webr
+execute:
+  echo: true
+engine: knitr
 ---
 
 ## Önce keki yiyelim

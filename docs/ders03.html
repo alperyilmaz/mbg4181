@@ -426,7 +426,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  select(date, year, everything()) |>\n  head()","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-basic","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    year = year(date),\n    month = month(date),\n    day = day(date),\n    vote_numeric = case_when(\n      vote == \"yes\" ~ 1,\n      vote == \"no\" ~ -1,\n      vote == \"abstain\" ~ 0\n    )\n  ) |>\n  select(date, year, month, day, vote, vote_numeric) |>\n  head()","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-operations","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    date_components = str_split(as.character(date), \"-\"),\n    year = as.integer(map_chr(date_components, 1)),\n    month = as.integer(map_chr(date_components, 2)),\n    day = as.integer(map_chr(date_components, 3))\n  ) |>\n  select(date, year, month, day) |>\n  head()","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-multiple","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    vote_category = case_when(\n      vote == \"yes\" ~ \"Destek\",\n      vote == \"no\" ~ \"Karşı\",\n      vote == \"abstain\" ~ \"Çekimser\",\n      TRUE ~ \"Bilinmiyor\"  # Default değer\n    ),\n    country_group = case_when(\n      country %in% c(\"United States\", \"United Kingdom\", \"France\", \"Germany\") ~ \"Batı\",\n      country %in% c(\"China\", \"Russia\", \"India\") ~ \"BRICS\",\n      country %in% c(\"Turkey\", \"Iran\", \"Iraq\", \"Saudi Arabia\") ~ \"Orta Doğu\",\n      TRUE ~ \"Diğer\"\n    )\n  ) |>\n  select(country, country_group, vote, vote_category) |>\n  head(10)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-conditional","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    year = year(date),\n    cold_war = if_else(year < 1991, \"Soğuk Savaş Dönemi\", \"Soğuk Savaş Sonrası\"),\n    vote_support = if_else(vote == \"yes\", 1, 0)\n  ) |>\n  select(date, year, cold_war, vote, vote_support) |>\n  head()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-ifelse","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Örnek veri oluşturalım\nset.seed(123)\ndata <- tibble(\n  x = sample(1:100, 10),\n  y = sample(1:100, 10)\n)\n\ndata |>\n  mutate(\n    toplam = x + y,\n    fark = x - y,\n    carpim = x * y,\n    oran = x / y,\n    kare_x = x^2,\n    kok_y = sqrt(y),\n    log_x = log(x),\n    z_skor_x = (x - mean(x)) / sd(x)\n  ) |>\n  head()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-math","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    country_upper = str_to_upper(country),\n    country_first_char = str_sub(country, 1, 1),\n    issue_clean = str_replace_all(issue, \"_\", \" \"),\n    issue_title = str_to_title(issue_clean)\n  ) |>\n  select(country, country_upper, country_first_char, issue, issue_clean, issue_title) |>\n  head()","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-string","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"grouped_votes <- unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country)\n\n# Gruplandırma bilgisini görelim\ngrouped_votes","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-basic","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  group_by(country) |>\n  summarize(oy_sayisi = n()) |>\n  arrange(desc(oy_sayisi)) |>\n  head(10)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-count","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country) |>\n  summarize(\n    ilk_oy = min(year),\n    son_oy = max(year),\n    toplam_oy = n(),\n    evet_orani = mean(vote == \"yes\") * 100\n  ) |>\n  arrange(desc(evet_orani)) |>\n  head(10)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-summarize-basic","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\")) |>\n  group_by(country, year) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100\n  ) |>\n  arrange(country, year) |>\n  head(12)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-multiple","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\", \"Brazil\", \"India\")) |>\n  group_by(country, year) |>\n  summarize(evet_orani = mean(vote == \"yes\") * 100) |>\n  ggplot(aes(x = year, y = evet_orani, color = country)) +\n  geom_line(size = 1) +\n  geom_point() +\n  labs(\n    title = \"BM Genel Kurulu'nda 'Evet' oylarının yüzdesi\",\n    subtitle = \"Seçilmiş ülkeler, 1946-2019\",\n    x = \"Yıl\",\n    y = \"Evet oyu oranı (%)\",\n    color = \"Ülke\"\n  ) +\n  theme_minimal() +\n  scale_y_continuous(limits = c(0, 100))","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"6","fig-width":"10","label":"plot-grouped-data","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country == \"Turkey\") |>\n  group_by(issue) |>\n  summarize(\n    ilk_oy_yili = min(year),\n    son_oy_yili = max(year),\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100,\n    benzersiz_yil = n_distinct(year)\n  ) |>\n  arrange(desc(oy_sayisi))","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"summarize-functions","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(between(year, 2000, 2019)) |>\n  group_by(country) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100\n  ) |>\n  filter(oy_sayisi > 100) |>\n  arrange(evet_orani) |>\n  head(10)","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-summarize-filter","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Gruplandırılmış veri\ngrouped_data <- unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country, year)\n\n# Grup bilgisi\ngrouped_data\n\n# Grubu kaldır\nungrouped_data <- grouped_data |> ungroup()\nungrouped_data","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"ungroup","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Orjinal veri\noriginal <- unvotes |>\n  mutate(year = year(date)) |>\n  filter(country == \"Turkey\", year == 2015)\ndim(original)\n\n# Mutate ile\nwith_mutate <- original |>\n  mutate(evet_mi = vote == \"yes\")\ndim(with_mutate)\n\n# Summarize ile\nwith_summarize <- original |>\n  group_by(issue) |>\n  summarize(evet_sayisi = sum(vote == \"yes\"))\ndim(with_summarize)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"mutate-vs-summarize","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\"), year >= 2010) |>\n  group_by(country, year) |>\n  mutate(\n    evet_oran = mean(vote == \"yes\"),\n    z_score = (evet_oran - mean(evet_oran)) / sd(evet_oran)\n  ) |>\n  select(country, year, vote, evet_oran, z_score) |>\n  head(15)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"group-by-mutate","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Verileri hazırlayalım\nvote_trends <- unvotes |>\n  mutate(year = year(date)) |>\n  filter(year >= 1990, country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\", \"Germany\", \"France\")) |>\n  group_by(country, year, issue) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100\n  ) |>\n  ungroup()\n\n# Grafiği çizelim\nggplot(vote_trends, aes(x = year, y = evet_orani, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  labs(\n    title = \"BM Genel Kurulu'nda konu bazında 'Evet' oy oranları\",\n    subtitle = \"1990-2019\",\n    x = \"Yıl\",\n    y = \"Evet oyu oranı (%)\",\n    color = \"Ülke\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  scale_color_brewer(palette = \"Set1\")","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":"7","fig-width":"10","label":"comprehensive-example","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Çözümünüzü buraya yazabilirsiniz","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"your-turn","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(1:10, 1:10)","id":21,"options":{"autorun":"true","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","runbutton":"false","warning":"true"}},{"code":"mtcars","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"include":"false","label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"list.files(\"data\")\ndata <- read_csv(\"hg19genes.csv\")\nhead(data)","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"1 + 2 + 3 + ______","id":24,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","exercise":"ex_1","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-24","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  select(date, year, everything()) |>\n  head()","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    year = year(date),\n    month = month(date),\n    day = day(date),\n    vote_numeric = case_when(\n      vote == \"yes\" ~ 1,\n      vote == \"no\" ~ -1,\n      vote == \"abstain\" ~ 0\n    )\n  ) |>\n  select(date, year, month, day, vote, vote_numeric) |>\n  head()","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    date_components = str_split(as.character(date), \"-\"),\n    year = as.integer(map_chr(date_components, 1)),\n    month = as.integer(map_chr(date_components, 2)),\n    day = as.integer(map_chr(date_components, 3))\n  ) |>\n  select(date, year, month, day) |>\n  head()","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    vote_category = case_when(\n      vote == \"yes\" ~ \"Destek\",\n      vote == \"no\" ~ \"Karşı\",\n      vote == \"abstain\" ~ \"Çekimser\",\n      TRUE ~ \"Bilinmiyor\"  # Default değer\n    ),\n    country_group = case_when(\n      country %in% c(\"United States\", \"United Kingdom\", \"France\", \"Germany\") ~ \"Batı\",\n      country %in% c(\"China\", \"Russia\", \"India\") ~ \"BRICS\",\n      country %in% c(\"Turkey\", \"Iran\", \"Iraq\", \"Saudi Arabia\") ~ \"Orta Doğu\",\n      TRUE ~ \"Diğer\"\n    )\n  ) |>\n  select(country, country_group, vote, vote_category) |>\n  head(10)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    year = year(date),\n    cold_war = if_else(year < 1991, \"Soğuk Savaş Dönemi\", \"Soğuk Savaş Sonrası\"),\n    vote_support = if_else(vote == \"yes\", 1, 0)\n  ) |>\n  select(date, year, cold_war, vote, vote_support) |>\n  head()","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Örnek veri oluşturalım\nset.seed(123)\ndata <- tibble(\n  x = sample(1:100, 10),\n  y = sample(1:100, 10)\n)\n\ndata |>\n  mutate(\n    toplam = x + y,\n    fark = x - y,\n    carpim = x * y,\n    oran = x / y,\n    kare_x = x^2,\n    kok_y = sqrt(y),\n    log_x = log(x),\n    z_skor_x = (x - mean(x)) / sd(x)\n  ) |>\n  head()","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(\n    country_upper = str_to_upper(country),\n    country_first_char = str_sub(country, 1, 1),\n    issue_clean = str_replace_all(issue, \"_\", \" \"),\n    issue_title = str_to_title(issue_clean)\n  ) |>\n  select(country, country_upper, country_first_char, issue, issue_clean, issue_title) |>\n  head()","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"grouped_votes <- unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country)\n\n# Gruplandırma bilgisini görelim\ngrouped_votes","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  group_by(country) |>\n  summarize(oy_sayisi = n()) |>\n  arrange(desc(oy_sayisi)) |>\n  head(10)","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country) |>\n  summarize(\n    ilk_oy = min(year),\n    son_oy = max(year),\n    toplam_oy = n(),\n    evet_orani = mean(vote == \"yes\") * 100\n  ) |>\n  arrange(desc(evet_orani)) |>\n  head(10)","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\")) |>\n  group_by(country, year) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100\n  ) |>\n  arrange(country, year) |>\n  head(12)","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\", \"Brazil\", \"India\")) |>\n  group_by(country, year) |>\n  summarize(evet_orani = mean(vote == \"yes\") * 100) |>\n  ggplot(aes(x = year, y = evet_orani, color = country)) +\n  geom_line(size = 1) +\n  geom_point() +\n  labs(\n    title = \"BM Genel Kurulu'nda 'Evet' oylarının yüzdesi\",\n    subtitle = \"Seçilmiş ülkeler, 1946-2019\",\n    x = \"Yıl\",\n    y = \"Evet oyu oranı (%)\",\n    color = \"Ülke\"\n  ) +\n  theme_minimal() +\n  scale_y_continuous(limits = c(0, 100))","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country == \"Turkey\") |>\n  group_by(issue) |>\n  summarize(\n    ilk_oy_yili = min(year),\n    son_oy_yili = max(year),\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100,\n    benzersiz_yil = n_distinct(year)\n  ) |>\n  arrange(desc(oy_sayisi))","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(between(year, 2000, 2019)) |>\n  group_by(country) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100\n  ) |>\n  filter(oy_sayisi > 100) |>\n  arrange(evet_orani) |>\n  head(10)","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Gruplandırılmış veri\ngrouped_data <- unvotes |>\n  mutate(year = year(date)) |>\n  group_by(country, year)\n\n# Grup bilgisi\ngrouped_data\n\n# Grubu kaldır\nungrouped_data <- grouped_data |> ungroup()\nungrouped_data","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Orjinal veri\noriginal <- unvotes |>\n  mutate(year = year(date)) |>\n  filter(country == \"Turkey\", year == 2015)\ndim(original)\n\n# Mutate ile\nwith_mutate <- original |>\n  mutate(evet_mi = vote == \"yes\")\ndim(with_mutate)\n\n# Summarize ile\nwith_summarize <- original |>\n  group_by(issue) |>\n  summarize(evet_sayisi = sum(vote == \"yes\"))\ndim(with_summarize)","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  mutate(year = year(date)) |>\n  filter(country %in% c(\"Turkey\", \"United States\", \"Russia\"), year >= 2010) |>\n  group_by(country, year) |>\n  mutate(\n    evet_oran = mean(vote == \"yes\"),\n    z_score = (evet_oran - mean(evet_oran)) / sd(evet_oran)\n  ) |>\n  select(country, year, vote, evet_oran, z_score) |>\n  head(15)","id":18,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-18","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Verileri hazırlayalım\nvote_trends <- unvotes |>\n  mutate(year = year(date)) |>\n  filter(year >= 1990, country %in% c(\"Turkey\", \"United States\", \"Russia\", \"China\", \"Germany\", \"France\")) |>\n  group_by(country, year, issue) |>\n  summarize(\n    oy_sayisi = n(),\n    evet_orani = mean(vote == \"yes\") * 100,\n    hayir_orani = mean(vote == \"no\") * 100,\n    cekimser_orani = mean(vote == \"abstain\") * 100\n  ) |>\n  ungroup()\n\n# Grafiği çizelim\nggplot(vote_trends, aes(x = year, y = evet_orani, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  labs(\n    title = \"BM Genel Kurulu'nda konu bazında 'Evet' oy oranları\",\n    subtitle = \"1990-2019\",\n    x = \"Yıl\",\n    y = \"Evet oyu oranı (%)\",\n    color = \"Ülke\"\n  ) +\n  theme_minimal() +\n  theme(legend.position = \"bottom\") +\n  scale_y_continuous(limits = c(0, 100)) +\n  scale_color_brewer(palette = \"Set1\")","id":19,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-19","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Çözümünüzü buraya yazabilirsiniz","id":20,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-20","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"plot(1:10, 1:10)","id":21,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-21","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"list.files(\"data\")\ndata <- read_csv(\"hg19genes.csv\")\nhead(data)","id":22,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-22","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"1 + 2 + 3 + ______","id":23,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-23","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -1984,80 +1984,106 @@ Alper Yılmaz
 </section>
 <section id="kaldığımız-yerden-devam-edelim" class="slide level2">
 <h2>Kaldığımız yerden devam edelim</h2>
+<div class="cell">
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate" class="slide level2">
 <h2>Mutate</h2>
 <p><strong>mutate()</strong> fonksiyonu veri setlerine yeni sütunlar eklemek veya var olan sütunları değiştirmek için kullanılır. Orijinal veri setini değiştirmez, yeni bir veri seti olarak döndürür.</p>
+<div class="cell">
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate-ile-temel-işlemler" class="slide level2">
 <h2>Mutate ile temel işlemler</h2>
 <p>Mutate ile yeni sütunlar eklerken mevcut sütunlar üzerinde işlemler yapabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="aynı-anda-birden-fazla-sütun" class="slide level2">
 <h2>Aynı anda birden fazla sütun</h2>
 <p><strong>mutate()</strong> aynı anda birden fazla sütunu değiştirmenize veya eklemenize olanak tanır:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="koşullu-mutate" class="slide level2">
 <h2>Koşullu mutate</h2>
 <p><strong>case_when()</strong> ile koşullu değerler atayabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate-içinde-ifcondition" class="slide level2">
 <h2>Mutate içinde ifcondition</h2>
 <p><strong>if_else()</strong> fonksiyonu basit koşullu ifadeler için kullanılabilir:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate-ile-matematiksel-işlemler" class="slide level2">
 <h2>Mutate ile matematiksel işlemler</h2>
 <p>Mutate ile matematiksel işlemler yapabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate-ile-string-manipülasyonu" class="slide level2">
 <h2>Mutate ile string manipülasyonu</h2>
 <p>String işlemleri için <strong>stringr</strong> paketini kullanabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="group_by" class="slide level2">
 <h2>Group_by</h2>
 <p><strong>group_by()</strong> fonksiyonu verileri gruplandırmak için kullanılır. Tek başına görsel bir değişiklik yapmaz, ancak sonraki işlemlerin gruplara göre uygulanmasını sağlar.</p>
+<div class="cell">
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="group_by-ve-n" class="slide level2">
 <h2>Group_by ve n()</h2>
 <p>Gruplardaki satır sayısını saymak için <strong>n()</strong> fonksiyonunu kullanabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="group_by-ve-summarize" class="slide level2">
 <h2>Group_by ve Summarize</h2>
 <p><strong>summarize()</strong> (veya <strong>summarise()</strong>) fonksiyonu gruplandırılmış verileri özetlemek için kullanılır:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="çoklu-group_by" class="slide level2">
 <h2>Çoklu Group_by</h2>
 <p>Birden fazla değişkene göre gruplandırma yapabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="gruplandırılmış-verileri-görselleştirme" class="slide level2">
 <h2>Gruplandırılmış verileri görselleştirme</h2>
 <p>Gruplandırılmış veriler üzerinde yapılan işlemler görselleştirme için çok uygundur:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="summarize-fonksiyonları" class="slide level2">
 <h2>Summarize fonksiyonları</h2>
@@ -2075,20 +2101,26 @@ Alper Yılmaz
 </section>
 <section id="summarize-örneği" class="slide level2">
 <h2>Summarize örneği</h2>
+<div class="cell">
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="group_by-summarize-ve-filter-birlikte" class="slide level2">
 <h2>Group_by, Summarize ve Filter birlikte</h2>
 <p>Bu fonksiyonları bir arada kullanabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="ungroup" class="slide level2">
 <h2>ungroup()</h2>
 <p>Bazen grup işlemlerinden sonra gruplama durumunu kaldırmak isteyebilirsiniz. Bunun için <strong>ungroup()</strong> kullanabilirsiniz:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="mutate-vs-summarize" class="slide level2">
 <h2>Mutate vs Summarize</h2>
@@ -2096,19 +2128,25 @@ Alper Yılmaz
 <li><strong>mutate()</strong>: Her satır için yeni sütunlar oluşturur, satır sayısı değişmez</li>
 <li><strong>summarize()</strong>: Grupları özetleyerek yeni bir tablo oluşturur, satır sayısı genellikle azalır</li>
 </ul>
+<div class="cell">
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="gruplandırma-ve-mutate" class="slide level2">
 <h2>Gruplandırma ve mutate</h2>
 <p><strong>group_by()</strong> ile <strong>mutate()</strong> birlikte kullanıldığında, her grup içinde hesaplama yapılır:</p>
+<div class="cell">
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="ülke-bazında-yıllık-oy-analizi-örneği" class="slide level2">
 <h2>Ülke bazında yıllık oy analizi örneği</h2>
+<div class="cell">
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="alıştırma" class="slide level2 scrollable">
 <h2>Alıştırma</h2>
@@ -2118,28 +2156,34 @@ Alper Yılmaz
 <li>Her konu için, Türkiye’nin yıllara göre evet oy oranını hesaplayıp görselleştiriniz.</li>
 <li>Soğuk Savaş döneminde (1991 öncesi) ve sonrasında ABD ve Rusya’nın oy benzerliğini karşılaştırınız.</li>
 </ol>
+<div class="cell">
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="test" class="slide level2">
 <h2>test</h2>
+<div class="cell" data-autorun="true" data-runbutton="false">
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="test2" class="slide level2">
 <h2>test2</h2>
-<div id="qwebr-insertion-location-22"></div>
-<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </section>
 <section id="test3" class="slide level2">
 <h2>test3</h2>
-<div id="qwebr-insertion-location-23"></div>
+<div class="cell">
+<div id="qwebr-insertion-location-22"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section id="test4" class="slide level2">
 <h2>test4</h2>
-<div id="qwebr-insertion-location-24"></div>
+<div class="cell" data-exercise="ex_1">
+<div id="qwebr-insertion-location-23"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 
 
 </section>
@@ -2360,6 +2404,44 @@ Alper Yılmaz
         ]
       });
     </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

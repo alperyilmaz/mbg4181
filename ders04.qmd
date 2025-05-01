@@ -28,6 +28,9 @@ webr:
     - https://raw.githubusercontent.com/tidyverse/readr/main/inst/extdata/mtcars.tsv
 filters:
   - webr
+engine: knitr
+execute:
+  echo: true
 ---
 
 ## Veri İçe Aktarma

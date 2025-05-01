@@ -10,8 +10,8 @@
   <meta name="generator" content="quarto-1.6.40">
 
   <meta name="author" content="Alper Yılmaz">
-  <meta name="dcterms.date" content="2025-03-07">
-  <title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme – Tidyverse Dosya Okuma, Select/Filter</title>
+  <meta name="dcterms.date" content="2025-03-28">
+  <title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme – Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -29,71 +29,6 @@
       margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
       vertical-align: middle;
     }
-    /* CSS for syntax highlighting */
-    pre > code.sourceCode { white-space: pre; position: relative; }
-    pre > code.sourceCode > span { line-height: 1.25; }
-    pre > code.sourceCode > span:empty { height: 1.2em; }
-    .sourceCode { overflow: visible; }
-    code.sourceCode > span { color: inherit; text-decoration: inherit; }
-    div.sourceCode { margin: 1em 0; }
-    pre.sourceCode { margin: 0; }
-    @media screen {
-    div.sourceCode { overflow: auto; }
-    }
-    @media print {
-    pre > code.sourceCode { white-space: pre-wrap; }
-    pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-    }
-    pre.numberSource code
-      { counter-reset: source-line 0; }
-    pre.numberSource code > span
-      { position: relative; left: -4em; counter-increment: source-line; }
-    pre.numberSource code > span > a:first-child::before
-      { content: counter(source-line);
-        position: relative; left: -1em; text-align: right; vertical-align: baseline;
-        border: none; display: inline-block;
-        -webkit-touch-callout: none; -webkit-user-select: none;
-        -khtml-user-select: none; -moz-user-select: none;
-        -ms-user-select: none; user-select: none;
-        padding: 0 4px; width: 4em;
-        color: #aaaaaa;
-      }
-    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-    div.sourceCode
-      { color: #003b4f; background-color: #f1f3f5; }
-    @media screen {
-    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-    }
-    code span { color: #003b4f; } /* Normal */
-    code span.al { color: #ad0000; } /* Alert */
-    code span.an { color: #5e5e5e; } /* Annotation */
-    code span.at { color: #657422; } /* Attribute */
-    code span.bn { color: #ad0000; } /* BaseN */
-    code span.bu { } /* BuiltIn */
-    code span.cf { color: #003b4f; font-weight: bold; } /* ControlFlow */
-    code span.ch { color: #20794d; } /* Char */
-    code span.cn { color: #8f5902; } /* Constant */
-    code span.co { color: #5e5e5e; } /* Comment */
-    code span.cv { color: #5e5e5e; font-style: italic; } /* CommentVar */
-    code span.do { color: #5e5e5e; font-style: italic; } /* Documentation */
-    code span.dt { color: #ad0000; } /* DataType */
-    code span.dv { color: #ad0000; } /* DecVal */
-    code span.er { color: #ad0000; } /* Error */
-    code span.ex { } /* Extension */
-    code span.fl { color: #ad0000; } /* Float */
-    code span.fu { color: #4758ab; } /* Function */
-    code span.im { color: #00769e; } /* Import */
-    code span.in { color: #5e5e5e; } /* Information */
-    code span.kw { color: #003b4f; font-weight: bold; } /* Keyword */
-    code span.op { color: #5e5e5e; } /* Operator */
-    code span.ot { color: #003b4f; } /* Other */
-    code span.pp { color: #ad0000; } /* Preprocessor */
-    code span.sc { color: #5e5e5e; } /* SpecialChar */
-    code span.ss { color: #20794d; } /* SpecialString */
-    code span.st { color: #20794d; } /* String */
-    code span.va { color: #111111; } /* Variable */
-    code span.vs { color: #20794d; } /* VerbatimString */
-    code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-bbe7401fe57d4b791b917637bb662036.css">
   <link rel="stylesheet" href="custom.css">
@@ -469,7 +404,7 @@
   // Document level settings ----
 
   // Determine if we need to install R packages
-  globalThis.qwebrInstallRPackagesList = ['dplyr', 'unvotes', 'lubridate', 'scales', 'ggplot2', 'gt', 'htmltools', 'stringr'];
+  globalThis.qwebrInstallRPackagesList = ['dplyr', 'tidyr', 'readr', 'lubridate', 'scales', 'ggplot2', 'gt', 'htmltools', 'stringr'];
 
   // Specify possible locations to search for the repository
   globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
@@ -491,7 +426,7 @@
   };
 
   // Store cell data
-  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(lubridate)\nlibrary(scales)\nlibrary(unvotes)\nlibrary(ggplot2)\n\nunvotes <- un_votes |>\n  inner_join(un_roll_calls, by = \"rcid\") |>\n  inner_join(un_roll_call_issues, by = \"rcid\")","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"library(gt)\nlibrary(htmltools)\n\nmy_data <- unvotes |> head(100) |> gt()\nhtml_print(my_data)","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(country %in% c(\"United Kingdom\", \"United States\", \"Turkey\")) |>\n  mutate(year = year(date)) |>\n  group_by(country, year, issue) |>\n  summarize(percent_yes = mean(vote == \"yes\")) |>\n  ggplot(mapping = aes(x = year, y = percent_yes, color = country)) +\n  geom_point(alpha = 0.4) +\n  geom_smooth(method = \"loess\", se = FALSE) +\n  facet_wrap(~issue) +\n  scale_y_continuous(labels = percent) +\n  labs(\n    title = \"Percentage of 'Yes' votes in the UN General Assembly\",\n    subtitle = \"1946 to 2019\",\n    y = \"% Yes\",\n    x = \"Year\",\n    color = \"Country\"\n  )","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |> select(country) |> arrange(country) |> distinct() |> print(n=200)","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"names(unvotes)","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, 1,5)","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"select(unvotes, short_name, country, everything()) |>\n  rename(cc=country_code, imp=importantvote) |>\n  relocate(cc, .after=country)","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"istedigim_kolonlar <- select(unvotes, short_name, country, everything())\nyeni_isimler <- rename(istedigim_kolonlar, cc=country_code, imp=importantvote)\nson hal <- relocate(yeni_isimler, cc, .after=country)\n\n#eşittir\n\nunvotes |>\n  select(unvotes, short_name, country, everything()) |>\n  rename(cc=country_code, imp=importantvote) |>\n  relocate(cc, .after=country) -> son_hal","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(session > 10)","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(session > 10, country_code==\"TR\")","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"test <- c(1,2,3,4,5,NA,8,9,10)\nsum(test)\ntest > 5\ntest == NA","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(!is.na(country_code))","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(between(session, 10, 20))","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"unvotes |>\n  filter(...)","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+  globalThis.qwebrCellDetails = [{"code":"# Gerekli paketleri yükleyelim\nlibrary(dplyr)\nlibrary(tidyr)    # Bu dersin ana konusu\nlibrary(ggplot2)\nlibrary(gt)\nlibrary(htmltools)","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Geniş formatta örnek veri\ngen_ifadesi_genis <- tibble(\n  orneklem = c(\"Ornek1\", \"Ornek2\", \"Ornek3\"),\n  genA_ifade = c(10.5, 12.1, 11.8),\n  genB_ifade = c(8.2, 9.5, 7.9),\n  genC_ifade = c(15.0, 14.2, 16.1)\n)\n\n# Geniş veriyi gösterelim\nhtml_print(gt(gen_ifadesi_genis))","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"gen_ifadesi_uzun <- gen_ifadesi_genis |>\n  pivot_longer(\n    cols = ends_with(\"_ifade\"), # veya genA_ifade:genC_ifade veya -orneklem\n    names_to = \"gen_adi\",      # Yeni anahtar sütunu adı\n    values_to = \"ifade_degeri\" # Yeni değer sütunu adı\n  )\n\n# Uzun veriyi gösterelim\nhtml_print(gt(gen_ifadesi_uzun))","id":3,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-3","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Uzun formattaki verimiz: gen_ifadesi_uzun\n\ntekrar_genis <- gen_ifadesi_uzun |>\n  pivot_wider(\n    names_from = gen_adi,      # Sütun isimleri bu sütundan gelecek\n    values_from = ifade_degeri # Değerler bu sütundan gelecek\n  )\n\n# Tekrar genişletilmiş veriyi gösterelim\nhtml_print(gt(tekrar_genis))\n\n# Orijinal geniş veri ile aynı mı?\n# identical(gen_ifadesi_genis, tekrar_genis) # Sıralama farkı olabilir\nall.equal(gen_ifadesi_genis |> arrange(orneklem),\n          tekrar_genis |> select(orneklem, genA_ifade, genB_ifade, genC_ifade) |> arrange(orneklem))","id":4,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-4","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Uzun formatta ölçüm verisi\nolcumler_uzun <- tibble(\n  hasta_id = rep(c(\"H01\", \"H02\"), each = 4),\n  zaman_noktasi = rep(c(\"T0\", \"T1\", \"T0\", \"T1\"), times=2),\n  olcum_tipi = rep(c(\"KanBasinci\", \"KanSekeri\"), times = 4),\n  deger = round(rnorm(8, mean=100, sd=15), 1)\n)\nhtml_print(gt(olcumler_uzun |> arrange(hasta_id, zaman_noktasi, olcum_tipi)))","id":5,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-5","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"olcumler_genis <- olcumler_uzun |>\n  pivot_wider(\n    names_from = c(olcum_tipi, zaman_noktasi), # İki sütundan isim türet\n    values_from = deger,\n    names_sep = \"_\" # İsimleri birleştirirken kullanılacak ayırıcı\n  )\n\nhtml_print(gt(olcumler_genis))","id":6,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-6","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"hastalar <- tibble(\n  hasta_kimlik = c(\"P01\", \"P02\", \"P03\", \"P04\"),\n  yas = c(45, 62, 38, 55),\n  cinsiyet = c(\"E\", \"K\", \"E\", \"K\")\n)\n\nolcumler <- tibble(\n  kayit_id = 1:5,\n  hasta_kimlik = c(\"P01\", \"P02\", \"P02\", \"P04\", \"P05\"), # P03 eksik, P05 fazladan\n  olcum_adi = c(\"Kolesterol\", \"Glukoz\", \"HbA1c\", \"Kolesterol\", \"Glukoz\"),\n  deger = c(210, 115, 6.8, 230, 105)\n)\n\nhtml_print(gt(hastalar))\nhtml_print(gt(olcumler))","id":7,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-7","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Ortak anahtar 'hasta_kimlik'\ninner_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()\n# P03 (sadece hastalarda) ve P05 (sadece ölçümlerde) sonuçta yok.","id":8,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-8","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Soldaki 'hastalar' tablosunun tüm satırları korunur.\nleft_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()\n# P03 için ölçüm bilgileri NA oldu. P05 (sadece ölçümlerde) sonuçta yok.","id":9,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-9","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Sağdaki 'olcumler' tablosunun tüm satırları korunur.\nright_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()\n# P05 için hasta bilgileri NA oldu. P03 (sadece hastalarda) sonuçta yok.","id":10,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-10","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Her iki tablodaki tüm hasta_kimlik değerleri korunur.\nfull_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()\n# Hem P03 hem de P05 için ilgili NA değerleri görülebilir.","id":11,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-11","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Ölçümü olan hastalar (hastalar tablosundan)\nsemi_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()\n\n# Ölçümü OLMAYAN hastalar (hastalar tablosundan)\nanti_join(hastalar, olcumler, by = \"hasta_kimlik\") |> gt() |> html_print()","id":12,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-12","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Örnek: Ölçümü olan hastaların yaş ortalamasını hesaplama\nleft_join(hastalar, olcumler, by = \"hasta_kimlik\") |>\n  filter(!is.na(olcum_adi)) |> # Sadece ölçümü olanları tut (left_join sonrası)\n  distinct(hasta_kimlik, yas) |> # Tekrarlanan hastaları kaldır\n  summarize(ortalama_yas = mean(yas)) |>\n  gt() |> html_print()\n\n# Veya semi_join ile daha direkt\nsemi_join(hastalar, olcumler, by = \"hasta_kimlik\") |>\n  summarize(ortalama_yas = mean(yas)) |>\n  gt() |> html_print()","id":13,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-13","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"genis_veri_alis <- tibble(\n  deney = c(\"DeneyA\", \"DeneyB\"),\n  HucreSayisi = c(500, 650),\n  CanlilikOrani = c(0.95, 0.88),\n  MetabolitXYZ = c(1.23, 1.56)\n)\n\n# Geniş veriyi göster\nhtml_print(gt(genis_veri_alis))\n\n# Çözümünüzü buraya yazın\ngenis_veri_alis |>\n  pivot_longer(\n    cols = -deney, # veya c(HucreSayisi, CanlilikOrani, MetabolitXYZ)\n    names_to = \"olcüm_tipi\",\n    values_to = \"değer\"\n  ) |> gt() |> html_print()","id":14,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","exercise":"ex_pivot","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-14","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"gen_bilgi <- tibble(\n  gen_id = c(\"G1\", \"G2\", \"G3\", \"G4\"),\n  gen_tipi = c(\"protein_coding\", \"lncRNA\", \"protein_coding\", \"miRNA\"),\n  kromozom = c(\"chr1\", \"chr2\", \"chr1\", \"chrX\")\n)\n\ngen_ifade <- tibble(\n  gen_id = c(\"G1\", \"G2\", \"G3\", \"G5\"), # G4 eksik, G5 fazladan\n  orneklem_A = c(5.2, 1.1, 7.8, 0.5),\n  orneklem_B = c(6.1, 1.5, 8.2, 0.8)\n)\n\nhtml_print(gt(gen_bilgi))\nhtml_print(gt(gen_ifade))\n\n# Çözümünüzü buraya yazın\ninner_join(gen_bilgi, gen_ifade, by = \"gen_id\") |>\n  filter(gen_tipi == \"protein_coding\") |>\n  gt() |> html_print()\n\n# Alternatif: Önce filtrele, sonra join\n# gen_bilgi |>\n#  filter(gen_tipi == \"protein_coding\") |>\n#  inner_join(gen_ifade, by = \"gen_id\") |>\n#  gt() |> html_print()\n\n# Alternatif 2: semi_join ile gen_ifade tablosunu filtrele\n# semi_join(gen_ifade, gen_bilgi |> filter(gen_tipi == \"protein_coding\"), by=\"gen_id\") |>\n#  gt() |> html_print()","id":15,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","exercise":"ex_join","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-15","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"# Etkileşim verisi (partnerler birleşik)\netkilesimler <- tibble(\n  ana_gen = c(\"GEN_X\", \"GEN_Y\", \"GEN_Z\"),\n  partner_genler = c(\"GEN_A,GEN_B\", \"GEN_C\", \"GEN_A,GEN_D,GEN_E\"),\n  etkilesim_tipi = c(\"Fiziksel\", \"Genetik\", \"Fiziksel\")\n)\n\n# Gen detayları\ngen_detaylari <- tibble(\n  gen_id = c(\"GEN_A\", \"GEN_B\", \"GEN_C\", \"GEN_D\", \"GEN_E\", \"GEN_X\", \"GEN_Y\", \"GEN_Z\"),\n  fonksiyon = c(\"Kinaz\", \"Transkripsiyon Faktörü\", \"Reseptör\", \"Metabolik Enzim\", \"Yapısal Protein\", \"Bilinmiyor\", \"Bilinmiyor\", \"Bilinmiyor\")\n)\n\nhtml_print(gt(etkilesimler))\nhtml_print(gt(gen_detaylari))","id":16,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-16","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"etkilesimler_ayrilmis <- etkilesimler |>\n  separate_rows(partner_genler, sep = \",\") # Virgülle ayrılmış değerleri satırlara böl\n\n# Ayrılmış tabloyu görelim\nhtml_print(gt(etkilesimler_ayrilmis))\n\n# Şimdi partner genlerin detaylarını ekleyelim\netkilesimler_detayli <- left_join(\n  etkilesimler_ayrilmis,\n  gen_detaylari,\n  by = c(\"partner_genler\" = \"gen_id\") # Anahtar sütun isimleri farklı olabilir\n)\n\n# Sonucu görelim\nhtml_print(gt(etkilesimler_detayli))","id":17,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-17","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
 
   </script>
   <script type="module">
@@ -2034,8 +1969,8 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Tidyverse Dosya Okuma, Select/Filter</h1>
-  <p class="subtitle">MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders2</p>
+  <h1 class="title">Veri Şekillendirme (Pivoting) ve Birleştirme (Joining)</h1>
+  <p class="subtitle">MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders5</p>
 
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
@@ -2045,156 +1980,218 @@ Alper Yılmaz
 </div>
 </div>
 
-  <p class="date">2025-03-07</p>
+  <p class="date">2025-03-28</p>
 </section>
-<section id="önce-keki-yiyelim" class="slide level2">
-<h2>Önce keki yiyelim</h2>
-<div class="cell">
+<section id="önceki-derslerden-hatırlatmalar" class="slide level2">
+<h2>Önceki Derslerden Hatırlatmalar</h2>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p>Geçtiğimiz derslerde:</p>
+<ul>
+<li><code>dplyr</code> ile veri manipülasyonu (<code>select</code>, <code>filter</code>, <code>mutate</code>, <code>arrange</code>, <code>group_by</code>, <code>summarize</code>)</li>
+<li><code>readr</code> ve <code>readxl</code> ile veri okuma</li>
+</ul>
+<p>konularını işledik.</p>
+</section>
+<section id="bu-dersin-konuları" class="slide level2 scrollable">
+<h2>Bu Dersin Konuları</h2>
+<p>Bugün, tidyverse ekosistemindeki iki önemli konuya odaklanacağız:</p>
+<ol type="1">
+<li><strong>Veri Şekillendirme (Pivoting):</strong> <code>tidyr</code> paketini kullanarak tabloları “uzun” (long) ve “geniş” (wide) formatlar arasında dönüştürme.
+<ul>
+<li><code>pivot_longer()</code>: Geniş veriyi uzuna çevirme.</li>
+<li><code>pivot_wider()</code>: Uzun veriyi genişe çevirme.</li>
+</ul></li>
+<li><strong>Tablo Birleştirme (Joining):</strong> <code>dplyr</code> fonksiyonları ile farklı tablolardaki ilişkili verileri bir araya getirme.
+<ul>
+<li><code>inner_join()</code>, <code>left_join()</code>, <code>full_join()</code>, <code>anti_join()</code> vb.</li>
+</ul></li>
+</ol>
+</section>
+<section id="neden-veri-şekillendirme" class="slide level2">
+<h2>Neden Veri Şekillendirme?</h2>
+<p>Veriler genellikle iki formatta karşımıza çıkar:</p>
+<ul>
+<li><strong>Geniş (Wide) Format:</strong> Her gözlem birimi (örneğin hasta, örneklem) bir satırda yer alır ve değişkenler (ölçümler, özellikler) ayrı sütunlarda bulunur. İnsanların okuması genellikle daha kolaydır.</li>
+<li><strong>Uzun (Long) / Tidy Format:</strong> Her satır bir gözlem biriminin <em>tek bir</em> ölçümünü veya özelliğini temsil eder. Genellikle bir “anahtar” (key) ve bir “değer” (value) sütunu bulunur. <code>ggplot2</code> gibi görselleştirme araçları ve birçok modelleme fonksiyonu bu formatı tercih eder.</li>
+</ul>
+<p><img data-src="images/tidy-data-formats.png"> <em>(Basit bir görselleştirme: Solda geniş, sağda uzun format)</em></p>
+<div class="footer">
+<p>Görsel Kaynak: Kendi çiziminiz veya uygun bir online kaynak</p>
 </div>
 </section>
-<section id="kullanılan-veri" class="slide level2">
-<h2>Kullanılan veri</h2>
-<div class="cell">
+<section id="pivot_longer-genişten-uzuna" class="slide level2">
+<h2><code>pivot_longer()</code>: Genişten Uzuna</h2>
+<p><code>pivot_longer()</code> fonksiyonu, birden fazla sütunu tek bir anahtar-değer çiftine dönüştürerek veriyi uzatır.</p>
+<p>Temel argümanlar:</p>
+<ul>
+<li><code>data</code>: Dönüştürülecek veri çerçevesi.</li>
+<li><code>cols</code>: Uzatılacak sütunlar (örn. <code>genA:genC</code> veya <code>c(genA, genB, genC)</code>).</li>
+<li><code>names_to</code>: Yeni oluşturulacak “anahtar” sütununun adı (genellikle bir karakter dizisi).</li>
+<li><code>values_to</code>: Yeni oluşturulacak “değer” sütununun adı (genellikle bir karakter dizisi).</li>
+</ul>
+</section>
+<section id="pivot_longer-örneği" class="slide level2">
+<h2><code>pivot_longer()</code> Örneği</h2>
+<p>Basit bir gen ifadesi verisi düşünelim:</p>
 <div id="qwebr-insertion-location-2"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="section" class="slide level2">
-<h2></h2>
-<div class="cell">
+<section id="pivot_longer-uygulaması" class="slide level2">
+<h2><code>pivot_longer()</code> Uygulaması</h2>
+<p>Şimdi bu geniş veriyi uzun formata çevirelim:</p>
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="section-1" class="slide level2">
-<h2></h2>
-<p><em>unvotes</em> veri setindeki ülke isimleri aşağıdaki gibidir. Bu ülkelerden birkaçını seçip, bir önceki slaytta ülke ismini değiştirip, grafiği tekrar oluşturunuz.</p>
-<div class="cell">
+<section id="pivot_longer-ipuçları" class="slide level2">
+<h2><code>pivot_longer()</code> İpuçları</h2>
+<ul>
+<li><code>cols</code> argümanında <code>dplyr::select()</code> yardımcılarını kullanabilirsiniz (<code>starts_with()</code>, <code>ends_with()</code>, <code>contains()</code>, <code>everything()</code>, <code>-sutun_adi</code>, vb.).</li>
+<li><code>names_pattern</code> ve <code>names_sep</code> argümanları ile sütun isimlerinden birden fazla anahtar sütunu çıkarabilirsiniz (daha ileri düzey).</li>
+<li><code>values_drop_na = TRUE</code> ile eksik (NA) değerleri içeren satırları otomatik olarak kaldırabilirsiniz.</li>
+</ul>
+</section>
+<section id="pivot_wider-uzundan-genişe" class="slide level2">
+<h2><code>pivot_wider()</code>: Uzundan Genişe</h2>
+<p><code>pivot_wider()</code> fonksiyonu, <code>pivot_longer()</code> işleminin tersini yapar: Bir anahtar ve bir değer sütununu alıp birden fazla yeni sütun oluşturarak veriyi genişletir.</p>
+<p>Temel argümanlar:</p>
+<ul>
+<li><code>data</code>: Dönüştürülecek uzun veri çerçevesi.</li>
+<li><code>names_from</code>: Yeni sütun isimlerinin alınacağı anahtar sütun(lar).</li>
+<li><code>values_from</code>: Yeni sütunlardaki değerlerin alınacağı değer sütun(lar).</li>
+</ul>
+</section>
+<section id="pivot_wider-örneği" class="slide level2">
+<h2><code>pivot_wider()</code> Örneği</h2>
+<p>Bir önceki örnekteki uzun veriyi tekrar geniş formata çevirelim:</p>
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="select" class="slide level2">
-<h2>Select</h2>
-<p>SQL dilinde de önemli yeri olan <strong>SELECT</strong> Tidyverse ile veri analizinde de önemli bir yere sahiptir. Sütun seçimi, yer değiştirme ve sisim değiştirme için kullanılır.</p>
-<p>Veri olarak yine <em>unvotes</em> tablosunu kullanalım.</p>
-<div class="cell">
+<section id="biyolojik-veri-pivoting-örneği" class="slide level2">
+<h2>Biyolojik Veri Pivoting Örneği</h2>
+<p>Farklı zaman noktalarında yapılan ölçümleri içeren bir veri seti:</p>
 <div id="qwebr-insertion-location-5"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-</section>
-<section id="select-1" class="slide level2">
-<h2>Select</h2>
-<p><strong>select()</strong> fonksiyonu:</p>
-<ul>
-<li>sütun numarası</li>
-<li>sütun adı</li>
-<li>her ikisi için de aralık (<code>2:5</code> veya <code>country:vote</code> gibi)</li>
-<li>eksi(-) işareti ile sütun almama</li>
-<li>yardımcı fonskiyonlar ile belirli örüntü (<em>starts_with</em>, <em>ends_with</em>)</li>
-<li><em>everything()</em> kısayolu</li>
-</ul>
-<p>ile sütun seçimi yapabilir.</p>
-<p>Sütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak.</p>
-</section>
-<section id="select-2" class="slide level2">
-<h2>Select</h2>
-<p>Bir önceki slaytta belirtilen özellikleri deneyiniz.</p>
-<div class="cell">
+<p>Bu veriyi her hasta için bir satır olacak şekilde genişletelim:</p>
 <div id="qwebr-insertion-location-6"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="tablo-birleştirme-joining---neden" class="slide level2">
+<h2>Tablo Birleştirme (Joining) - Neden?</h2>
+<p>Genellikle analiz etmek istediğimiz veriler tek bir tabloda bulunmaz. Farklı kaynaklardan gelen veya farklı bilgileri içeren tabloları birleştirmemiz gerekir.</p>
+<p>Örneğin:</p>
+<ul>
+<li>Hasta demografik bilgileri (yaş, cinsiyet) tablosu ile hastaların ölçüm sonuçları tablosu.</li>
+<li>Gen anotasyon bilgileri (gen fonksiyonu, lokasyonu) tablosu ile gen ifade düzeyleri tablosu.</li>
+</ul>
+<p>Birleştirme işlemi, tablolardaki <strong>ortak anahtar sütun(lar)</strong> üzerinden yapılır.</p>
+</section>
+<section id="join-türleri-görsel" class="slide level2">
+<h2>Join Türleri (Görsel)</h2>
+<p><img data-src="https://r4ds.hadley.nz/diagrams/join-setup.png"> <img data-src="https://r4ds.hadley.nz/diagrams/join-inner.png"> <img data-src="https://r4ds.hadley.nz/diagrams/join-outer.png"> <img data-src="https://r4ds.hadley.nz/diagrams/join-semi.png"> <img data-src="https://r4ds.hadley.nz/diagrams/join-anti.png"></p>
+<div class="footer">
+<p>Kaynak: <a href="https://r4ds.hadley.nz/joins.html">R for Data Science (2e) - Joins</a></p>
 </div>
 </section>
-<section id="select-yerine.." class="slide level2">
-<h2>Select yerine..</h2>
-<p><em>select()</em> yardımıyla isim değişikliği <code>select(data, yeni=eski)</code> şeklinde yapılabilir ama bu aynı anda sütun yerini değiştirir. O yüzden eğer sadece isim değişikliği yapmak istiyorsanız <strong>rename()</strong> fonksiyonunu kullanabilirsiniz.</p>
-<p>Ayrıca, amacınız sadece sütunların yerini değiştirmek ise, <strong>relocate()</strong> fonksiyonunu kullanabilirsiniz.</p>
-<div class="cell">
+<section id="örnek-veriler-join-için" class="slide level2">
+<h2>Örnek Veriler (Join için)</h2>
+<p>İki basit tablo oluşturalım: Hastalar ve Ölçümler.</p>
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="pipe-hakkında" class="slide level2">
-<h2>Pipe | hakkında</h2>
-<p>Bir önceki slaytlarda kullandığımız pipe <code>|</code> karakteri, kendinden önce gelen tabloyu, kendinden sonra gelen komuta girdi olarak yönlendirmektedir. Bu özelliği sayesinde adımları tek tek değil, bir akış şeması gibi yazabiliriz.</p>
-<div class="cell">
+<section id="inner_join" class="slide level2">
+<h2><code>inner_join()</code></h2>
+<p>Sadece <strong>her iki</strong> tabloda da eşleşen anahtarlara sahip satırları birleştirir. Eşleşmeyen satırlar sonuçta yer almaz.</p>
 <div id="qwebr-insertion-location-8"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="filter" class="slide level2">
-<h2>Filter</h2>
-<p><strong>filter()</strong> fonksiyonu, SQL’deki <strong>WHERE</strong> komutu ile eştir. Belli bir koşulu sağlayan satırları tutar, sağlamayan satırları da eler. Kullanımı <code>filter(data, koşul)</code> şeklindedir. Koşullar oluşturulurken aşağıdaki fonksiyonlar kullanılabilir:</p>
-<ul>
-<li><code>==</code>, <code>&gt;</code>, <code>&gt;=</code> vs.</li>
-<li><code>&amp;</code>, <code>|</code>, <code>!</code></li>
-<li><code>is.na()</code></li>
-<li><code>between()</code></li>
-</ul>
-</section>
-<section id="filter-1" class="slide level2">
-<h2>Filter</h2>
-<div class="cell">
+<section id="left_join" class="slide level2">
+<h2><code>left_join()</code></h2>
+<p><strong>Soldaki</strong> (ilk belirtilen) tablonun <strong>tüm</strong> satırlarını korur. Sağdaki (ikinci belirtilen) tablodan eşleşen satırları getirir. Eşleşme yoksa, sağ tablodan gelen sütunlara <code>NA</code> değeri atanır.</p>
 <div id="qwebr-insertion-location-9"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<p>Bu işlem aslında</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a>istenen_satirlar <span class="ot">&lt;-</span> unvotes<span class="sc">$</span>session <span class="sc">&gt;</span> <span class="dv">10</span></span>
-<span id="cb1-2"><a></a><span class="fu">filter</span>(unvotes, istenen_satirlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<p>ile aynıdır. <strong>filter()</strong> fonksiyonuna <em>TRUE/FALSE</em> şeklinde bir vektör verilir, <em>TRUE</em> olan satırlar gösterilir. O yüzden, <em>TRUE/FALSE</em> üreten herhangi bir fonskiyonun çıktısı <strong>filter()</strong> fonskiyonu için kullanılabilir.</p>
 </section>
-<section id="filter-2" class="slide level2">
-<h2>Filter</h2>
-<p><code>&amp;</code>, <code>|</code>, <code>,</code> ile birden fazla koşul birleştirilebilir.</p>
-<div class="cell">
+<section id="right_join" class="slide level2">
+<h2><code>right_join()</code></h2>
+<p><strong>Sağdaki</strong> (ikinci belirtilen) tablonun <strong>tüm</strong> satırlarını korur. Soldaki (ilk belirtilen) tablodan eşleşen satırları getirir. Eşleşme yoksa, sol tablodan gelen sütunlara <code>NA</code> değeri atanır. (<code>left_join(y, x)</code> ile aynıdır).</p>
 <div id="qwebr-insertion-location-10"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="na" class="slide level2">
-<h2>NA</h2>
-<p>R dilinde <code>NA</code> yutan eleman gibidir.</p>
-<div class="cell">
+<section id="full_join" class="slide level2">
+<h2><code>full_join()</code></h2>
+<p><strong>Her iki</strong> tablodaki <strong>tüm</strong> satırları korur. Eşleşme olanları birleştirir, eşleşme olmayanlar için diğer tablodan gelen sütunlara <code>NA</code> değeri atanır.</p>
 <div id="qwebr-insertion-location-11"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<p>Bir değerin <code>NA</code> değerine eşit olup olmadığı <code>is.na()</code> fonksiyonu ile test edilir.</p>
 </section>
-<section id="filter-na" class="slide level2">
-<h2>Filter NA</h2>
-<p><code>is.na()</code> NA olması durumunda <code>TRUE</code> sonuç verdiği için, NA içeren satırları elemek için <code>is.na()</code> çıktısının değilini (<em>not</em>) almak gerekir. R dilinde ünlem işareti ile değil (<em>not</em>) alınmış olur.</p>
-<blockquote>
-<p><code>na.omit()</code> fonksiyonu ile, herhangi bir sütununda NA içeren bütün satırlar elenir.</p>
-</blockquote>
-<div class="cell">
+<section id="anahtar-sütunları-by" class="slide level2">
+<h2>Anahtar Sütunları (<code>by</code>)</h2>
+<ul>
+<li><code>by = "anahtar_sutun"</code>: Her iki tabloda da aynı isimde anahtar sütun varsa.</li>
+<li><code>by = c("sol_sutun" = "sag_sutun")</code>: Anahtar sütun isimleri farklıysa.</li>
+<li><code>by = join_by(sol_sutun == sag_sutun)</code>: Daha esnek eşleşmeler için (örn. &gt;=).</li>
+<li>Eğer <code>by</code> belirtilmezse, <code>dplyr</code> her iki tabloda ortak olan tüm sütunları anahtar olarak kullanmaya çalışır (dikkatli olun!).</li>
+</ul>
+</section>
+<section id="filtreleyici-joinler" class="slide level2">
+<h2>Filtreleyici Join’ler</h2>
+<p>Bu join’ler sütun eklemez, sadece filtreleme yaparlar:</p>
+<ul>
+<li><strong><code>semi_join(x, y, by = ...)</code></strong>: <code>x</code> tablosunda olup <code>y</code> tablosunda da <strong>eşleşmesi olan</strong> satırları <code>x</code>’ten alır.</li>
+<li><strong><code>anti_join(x, y, by = ...)</code></strong>: <code>x</code> tablosunda olup <code>y</code> tablosunda <strong>eşleşmesi olmayan</strong> satırları <code>x</code>’ten alır.</li>
+</ul>
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="between" class="slide level2">
-<h2>Between</h2>
-<p>Normalde, bir aralık için filtre yapılmak istendiğinde <code>session &gt;= 10, session &lt;= 20</code> şeklinde bir ifade kullanılabilir. Bunun yerine <code>between()</code> fonksiyonu kullanılabilir.</p>
-<div class="cell">
+<section id="akış-içinde-kullanım" class="slide level2">
+<h2>Akış İçinde Kullanım</h2>
+<p>Pivoting ve Joining işlemleri genellikle veri hazırlama akışının bir parçasıdır.</p>
 <div id="qwebr-insertion-location-13"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
 </section>
-<section id="filter-3" class="slide level2">
-<h2>Filter</h2>
-<p>Zaman kazandıracak bazı yöntemler:</p>
-<ul>
-<li><code>filter(country=="Turkey", country=="Brazil", country=="Japan")</code> yerine <em>%in%</em> operatörü kullanmak daha pratik olacaktır <code>filter(country %in% c("Turkey","Brazil","Japan")</code></li>
-<li><code>stringr</code> paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. <code>filter(str_detect(descr,"conflict")</code></li>
-</ul>
-<div class="cell">
+<section id="alıştırma-1-pivoting" class="slide level2">
+<h2>Alıştırma 1: Pivoting</h2>
+<p>Aşağıdaki geniş formattaki veri setini, <code>deney</code>, <code>ölçüm_tipi</code> ve <code>değer</code> sütunlarını içeren uzun formata çeviriniz.</p>
 <div id="qwebr-insertion-location-14"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-</div>
-<div class="footer">
-<p>karmaşık örüntüler aramayı mümkün kılan <a href="https://stringr.tidyverse.org/reference/str_detect.html">str_detect() örnekleri içeren sayfayı</a> ziyaret ediniz</p>
-</div>
+</section>
+<section id="alıştırma-2-joining" class="slide level2">
+<h2>Alıştırma 2: Joining</h2>
+<p>Aşağıdaki <code>gen_bilgi</code> ve <code>gen_ifade</code> tablolarını kullanarak, sadece protein kodlayan (“protein_coding”) genlerin ifade değerlerini içeren bir tablo oluşturunuz.</p>
+<div id="qwebr-insertion-location-15"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="karmaşık-birleştirme-öncesi-separate_rows" class="slide level2">
+<h2>Karmaşık Birleştirme Öncesi: <code>separate_rows()</code></h2>
+<p>Bazen birleştirmek istediğimiz anahtar sütun, tek bir hücrede birden fazla değeri barındırabilir (örn. “genA,genB”). Bu durumda doğrudan join yapmak mümkün olmaz. <code>tidyr::separate_rows()</code> bu değerleri ayrı satırlara bölerek join işlemini mümkün kılar.</p>
+<p><strong>Senaryo:</strong> Bir genin etkileşimde olduğu <em>birden fazla</em> partner geni içeren bir tablomuz var ve bu partner genlerin detaylarını eklemek istiyoruz.</p>
+</section>
+<section id="separate_rows-örneği" class="slide level2">
+<h2><code>separate_rows()</code> Örneği</h2>
+<div id="qwebr-insertion-location-16"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</section>
+<section id="separate_rows-uygulaması-ve-join" class="slide level2">
+<h2><code>separate_rows()</code> Uygulaması ve Join</h2>
+<p>Önce <code>partner_genler</code> sütununu ayıralım, sonra <code>gen_detaylari</code> ile birleştirelim:</p>
+<div id="qwebr-insertion-location-17"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+<p><strong>Not:</strong> Eğer amaç birden fazla <em>sütuna</em> ayırmak olsaydı (<code>chr1:1000-2000</code> gibi), o zaman <code>separate()</code> daha uygun olurdu. Ancak join için genellikle her anahtarın kendi satırında olması gerektiğinden <code>separate_rows()</code> daha yaygın kullanılır.</p>
+</section>
+<section id="özet" class="slide level2">
+<h2>Özet</h2>
+<p>Bu derste öğrendiklerimiz:</p>
+<ul>
+<li><strong><code>tidyr::pivot_longer()</code></strong>: Geniş veriyi analiz ve görselleştirmeye uygun uzun (tidy) formata dönüştürme.</li>
+<li><strong><code>tidyr::pivot_wider()</code></strong>: Uzun veriyi, özetleme veya raporlama için geniş formata dönüştürme.</li>
+<li><strong><code>dplyr</code> Join Fonksiyonları</strong>: Farklı tablolardaki ilişkili verileri birleştirmek için güçlü araçlar.
+<ul>
+<li><code>inner_join()</code>: Sadece eşleşenler.</li>
+<li><code>left_join()</code>: Sol tablonun tamamı + sağdan eşleşenler.</li>
+<li><code>full_join()</code>: Her iki tablonun tamamı.</li>
+<li><code>anti_join()</code> / <code>semi_join()</code>: Filtreleme amaçlı.</li>
+</ul></li>
+</ul>
+<p>Bu fonksiyonlar, veri hazırlama sürecinin temel taşlarındandır.</p>
 
 
 </section>
@@ -2415,44 +2412,6 @@ Alper Yılmaz
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
     window.document.addEventListener("DOMContentLoaded", function (event) {
       const toggleBodyColorMode = (bsSheetEl) => {

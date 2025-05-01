@@ -1,0 +1,472 @@
+---
+title: "Tidy Text Mining with {tidytext}"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders6"
+author: "Alper Yılmaz"
+date: 2025-04-18
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+resources:
+  - data
+webr:
+  packages: ['dplyr','tidytext','gutenbergr','janeaustenr','ggplot2'] # Install R packages on document open
+  autoload-packages: false       # Disable automatic loading of packages
+  show-startup-message: true     # Disable displaying status of webR initialization
+  render-df: gt-interactive
+  resources:
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/census.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv
+    - https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv
+filters:
+  - webr
+engine: knitr
+execute:
+  echo: true
+---
+
+
+Contents are modified from [github.com/juliasilge/tidytext-tutorial](https://github.com/juliasilge/tidytext-tutorial/)
+
+
+## Text as data
+
+Consider the following sentence spanning multiple lines in a book or article.
+
+```{r}
+#| echo: false
+library(tidyverse)
+```
+
+
+```{r}
+sample_text <- tibble(line=c(1,2), text=c("The quick brown fox jumps over", "the lazy dog."))
+sample_text
+```
+
+This is not tidy! How can we count, filter or join external data with this text?
+
+Tidy Data Principles + Text Mining = tidytext
+
+---
+
+![](images/tidytext_repo.png){fig-align="center"}
+
+::: footer
+<https://github.com/juliasilge/tidytext>
+:::
+
+---
+
+![](images/cover.png){fig-align="center"}
+
+::: footer
+<https://tidytextmining.com/>
+:::
+
+---
+
+## Packages
+
+```{r}
+library(tidyverse)
+library(tidytext)
+library(stopwords)
+library(gutenbergr)
+library(janeaustenr)
+library(widyr)
+```
+
+
+---
+
+## Tidy text
+
+```{r}
+sample_text |>
+    unnest_tokens(word, text)
+```
+
+Now, we have tidy data, *one-token-per-row*. All functions in *dplyr*, *tidyr* are available for complex analysis.
+
+::: footer
+Please go over examples about [unnest_tokens()](https://juliasilge.github.io/tidytext/reference/unnest_tokens.html) function and find out how to extract letters instead of words
+:::
+
+---
+
+## Gathering more data
+
+You can access the full text of many public domain works from [Project Gutenberg](https://www.gutenberg.org/) using the {gutenbergr} package.
+
+```{r}
+library(gutenbergr)
+
+full_text <- gutenberg_download(158)
+
+head(full_text)
+```
+
+:::footer
+**Note**: If *gutenberg_download()* function time outs then please install the package via `devtools::install_github("ropensci/gutenbergr")`
+:::
+
+---
+
+For reference, here's the first 30 lines of *Emma* by *Jane Austen* at Gutenberg Project
+
+```
+The Project Gutenberg eBook of Emma, by Jane Austen
+
+This eBook is for the use of anyone anywhere in the United States and
+most other parts of the world at no cost and with almost no restrictions
+whatsoever. You may copy it, give it away or re-use it under the terms
+of the Project Gutenberg License included with this eBook or online at
+www.gutenberg.org. If you are not located in the United States, you
+will have to check the laws of the country where you are located before
+using this eBook.
+
+Title: Emma
+
+Author: Jane Austen
+
+Release Date: August, 1994 [eBook #158]
+[Most recently updated: December 14, 2021]
+
+Language: English
+
+
+Produced by: An Anonymous Volunteer and David Widger
+
+*** START OF THE PROJECT GUTENBERG EBOOK EMMA ***
+
+
+
+
+Emma
+
+by Jane Austen
+```
+
+---
+
+## Your turn
+
+Please browse Project Gutenberg site and locate ID (*EBook-No.*) of your favorite book. Then extract the full text.
+
+---
+
+## Tidying the whole book {.smaller}
+
+Adding line numbers is optional, it might be helpful for various calculations.
+
+```{r}
+tidy_book <- full_text |>
+    mutate(line = row_number()) |>
+    unnest_tokens(word, text)         
+
+glimpse(tidy_book)
+```
+
+```{r}
+#| echo: false
+tidy_book |>
+  head() |>
+  knitr::kable()
+```
+
+::: footer
+Did you notice number of rows? That's side effect of *unnest*ing.
+:::
+
+---
+
+
+## What are the most common words? 
+
+
+```{r}
+tidy_book |>
+    count(word, sort = TRUE)
+```
+
+We have very uninteresting words on top of the list. They are called **stop words**. 
+
+---
+
+## Stop words {.smaller}
+
+If you have loaded {tidytext} package, a data frame called *stop_words* is loaded as well. However, that data frame is for English only. 
+
+```{r}
+glimpse(stop_words) 
+```
+
+For stop words in other languages you can use {stopwords} package. It contains more sources and languages
+
+```{r}
+get_stopwords(language = "tr", source = "nltk")
+```
+---
+
+## Remove stop words
+
+Can you guess what this code will do?
+
+```{r}
+#| output-location: slide
+#| fig-width: 9
+#| fig-align: center
+tidy_book |>
+    anti_join(get_stopwords(source = "smart")) |>   # OR anti_join(stop_words)
+    count(word, sort = TRUE) |>
+    slice_max(n, n = 20) |>
+    ggplot(aes(n, fct_reorder(word, n))) +  
+    geom_col() +
+    theme_classic()
+```
+
+---
+
+![](images/tilecounts-1.png)
+
+
+# Sentiment Analysis
+
+## Sentiment lexicons
+
+The three general-purpose lexicons are
+
+* `AFINN` from [Finn Årup Nielsen](http://www2.imm.dtu.dk/pubdb/views/publication_details.php?id=6010),
+* `bing` from [Bing Liu and collaborators](https://www.cs.uic.edu/~liub/FBS/sentiment-analysis.html), and
+* `nrc` from [Saif Mohammad and Peter Turney](http://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm).
+
+`tidytext` provides a function `get_sentiments()` to get specific sentiment lexicons without the columns that are not used in that lexicon.
+
+## Sentiment lexicons
+
+```{r}
+get_sentiments("afinn")
+```
+
+## Sentiment lexicons
+
+```{r}
+get_sentiments("bing")
+```
+
+## Sentiment lexicons
+
+```{r}
+get_sentiments("nrc")
+```
+
+## Sentiment lexicons
+
+```{r}
+#get_sentiments("loughran")
+```
+
+## Implementing sentiment analysis
+
+```{r}
+tidy_book |>
+    inner_join(get_sentiments("bing")) |> 
+    count(sentiment, sort = TRUE)
+```
+
+
+## Implementing sentiment analysis
+
+```{r}
+#| code-line-numbers: "3"
+tidy_book |>
+    inner_join(get_sentiments("bing")) |>        
+    count(sentiment, word, sort = TRUE)   
+```
+
+## Let's plot sentiments
+
+```{r}
+#| output-location: slide
+#| fig-width: 10
+#| fig-align: center
+tidy_book %>%
+    inner_join(get_sentiments("bing")) |>
+    count(sentiment, word, sort = TRUE) |>
+    group_by(sentiment) |>
+    slice_max(n, n = 10) |>
+    ungroup() |>
+    ggplot(aes(n, fct_reorder(word, n), fill = sentiment)) +
+    geom_col() +
+    ylab(NULL) +
+    xlab("Number of occurrences") +
+    facet_wrap(vars(sentiment), scales = "free") +
+    theme_classic()
+```
+
+---
+
+## Sentiment across book
+
+```{r}
+library(janeaustenr)
+
+austen_books <- austen_books() |>
+  group_by(book) |>
+  mutate(linenumber = row_number()) |>
+  ungroup()
+
+austen_books
+```
+
+---
+
+```{r}
+austen_sentiment <- austen_books |>
+  unnest_tokens(word, text) |>
+  inner_join(get_sentiments("bing")) |>
+  mutate(index= linenumber %/% 80) |>
+  count(book, index , sentiment) |>
+  pivot_wider(names_from = sentiment, 
+              values_from = n, 
+              values_fill = 0) |>
+  mutate(sentiment = positive - negative)
+
+austen_sentiment
+```
+
+---
+
+```{r}
+#| fig-width: 9
+#| fig-align: center
+austen_sentiment |>
+  ggplot(aes(index, sentiment, fill = book)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~book, ncol = 2, scales = "free_x")
+```
+
+---
+
+## Your turn
+
+
+* what is the most frequent word in “War and Peace” (gutenberg id=2600)
+* count letters in same book, which letters are the most frequent?
+* count letters in “Gadsby” (gutenberg id=47342). Did you notice something strange?
+
+---
+
+## All works of Charles Dickens
+
+Downloading all books and running unnest_tokens on them fills up the memory! Let's process each file separately, clean it and count words for each book then merge the results. Tet's use *purrr::map* for this with our custom function
+
+```{r}
+counts_from_gutenberg <- function(id){
+  gutenberg_download(id) |>
+    unnest_tokens(word, text) |> 
+    anti_join(stop_words, by="word")  |> 
+    count(word)
+}
+```
+
+
+## All works of Charles Dickens
+
+```{r}
+#| eval: false
+all_charles_dickens <- gutenberg_works() |>
+  filter(gutenberg_author_id==37) |>
+  mutate(book_content=map(gutenberg_id, counts_from_gutenberg))
+```
+
+This will download and process `all_charles_dickens` books. 
+
+Remember *furrr*, we have mentioned last week? You can do file processing in parallel if you like.
+
+## All works of Charles Dickens
+
+```{r}
+#| eval: false
+all_charles_dickens |>
+  select(title, book_content) |>
+  unnest(book_content) |>
+  arrange(-n)
+```
+
+::: footer
+we gathered counts from separate books, so a word is counted multiple times. how can you calculate overall word counts across all books?
+:::
+
+# TF-IDF
+
+---
+
+### Term frequency {.smaller}
+
+Term frequency (*tf*), reports how frequently a word occurs in a document. It is possible that some of these words might be more important in some documents than others. A list of stop words is not a very sophisticated approach to adjusting term frequency for commonly used words.
+
+### Inserve document frequency
+
+A term’s inverse document frequency (*idf*), which decreases the weight for commonly used words and increases the weight for words that are not used very much in a collection of documents.
+
+## tf-idf
+
+The statistic tf-idf is intended to measure how important a word is to a document in a collection (or corpus) of documents, for example, to one novel in a collection of novels or to one website in a collection of websites.
+
+$$idf(\text{term}) = \ln{\left(\frac{n_{\text{documents}}}{n_{\text{documents containing term}}}\right)}$$
+
+---
+
+## Counting word frequencies
+
+*tidytext* package has a function called *bind_tf_idf()* to calculate the TF-IDF. First, let's prepare counts per book for `austen_books`.
+
+```{r}
+austen_counts <- austen_books |>
+  unnest_tokens(word, text) |>
+  count(book, word, sort=TRUE)
+
+austen_counts
+```
+
+---
+
+```{r}
+austen_counts |> bind_tf_idf(word, book, n)
+```
+
+That was not interesting at all..
+
+---
+
+```{r}
+austen_counts |> 
+  bind_tf_idf(word, book, n) |>
+  arrange(-tf_idf)
+```
+
+
+---
+
+```{r}
+austen_counts |> 
+  bind_tf_idf(word, book, n) |>
+  group_by(book) %>%
+  slice_max(tf_idf, n = 10) %>%
+  ggplot(aes(tf_idf, fct_reorder(word, tf_idf), fill = book)) +
+  geom_col(show.legend = FALSE) +
+  facet_wrap(~book, scales = "free")
+```
+
