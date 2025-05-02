@@ -22,7 +22,7 @@
 
 ## Ders5
 
-*11 Nisan 2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders05.qmd)
+*28 Mart  2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders05.qmd)
 
 ## Ders6
 
