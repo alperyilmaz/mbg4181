@@ -1,0 +1,609 @@
+---
+title: "Tidy graph analysis with {tidygraph}"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders7"
+author: "Alper Yılmaz"
+date: 2025-05-02
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+typora-copy-images-to: images
+resources:
+  - data
+webr:
+  packages: ['dplyr','tidytext','gutenbergr','janeaustenr','ggplot2'] # Install R packages on document open
+  autoload-packages: false       # Disable automatic loading of packages
+  show-startup-message: true     # Disable displaying status of webR initialization
+  render-df: gt-interactive
+  resources:
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/census.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv
+    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv
+    - https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv
+filters:
+  - webr
+engine: knitr
+execute:
+  echo: true
+---
+
+Contents are modified from [I2DS Tools for Data Science workshop ](https://github.com/intro-to-data-science-21-workshop) by Ania Matysiak and Johanna Mehler
+
+---
+
+## Network analysis
+
+* "Connected data" is pretty common: Social network, biological networks
+* Tackled with "graph theory" algoritms
+
+---
+
+## Basic concepts of networks
+
+![](images/basics.jpg)
+
+---
+
+## Nodes and edges
+
+![](images/nodes.gif)
+
+---
+
+## Nodes and edges
+
+![](images/edges.jpg)
+
+---
+
+## Graph or Network
+
+![](images/graph_network.jpg)
+
+---
+
+## Types of networks
+
+![](images/image-20230525124113107.png)
+
+::: footer
+source: [EMBL-EBI Training | Network analysis of protein interaction data](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/introduction-to-graph-theory/graph-theory-graph-types-and-edge-properties/)
+:::
+
+----
+
+## Adjacency Matrices
+
+![](images/image-20230525124328050.png)
+
+
+::: footer
+source: [EMBL-EBI Training | Network analysis of protein interaction data](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/introduction-to-graph-theory/graph-theory-graph-types-and-edge-properties/)
+:::
+
+---
+
+## Network Topology
+
+Topology is the way in which the nodes and edges are arranged within a network
+
+![](images/image-20230525124501455.png)
+
+---
+
+![](images/image-20230525124519826.png)
+
+---
+
+![](images/image-20230525124539194.png)
+
+---
+
+![](images/image-20230525124559582.png)
+
+----
+
+![](images/image-20230525124618859.png)
+
+::: footer
+source: [EMBL-EBI Training | Network analysis of protein interaction data](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/introduction-to-graph-theory/graph-theory-graph-types-and-edge-properties/)
+:::
+
+---
+
+## Biological networks
+
+![](images/image-20230525124745082.png)
+
+::: footer
+source: [EMBL-EBI Training | Network analysis of protein interaction data](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/introduction-to-graph-theory/graph-theory-graph-types-and-edge-properties/)
+:::
+
+---
+
+## PPI
+
+![](images/image-20230525124831773.png)
+
+---
+
+## Tidy approach for network data
+
+How can we represent network data in a tidy way?
+
+{tidygraph} package keeps nodes and edges data as two separate tibble data. Both of which can be manipulated, processed with {dplyr} verbs.
+
+---
+
+## Graphs, a tidy approach
+
+![](images/tbl_graph.png)
+
+::: footer
+[source](https://bookdown.org/wangminjie/R4DS/eda-tidygraph.html)
+:::
+
+---
+
+## Sample network
+
+simple friend or following network
+
+```{r}
+library(tidyverse)
+library(tidygraph)
+
+friends <- tibble(person1 = c("alice", "charles", "david", "bob", "fiona", "gary", "bob", "alice", "david"), 
+                  person2 = c("bob", "bob", "bob", "allen", "bob", "bob", "henry", "allen", "fiona"))
+
+friends
+```
+
+---
+
+let's convert this dataframe to a graph/network
+
+```{r}
+friends_g <- friends |> as_tbl_graph()
+
+friends_g
+```
+
+---
+
+Let's calculate degrees. Notice that "bob" is followed by 5 people, "bob" follows 2 people (total degree 7)
+
+```{r}
+friends_g |> mutate(deg = centrality_degree())
+```
+
+**The default degree is `mode="out"`**
+
+---
+
+Let's get all connections (in and out)
+
+```{r}
+friends_g |>
+  mutate(deg = centrality_degree(mode="all"))
+```
+
+---
+
+Compare "in", "out" and "all" degree counts for **directed** and **undirected** graphs. Remember, the defaul is "Directed" graph and defult degree is "out"
+```{r}
+friends |> as_tbl_graph() |> mutate(default_deg=centrality_degree(),
+                                    in_deg=centrality_degree(mode="in"),
+                                    out_deg=centrality_degree(mode="out"),
+                                    all_deg=centrality_degree(mode="all"))
+```
+
+---
+
+```{r}
+friends |> as_tbl_graph(directed = FALSE) |> mutate(default_deg=centrality_degree(),
+                                    in_deg=centrality_degree(mode="in"),
+                                    out_deg=centrality_degree(mode="out"),
+                                    all_deg=centrality_degree(mode="all"))
+```
+
+---
+
+We can use *dplyr* verbs on *nodes* (or *edges*) tibbles. Let's do *inner_join* and *filter*ing.
+
+Let's have a data frame of birth years for people
+```{r}
+friends_bday <- tibble(name = c("alice", "charles", "david", "bob", "fiona", "gary", "henry", "allen"), 
+       bday = c("2001", "2001", "2002", "1999", "1997", "2003", "2000", "2005"))
+```
+
+Here are various processes (annotated)
+
+```{r}
+result <- friends_g |>
+  mutate(deg = centrality_degree(mode="all")) |>  # calculate degree for nodes
+  filter(deg > 1) |>                              # remove nodes with deg==1
+  inner_join(friends_bday) |>                     # join bday data with nodes
+  arrange(bday) |>                                # arrange nodes according to bday
+  activate(edges) |>                              # switch to edge tibble
+  mutate(betw = centrality_edge_betweenness()) |> # calculate betweenness for edges
+  activate(nodes)                                 # switch back to nodes tibble
+```
+
+---
+
+```{r}
+result
+```
+
+---
+
+## Visualization
+
+Let's create, process and visualize the toy network below
+
+![](images/diverse-centrality-measures-v00.png)
+
+::: footer
+source: [Social Network Analysis – part two](https://ultrabpm.wordpress.com/2013/03/25/social-network-analysis-part-two/)
+:::
+
+---
+
+```{r}
+sample_net <- readxl::read_excel("data/sample_network.xlsx") |>
+  as_tbl_graph(directed=FALSE)
+
+sample_net
+```
+
+::: footer
+The file *sample_network.xlsx* is under **data** folder at rstudio.cloud prject
+:::
+
+---
+
+## {.smaller}
+
+Let's calculate degree (connections) for each node and then arrange according to degree
+
+```{r}
+sample_net %>% 
+  mutate(deg=centrality_degree()) %>% 
+  arrange(-deg)
+```
+
+
+::: {.callout-note}
+*arrange* does not change shape or contents of the network
+:::
+
+---
+
+Which node was expected have highest betweenness?
+
+```{r}
+sample_net %>% 
+  mutate(betw=centrality_betweenness()) %>% 
+  arrange(-betw)
+```
+
+---
+
+## {ggraph} package {.smaller}
+
+*ggraph* is very similar to *ggplot*. We don't need to map *x* and *y* values, we just have *node* and *edge* info. We need to choose geom for the nodes (point, circle, text, etc.) and geom for edges (link, arc, diagonal, elbow, etc.)
+
+```{r}
+#| fig-width: 11
+library(ggraph)
+
+sample_net |>
+  ggraph() +
+  geom_node_point() +
+  geom_edge_link()
+```
+
+---
+
+## Labels as layer
+
+Let's add node labels with *geom_node_label*. This geom need mapping of **label** to a column, we'll be using *name* column.
+
+```{r}
+sample_net |>
+  ggraph() +
+  geom_node_point() +
+  geom_edge_link() +
+  geom_node_label(aes(label=name))
+```
+
+---
+
+We can map graph features (in this case *centrality_degree*) to node properties. Let's add *repel* for labels and use a theme specific for graphs.
+
+```{r}
+#| fig-width: 11
+#| output-location: slide
+sample_net |>
+  ggraph() +
+  geom_node_point(aes(size=centrality_degree())) +
+  geom_edge_link() +
+  geom_node_label(aes(label=name),repel = T) +
+  theme_graph()
+```
+
+---
+
+```{r}
+#| fig-width: 11
+#| output-location: slide
+sample_net %>%
+  ggraph() +
+  geom_node_point(aes(size=centrality_degree(), 
+                      color=centrality_betweenness())) +  
+  geom_edge_link() +
+  geom_node_label(aes(label=name),repel = T) +
+  theme_graph()
+```
+
+
+
+---
+
+## Network visualization layouts
+
+![](images/graph-layouts.png)
+
+::: footer
+source: [Static and dynamic network visualization with R](https://kateto.net/network-visualization). For more *ggraph* specific layouts please visit these posts [1](https://www.data-imaginist.com/2017/ggraph-introduction-layouts/) [2](https://www.data-imaginist.com/2019/1-giraffe-2-giraffe-go/) by *ggraph* author.
+:::
+
+---
+
+## Relationship between words
+
+Last week, we used {tidytext} to process text data. Let's calculate relationships between words and visualize it as a network.
+
+**Bigram** is *a pair of consecutive written units such as letters, syllables, or words*. In our case we'll be working on bigram words. Here's an example bigram word tokenization for the sentence "Quick brown fox jumps over lazy dog."
+
+```
+Quick brown
+      brown fox
+            fox jumps
+                jumps over
+                      over lazy
+                           lazy dog
+```
+
+---
+
+## Packages
+
+These are the packages that will be used
+
+```{r}
+library(tidytext)
+library(janeaustenr)
+library(widyr)
+library(ggraph)
+```
+
+Here's how bigram words are tokenized
+
+```{r}
+austen_bigrams <- austen_books() %>%
+  unnest_tokens(bigram, text, token = "ngrams", n = 2)
+```
+
+---
+
+```{r}
+austen_bigrams
+```
+
+Let's check most frequent bigrams
+
+```{r}
+austen_bigrams |> count(bigram, sort=TRUE)
+```
+
+---
+
+Removing stop words won't be a simple `anti_join` since we have two words in a row. We need to `separate` them into individual words.
+
+```{r}
+austen_bigram_clean <-   austen_bigrams |> 
+  separate(bigram, into=c("word1","word2")) |> 
+  anti_join(stop_words, by=c("word1"="word")) |>
+  anti_join(stop_words, by=c("word2"="word"))
+```
+
+Let's count now
+
+```{r}
+austen_bigram_clean |> count(word1, word2, sort=TRUE) |> head()
+```
+
+---
+
+## Network of bigrams
+
+In bigram count outout, we have "word1", "word2" and then frequency of them. This looks like two nodes and edge between them. Let's convert this data into network
+
+```{r}
+austen_bigram_clean |> 
+  filter(!is.na(word1)) |> 
+  count(word1, word2, sort=TRUE) |> 
+  filter(n>20) |>                    # filtering out infrequent pairs for cleaner result
+  as_tbl_graph()
+```
+
+
+--- 
+
+Let's visualize the network
+
+```{r}
+#| output-location: slide
+#| fig-width: 11
+#| fig-height: 7
+austen_bigram_clean |> 
+  filter(!is.na(word1)) |> 
+  count(word1, word2, sort=TRUE) |> 
+  filter(n>20) |>                    
+  as_tbl_graph() |>
+  ggraph(layout = "kk") + 
+  geom_node_point() + 
+  geom_edge_link() + 
+  geom_node_label(aes(label=name))
+```
+
+---
+
+## Co-occurrence and correlation {.smaller}
+
+Bigram counts only considers words which are **next to** each other. {widyr} package allows counting pairwise counting of words in a **predefined section/window**. Below is a visual describing {widyr} in action. 
+
+![](images/widyr.jpg)
+
+::: footer
+[Image source](https://bookdown.org/Maxine/tidy-text-mining/counting-and-correlating-pairs-of-words-with-widyr.html)
+:::
+
+---
+
+Let's count words in 10 line sections (considering single book)
+
+```{r}
+austen_section_words <- austen_books() |>
+  filter(book == "Pride & Prejudice") |>
+  mutate(section = row_number() %/% 10) |>
+  filter(section > 0) |>
+  unnest_tokens(word, text) |>
+  anti_join(stop_words)
+
+austen_section_words
+```
+
+---
+
+```{r}
+austen_section_words |>
+  pairwise_count(word, section, sort = TRUE) 
+```
+
+So, the words "darcy" and "elizabeth" were found in same section (10 lines) 144 times, irrespective of order or distance between them. 
+
+---
+
+Again, words are nodes and count is the edge data, let's convert this into network
+
+```{r}
+#| output-location: slide
+#| fig-width: 11
+#| fig-height: 7
+austen_section_words |>
+  pairwise_count(word, section, sort = TRUE) |> 
+  filter(n>20) |> 
+  as_tbl_graph(directed = F) |> 
+  activate(edges) |> 
+  distinct() |>            # removing duplicate edges
+  ggraph() + 
+  geom_node_point() + 
+  geom_edge_link() + 
+  geom_node_label(aes(label=name))
+```
+
+---
+
+## Pairwise correlation {.smaller}
+
+Pairs like "Elizabeth" and "Darcy" are the most common co-occurring words, but that's not particularly meaningful since *they're also the most common individual words.* We may instead want to examine **correlation** among words, which indicates how often they appear together relative to how often they appear separately.
+
+In particular, here we'll focus on the [phi coefficient](https://en.wikipedia.org/wiki/Phi_coefficient), a common measure for binary correlation. The focus of the phi coefficient is how much more likely it is that either **both** word X and Y appear, or **neither** do, than that one appears without the other.
+
+---
+
+## {.smaller}
+
+Consider the following table:
+
+|  | Has word Y | No word Y | Total |  |
+|------------|---------------|---------------|--------------|---|
+| Has word X | $n_{11}$ | $n_{10}$ | $n_{1\cdot}$ |  |
+| No word X | $n_{01}$ | $n_{00}$ | $n_{0\cdot}$ |  |
+| Total | $n_{\cdot 1}$ | $n_{\cdot 0}$ | n |  |
+
+For example, that $n_{11}$ represents the number of documents where both word X and word Y appear, $n_{00}$ the number where neither appears, and $n_{10}$ and $n_{01}$ the cases where one appears without the other. In terms of this table, the phi coefficient is:
+
+$$\phi=\frac{n_{11}n_{00}-n_{10}n_{01}}{\sqrt{n_{1\cdot}n_{0\cdot}n_{\cdot0}n_{\cdot1}}}$$
+> The phi coefficient is equivalent to the Pearson correlation, which you may have heard of elsewhere, when it is applied to binary data).
+
+---
+
+```{r}
+austen_section_words |>
+  group_by(word) |>
+  filter(n() >= 10) |>   # removing infrequent words for simpler calculations
+  ungroup() |>
+  pairwise_cor(word, section, sort = TRUE)
+```
+
+---
+
+Let's convert this to network and visualize it
+
+```{r}
+#| output-location: slide
+#| fig-width: 11
+#| fig-height: 7
+austen_section_words |>
+  group_by(word) |>
+  filter(n() >= 10) |>   # try lower numbers and see what happens
+  pairwise_cor(word, section, sort = TRUE) |> 
+  filter(correlation > 0.25) |> 
+  as_tbl_graph(directed=FALSE) |> 
+  ggraph(layout="kk") + 
+  geom_node_point() + 
+  geom_edge_link() + 
+  geom_node_label(aes(label=name))
+```
+
+---
+
+## Legos of tidy verbs {.smaller}
+
+Consider the following code, since different functions from different packages take in tidy data and output tidy data, we can combine them easily. The packages of each function is annotated at each line.
+
+```{r}
+#| eval: false
+austen_books() |>
+  filter(book == "Pride & Prejudice") |>       # dplyr
+  mutate(section = row_number() %/% 10) |>     # dplyr
+  filter(section > 0) |>                       # dplyr
+  unnest_tokens(word, text) |>                 # tidytext
+  anti_join(stop_words) |>                     # dplyr
+  group_by(word) |>                            # dplyr
+  filter(n() >= 10) |>                         # dplyr
+  pairwise_cor(word, section, sort = TRUE) |>  # widyr
+  filter(correlation > 0.25) |>                # dplyr
+  as_tbl_graph(directed=FALSE) |>              # tidygraph
+  mutate(deg=centrality_degree()) |>           # dplyr / tidygraph
+  ggraph(layout="kk") +                        # ggraph
+  geom_node_point() +                          # ggraph
+  geom_edge_link() +                           # ggraph
+  geom_node_label(aes(label=name))             # ggraph
+  
+```
+
+
+

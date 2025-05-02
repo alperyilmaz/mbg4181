@@ -5,7 +5,7 @@ project:
 execute:
   freeze: auto
 
-engine: knitr
+engines: ['knitr']
 
 website:
   title: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme"

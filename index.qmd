@@ -27,3 +27,7 @@
 ## Ders6
 
 *18 Nisan 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders06.qmd)
+
+## Ders7
+
+*2 Mayıs 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders07.qmd)
