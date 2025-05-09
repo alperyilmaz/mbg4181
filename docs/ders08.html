@@ -681,7 +681,45 @@ alper yilmaz
 <span id="cb25-3"><a></a><span class="fu">ggsave</span>(newplot, <span class="at">filename=</span><span class="st">"gpd-health.png"</span>, <span class="at">dpi =</span> <span class="dv">200</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="galleries" class="slide level2 smaller">
+<section id="custom-plot" class="slide level2">
+<h2>Custom plot</h2>
+<p>Let’s plot a custom plot showing Turkey’s change over years, adding OECD mean as horizontal line with The Economist theme. Let’s prepare the data to be overlaid:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>milli <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"Turkey"</span>)</span>
+<span id="cb26-2"><a></a>etiket <span class="ot">&lt;-</span> milli <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1982</span>)</span>
+<span id="cb26-3"><a></a>oecd_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">country=</span><span class="st">"oecd"</span>,<span class="at">year=</span><span class="dv">2007</span>,<span class="at">life_mean=</span><span class="dv">81</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>gapminder <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">alpha=</span>year)) <span class="sc">+</span> </span>
+<span id="cb27-4"><a></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb27-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb27-6"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb27-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>milli, <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb27-8"><a></a>  <span class="fu">geom_hline</span>(<span class="at">data=</span>oecd_data, </span>
+<span id="cb27-9"><a></a>             <span class="fu">aes</span>(<span class="at">yintercept=</span>life_mean), </span>
+<span id="cb27-10"><a></a>             <span class="at">color=</span><span class="st">"gray"</span>, </span>
+<span id="cb27-11"><a></a>             <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>etiket, <span class="fu">aes</span>(<span class="at">label=</span>country)) <span class="sc">+</span></span>
+<span id="cb27-13"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span> </span>
+<span id="cb27-14"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb27-15"><a></a>  <span class="fu">theme_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+</section>
+<section id="section-output" class="slide level2 output-location-slide"><h2></h2><div class="cell output-location-slide">
+<div class="cell-output-display">
+<div>
+<figure>
+<p><img data-src="ders08_files/figure-revealjs/unnamed-chunk-27-1.png" width="1152"></p>
+</figure>
+</div>
+</div>
+</div></section><section id="galleries" class="slide level2 smaller">
 <h2>Galleries</h2>
 <p>Please check the comprehensive list of <code>ggplot</code> related resources at <a href="https://github.com/erikgahner/awesome-ggplot2">awesome-ggplot2</a> repo at Github.</p>
 <p><a href="https://r-graph-gallery.com/">R Graph Gallery</a> has nicely categorized possible plots which might give an idea about what is available.</p>

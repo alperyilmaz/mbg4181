@@ -1286,5 +1286,19 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
     "section": "",
     "text": "Vize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+  },
+  {
+    "objectID": "ders08.html#custom-plot",
+    "href": "ders08.html#custom-plot",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "Custom plot",
+    "text": "Custom plot\nLet’s plot a custom plot showing Turkey’s change over years, adding OECD mean as horizontal line with The Economist theme. Let’s prepare the data to be overlaid:\n\nmilli &lt;- gapminder |&gt; filter(country==\"Turkey\")\netiket &lt;- milli |&gt; filter(year==1982)\noecd_data &lt;- tibble(country=\"oecd\",year=2007,life_mean=81)"
+  },
+  {
+    "objectID": "ders08.html#section",
+    "href": "ders08.html#section",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "",
+    "text": "gapminder |&gt;\n  filter(year==\"2007\") |&gt;\n  ggplot(aes(x=gdpPercap, y=lifeExp, alpha=year)) + \n  geom_smooth() +\n  geom_point() + \n  scale_x_log10() +\n  geom_point(data=milli, color=\"red\") +\n  geom_hline(data=oecd_data, \n             aes(yintercept=life_mean), \n             color=\"gray\", \n             linetype=\"dashed\") +\n  geom_text(data=etiket, aes(label=country)) +\n  facet_wrap(~continent) + \n  ylim(0,100) + \n  theme_economist()"
   }
 ]
