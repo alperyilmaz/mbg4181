@@ -31,3 +31,7 @@
 ## Ders7
 
 *2 Mayıs 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders07.qmd)
+
+## Ders8
+
+*9 Mayıs 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders08.qmd)

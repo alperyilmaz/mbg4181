@@ -1,0 +1,552 @@
+---
+title: "Grammar of Graphics: ggplot2 paketi"
+author: "alper yilmaz"
+date: 2025-05-09
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+execute:
+  echo: true
+cache: true
+engine: knitr
+---
+
+
+### Verinizi görselleştirin!
+
+![](images/DinoSequentialSmaller.gif)
+
+:::footer
+Kaynak: https://github.com/stephlocke/datasauRus
+:::
+
+---
+
+### ggplot paketi
+
+* Oldukça esnek ve güçlü
+* Tutarlı (grammar of graphics)
+* Aktif olarak geliştiriliyor ve geniş kullanıcı kitlesi
+* En başta biraz zor ama getirisi çok
+
+---
+
+### Birçok kaynak mevcut
+
+* [Official ggplot2 documentation](https://ggplot2.tidyverse.org/reference/)
+* [Official ggplot2 documentation](https://ggplot2.tidyverse.org/reference/)
+* [ggplot2 book](https://github.com/hadley/ggplot2-book)
+* [Cookbook for R](http://www.cookbook-r.com/Graphs/)
+* [Data visualisation chapter in R for Data Science](https://r4ds.had.co.nz/data-visualisation.html)
+* [A ggplot2 Tutorial for Beautiful Plotting in R (C. Scherer)](https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/)
+* [Data visualization: a practical introduction (K. Healy)](https://socviz.co/)
+* [Fundamentals of data visualization (C. Wilke)](https://clauswilke.com/dataviz/)
+
+
+---
+
+### Cheatsheet
+
+![](images/ggplot-cheatsheet.png)
+
+:::footer
+Kaynak: [Posit: Data visualization with ggplot2 cheatsheet](https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf)
+:::
+
+---
+
+### Veri *tidy* olmalı
+
+* Her değişkenin kendi sütunu olmalı
+* Her gözlemin kendi satırı olmalı
+* Her değerin kendi hücresi olmalı
+
+
+![](images/tidy-1.png)
+
+::: footer
+Kaynak: *R for Data Science* book, [Chapter 12 Tidy Data](https://r4ds.had.co.nz/tidy-data.html)
+:::
+
+---
+
+### Kullanılacak paket ve veri
+
+**Gapminder** veri setini kullanacağız
+
+```{r warning=FALSE, message=FALSE}
+library(tidyverse)
+library(gapminder)
+gapminder
+```
+
+---
+
+### Amaç
+
+Gapminder [sitesindeki](https://www.gapminder.org/tools/#%24model%24markers%24bubble%24encoding%24frame%24value=2007%3B%3B%3B%3B%3B&chart-type=bubbles&url=v1) bu görsele yakın bir görsel çizebilir miyiz?
+
+![](images/gapminder-2007.png)
+
+---
+
+### ggplot katmanları
+
+
+![](images/ge_themes.png)
+
+**Scales**, *Geometry* ve *Facets* arasında bir katman olarak sayılabilir.
+<br>
+<br>
+<br>
+
+::: footer
+Kaynak: [Chapter 15 - Introduction to ggplot2](https://englelab.gatech.edu/useRguide/introduction-to-ggplot2.html) of *EngleLab: useRguide* online book.
+:::
+
+---
+
+### İlk görsel 
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  ggplot()
+```
+
+---
+
+### İkinci görsel / veri katmanı
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp))
+```
+
+Veriyi  x ve y koordinatlarına eşledik ama nasıl gösterileceğini belirtmedik (point, line, box, cirlce, vs.)
+
+---
+
+### Aesthetics (`aes`) 
+
+Değişkenleri (age, distance) grafik elemanlara (eksen, renk) eşler
+
+![Deneme](images/common-aesthetics-1.png)
+
+::: footer
+Kaynak: *Fundamentals of Data Visualization*, [Chapter 2 Visualizing Data](https://clauswilke.com/dataviz/aesthetic-mapping.html)
+:::
+
+---
+
+### *geom*lar
+
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point()
+```
+
+::: footer
+Tam liste R4DS kitabının ilgili [kısmında](https://ggplot2-book.org/individual-geoms.html) ve [data visualization cheatsheet](https://raw.githubusercontent.com/rstudio/cheatsheets/main/data-visualization.pdf) sitesinde bulunabilir
+:::
+
+---
+
+### Soru
+
+* Sizce `geom_bar()` ve `geom_col()` nasıl bir görsel üretir?
+* Eğer `geom_lines()` ile çizgi çizmek istersek, veriyi yıla göre mi, ülkeye göre mi gruplamak gerekir?
+
+---
+
+## İşlenmiş veri ggplot'a pipe ile iletilebilir
+
+```{r}
+#| fig-width: 11
+#| code-line-numbers: "2"
+gapminder |> 
+  filter(year=="2007") |>
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point()
+```
+
+---
+
+
+::: {.callout-note}
+O halde, bütün tidyverse fonksiyonları, pipe sayesinde `ggplot` ile birleştirilebilir!
+:::
+
+::: {.callout-warning}
+Fonksiyonları birleştirmek için `|>` veya `%>%` kullanılırken ggplot katmanlarını birleştirmek için `+` kullanılır
+:::
+
+---
+
+### Geom properties
+
+Size, color, shape, width, transparency (alpha) of geoms can be either:
+
+* set to constant value
+* or, mapped to variable in our data
+
+---
+
+### Change color of all points
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point(color="red")
+```
+
+---
+
+### Map color to variable 
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point(aes(color=continent))
+```
+
+---
+
+### Color: to map or not to map
+
+Not mapping
+
+```{r}
+#| eval: false
+geom_point(colour = "red")
+# colour is given a concrete value ('red')
+```
+
+vs. mapping
+
+```{r}
+#| eval: false
+geom_point(aes(colour = continent))
+# colour maps a *variable* (using `aes`)
+```
+
+---
+
+### Mapping more features
+
+Let's map color to continent and point size to population
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop))
+```
+
+---
+
+### Mapped values can be scaled (*Scales* layer) {.smaller}
+
+Colors of discrete values are controlled by `scale_color_discrete`, `scale_color_manual` (and much more color palette packages)
+
+Colors of continuous data is controlled by `scale_color_continuous`, `scale_color_gradient` (and much more color palette packages)
+
+`continent` is discrete and `lifeExp` is continuous.
+
+Let's map color to `continent` and then modify the colors.
+
+---
+
+### Discrete mapping scale
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point() +
+  scale_color_manual(values = c("orange", "blue","red","green","black"))
+```
+---
+
+### Continuous mapping scale
+
+Now, let's map color to `lifeExp` and then modify the colors.
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=lifeExp)) +
+  geom_point() +
+  scale_color_gradient(low="blue",high = "red")
+```
+---
+
+### Scaling of X or Y coordinates {.smaller}
+
+General rule of thumb, if the range is large and large numbers skew results, use log scale. You can either use `mutate` and generate new column or you can use scaling functions. (Please type *scale_* and then press Tab). Below, `scale_x_log10()` was used for scaling *gdpPercap* data.
+
+```{r}
+#| echo: false
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10()
+```
+
+---
+
+### Multiple `geom_point` layers
+
+`ggplot` is very powerful and flexible. You can combine different geoms and generate unique plots. Let's color and emphasize countries which have population greater than 100 million.
+
+We'll generate another data frame keeping those countries and then plot as a separate `geom_point` layer.
+
+```{r}
+populated <- gapminder |> filter(year=="2007") |> filter(pop > 100000000)
+```
+
+---
+
+```{r}
+#| fig-width: 11
+#| code-line-numbers: "5"
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point() +
+  geom_point(data=populated, color="red", size=3)
+```
+
+---
+
+### Faceting layer
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point() +
+  facet_wrap(~continent)  # separate plots for each continent
+```
+
+---
+
+### Questions
+
+* The default (and correct) option for x and y is "not free". What happens if we have "free_x", "free_y" and both?
+* How can we have life expectancy starting from 0 (not minimum value)?
+
+---
+
+### Statistical summary as layer
+
+```{r}
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp)) +
+  geom_point() +
+  geom_smooth() +
+  facet_wrap(~continent) 
+```
+
+---
+
+### Theme as layer
+
+You can customize almost all aspects of your plot with `theme()` function. There are `theme_*` functions which can modify the appearance of the plot by altering several aspects at the same time.
+
+Let's apply `theme_classic()` to our plot (result in next slide).
+
+
+```{r}
+#| output-location: slide
+#| fig-width: 11
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10() +
+  theme_classic()
+```
+
+---
+
+### Theme packages
+
+There are many theme packages which can be used to apply themes of popular resources. Let's apply *The Economist* theme to your plot with single line of code
+
+```{r}
+#| output-location: slide
+#| fig-width: 11
+library(ggthemes)
+
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10() +
+  theme_economist()     # requires ggthemes package
+```
+
+
+---
+
+### Titles {.smaller}
+
+`labs()` function can be used to add title, subtitle and change X and Y axis labels. Below, we added the following layer
+
+```{.r}
+labs(x="GDP Per Capita (USD, Log10)", y="Life Expectancy (years)", 
+       title="Wealth vs. Life Expectancy", 
+       subtitle="Source: Gapminder (range: 1952-2007)")
+```
+
+```{r}
+#| fig-width: 11
+#| echo: false
+gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10() +
+  labs(x="GDP Per Capita (USD, Log10)", y="Life Expectancy (years)", 
+       title="Wealth vs. Life Expectancy", 
+       subtitle="Source: Gapminder (range: 1952-2007)") +
+  theme_minimal()
+```
+
+---
+
+### Interactive HTML output {.smaller}
+
+There are many packages which can embed html compatable plots/tables to your output. The code below generates an interactive plot by `plotly` package. See the next slide for results.
+
+You can hover, zoom in and out, select regions.
+
+```{r}
+#| output-location: slide
+library(plotly)
+
+gap_plot <- gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10() +
+  theme_minimal()
+
+ggplotly(gap_plot)
+```
+
+---
+
+### ggplot figures are objects
+
+You can assign plots to an object and then re-use them. You can add a layer to an existing plot. Let's make a plot and try different themes with it.
+
+```{r}
+baseplot <- gapminder %>% 
+  filter(year=="2007") %>% 
+  ggplot(aes(x=gdpPercap, y=lifeExp, color=continent)) +
+  geom_point(aes(size=pop)) +
+  scale_x_log10()
+```
+
+---
+
+### ggplot figures are objects
+
+:::: columns
+::: column
+
+```{r}
+baseplot + theme_dark()
+```
+:::
+
+::: column
+```{r}
+baseplot + theme_linedraw()
+```
+:::
+::::
+
+Plots as objects also help compositing figures from independent figures. Please check [patchwork](https://patchwork.data-imaginist.com/) and [cowplot](https://wilkelab.org/cowplot/articles/introduction.html) packages.
+
+---
+
+### Saving figures
+
+`ggsave()` function is used to save the plots you generated. It can save plots in PNG, PDF, SVG formats. The resolution and size of the image can be adjusted for high quality/resolution images.
+
+```{r}
+#| eval: false
+newplot <- baseplot + theme_classic()  
+  
+ggsave(newplot, filename="gpd-health.png", dpi = 200, width = 6, height = 6)
+```
+
+
+## Galleries {.smaller}
+
+Please check the comprehensive list of `ggplot` related resources at  [awesome-ggplot2](https://github.com/erikgahner/awesome-ggplot2) repo at Github.
+
+[R Graph Gallery](https://r-graph-gallery.com/) has nicely categorized possible plots which might give an idea about what is available.
+
+Ggplot is much more powerful than you can ever imagine. Please browse the galleries by the following users. For some users you might need to browse the individual folders.
+
+* Cédric Scherer makes professional plots with ggplot. Check out his gallery at https://github.com/z3tt/TidyTuesday (visit [individual folders](https://github.com/z3tt/TidyTuesday/tree/main/plots) for R code)
+
+* Tanya Shapiro [https://github.com/tashapiro/TidyTuesday](https://github.com/tashapiro/TidyTuesday)
+* Ryan Hart [https://github.com/curatedmess/TidyTuesday](https://github.com/curatedmess/TidyTuesday)
+* Christophe Nicault [https://github.com/cnicault/tidytuesday](https://github.com/cnicault/tidytuesday)
+* Georgios Karamanis [https://github.com/gkaramanis/tidytuesday](https://github.com/gkaramanis/tidytuesday)
+
+
+## Biology and bioinformatics related ggplot packages {.segue}
+
+## ggbio
+
+![](https://raw.githubusercontent.com/tengfei/ggbio/gh-pages/images/interval.png)
+
+
+## ggenomes
+
+![](https://raw.githubusercontent.com/thackl/gggenomes/master/man/figures/emales.png)
+
+
+## ggtrees / ggtreeextra {background-image="https://yulab-smu.top/treedata-book/treedata_files/figure-html/HMPplot-1.png" background-size=contain}
+
+
+## ggmsa
+
+![](images/ggmsa.png)
+
+
+
+
+
+
+
