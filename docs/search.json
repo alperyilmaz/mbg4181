@@ -812,6 +812,55 @@
     "text": "test4\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
+    "objectID": "ders08.html#işlenmiş-veri-ggplota-pipe-ile-iletilebilir",
+    "href": "ders08.html#işlenmiş-veri-ggplota-pipe-ile-iletilebilir",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "İşlenmiş veri ggplot’a pipe ile iletilebilir",
+    "text": "İşlenmiş veri ggplot’a pipe ile iletilebilir\n\ngapminder |&gt; \n  filter(year==\"2007\") |&gt;\n  ggplot(aes(x=gdpPercap, y=lifeExp)) +\n  geom_point()"
+  },
+  {
+    "objectID": "ders08.html#galleries",
+    "href": "ders08.html#galleries",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "Galleries",
+    "text": "Galleries\nPlease check the comprehensive list of ggplot related resources at awesome-ggplot2 repo at Github.\nR Graph Gallery has nicely categorized possible plots which might give an idea about what is available.\nGgplot is much more powerful than you can ever imagine. Please browse the galleries by the following users. For some users you might need to browse the individual folders.\n\nCédric Scherer makes professional plots with ggplot. Check out his gallery at https://github.com/z3tt/TidyTuesday (visit individual folders for R code)\nTanya Shapiro https://github.com/tashapiro/TidyTuesday\nRyan Hart https://github.com/curatedmess/TidyTuesday\nChristophe Nicault https://github.com/cnicault/tidytuesday\nGeorgios Karamanis https://github.com/gkaramanis/tidytuesday"
+  },
+  {
+    "objectID": "ders08.html#biology-and-bioinformatics-related-ggplot-packages",
+    "href": "ders08.html#biology-and-bioinformatics-related-ggplot-packages",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "Biology and bioinformatics related ggplot packages",
+    "text": "Biology and bioinformatics related ggplot packages"
+  },
+  {
+    "objectID": "ders08.html#ggbio",
+    "href": "ders08.html#ggbio",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "ggbio",
+    "text": "ggbio"
+  },
+  {
+    "objectID": "ders08.html#ggenomes",
+    "href": "ders08.html#ggenomes",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "ggenomes",
+    "text": "ggenomes"
+  },
+  {
+    "objectID": "ders08.html#ggtrees-ggtreeextra",
+    "href": "ders08.html#ggtrees-ggtreeextra",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "ggtrees / ggtreeextra",
+    "text": "ggtrees / ggtreeextra"
+  },
+  {
+    "objectID": "ders08.html#ggmsa",
+    "href": "ders08.html#ggmsa",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "ggmsa",
+    "text": "ggmsa"
+  },
+  {
     "objectID": "ders01.html#data-science-veri-bilimi",
     "href": "ders01.html#data-science-veri-bilimi",
     "title": "Veri Analizi Temelleri",
@@ -949,7 +998,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki\n\n\n\n2 Mayıs 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n28 Mart 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki\n\n\n\n2 Mayıs 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki\n\n\n\n9 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -991,7 +1040,7 @@
     "href": "index.html#ders5",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "11 Nisan 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
+    "text": "28 Mart 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
   },
   {
     "objectID": "index.html#ders6",
@@ -1006,6 +1055,13 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "2 Mayıs 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders8",
+    "href": "index.html#ders8",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "9 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki"
   },
   {
     "objectID": "ders05.html#veri-şekillendirme-ve-birleştirme",

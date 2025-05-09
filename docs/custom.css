@@ -54,3 +54,17 @@
   padding: 7px;
   border-radius: 10px;
 }
+
+.reveal p {
+  margin-bottom: 30px; /* Adds a 30px margin to the bottom of each <p> element */
+}
+
+figcaption {
+  text-align: center;
+  color: gray;
+}
+
+.caption {
+  text-align: center;
+  color: gray;
+}
