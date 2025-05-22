@@ -1,0 +1,21 @@
+---
+title: "Notlar"
+format: html
+---
+
+Aşağıda, öğrenci numaranız ve notlarınızı görebilirsiniz. Vize1 ağırlığı %40, Final sınavının ağırlığı %40 olacaktır. 4 Quiz'den en yüksek 3 tanesi alınıp hesaplanacak ve %20 katkıda bulunacaktır.
+
+```{r}
+#| echo: false
+#| message: false
+
+library(readr)
+library(dplyr)
+library(gt)
+
+read_tsv("notlar.tsv") |>
+  gt() |>
+  sub_missing( missing_text = "-") |>
+  cols_align(align="center")
+
+```
