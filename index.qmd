@@ -35,3 +35,11 @@
 ## Ders8
 
 *9 Mayıs 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders08.qmd)
+
+## Ders9
+
+*16 Mayıs 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme konusuna devam edildi. [Sunum linki](ders08.qmd)
+
+## Ders10
+
+*23 Mayıs 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders09.qmd)

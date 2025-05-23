@@ -1,0 +1,452 @@
+---
+title: "Sonuçların ve çıktıların paylaşılması"
+author: "alper yilmaz"
+date: 2025-05-23
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+execute:
+  echo: true
+cache: true
+engine: knitr
+---
+
+
+## Communicate 
+
+:::: columns
+::: {.column width="30%"}
+
+> What good is an image/analysis/result if you are unable to communicate
+
+:::
+
+::: {.column width="70%"}
+
+![](https://i.imgflip.com/5aurb0.jpg)
+
+:::
+::::
+
+
+::: footer
+source: [imgflip](https://imgflip.com/memetemplate/320562108/What-good-is-a-phone-call-if-you-are-unable-to-speak)
+:::
+
+---
+
+## Tidy workflow
+
+Communicating your findings is part of Data analysis/Data science
+
+![](https://d33wubrfki0l68.cloudfront.net/795c039ba2520455d833b4034befc8cf360a70ba/558a5/diagrams/data-science-explore.png)
+
+::: footer
+source: [R for Data Science](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
+:::
+
+---
+
+<!-- background-image="attachments/tidyverse.png" background-size="contain" -->
+
+Packages we have learned so far specialize in one part of the workflow. Quarto (also RMarkdown) helps communicating our results.
+
+![](images/tidyverse.png)
+
+::: footer
+source: [Getting Started with tidyverse in R](https://www.storybench.org/getting-started-with-tidyverse-in-r/)
+:::
+
+---
+
+## Quarto (aside RMarkdown)
+
+![](images/image-20230601130108468.png)
+
+:::{.callout-tip}
+RMarkdown is still actively used but please use Quarto
+:::
+
+---
+
+
+
+## How it works
+
+* A compute engine (`knitr` for R *or* Jupyter Notebook) will compute and run your code chunks and embed their results in Markdown file
+* Pandoc will convert markdown format into various formats
+
+![](images/rstudio-qmd-how-it-works.png)
+
+::: footer
+
+source: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstudio.html)
+
+:::
+
+---
+
+Quarto document is a plain text file which can be rendered into ...
+![](images/image-20230603192736148.png)
+
+
+
+---
+
+... HTML
+
+![](images/image-20230603192835703.png)
+
+---
+
+## Your turn
+
+Let's create our first Quarto document and then render it.
+
+![](images/image-20230603192930055.png)
+
+::: footer
+`quarto` is installed in rstudio.cloud project. If you're using your local RStudio, you might need to install quarto in your own computer ([instructions](https://quarto.org/docs/get-started/)).
+:::
+
+---
+
+Provide title for your document (this is **not** filename!)
+
+![](images/image-20230603194140902.png)
+
+---
+
+We have **Untitled** file, let's save this file
+
+
+![](images/rename-new-file.png)
+
+---
+
+Now, we are ready to **Render** the document
+
+
+
+![](images/image-20230603193032628.png)
+
+
+
+---
+
+The rendered HTML document will be opened automatically in your browser
+
+![](images/image-20230603192835703.png)
+
+---
+
+## Editor 
+
+You can use **Source** (left) or **Visual** editor (right) when editing your Quarto document.
+
+![](images/editor-types.png)
+
+---
+
+## Plotting images {.smaller}
+
+Let's imagine your're preparing a document with plots. Probably, you'll prepare the plot in Excel (or some other software) and then copy/paste it into Word. 
+
+If data changes later, then you have to repeat both *preparing the plot* and *updating the Word* steps. 
+
+In case of Quarto (or Jupyter Notebook), you just need to re-render the document. Images, tables and text will be updated at once. 
+
+Also, your Quarto document will contain the *the recipe* (*i.e.* the code) used for preparing the final document.  
+
+Consider the Quarto document in next slide, it draws a plot using *airquality* data set using `ggplot`. As you have noticed, there's no saving a file and then copying it in order to include the image file.
+
+---
+
+
+````r
+---
+title: "ggplot2 demo"
+author: "Norah Jones"
+date: "5/22/2021"
+format: 
+  html:
+    fig-width: 8
+    fig-height: 4
+    code-fold: true
+---
+
+## Air Quality
+
+@fig-airquality further explores the impact of temperature on ozone level.
+
+```{{r}}
+#| label: fig-airquality
+#| fig-cap: "Temperature and ozone level."
+#| warning: false
+
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess"
+)
+```
+
+````
+
+* lines 1-10 (called *YAML header*) describe document properties
+* line 14 contains citation to the image (which will be calculated as *Figure 1* automatically)
+* lines 16-27 contains the R code chunk and lines 17-19 contains chunk options
+
+---
+
+This document will be rendered as follows
+
+:::: columns
+::: {.column width="70%"}
+
+![](images/image-20230603215133488.png)
+:::
+
+::: {.column width="30%"}
+
+As you have noticed, the figure number is determined automatically, the caption is placed under the image, the code is folded (will be revealed when clicked)
+:::
+::::
+
+---
+
+Pandoc can convert markdown format into HTML, PDF or Word (actually many more). Let's convert the **same document** into three different formats by changing the `format: html` into either `format: pdf` or `format: docx`
+
+---
+
+![](images/image-20230603224842217.png)
+
+
+::: footer
+For converting to PDF version, you have to install separate software 
+:::
+
+---
+
+![](images/image-20230603224714312.png)
+
+
+---
+
+## More code chunk options
+
+In HTML format, you can show the tables (data frames, tibbles) as HTML tables (browsing next page) just like in RStudio.
+
+Let's add the following chunk to our document and then render it (also add *df-print: paged* option in document properties)
+
+````r
+```{{r}}
+#| echo: false
+#| warning: false
+#| cache: true
+library(tidyverse)
+
+mpg_avg <- mpg |>
+  group_by(manufacturer, cyl) |>
+  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))
+
+mpg_avg
+```
+````
+
+Let's go over the chunk options: *echo: false* means that the code will not be shown in final document, *warning: false* will suppress any warning or messages, *cache: true* means that the calculation in that chunk will be cached and won't be re-calculated (unless chunk is modified) in following renderings.
+
+---
+
+![](images/image-20230603231547747.png)
+
+---
+
+## Packages for better tables
+
+There are numerous R packages for generating beautiful tables to be embedded into HTML or PDF formats. {reacttable} and {gt} are very capable, professional looking tables can be easily prepared with these packages.
+
+Especially {gt} package is very capable. Please visit its [introduction site](https://gt.rstudio.com/articles/intro-creating-gt-tables.html) and [gallery](https://community.rstudio.com/c/table-gallery/64?tags=gt)
+
+
+---
+
+## gt table example
+
+![](images/image-20230604164713201.png)
+
+::: footer
+source: [Riding tables with {gt} and {gtExtras}](https://bjnnowak.netlify.app/2021/10/04/r-beautiful-tables-with-gt-and-gtextras/)
+:::
+
+---
+
+## gt table example 1
+
+![](images/image-20230604165458528.png)
+
+::: footer
+source: [Using {gt}, {gtExtras} and {openair} to present air quality monitoring data](https://jack-davison.quarto.pub/gt-openair/)
+:::
+
+---
+
+## Inline code
+
+Again, let's imagine, in our document we want to have statements like *"the dataset contained 234 rows"*. We'd face the same challenge if data is updated, we have to locate such statements scattered in our document and then update one by one. 
+Actually, you can have inline R code have such calculations embedded by code. 
+
+The rendering of following line in Quarto document is shown in next slide.
+
+```r
+There are 'r nrow(mtcars)' observations in **mtcars** data. The table below shows average city and highway mileage 
+per make and cyclinder number.
+```
+
+---
+
+![](images/image-20230603233304348.png)
+---
+
+## And much more
+
+Quarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found [here](https://rpubs.com/alperyilmaz/my-first-quarto)
+
+````r
+---
+title: "ggplot2 demo"
+author: "alper"
+date: "6/1/2023"
+toc: true
+number-sections: true
+bibliography: references.bib
+format: 
+  html:
+    fig-width: 8
+    fig-height: 4
+    code-fold: true
+    code-link: true
+    df-print: paged
+  pdf:
+    geometry: 
+      - top=30mm
+      - left=30mm
+  docx: default
+---
+
+# Air Quality
+
+@fig-airquality further explores the impact of temperature on ozone level.
+
+```{{r}}
+#| label: fig-airquality
+#| fig-cap: "Temperature and ozone level."
+#| echo: true
+#| warning: false
+
+library(tidyverse)
+library(ggplot2)
+
+ggplot(airquality, aes(Temp, Ozone)) + 
+  geom_point() + 
+  geom_smooth(method = "loess"
+)
+```
+
+
+# mpg data
+
+## mpg scatter plot
+
+@fig-scatterplot shows correlation between highway and city mileages. 
+
+```{{r}}
+#| label: fig-scatterplot
+#| fig-cap: "City and highway mileage for 38 popular models of cars."
+#| fig-alt: "Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases."
+#| fig-width: 6
+#| fig-height: 3.5
+
+ggplot(mpg, aes(hwy, cty, color=cyl)) + 
+  geom_point(alpha=0.5, size=2) +
+  scale_color_viridis_c() +
+  theme_minimal()
+```
+
+## the mpg data as table
+
+There are `r nrow(mtcars)` observations in our data.
+
+```{{r}}
+#| echo: false
+#| warning: false
+#| cache: true
+mpg |>
+  group_by(manufacturer, cyl) |>
+  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))
+```
+
+Hypothetical `table_viewer` will show your tables in a much better way.
+
+```{{r}}
+#| eval: false
+table_viewer(mpg)
+```
+
+# Formulas
+
+you can have formulas in your document
+
+
+$$
+price = \hat{\beta}_0 + \hat{\beta}_1 \times area + \epsilon
+$$
+
+# Citations
+
+We're going to do this analysis using literate programming [@Knuth1984].
+
+# Layout
+
+## Callouts
+
+::: {.callout-note}
+Here's some information
+:::
+
+````
+
+---
+
+## Shiny
+
+Shiny allows your users to interact with your content (*i.e* a web app) online without requiring any web development skills.
+
+In a Shiny web app, web elements (text input, drop down menus, sliders, etc.) are used as input for your R code where the code is update upon user input.
+
+Please visit the [Gallery](https://shiny.posit.co/r/gallery/) and interact with the demos. 
+
+---
+
+## Additional resources about Quarto
+
+Please visit these sites for more information about Quarto and its capabilities
+
+* [Quarto Gallery](https://quarto.org/docs/gallery/) site has lots of examples
+* [Quarto guide](https://quarto.org/docs/guide/)
+* [Quarto chapter](https://r4ds.hadley.nz/quarto.html) at *R for Data Science* book
+* [Posit Quarto cheetsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
+* [DataCamp Quarto Cheatsheet](https://res.cloudinary.com/dyd911kmh/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf)
+
+## Bu sunumun kaynak kodu
+
+Şu anda görüntülediğiniz sunum da Quarto ile hazırlanmıştır. Kaynak kodlarını [alperyilmaz/mbg4181](https://github.com/alperyilmaz/mbg4181/) Github sayfasında inceleyebilirsiniz.
