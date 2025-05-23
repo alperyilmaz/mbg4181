@@ -403,7 +403,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n28 Mart 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki\n\n\n\n2 Mayıs 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki\n\n\n\n9 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Şubat 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n7 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n14 Mart 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n21 Mart 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n28 Mart 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n18 Nisan 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki\n\n\n\n2 Mayıs 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki\n\n\n\n9 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki\n\n\n\n16 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n23 Mayıs 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -467,6 +467,20 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
     "text": "9 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders9",
+    "href": "index.html#ders9",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "16 Mayıs 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki"
+  },
+  {
+    "objectID": "index.html#ders10",
+    "href": "index.html#ders10",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "23 Mayıs 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki"
   },
   {
     "objectID": "ders01.html#data-science-veri-bilimi",
@@ -600,6 +614,118 @@
     "title": "Veri Analizi Temelleri",
     "section": "Biyoloji ve tidyverse",
     "text": "Biyoloji ve tidyverse\nBioconductor paketleri listesinde “tidy” kelimesini aratınız."
+  },
+  {
+    "objectID": "ders09.html#communicate",
+    "href": "ders09.html#communicate",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Communicate",
+    "text": "Communicate\n\n\n\nWhat good is an image/analysis/result if you are unable to communicate\n\n\n\n\n\nsource: imgflip"
+  },
+  {
+    "objectID": "ders09.html#tidy-workflow",
+    "href": "ders09.html#tidy-workflow",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Tidy workflow",
+    "text": "Tidy workflow\nCommunicating your findings is part of Data analysis/Data science\n\n\nsource: R for Data Science"
+  },
+  {
+    "objectID": "ders09.html#quarto-aside-rmarkdown",
+    "href": "ders09.html#quarto-aside-rmarkdown",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Quarto (aside RMarkdown)",
+    "text": "Quarto (aside RMarkdown)\n\n\n\n\n\n\n\nTip\n\n\nRMarkdown is still actively used but please use Quarto"
+  },
+  {
+    "objectID": "ders09.html#how-it-works",
+    "href": "ders09.html#how-it-works",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "How it works",
+    "text": "How it works\n\nA compute engine (knitr for R or Jupyter Notebook) will compute and run your code chunks and embed their results in Markdown file\nPandoc will convert markdown format into various formats\n\n\n\nsource: Tutorial: Hello, Quarto"
+  },
+  {
+    "objectID": "ders09.html#your-turn",
+    "href": "ders09.html#your-turn",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Your turn",
+    "text": "Your turn\nLet’s create our first Quarto document and then render it.\n\n\nquarto is installed in rstudio.cloud project. If you’re using your local RStudio, you might need to install quarto in your own computer (instructions)."
+  },
+  {
+    "objectID": "ders09.html#editor",
+    "href": "ders09.html#editor",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Editor",
+    "text": "Editor\nYou can use Source (left) or Visual editor (right) when editing your Quarto document."
+  },
+  {
+    "objectID": "ders09.html#plotting-images",
+    "href": "ders09.html#plotting-images",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Plotting images",
+    "text": "Plotting images\nLet’s imagine your’re preparing a document with plots. Probably, you’ll prepare the plot in Excel (or some other software) and then copy/paste it into Word.\nIf data changes later, then you have to repeat both preparing the plot and updating the Word steps.\nIn case of Quarto (or Jupyter Notebook), you just need to re-render the document. Images, tables and text will be updated at once.\nAlso, your Quarto document will contain the the recipe (i.e. the code) used for preparing the final document.\nConsider the Quarto document in next slide, it draws a plot using airquality data set using ggplot. As you have noticed, there’s no saving a file and then copying it in order to include the image file."
+  },
+  {
+    "objectID": "ders09.html#more-code-chunk-options",
+    "href": "ders09.html#more-code-chunk-options",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "More code chunk options",
+    "text": "More code chunk options\nIn HTML format, you can show the tables (data frames, tibbles) as HTML tables (browsing next page) just like in RStudio.\nLet’s add the following chunk to our document and then render it (also add df-print: paged option in document properties)\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nlibrary(tidyverse)\n\nmpg_avg &lt;- mpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n\nmpg_avg\n```\nLet’s go over the chunk options: echo: false means that the code will not be shown in final document, warning: false will suppress any warning or messages, cache: true means that the calculation in that chunk will be cached and won’t be re-calculated (unless chunk is modified) in following renderings."
+  },
+  {
+    "objectID": "ders09.html#packages-for-better-tables",
+    "href": "ders09.html#packages-for-better-tables",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Packages for better tables",
+    "text": "Packages for better tables\nThere are numerous R packages for generating beautiful tables to be embedded into HTML or PDF formats. {reacttable} and {gt} are very capable, professional looking tables can be easily prepared with these packages.\nEspecially {gt} package is very capable. Please visit its introduction site and gallery"
+  },
+  {
+    "objectID": "ders09.html#gt-table-example",
+    "href": "ders09.html#gt-table-example",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "gt table example",
+    "text": "gt table example\n\n\nsource: Riding tables with {gt} and {gtExtras}"
+  },
+  {
+    "objectID": "ders09.html#gt-table-example-1",
+    "href": "ders09.html#gt-table-example-1",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "gt table example 1",
+    "text": "gt table example 1\n\n\nsource: Using {gt}, {gtExtras} and {openair} to present air quality monitoring data"
+  },
+  {
+    "objectID": "ders09.html#inline-code",
+    "href": "ders09.html#inline-code",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Inline code",
+    "text": "Inline code\nAgain, let’s imagine, in our document we want to have statements like “the dataset contained 234 rows”. We’d face the same challenge if data is updated, we have to locate such statements scattered in our document and then update one by one. Actually, you can have inline R code have such calculations embedded by code.\nThe rendering of following line in Quarto document is shown in next slide.\nThere are 'r nrow(mtcars)' observations in **mtcars** data. The table below shows average city and highway mileage \nper make and cyclinder number."
+  },
+  {
+    "objectID": "ders09.html#and-much-more",
+    "href": "ders09.html#and-much-more",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "And much more",
+    "text": "And much more\nQuarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found here\n---\ntitle: \"ggplot2 demo\"\nauthor: \"alper\"\ndate: \"6/1/2023\"\ntoc: true\nnumber-sections: true\nbibliography: references.bib\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    code-link: true\n    df-print: paged\n  pdf:\n    geometry: \n      - top=30mm\n      - left=30mm\n  docx: default\n---\n\n# Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| echo: true\n#| warning: false\n\nlibrary(tidyverse)\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\n\n# mpg data\n\n## mpg scatter plot\n\n@fig-scatterplot shows correlation between highway and city mileages. \n\n```{r}\n#| label: fig-scatterplot\n#| fig-cap: \"City and highway mileage for 38 popular models of cars.\"\n#| fig-alt: \"Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases.\"\n#| fig-width: 6\n#| fig-height: 3.5\n\nggplot(mpg, aes(hwy, cty, color=cyl)) + \n  geom_point(alpha=0.5, size=2) +\n  scale_color_viridis_c() +\n  theme_minimal()\n```\n\n## the mpg data as table\n\nThere are 32 observations in our data.\n\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nmpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n```\n\nHypothetical `table_viewer` will show your tables in a much better way.\n\n```{r}\n#| eval: false\ntable_viewer(mpg)\n```\n\n# Formulas\n\nyou can have formulas in your document\n\n\n$$\nprice = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\times area + \\epsilon\n$$\n\n# Citations\n\nWe're going to do this analysis using literate programming [@Knuth1984].\n\n# Layout\n\n## Callouts\n\n::: {.callout-note}\nHere's some information\n:::"
+  },
+  {
+    "objectID": "ders09.html#shiny",
+    "href": "ders09.html#shiny",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Shiny",
+    "text": "Shiny\nShiny allows your users to interact with your content (i.e a web app) online without requiring any web development skills.\nIn a Shiny web app, web elements (text input, drop down menus, sliders, etc.) are used as input for your R code where the code is update upon user input.\nPlease visit the Gallery and interact with the demos."
+  },
+  {
+    "objectID": "ders09.html#additional-resources-about-quarto",
+    "href": "ders09.html#additional-resources-about-quarto",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Additional resources about Quarto",
+    "text": "Additional resources about Quarto\nPlease visit these sites for more information about Quarto and its capabilities\n\nQuarto Gallery site has lots of examples\nQuarto guide\nQuarto chapter at R for Data Science book\nPosit Quarto cheetsheet\nDataCamp Quarto Cheatsheet"
+  },
+  {
+    "objectID": "ders09.html#bu-sunumun-kaynak-kodu",
+    "href": "ders09.html#bu-sunumun-kaynak-kodu",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Bu sunumun kaynak kodu",
+    "text": "Bu sunumun kaynak kodu\nŞu anda görüntülediğiniz sunum da Quarto ile hazırlanmıştır. Kaynak kodlarını alperyilmaz/mbg4181 Github sayfasında inceleyebilirsiniz."
   },
   {
     "objectID": "ders08.html#işlenmiş-veri-ggplota-pipe-ile-iletilebilir",
