@@ -41,7 +41,6 @@ engine: knitr
 source: [imgflip](https://imgflip.com/memetemplate/320562108/What-good-is-a-phone-call-if-you-are-unable-to-speak)
 :::
 
----
 
 ## Tidy workflow
 
@@ -53,7 +52,7 @@ Communicating your findings is part of Data analysis/Data science
 source: [R for Data Science](https://r4ds.had.co.nz/explore-intro.html#explore-intro)
 :::
 
----
+## 
 
 <!-- background-image="attachments/tidyverse.png" background-size="contain" -->
 
@@ -65,7 +64,7 @@ Packages we have learned so far specialize in one part of the workflow. Quarto (
 source: [Getting Started with tidyverse in R](https://www.storybench.org/getting-started-with-tidyverse-in-r/)
 :::
 
----
+
 
 ## Quarto (aside RMarkdown)
 
@@ -74,8 +73,6 @@ source: [Getting Started with tidyverse in R](https://www.storybench.org/getting
 :::{.callout-tip}
 RMarkdown is still actively used but please use Quarto
 :::
-
----
 
 
 
@@ -92,20 +89,24 @@ source: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstu
 
 :::
 
----
+
+## Markdown hakkında
+
+Markdown formatı hakkında bilgi almak için Quarto sitesindeki [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html) adresini ziyaret ediniz.
+
+## 
 
 Quarto document is a plain text file which can be rendered into ...
 ![](images/image-20230603192736148.png)
 
 
 
----
+##
 
 ... HTML
 
 ![](images/image-20230603192835703.png)
 
----
 
 ## Your turn
 
@@ -117,20 +118,20 @@ Let's create our first Quarto document and then render it.
 `quarto` is installed in rstudio.cloud project. If you're using your local RStudio, you might need to install quarto in your own computer ([instructions](https://quarto.org/docs/get-started/)).
 :::
 
----
+##
 
 Provide title for your document (this is **not** filename!)
 
 ![](images/image-20230603194140902.png)
 
----
+##
 
 We have **Untitled** file, let's save this file
 
 
 ![](images/rename-new-file.png)
 
----
+##
 
 Now, we are ready to **Render** the document
 
@@ -140,13 +141,12 @@ Now, we are ready to **Render** the document
 
 
 
----
+##
 
 The rendered HTML document will be opened automatically in your browser
 
 ![](images/image-20230603192835703.png)
 
----
 
 ## Editor 
 
@@ -154,7 +154,6 @@ You can use **Source** (left) or **Visual** editor (right) when editing your Qua
 
 ![](images/editor-types.png)
 
----
 
 ## Plotting images {.smaller}
 
@@ -168,7 +167,7 @@ Also, your Quarto document will contain the *the recipe* (*i.e.* the code) used 
 
 Consider the Quarto document in next slide, it draws a plot using *airquality* data set using `ggplot`. As you have noticed, there's no saving a file and then copying it in order to include the image file.
 
----
+##
 
 
 ````r
@@ -206,7 +205,7 @@ ggplot(airquality, aes(Temp, Ozone)) +
 * line 14 contains citation to the image (which will be calculated as *Figure 1* automatically)
 * lines 16-27 contains the R code chunk and lines 17-19 contains chunk options
 
----
+##
 
 This document will be rendered as follows
 
@@ -222,11 +221,11 @@ As you have noticed, the figure number is determined automatically, the caption 
 :::
 ::::
 
----
+##
 
 Pandoc can convert markdown format into HTML, PDF or Word (actually many more). Let's convert the **same document** into three different formats by changing the `format: html` into either `format: pdf` or `format: docx`
 
----
+##
 
 ![](images/image-20230603224842217.png)
 
@@ -235,12 +234,11 @@ Pandoc can convert markdown format into HTML, PDF or Word (actually many more). 
 For converting to PDF version, you have to install separate software 
 :::
 
----
+##
 
 ![](images/image-20230603224714312.png)
 
 
----
 
 ## More code chunk options
 
@@ -265,11 +263,10 @@ mpg_avg
 
 Let's go over the chunk options: *echo: false* means that the code will not be shown in final document, *warning: false* will suppress any warning or messages, *cache: true* means that the calculation in that chunk will be cached and won't be re-calculated (unless chunk is modified) in following renderings.
 
----
+##
 
 ![](images/image-20230603231547747.png)
 
----
 
 ## Packages for better tables
 
@@ -277,8 +274,6 @@ There are numerous R packages for generating beautiful tables to be embedded int
 
 Especially {gt} package is very capable. Please visit its [introduction site](https://gt.rstudio.com/articles/intro-creating-gt-tables.html) and [gallery](https://community.rstudio.com/c/table-gallery/64?tags=gt)
 
-
----
 
 ## gt table example
 
@@ -288,7 +283,6 @@ Especially {gt} package is very capable. Please visit its [introduction site](ht
 source: [Riding tables with {gt} and {gtExtras}](https://bjnnowak.netlify.app/2021/10/04/r-beautiful-tables-with-gt-and-gtextras/)
 :::
 
----
 
 ## gt table example 1
 
@@ -298,7 +292,6 @@ source: [Riding tables with {gt} and {gtExtras}](https://bjnnowak.netlify.app/20
 source: [Using {gt}, {gtExtras} and {openair} to present air quality monitoring data](https://jack-davison.quarto.pub/gt-openair/)
 :::
 
----
 
 ## Inline code
 
@@ -312,10 +305,9 @@ There are 'r nrow(mtcars)' observations in **mtcars** data. The table below show
 per make and cyclinder number.
 ```
 
----
+##
 
 ![](images/image-20230603233304348.png)
----
 
 ## And much more
 
@@ -362,8 +354,6 @@ ggplot(airquality, aes(Temp, Ozone)) +
 )
 ```
 
-
-# mpg data
 
 ## mpg scatter plot
 
@@ -425,7 +415,6 @@ Here's some information
 
 ````
 
----
 
 ## Shiny
 
@@ -435,7 +424,6 @@ In a Shiny web app, web elements (text input, drop down menus, sliders, etc.) ar
 
 Please visit the [Gallery](https://shiny.posit.co/r/gallery/) and interact with the demos. 
 
----
 
 ## Additional resources about Quarto
 
