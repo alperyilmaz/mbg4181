@@ -182,11 +182,46 @@
     "text": "Counting word frequencies\ntidytext package has a function called bind_tf_idf() to calculate the TF-IDF. First, let’s prepare counts per book for austen_books.\n\nausten_counts &lt;- austen_books |&gt;\n  unnest_tokens(word, text) |&gt;\n  count(book, word, sort=TRUE)\n\nausten_counts\n\n# A tibble: 40,379 × 3\n   book              word      n\n   &lt;fct&gt;             &lt;chr&gt; &lt;int&gt;\n 1 Mansfield Park    the    6206\n 2 Mansfield Park    to     5475\n 3 Mansfield Park    and    5438\n 4 Emma              to     5239\n 5 Emma              the    5201\n 6 Emma              and    4896\n 7 Mansfield Park    of     4778\n 8 Pride & Prejudice the    4331\n 9 Emma              of     4291\n10 Pride & Prejudice to     4162\n# ℹ 40,369 more rows"
   },
   {
+    "objectID": "test.html",
+    "href": "test.html",
+    "title": "Deneme",
+    "section": "",
+    "text": "Bu yazı yatık bu da kalın punto. Bu da renkli yazı.\n\nliste\nliste\n\nbu bir kod\nx = 1\n\nplot(mtcars)\n\n\n\n\n\n\n\n\n\nx= 1\nprint(1)\n\n1\n\n\n\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa"
+  },
+  {
+    "objectID": "test.html#alt-başlık",
+    "href": "test.html#alt-başlık",
+    "title": "Deneme",
+    "section": "",
+    "text": "Bu yazı yatık bu da kalın punto. Bu da renkli yazı.\n\nliste\nliste\n\nbu bir kod\nx = 1\n\nplot(mtcars)\n\n\n\n\n\n\n\n\n\nx= 1\nprint(1)\n\n1\n\n\n\nhead(iris)\n\n  Sepal.Length Sepal.Width Petal.Length Petal.Width Species\n1          5.1         3.5          1.4         0.2  setosa\n2          4.9         3.0          1.4         0.2  setosa\n3          4.7         3.2          1.3         0.2  setosa\n4          4.6         3.1          1.5         0.2  setosa\n5          5.0         3.6          1.4         0.2  setosa\n6          5.4         3.9          1.7         0.4  setosa"
+  },
+  {
+    "objectID": "test.html#alt-başlık-1",
+    "href": "test.html#alt-başlık-1",
+    "title": "Deneme",
+    "section": "alt başlık",
+    "text": "alt başlık\nldskmflsmfls slkfmsşd slşdfm sdfşsd mfşlsmfşlskdmf şlsdkf sşdlkşsdlkfmşslds\n\n\ncontents…"
+  },
+  {
+    "objectID": "test.html#quiz-deneme",
+    "href": "test.html#quiz-deneme",
+    "title": "Deneme",
+    "section": "Quiz deneme",
+    "text": "Quiz deneme\n\n  What is 2 + 2?\n  4\n  5"
+  },
+  {
+    "objectID": "test.html#three.js-deneme",
+    "href": "test.html#three.js-deneme",
+    "title": "Deneme",
+    "section": "Three.js deneme",
+    "text": "Three.js deneme\n\n\n\n\n\nNGL viewer deneme\n\n\n\n\n\nigv genome browser deneme"
+  },
+  {
     "objectID": "notlar.html",
     "href": "notlar.html",
     "title": "Notlar",
     "section": "",
-    "text": "Aşağıda, öğrenci numaranız ve notlarınızı görebilirsiniz. Vize1 ağırlığı %40, Final sınavının ağırlığı %40 olacaktır. 4 Quiz’den en yüksek 3 tanesi alınıp hesaplanacak ve %20 katkıda bulunacaktır.\n\n\n\n\n\n\n\n\nogr_no\nvize\nquiz1\nquiz2\n\n\n\n\n20028074\n62\n20\n10\n\n\n21025003\n93\n35\n36\n\n\n21025052\n89\n90\n82\n\n\n22028011\n-\n25\n-\n\n\n22028014\n88\n45\n70\n\n\n22028017\n43\n-\n-\n\n\n22028021\n20\n0\n0\n\n\n22028031\n80\n-\n37\n\n\n22028032\n51\n30\n-\n\n\n22028033\n85\n-\n13\n\n\n22028046\n86\n60\n32\n\n\n22028061\n28\n60\n43\n\n\n22028062\n68\n80\n-\n\n\n22028063\n68\n15\n48\n\n\n22028072\n72\n30\n-\n\n\n22028074\n89\n55\n53\n\n\n22028076\n77\n10\n13\n\n\n22028701\n57\n20\n33\n\n\n23028603\n56\n20\n0\n\n\n23028609\n83\n60\n47\n\n\n24028608\n81\n85\n42"
+    "text": "Aşağıda, öğrenci numaranız ve notlarınızı görebilirsiniz. Vize1 ağırlığı %40, Final sınavının ağırlığı %40 olacaktır. 4 Quiz’den en yüksek 3 tanesi alınıp hesaplanacak ve %20 katkıda bulunacaktır.\n\n\n\n\n\n\n\n\nogr_no\nvize\nquiz1\nquiz2\nquiz3\n\n\n\n\n20028074\n62\n20\n10\n30\n\n\n21025003\n93\n35\n36\n-\n\n\n21025052\n89\n90\n82\n60\n\n\n22028011\n-\n25\n-\n65\n\n\n22028014\n88\n45\n70\n85\n\n\n22028017\n43\n-\n-\n-\n\n\n22028021\n20\n0\n0\n-\n\n\n22028031\n80\n-\n37\n-\n\n\n22028032\n51\n30\n-\n55\n\n\n22028033\n85\n-\n13\n-\n\n\n22028046\n86\n60\n32\n85\n\n\n22028061\n28\n60\n43\n75\n\n\n22028062\n68\n80\n-\n65\n\n\n22028063\n68\n15\n48\n85\n\n\n22028072\n72\n30\n-\n55\n\n\n22028074\n89\n55\n53\n60\n\n\n22028076\n77\n10\n13\n40\n\n\n22028701\n57\n20\n33\n-\n\n\n23028603\n56\n20\n0\n55\n\n\n23028609\n83\n60\n47\n85\n\n\n24028608\n81\n85\n42\n75"
   },
   {
     "objectID": "ders05.html#veri-şekillendirme-ve-birleştirme",
@@ -630,6 +665,13 @@
     "text": "Tidy workflow\nCommunicating your findings is part of Data analysis/Data science\n\n\nsource: R for Data Science"
   },
   {
+    "objectID": "ders09.html#section",
+    "href": "ders09.html#section",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "Packages we have learned so far specialize in one part of the workflow. Quarto (also RMarkdown) helps communicating our results.\n\n\nsource: Getting Started with tidyverse in R"
+  },
+  {
     "objectID": "ders09.html#quarto-aside-rmarkdown",
     "href": "ders09.html#quarto-aside-rmarkdown",
     "title": "Sonuçların ve çıktıların paylaşılması",
@@ -644,11 +686,60 @@
     "text": "How it works\n\nA compute engine (knitr for R or Jupyter Notebook) will compute and run your code chunks and embed their results in Markdown file\nPandoc will convert markdown format into various formats\n\n\n\nsource: Tutorial: Hello, Quarto"
   },
   {
+    "objectID": "ders09.html#markdown-hakkında",
+    "href": "ders09.html#markdown-hakkında",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "Markdown hakkında",
+    "text": "Markdown hakkında\nMarkdown formatı hakkında bilgi almak için Quarto sitesindeki Markdown Basics adresini ziyaret ediniz."
+  },
+  {
+    "objectID": "ders09.html#section-1",
+    "href": "ders09.html#section-1",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "Quarto document is a plain text file which can be rendered into …"
+  },
+  {
+    "objectID": "ders09.html#section-2",
+    "href": "ders09.html#section-2",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "… HTML"
+  },
+  {
     "objectID": "ders09.html#your-turn",
     "href": "ders09.html#your-turn",
     "title": "Sonuçların ve çıktıların paylaşılması",
     "section": "Your turn",
     "text": "Your turn\nLet’s create our first Quarto document and then render it.\n\n\nquarto is installed in rstudio.cloud project. If you’re using your local RStudio, you might need to install quarto in your own computer (instructions)."
+  },
+  {
+    "objectID": "ders09.html#section-3",
+    "href": "ders09.html#section-3",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "Provide title for your document (this is not filename!)"
+  },
+  {
+    "objectID": "ders09.html#section-4",
+    "href": "ders09.html#section-4",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "We have Untitled file, let’s save this file"
+  },
+  {
+    "objectID": "ders09.html#section-5",
+    "href": "ders09.html#section-5",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "Now, we are ready to Render the document"
+  },
+  {
+    "objectID": "ders09.html#section-6",
+    "href": "ders09.html#section-6",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "The rendered HTML document will be opened automatically in your browser"
   },
   {
     "objectID": "ders09.html#editor",
@@ -663,6 +754,34 @@
     "title": "Sonuçların ve çıktıların paylaşılması",
     "section": "Plotting images",
     "text": "Plotting images\nLet’s imagine your’re preparing a document with plots. Probably, you’ll prepare the plot in Excel (or some other software) and then copy/paste it into Word.\nIf data changes later, then you have to repeat both preparing the plot and updating the Word steps.\nIn case of Quarto (or Jupyter Notebook), you just need to re-render the document. Images, tables and text will be updated at once.\nAlso, your Quarto document will contain the the recipe (i.e. the code) used for preparing the final document.\nConsider the Quarto document in next slide, it draws a plot using airquality data set using ggplot. As you have noticed, there’s no saving a file and then copying it in order to include the image file."
+  },
+  {
+    "objectID": "ders09.html#section-7",
+    "href": "ders09.html#section-7",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "---\ntitle: \"ggplot2 demo\"\nauthor: \"Norah Jones\"\ndate: \"5/22/2021\"\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n---\n\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| warning: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\nlines 1-10 (called YAML header) describe document properties\nline 14 contains citation to the image (which will be calculated as Figure 1 automatically)\nlines 16-27 contains the R code chunk and lines 17-19 contains chunk options"
+  },
+  {
+    "objectID": "ders09.html#section-8",
+    "href": "ders09.html#section-8",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "This document will be rendered as follows\n\n\n\n\nAs you have noticed, the figure number is determined automatically, the caption is placed under the image, the code is folded (will be revealed when clicked)"
+  },
+  {
+    "objectID": "ders09.html#section-9",
+    "href": "ders09.html#section-9",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "Pandoc can convert markdown format into HTML, PDF or Word (actually many more). Let’s convert the same document into three different formats by changing the format: html into either format: pdf or format: docx"
+  },
+  {
+    "objectID": "ders09.html#section-10",
+    "href": "ders09.html#section-10",
+    "title": "Sonuçların ve çıktıların paylaşılması",
+    "section": "",
+    "text": "For converting to PDF version, you have to install separate software"
   },
   {
     "objectID": "ders09.html#more-code-chunk-options",
@@ -704,7 +823,7 @@
     "href": "ders09.html#and-much-more",
     "title": "Sonuçların ve çıktıların paylaşılması",
     "section": "And much more",
-    "text": "And much more\nQuarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found here\n---\ntitle: \"ggplot2 demo\"\nauthor: \"alper\"\ndate: \"6/1/2023\"\ntoc: true\nnumber-sections: true\nbibliography: references.bib\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    code-link: true\n    df-print: paged\n  pdf:\n    geometry: \n      - top=30mm\n      - left=30mm\n  docx: default\n---\n\n# Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| echo: true\n#| warning: false\n\nlibrary(tidyverse)\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\n\n# mpg data\n\n## mpg scatter plot\n\n@fig-scatterplot shows correlation between highway and city mileages. \n\n```{r}\n#| label: fig-scatterplot\n#| fig-cap: \"City and highway mileage for 38 popular models of cars.\"\n#| fig-alt: \"Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases.\"\n#| fig-width: 6\n#| fig-height: 3.5\n\nggplot(mpg, aes(hwy, cty, color=cyl)) + \n  geom_point(alpha=0.5, size=2) +\n  scale_color_viridis_c() +\n  theme_minimal()\n```\n\n## the mpg data as table\n\nThere are 32 observations in our data.\n\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nmpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n```\n\nHypothetical `table_viewer` will show your tables in a much better way.\n\n```{r}\n#| eval: false\ntable_viewer(mpg)\n```\n\n# Formulas\n\nyou can have formulas in your document\n\n\n$$\nprice = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\times area + \\epsilon\n$$\n\n# Citations\n\nWe're going to do this analysis using literate programming [@Knuth1984].\n\n# Layout\n\n## Callouts\n\n::: {.callout-note}\nHere's some information\n:::"
+    "text": "And much more\nQuarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found here\n---\ntitle: \"ggplot2 demo\"\nauthor: \"alper\"\ndate: \"6/1/2023\"\ntoc: true\nnumber-sections: true\nbibliography: references.bib\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    code-link: true\n    df-print: paged\n  pdf:\n    geometry: \n      - top=30mm\n      - left=30mm\n  docx: default\n---\n\n# Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| echo: true\n#| warning: false\n\nlibrary(tidyverse)\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\n\n## mpg scatter plot\n\n@fig-scatterplot shows correlation between highway and city mileages. \n\n```{r}\n#| label: fig-scatterplot\n#| fig-cap: \"City and highway mileage for 38 popular models of cars.\"\n#| fig-alt: \"Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases.\"\n#| fig-width: 6\n#| fig-height: 3.5\n\nggplot(mpg, aes(hwy, cty, color=cyl)) + \n  geom_point(alpha=0.5, size=2) +\n  scale_color_viridis_c() +\n  theme_minimal()\n```\n\n## the mpg data as table\n\nThere are 32 observations in our data.\n\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nmpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n```\n\nHypothetical `table_viewer` will show your tables in a much better way.\n\n```{r}\n#| eval: false\ntable_viewer(mpg)\n```\n\n# Formulas\n\nyou can have formulas in your document\n\n\n$$\nprice = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\times area + \\epsilon\n$$\n\n# Citations\n\nWe're going to do this analysis using literate programming [@Knuth1984].\n\n# Layout\n\n## Callouts\n\n::: {.callout-note}\nHere's some information\n:::"
   },
   {
     "objectID": "ders09.html#shiny",
@@ -1433,5 +1552,33 @@
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
     "section": "",
     "text": "Vize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+  },
+  {
+    "objectID": "test2.html",
+    "href": "test2.html",
+    "title": "ggplot2 demo",
+    "section": "",
+    "text": "Figure 1 further explores the impact of temperature on ozone level.\n\nCodelibrary(tidyverse)\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n\n\n\n\n\n\nFigure 1: Temperature and ozone level."
+  },
+  {
+    "objectID": "test2.html#mpg-scatter-plot",
+    "href": "test2.html#mpg-scatter-plot",
+    "title": "ggplot2 demo",
+    "section": "\n2.1 mpg scatter plot",
+    "text": "2.1 mpg scatter plot\nFigure 2 shows correlation between highway and city mileages.\n\nCodeggplot(mpg, aes(hwy, cty, color=cyl)) + \n  geom_point(alpha=0.5, size=2) +\n  scale_color_viridis_c() +\n  theme_minimal()\n\n\n\n\n\n\nFigure 2: City and highway mileage for 38 popular models of cars."
+  },
+  {
+    "objectID": "test2.html#the-mpg-data-as-table",
+    "href": "test2.html#the-mpg-data-as-table",
+    "title": "ggplot2 demo",
+    "section": "\n2.2 the mpg data as table",
+    "text": "2.2 the mpg data as table\nThere are 32 observations in our data.\n\n\n\n  \n\n\n\nHypothetical table_viewer will show your tables in a much better way.\n\nCodetable_viewer(mpg)"
+  },
+  {
+    "objectID": "test2.html#callouts",
+    "href": "test2.html#callouts",
+    "title": "ggplot2 demo",
+    "section": "\n5.1 Callouts",
+    "text": "5.1 Callouts\n\n\n\n\n\n\nNote\n\n\n\nHere’s some information"
   }
 ]

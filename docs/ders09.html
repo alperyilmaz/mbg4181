@@ -232,8 +232,8 @@ alper yilmaz
 <p>source: <a href="https://r4ds.had.co.nz/explore-intro.html#explore-intro">R for Data Science</a></p>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="section" class="slide level2">
+<h2></h2>
 <!-- background-image="attachments/tidyverse.png" background-size="contain" -->
 <p>Packages we have learned so far specialize in one part of the workflow. Quarto (also RMarkdown) helps communicating our results.</p>
 
@@ -269,12 +269,16 @@ alper yilmaz
 <p>source: <a href="https://quarto.org/docs/get-started/hello/rstudio.html">Tutorial: Hello, Quarto</a></p>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="markdown-hakkında" class="slide level2">
+<h2>Markdown hakkında</h2>
+<p>Markdown formatı hakkında bilgi almak için Quarto sitesindeki <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown Basics</a> adresini ziyaret ediniz.</p>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <p>Quarto document is a plain text file which can be rendered into … <img data-src="images/image-20230603192736148.png"></p>
 </section>
-<section class="slide level2">
-
+<section id="section-2" class="slide level2">
+<h2></h2>
 <p>… HTML</p>
 
 <img data-src="images/image-20230603192835703.png" class="r-stretch"></section>
@@ -286,23 +290,23 @@ alper yilmaz
 <p><code>quarto</code> is installed in rstudio.cloud project. If you’re using your local RStudio, you might need to install quarto in your own computer (<a href="https://quarto.org/docs/get-started/">instructions</a>).</p>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="section-3" class="slide level2">
+<h2></h2>
 <p>Provide title for your document (this is <strong>not</strong> filename!)</p>
 
 <img data-src="images/image-20230603194140902.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<section id="section-4" class="slide level2">
+<h2></h2>
 <p>We have <strong>Untitled</strong> file, let’s save this file</p>
 
 <img data-src="images/rename-new-file.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<section id="section-5" class="slide level2">
+<h2></h2>
 <p>Now, we are ready to <strong>Render</strong> the document</p>
 
 <img data-src="images/image-20230603193032628.png" class="r-stretch"></section>
-<section class="slide level2">
-
+<section id="section-6" class="slide level2">
+<h2></h2>
 <p>The rendered HTML document will be opened automatically in your browser</p>
 
 <img data-src="images/image-20230603192835703.png" class="r-stretch"></section>
@@ -319,8 +323,8 @@ alper yilmaz
 <p>Also, your Quarto document will contain the <em>the recipe</em> (<em>i.e.</em> the code) used for preparing the final document.</p>
 <p>Consider the Quarto document in next slide, it draws a plot using <em>airquality</em> data set using <code>ggplot</code>. As you have noticed, there’s no saving a file and then copying it in order to include the image file.</p>
 </section>
-<section class="slide level2">
-
+<section id="section-7" class="slide level2">
+<h2></h2>
 <div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="sc">---</span></span>
 <span id="cb1-2"><a></a>title<span class="sc">:</span> <span class="st">"ggplot2 demo"</span></span>
 <span id="cb1-3"><a></a>author<span class="sc">:</span> <span class="st">"Norah Jones"</span></span>
@@ -354,8 +358,8 @@ alper yilmaz
 <li>lines 16-27 contains the R code chunk and lines 17-19 contains chunk options</li>
 </ul>
 </section>
-<section class="slide level2">
-
+<section id="section-8" class="slide level2">
+<h2></h2>
 <p>This document will be rendered as follows</p>
 <div class="columns">
 <div class="column" style="width:70%;">
@@ -364,19 +368,19 @@ alper yilmaz
 <p>As you have noticed, the figure number is determined automatically, the caption is placed under the image, the code is folded (will be revealed when clicked)</p>
 </div></div>
 </section>
-<section class="slide level2">
-
+<section id="section-9" class="slide level2">
+<h2></h2>
 <p>Pandoc can convert markdown format into HTML, PDF or Word (actually many more). Let’s convert the <strong>same document</strong> into three different formats by changing the <code>format: html</code> into either <code>format: pdf</code> or <code>format: docx</code></p>
 </section>
-<section class="slide level2">
-
+<section id="section-10" class="slide level2">
+<h2></h2>
 
 <img data-src="images/image-20230603224842217.png" class="r-stretch"><div class="footer">
 <p>For converting to PDF version, you have to install separate software</p>
 </div>
 </section>
-<section class="slide level2">
-
+<section id="section-11" class="slide level2">
+<h2></h2>
 
 <img data-src="images/image-20230603224714312.png" class="r-stretch"></section>
 <section id="more-code-chunk-options" class="slide level2">
@@ -397,8 +401,8 @@ alper yilmaz
 <span id="cb2-12"><a></a><span class="st">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Let’s go over the chunk options: <em>echo: false</em> means that the code will not be shown in final document, <em>warning: false</em> will suppress any warning or messages, <em>cache: true</em> means that the calculation in that chunk will be cached and won’t be re-calculated (unless chunk is modified) in following renderings.</p>
 </section>
-<section class="slide level2">
-
+<section id="section-12" class="slide level2">
+<h2></h2>
 
 <img data-src="images/image-20230603231547747.png" class="r-stretch"></section>
 <section id="packages-for-better-tables" class="slide level2">
@@ -427,9 +431,10 @@ alper yilmaz
 <div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>There are <span class="st">'r nrow(mtcars)'</span> observations <span class="cf">in</span> <span class="sc">**</span>mtcars<span class="sc">**</span> data. The table below shows average city and highway mileage </span>
 <span id="cb3-2"><a></a>per make and cyclinder number.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="section" class="slide level2">
-<h2><img data-src="images/image-20230603233304348.png"></h2>
-</section>
+<section id="section-13" class="slide level2">
+<h2></h2>
+
+<img data-src="images/image-20230603233304348.png" class="r-stretch"></section>
 <section id="and-much-more" class="slide level2">
 <h2>And much more</h2>
 <p>Quarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found <a href="https://rpubs.com/alperyilmaz/my-first-quarto">here</a></p>
@@ -474,65 +479,63 @@ alper yilmaz
 <span id="cb4-39"><a></a><span class="st">```</span></span>
 <span id="cb4-40"><a></a></span>
 <span id="cb4-41"><a></a></span>
-<span id="cb4-42"><a></a><span class="co"># mpg data</span></span>
+<span id="cb4-42"><a></a><span class="do">## mpg scatter plot</span></span>
 <span id="cb4-43"><a></a></span>
-<span id="cb4-44"><a></a><span class="do">## mpg scatter plot</span></span>
+<span id="cb4-44"><a></a><span class="sc">@</span>fig<span class="sc">-</span>scatterplot shows correlation between highway and city mileages. </span>
 <span id="cb4-45"><a></a></span>
-<span id="cb4-46"><a></a><span class="sc">@</span>fig<span class="sc">-</span>scatterplot shows correlation between highway and city mileages. </span>
-<span id="cb4-47"><a></a></span>
-<span id="cb4-48"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-49"><a></a><span class="at">#| label: fig-scatterplot</span></span>
-<span id="cb4-50"><a></a><span class="at">#| fig-cap: "City and highway mileage for 38 popular models of cars."</span></span>
-<span id="cb4-51"><a></a><span class="at">#| fig-alt: "Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases."</span></span>
-<span id="cb4-52"><a></a><span class="at">#| fig-width: 6</span></span>
-<span id="cb4-53"><a></a><span class="at">#| fig-height: 3.5</span></span>
-<span id="cb4-54"><a></a></span>
-<span id="cb4-55"><a></a><span class="at">ggplot(mpg, aes(hwy, cty, color=cyl)) + </span></span>
-<span id="cb4-56"><a></a><span class="at">  geom_point(alpha=0.5, size=2) +</span></span>
-<span id="cb4-57"><a></a><span class="at">  scale_color_viridis_c() +</span></span>
-<span id="cb4-58"><a></a><span class="at">  theme_minimal()</span></span>
-<span id="cb4-59"><a></a><span class="st">```</span></span>
+<span id="cb4-46"><a></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-47"><a></a><span class="at">#| label: fig-scatterplot</span></span>
+<span id="cb4-48"><a></a><span class="at">#| fig-cap: "City and highway mileage for 38 popular models of cars."</span></span>
+<span id="cb4-49"><a></a><span class="at">#| fig-alt: "Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases."</span></span>
+<span id="cb4-50"><a></a><span class="at">#| fig-width: 6</span></span>
+<span id="cb4-51"><a></a><span class="at">#| fig-height: 3.5</span></span>
+<span id="cb4-52"><a></a></span>
+<span id="cb4-53"><a></a><span class="at">ggplot(mpg, aes(hwy, cty, color=cyl)) + </span></span>
+<span id="cb4-54"><a></a><span class="at">  geom_point(alpha=0.5, size=2) +</span></span>
+<span id="cb4-55"><a></a><span class="at">  scale_color_viridis_c() +</span></span>
+<span id="cb4-56"><a></a><span class="at">  theme_minimal()</span></span>
+<span id="cb4-57"><a></a><span class="st">```</span></span>
+<span id="cb4-58"><a></a></span>
+<span id="cb4-59"><a></a><span class="do">## the mpg data as table</span></span>
 <span id="cb4-60"><a></a></span>
-<span id="cb4-61"><a></a><span class="do">## the mpg data as table</span></span>
+<span id="cb4-61"><a></a>There are <span class="dv">32</span> observations <span class="cf">in</span> our data.</span>
 <span id="cb4-62"><a></a></span>
-<span id="cb4-63"><a></a>There are <span class="dv">32</span> observations <span class="cf">in</span> our data.</span>
-<span id="cb4-64"><a></a></span>
-<span id="cb4-65"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-66"><a></a><span class="at">#| echo: false</span></span>
-<span id="cb4-67"><a></a><span class="at">#| warning: false</span></span>
-<span id="cb4-68"><a></a><span class="at">#| cache: true</span></span>
-<span id="cb4-69"><a></a><span class="at">mpg |&gt;</span></span>
-<span id="cb4-70"><a></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
-<span id="cb4-71"><a></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
-<span id="cb4-72"><a></a><span class="st">```</span></span>
+<span id="cb4-63"><a></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-64"><a></a><span class="at">#| echo: false</span></span>
+<span id="cb4-65"><a></a><span class="at">#| warning: false</span></span>
+<span id="cb4-66"><a></a><span class="at">#| cache: true</span></span>
+<span id="cb4-67"><a></a><span class="at">mpg |&gt;</span></span>
+<span id="cb4-68"><a></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
+<span id="cb4-69"><a></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
+<span id="cb4-70"><a></a><span class="st">```</span></span>
+<span id="cb4-71"><a></a></span>
+<span id="cb4-72"><a></a>Hypothetical <span class="st">`</span><span class="at">table_viewer</span><span class="st">`</span> will show your tables <span class="cf">in</span> a much better way.</span>
 <span id="cb4-73"><a></a></span>
-<span id="cb4-74"><a></a>Hypothetical <span class="st">`</span><span class="at">table_viewer</span><span class="st">`</span> will show your tables <span class="cf">in</span> a much better way.</span>
-<span id="cb4-75"><a></a></span>
-<span id="cb4-76"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-77"><a></a><span class="at">#| eval: false</span></span>
-<span id="cb4-78"><a></a><span class="at">table_viewer(mpg)</span></span>
-<span id="cb4-79"><a></a><span class="st">```</span></span>
+<span id="cb4-74"><a></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-75"><a></a><span class="at">#| eval: false</span></span>
+<span id="cb4-76"><a></a><span class="at">table_viewer(mpg)</span></span>
+<span id="cb4-77"><a></a><span class="st">```</span></span>
+<span id="cb4-78"><a></a></span>
+<span id="cb4-79"><a></a><span class="co"># Formulas</span></span>
 <span id="cb4-80"><a></a></span>
-<span id="cb4-81"><a></a><span class="co"># Formulas</span></span>
+<span id="cb4-81"><a></a>you can have formulas <span class="cf">in</span> your document</span>
 <span id="cb4-82"><a></a></span>
-<span id="cb4-83"><a></a>you can have formulas <span class="cf">in</span> your document</span>
-<span id="cb4-84"><a></a></span>
-<span id="cb4-85"><a></a></span>
+<span id="cb4-83"><a></a></span>
+<span id="cb4-84"><a></a><span class="sc">$</span><span class="er">$</span></span>
+<span id="cb4-85"><a></a>price <span class="ot">=</span> \hat{\beta}_0 <span class="sc">+</span> \hat{\beta}_1 \times area <span class="sc">+</span> \epsilon</span>
 <span id="cb4-86"><a></a><span class="sc">$</span><span class="er">$</span></span>
-<span id="cb4-87"><a></a>price <span class="ot">=</span> \hat{\beta}_0 <span class="sc">+</span> \hat{\beta}_1 \times area <span class="sc">+</span> \epsilon</span>
-<span id="cb4-88"><a></a><span class="sc">$</span><span class="er">$</span></span>
+<span id="cb4-87"><a></a></span>
+<span id="cb4-88"><a></a><span class="co"># Citations</span></span>
 <span id="cb4-89"><a></a></span>
-<span id="cb4-90"><a></a><span class="co"># Citations</span></span>
+<span id="cb4-90"><a></a>We<span class="st">'re going to do this analysis using literate programming [@Knuth1984].</span></span>
 <span id="cb4-91"><a></a></span>
-<span id="cb4-92"><a></a>We<span class="st">'re going to do this analysis using literate programming [@Knuth1984].</span></span>
+<span id="cb4-92"><a></a><span class="st"># Layout</span></span>
 <span id="cb4-93"><a></a></span>
-<span id="cb4-94"><a></a><span class="st"># Layout</span></span>
+<span id="cb4-94"><a></a><span class="st">## Callouts</span></span>
 <span id="cb4-95"><a></a></span>
-<span id="cb4-96"><a></a><span class="st">## Callouts</span></span>
-<span id="cb4-97"><a></a></span>
-<span id="cb4-98"><a></a><span class="st">::: {.callout-note}</span></span>
-<span id="cb4-99"><a></a><span class="st">Here'</span>s some information</span>
-<span id="cb4-100"><a></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-96"><a></a><span class="st">::: {.callout-note}</span></span>
+<span id="cb4-97"><a></a><span class="st">Here'</span>s some information</span>
+<span id="cb4-98"><a></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="shiny" class="slide level2">
 <h2>Shiny</h2>
