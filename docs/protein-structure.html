@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        html, body { 
+            width: 100%; 
+            height: 100%; 
+            overflow: hidden; 
+            margin: 0; 
+            padding: 0; 
+        }
+        #viewport { 
+            width: 100%; 
+            height: 100%;
+        }
+    </style>
+    <script src="https://unpkg.com/ngl@2.0.0-dev.32/dist/ngl.js"></script>
+</head>
+<body>
+    <div id="viewport"></div>
+    <script>
+        // Setup to load data from rawgit
+
+        // Create NGL Stage object
+        var stage = new NGL.Stage("viewport");
+
+        // Handle window resizing
+        window.addEventListener("resize", function(event){
+            stage.handleResize();
+        }, false);
+
+        // Load and display protein structure
+        stage.loadFile("https://files.rcsb.org/download/3sn6.pdb", { ext: "pdb" }).then(function (o) {
+            o.addRepresentation("cartoon", { color: "chainid" })
+            o.autoView()
+        })
+    </script>
+</body>
+</html>

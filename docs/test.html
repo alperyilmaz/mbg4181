@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Notlar – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
+<title>Deneme – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,6 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -97,7 +133,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Hakkında</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./notlar.html" aria-current="page"> 
+    <a class="nav-link" href="./notlar.html"> 
 <span class="menu-text">Notlar</span></a>
   </li>  
 </ul>
@@ -111,15 +147,34 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#başlık" id="toc-başlık" class="nav-link active" data-scroll-target="#başlık">Başlık</a>
+  <ul class="collapse">
+  <li><a href="#alt-başlık" id="toc-alt-başlık" class="nav-link" data-scroll-target="#alt-başlık">Alt başlık</a></li>
+  </ul></li>
+  <li><a href="#iki-kolon" id="toc-iki-kolon" class="nav-link" data-scroll-target="#iki-kolon">iki kolon</a>
+  <ul class="collapse">
+  <li><a href="#alt-başlık-1" id="toc-alt-başlık-1" class="nav-link" data-scroll-target="#alt-başlık-1">alt başlık</a></li>
+  <li><a href="#quiz-deneme" id="toc-quiz-deneme" class="nav-link" data-scroll-target="#quiz-deneme">Quiz deneme</a></li>
+  <li><a href="#three.js-deneme" id="toc-three.js-deneme" class="nav-link" data-scroll-target="#three.js-deneme">Three.js deneme</a>
+  <ul class="collapse">
+  <li><a href="#ngl-viewer-deneme" id="toc-ngl-viewer-deneme" class="nav-link" data-scroll-target="#ngl-viewer-deneme">NGL viewer deneme</a></li>
+  <li><a href="#igv-genome-browser-deneme" id="toc-igv-genome-browser-deneme" class="nav-link" data-scroll-target="#igv-genome-browser-deneme">igv genome browser deneme</a></li>
+  </ul></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Notlar</h1>
+<h1 class="title">Deneme</h1>
 </div>
 
 
@@ -136,647 +191,111 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Aşağıda, öğrenci numaranız ve notlarınızı görebilirsiniz. Vize1 ağırlığı %40, Final sınavının ağırlığı %40 olacaktır. 4 Quiz’den en yüksek 3 tanesi alınıp hesaplanacak ve %20 katkıda bulunacaktır.</p>
+<section id="başlık" class="level1">
+<h1>Başlık</h1>
+<section id="alt-başlık" class="level2">
+<h2 class="anchored" data-anchor-id="alt-başlık">Alt başlık</h2>
+<p>Bu yazı <em>yatık</em> bu da <strong>kalın punto</strong>. Bu da <span class="red-text">renkli yazı</span>.</p>
+<ul>
+<li>liste</li>
+<li>liste</li>
+</ul>
+<pre><code>bu bir kod</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div id="dedcbxktsx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dedcbxktsx table {
-  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-#dedcbxktsx thead, #dedcbxktsx tbody, #dedcbxktsx tfoot, #dedcbxktsx tr, #dedcbxktsx td, #dedcbxktsx th {
-  border-style: none;
-}
-
-#dedcbxktsx p {
-  margin: 0;
-  padding: 0;
-}
-
-#dedcbxktsx .gt_table {
-  display: table;
-  border-collapse: collapse;
-  line-height: normal;
-  margin-left: auto;
-  margin-right: auto;
-  color: #333333;
-  font-size: 16px;
-  font-weight: normal;
-  font-style: normal;
-  background-color: #FFFFFF;
-  width: auto;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #A8A8A8;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_caption {
-  padding-top: 4px;
-  padding-bottom: 4px;
-}
-
-#dedcbxktsx .gt_title {
-  color: #333333;
-  font-size: 125%;
-  font-weight: initial;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-color: #FFFFFF;
-  border-bottom-width: 0;
-}
-
-#dedcbxktsx .gt_subtitle {
-  color: #333333;
-  font-size: 85%;
-  font-weight: initial;
-  padding-top: 3px;
-  padding-bottom: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-color: #FFFFFF;
-  border-top-width: 0;
-}
-
-#dedcbxktsx .gt_heading {
-  background-color: #FFFFFF;
-  text-align: center;
-  border-bottom-color: #FFFFFF;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_bottom_border {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_col_headings {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_col_heading {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 6px;
-  padding-left: 5px;
-  padding-right: 5px;
-  overflow-x: hidden;
-}
-
-#dedcbxktsx .gt_column_spanner_outer {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: normal;
-  text-transform: inherit;
-  padding-top: 0;
-  padding-bottom: 0;
-  padding-left: 4px;
-  padding-right: 4px;
-}
-
-#dedcbxktsx .gt_column_spanner_outer:first-child {
-  padding-left: 0;
-}
-
-#dedcbxktsx .gt_column_spanner_outer:last-child {
-  padding-right: 0;
-}
-
-#dedcbxktsx .gt_column_spanner {
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: bottom;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  overflow-x: hidden;
-  display: inline-block;
-  width: 100%;
-}
-
-#dedcbxktsx .gt_spanner_row {
-  border-bottom-style: hidden;
-}
-
-#dedcbxktsx .gt_group_heading {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  text-align: left;
-}
-
-#dedcbxktsx .gt_empty_group_heading {
-  padding: 0.5px;
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  vertical-align: middle;
-}
-
-#dedcbxktsx .gt_from_md > :first-child {
-  margin-top: 0;
-}
-
-#dedcbxktsx .gt_from_md > :last-child {
-  margin-bottom: 0;
-}
-
-#dedcbxktsx .gt_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  margin: 10px;
-  border-top-style: solid;
-  border-top-width: 1px;
-  border-top-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 1px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 1px;
-  border-right-color: #D3D3D3;
-  vertical-align: middle;
-  overflow-x: hidden;
-}
-
-#dedcbxktsx .gt_stub {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dedcbxktsx .gt_stub_row_group {
-  color: #333333;
-  background-color: #FFFFFF;
-  font-size: 100%;
-  font-weight: initial;
-  text-transform: inherit;
-  border-right-style: solid;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-  padding-left: 5px;
-  padding-right: 5px;
-  vertical-align: top;
-}
-
-#dedcbxktsx .gt_row_group_first td {
-  border-top-width: 2px;
-}
-
-#dedcbxktsx .gt_row_group_first th {
-  border-top-width: 2px;
-}
-
-#dedcbxktsx .gt_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dedcbxktsx .gt_first_summary_row {
-  border-top-style: solid;
-  border-top-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_first_summary_row.thick {
-  border-top-width: 2px;
-}
-
-#dedcbxktsx .gt_last_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_grand_summary_row {
-  color: #333333;
-  background-color: #FFFFFF;
-  text-transform: inherit;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dedcbxktsx .gt_first_grand_summary_row {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-top-style: double;
-  border-top-width: 6px;
-  border-top-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_last_grand_summary_row_top {
-  padding-top: 8px;
-  padding-bottom: 8px;
-  padding-left: 5px;
-  padding-right: 5px;
-  border-bottom-style: double;
-  border-bottom-width: 6px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_striped {
-  background-color: rgba(128, 128, 128, 0.05);
-}
-
-#dedcbxktsx .gt_table_body {
-  border-top-style: solid;
-  border-top-width: 2px;
-  border-top-color: #D3D3D3;
-  border-bottom-style: solid;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_footnotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_footnote {
-  margin: 0px;
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dedcbxktsx .gt_sourcenotes {
-  color: #333333;
-  background-color: #FFFFFF;
-  border-bottom-style: none;
-  border-bottom-width: 2px;
-  border-bottom-color: #D3D3D3;
-  border-left-style: none;
-  border-left-width: 2px;
-  border-left-color: #D3D3D3;
-  border-right-style: none;
-  border-right-width: 2px;
-  border-right-color: #D3D3D3;
-}
-
-#dedcbxktsx .gt_sourcenote {
-  font-size: 90%;
-  padding-top: 4px;
-  padding-bottom: 4px;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-#dedcbxktsx .gt_left {
-  text-align: left;
-}
-
-#dedcbxktsx .gt_center {
-  text-align: center;
-}
-
-#dedcbxktsx .gt_right {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-#dedcbxktsx .gt_font_normal {
-  font-weight: normal;
-}
-
-#dedcbxktsx .gt_font_bold {
-  font-weight: bold;
-}
-
-#dedcbxktsx .gt_font_italic {
-  font-style: italic;
-}
-
-#dedcbxktsx .gt_super {
-  font-size: 65%;
-}
-
-#dedcbxktsx .gt_footnote_marks {
-  font-size: 75%;
-  vertical-align: 0.4em;
-  position: initial;
-}
-
-#dedcbxktsx .gt_asterisk {
-  font-size: 100%;
-  vertical-align: 0;
-}
-
-#dedcbxktsx .gt_indent_1 {
-  text-indent: 5px;
-}
-
-#dedcbxktsx .gt_indent_2 {
-  text-indent: 10px;
-}
-
-#dedcbxktsx .gt_indent_3 {
-  text-indent: 15px;
-}
-
-#dedcbxktsx .gt_indent_4 {
-  text-indent: 20px;
-}
-
-#dedcbxktsx .gt_indent_5 {
-  text-indent: 25px;
-}
-
-#dedcbxktsx .katex-display {
-  display: inline-flex !important;
-  margin-bottom: 0.75em !important;
-}
-
-#dedcbxktsx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
-  height: 0px !important;
-}
-</style>
-
-<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
-<thead>
-<tr class="gt_col_headings header">
-<th id="ogr_no" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">ogr_no</th>
-<th id="vize" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">vize</th>
-<th id="quiz1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">quiz1</th>
-<th id="quiz2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">quiz2</th>
-<th id="quiz3" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">quiz3</th>
-<th id="quiz4" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">quiz4</th>
-</tr>
-</thead>
-<tbody class="gt_table_body">
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">20028074</td>
-<td class="gt_row gt_center" headers="vize">62</td>
-<td class="gt_row gt_center" headers="quiz1">20</td>
-<td class="gt_row gt_center" headers="quiz2">10</td>
-<td class="gt_row gt_center" headers="quiz3">30</td>
-<td class="gt_row gt_center" headers="quiz4">60</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">21025003</td>
-<td class="gt_row gt_center" headers="vize">93</td>
-<td class="gt_row gt_center" headers="quiz1">35</td>
-<td class="gt_row gt_center" headers="quiz2">36</td>
-<td class="gt_row gt_center" headers="quiz3">85</td>
-<td class="gt_row gt_center" headers="quiz4">85</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">21025052</td>
-<td class="gt_row gt_center" headers="vize">89</td>
-<td class="gt_row gt_center" headers="quiz1">90</td>
-<td class="gt_row gt_center" headers="quiz2">82</td>
-<td class="gt_row gt_center" headers="quiz3">60</td>
-<td class="gt_row gt_center" headers="quiz4">85</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028011</td>
-<td class="gt_row gt_center" headers="vize">-</td>
-<td class="gt_row gt_center" headers="quiz1">25</td>
-<td class="gt_row gt_center" headers="quiz2">-</td>
-<td class="gt_row gt_center" headers="quiz3">65</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028014</td>
-<td class="gt_row gt_center" headers="vize">88</td>
-<td class="gt_row gt_center" headers="quiz1">45</td>
-<td class="gt_row gt_center" headers="quiz2">70</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028017</td>
-<td class="gt_row gt_center" headers="vize">43</td>
-<td class="gt_row gt_center" headers="quiz1">-</td>
-<td class="gt_row gt_center" headers="quiz2">-</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028021</td>
-<td class="gt_row gt_center" headers="vize">20</td>
-<td class="gt_row gt_center" headers="quiz1">0</td>
-<td class="gt_row gt_center" headers="quiz2">0</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028031</td>
-<td class="gt_row gt_center" headers="vize">80</td>
-<td class="gt_row gt_center" headers="quiz1">-</td>
-<td class="gt_row gt_center" headers="quiz2">37</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">40</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028032</td>
-<td class="gt_row gt_center" headers="vize">51</td>
-<td class="gt_row gt_center" headers="quiz1">30</td>
-<td class="gt_row gt_center" headers="quiz2">-</td>
-<td class="gt_row gt_center" headers="quiz3">55</td>
-<td class="gt_row gt_center" headers="quiz4">15</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028033</td>
-<td class="gt_row gt_center" headers="vize">85</td>
-<td class="gt_row gt_center" headers="quiz1">-</td>
-<td class="gt_row gt_center" headers="quiz2">13</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">65</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028046</td>
-<td class="gt_row gt_center" headers="vize">86</td>
-<td class="gt_row gt_center" headers="quiz1">60</td>
-<td class="gt_row gt_center" headers="quiz2">32</td>
-<td class="gt_row gt_center" headers="quiz3">85</td>
-<td class="gt_row gt_center" headers="quiz4">70</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028061</td>
-<td class="gt_row gt_center" headers="vize">28</td>
-<td class="gt_row gt_center" headers="quiz1">60</td>
-<td class="gt_row gt_center" headers="quiz2">43</td>
-<td class="gt_row gt_center" headers="quiz3">75</td>
-<td class="gt_row gt_center" headers="quiz4">100</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028062</td>
-<td class="gt_row gt_center" headers="vize">68</td>
-<td class="gt_row gt_center" headers="quiz1">80</td>
-<td class="gt_row gt_center" headers="quiz2">-</td>
-<td class="gt_row gt_center" headers="quiz3">65</td>
-<td class="gt_row gt_center" headers="quiz4">45</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028063</td>
-<td class="gt_row gt_center" headers="vize">68</td>
-<td class="gt_row gt_center" headers="quiz1">15</td>
-<td class="gt_row gt_center" headers="quiz2">48</td>
-<td class="gt_row gt_center" headers="quiz3">85</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028072</td>
-<td class="gt_row gt_center" headers="vize">72</td>
-<td class="gt_row gt_center" headers="quiz1">30</td>
-<td class="gt_row gt_center" headers="quiz2">-</td>
-<td class="gt_row gt_center" headers="quiz3">55</td>
-<td class="gt_row gt_center" headers="quiz4">50</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028074</td>
-<td class="gt_row gt_center" headers="vize">89</td>
-<td class="gt_row gt_center" headers="quiz1">55</td>
-<td class="gt_row gt_center" headers="quiz2">53</td>
-<td class="gt_row gt_center" headers="quiz3">60</td>
-<td class="gt_row gt_center" headers="quiz4">95</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">22028076</td>
-<td class="gt_row gt_center" headers="vize">77</td>
-<td class="gt_row gt_center" headers="quiz1">10</td>
-<td class="gt_row gt_center" headers="quiz2">13</td>
-<td class="gt_row gt_center" headers="quiz3">40</td>
-<td class="gt_row gt_center" headers="quiz4">-</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">22028701</td>
-<td class="gt_row gt_center" headers="vize">57</td>
-<td class="gt_row gt_center" headers="quiz1">20</td>
-<td class="gt_row gt_center" headers="quiz2">33</td>
-<td class="gt_row gt_center" headers="quiz3">-</td>
-<td class="gt_row gt_center" headers="quiz4">25</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">23028603</td>
-<td class="gt_row gt_center" headers="vize">56</td>
-<td class="gt_row gt_center" headers="quiz1">20</td>
-<td class="gt_row gt_center" headers="quiz2">0</td>
-<td class="gt_row gt_center" headers="quiz3">55</td>
-<td class="gt_row gt_center" headers="quiz4">35</td>
-</tr>
-<tr class="even">
-<td class="gt_row gt_center" headers="ogr_no">23028609</td>
-<td class="gt_row gt_center" headers="vize">83</td>
-<td class="gt_row gt_center" headers="quiz1">60</td>
-<td class="gt_row gt_center" headers="quiz2">47</td>
-<td class="gt_row gt_center" headers="quiz3">85</td>
-<td class="gt_row gt_center" headers="quiz4">85</td>
-</tr>
-<tr class="odd">
-<td class="gt_row gt_center" headers="ogr_no">24028608</td>
-<td class="gt_row gt_center" headers="vize">81</td>
-<td class="gt_row gt_center" headers="quiz1">85</td>
-<td class="gt_row gt_center" headers="quiz2">42</td>
-<td class="gt_row gt_center" headers="quiz3">75</td>
-<td class="gt_row gt_center" headers="quiz4">50</td>
-</tr>
-</tbody>
-</table>
-
+<div>
+<figure class="figure">
+<p><img src="test_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
 </div>
 </div>
+<div class="cell" data-python.reticulate="false">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="iki-kolon" class="level1">
+<h1>iki kolon</h1>
+<section id="alt-başlık-1" class="level2">
+<h2 class="anchored" data-anchor-id="alt-başlık-1">alt başlık</h2>
+<p>ldskmflsmfls slkfmsşd slşdfm sdfşsd mfşlsmfşlskdmf şlsdkf sşdlkşsdlkfmşslds</p>
+<div class="columns">
+<div class="column red-box" style="width:40%;">
+<p>contents…</p>
+</div><div class="column" style="width:60%;">
+<p><img src="rect2.png" class="img-fluid"></p>
+</div>
+</div>
+</section>
+<section id="quiz-deneme" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-deneme">Quiz deneme</h2>
+<div id="quiz">
+  <p>What is 2 + 2?</p>
+  <button onclick="checkAnswer(4)">4</button>
+  <button onclick="checkAnswer(5)">5</button>
+  <p id="feedback"></p>
+</div>
+
+<script>
+function checkAnswer(answer) {
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = answer === 4 ? "Correct! 🎉" : "Try again!";
+}
+</script>
+</section>
+<section id="three.js-deneme" class="level2">
+<h2 class="anchored" data-anchor-id="three.js-deneme">Three.js deneme</h2>
+<!-- include method didnt work {{< include 3d-scene.html >}}  -->
+<div class="scene-container">
+<iframe src="3d-scene.html" width="100%" height="400px" frameborder="0"></iframe>
+</div>
+<section id="ngl-viewer-deneme" class="level3">
+<h3 class="anchored" data-anchor-id="ngl-viewer-deneme">NGL viewer deneme</h3>
+<div class="protein-container">
+<iframe src="protein-structure.html" width="100%" height="800px" frameborder="0"></iframe>
+</div>
+</section>
+<section id="igv-genome-browser-deneme" class="level3">
+<h3 class="anchored" data-anchor-id="igv-genome-browser-deneme">igv genome browser deneme</h3>
+<div id="igv_div">
+
+<script type="module">
+
+    import igv from "https://cdn.jsdelivr.net/npm/igv@3.0.0/dist/igv.esm.min.js"
+
+    const div = document.getElementById("igv_div")
+
+    const config = {
+            genome: "hg19"
+    }
+
+    const browser = await igv.createBrowser(div, config) 
+
+</script>    
 
 
+</div></section>
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
