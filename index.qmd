@@ -32,7 +32,6 @@
 
 *10 Kasım 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders-ggplot.qmd)
 
-
 ## Vize1
 
 *17 Kasım 2025*
@@ -44,6 +43,7 @@
 ## Ders9
 
 *1 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd)
+
 ## Vize 2
 
 *8 Aralık 2025* (kesin değil)
@@ -62,4 +62,4 @@
 
 ## Ders13
 
-* 5 Ocak 2026 9:30* | **İçerik**: Ödev değerlendirme
+*5 Ocak 2026 9:30* | **İçerik**: Ödev değerlendirme
