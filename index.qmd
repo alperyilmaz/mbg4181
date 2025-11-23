@@ -6,40 +6,60 @@
 
 ## Ders1
 
-*28 Şubat 2025 9:30* | **İçerik**: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. [Sunum linki](ders01.qmd)
+*29 Eylül 2025 9:30* | **İçerik**: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. [Sunum linki](ders-intro.qmd)
 
 ## Ders2
 
-*7 Mart 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **select** ve **filter** komutları gösterildi. [Sunum linki](ders02.qmd)
+*6 Ekim 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **select** ve **filter** komutları gösterildi. [Sunum linki](ders-select-filter.qmd)
 
 ## Ders3
 
-*14 Mart 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **mutate** ve **summarize** komutları gösterildi. [Sunum linki](ders03.qmd)
+*13 Ekim 2025 9:30* | **İçerik**: *unvotes* verisi üzerinde **mutate** ve **summarize** komutları gösterildi. [Sunum linki](ders-mutate-summarize.qmd)
 
 ## Ders4
 
-*21 Mart 2025 9:30* | **İçerik**: Dosya okuma komutları gösterildi. [Sunum linki](ders04.qmd)
+*20 Ekim 2025 9:30* | **İçerik**: Dosya okuma komutları gösterildi. [Sunum linki](ders-import.qmd)
 
 ## Ders5
 
-*28 Mart  2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders05.qmd)
+*27 Ekim  2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders-pivot-joinqmd)
 
 ## Ders6
 
-*18 Nisan 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders06.qmd)
+*3 Kasım 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd)
 
 ## Ders7
 
-*2 Mayıs 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders07.qmd)
+*10 Kasım 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders-ggplot.qmd)
+
+
+## Vize1
+
+*17 Kasım 2025*
 
 ## Ders8
 
-*9 Mayıs 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders08.qmd)
+*24 Kasım 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme konusuna devam edildi.. [Sunum linki](ders-ggplot.qmd)
 
 ## Ders9
 
-*16 Mayıs 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme konusuna devam edildi. [Sunum linki](ders08.qmd)
+*1 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd)
+## Vize 2
+
+*8 Aralık 2025* (kesin değil)
 
 ## Ders10
 
-*23 Mayıs 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders09.qmd)
+*15 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd]
+
+## Ders11
+
+*22 Aralık 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd)
+
+## Ders12
+
+*29 Aralık 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders-tidygraph.qmd)
+
+## Ders13
+
+* 5 Ocak 2026 9:30* | **İçerik**: Ödev değerlendirme
