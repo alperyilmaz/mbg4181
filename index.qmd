@@ -22,7 +22,7 @@
 
 ## Ders5
 
-*27 Ekim  2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders-pivot-joinqmd)
+*27 Ekim  2025 9:30* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders-pivot-join.qmd)
 
 ## Ders6
 
@@ -38,7 +38,7 @@
 
 ## Ders8
 
-*24 Kasım 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme konusuna devam edildi.. [Sunum linki](ders-ggplot.qmd)
+*24 Kasım 2025 9:30* | **İçerik**: *ggplot* ile görselleştirme konusuna devam edildi. [Sunum linki](ders-ggplot.qmd)
 
 ## Ders9
 
