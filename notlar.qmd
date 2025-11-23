@@ -3,64 +3,19 @@ title: "Notlar"
 format: html
 ---
 
-Aşağıda, öğrenci numaranız ve notlarınızı görebilirsiniz. Vize1 ağırlığı %40, Final sınavının ağırlığı %40 olacaktır. 4 Quiz'den en yüksek 3 tanesi alınıp hesaplanacak ve %20 katkıda bulunacaktır.
-
-# Dönem sonu sonuçları
-
-| Öğrenci No | Vize(%40) | Vize Maz | Kısa Snv(%20) | Final(%40) | Dönem Sonu Ortalama | Önizl. Harf |
-|:----------:|:---------:|:--------:|:-------------:|:----------:|:-------------------:|:-----------:|
-|  20028074  |     62    |          |       37      |     34     |          46         |      DC     |
-|  21025003  |     93    |          |       69      |     74     |          81         |      AA     |
-|  21025052  |     89    |          |       86      |     90     |          89         |      AA     |
-|  22028011  |           |    13    |       30      |            |          11         |      FF     |
-|  22028014  |     88    |          |       58      |     56     |          69         |      BB     |
-|  22028017  |     43    |          |               |            |          17         |      FF     |
-|  22028021  |     20    |          |       0       |            |          8          |      FF     |
-|  22028031  |     80    |          |       26      |     48     |          56         |      CC     |
-|  22028032  |     51    |          |       33      |     23     |          36         |      DD     |
-|  22028033  |     85    |          |       26      |     42     |          56         |      CC     |
-|  22028046  |     86    |          |       72      |     69     |          76         |      BA     |
-|  22028061  |     28    |          |       78      |     63     |          52         |      CC     |
-|  22028062  |     68    |          |       63      |     40     |          56         |      CC     |
-|  22028063  |     68    |          |       49      |     36     |          51         |      CC     |
-|  22028072  |     72    |          |       45      |     35     |          52         |      CC     |
-|  22028074  |     89    |          |       70      |     61     |          74         |      BA     |
-|  22028076  |     77    |          |       21      |     34     |          49         |      DC     |
-|  22028701  |     57    |          |       26      |     42     |          45         |      DC     |
-|  23028603  |     56    |          |       37      |     21     |          38         |      DD     |
-|  23028609  |     83    |          |       77      |     71     |          77         |      BA     |
-|  24028608  |     81    |          |       70      |     78     |          78         |      BA     |
-
-# Quiz sonuçları
-
+Aşağıda, Quiz1, Quiz2 ve Vize notlarınızı görebilirsiniz:
 
 ```{r}
 #| echo: false
-#| message: false
-
-library(readr)
-library(dplyr)
+#| warning: false
 library(gt)
 
-read_tsv("notlar.tsv") |>
-  gt() |>
-  sub_missing( missing_text = "-") |>
-  cols_align(align="center")
-
+readr::read_csv("notlar-publish.csv") |>
+gt() |>
+sub_missing(
+  columns = everything(),
+  rows = everything(),
+  missing_text = "-"
+)
 ```
 
-# Harf aralıkları
-
-Aralıklar aşağıdaki gibi hesaplanmıştır
-
-| alt | üst  | harf |
-|-----|------|------|
-| 81  | 100  | AA   |
-| 73  | 80,9 | BA   |
-| 65  | 72,9 | BB   |
-| 57  | 64,9 | CB   |
-| 50  | 56,9 | CC   |
-| 42  | 49,8 | DC   |
-| 25  | 41,9 | DD   |
-| 10  | 24,9 | FD   |
-| 0   | 9,9  | FF   |
