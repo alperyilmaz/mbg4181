@@ -42,23 +42,23 @@
 
 ## Ders9
 
-*1 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd) (Quiz3)
-
-## Vize 2
-
-*8 Aralık 2025* (kesin değil)
+*1 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd) 
 
 ## Ders10
 
-*15 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd]
+*8 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd) (Quiz3)
 
 ## Ders11
 
-*22 Aralık 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd) (Quiz4)
+*15 Aralık 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd) 
+
+## Vize2
+
+*22 Aralık 2025 9:30* 
 
 ## Ders12
 
-*29 Aralık 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders-tidygraph.qmd)
+*29 Aralık 2025 9:30* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders-tidygraph.qmd) (Quiz4)
 
 ## Ders13
 

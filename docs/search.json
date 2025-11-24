@@ -242,7 +242,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n29 Eylül 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n6 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n13 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n20 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n27 Ekim 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n3 Kasım 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n10 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n17 Kasım 2025\n\n\n\n24 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3)\n\n\n\n8 Aralık 2025 (kesin değil)\n\n\n\n15 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd]\n\n\n\n22 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Quiz4)\n\n\n\n29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki\n\n\n\n5 Ocak 2026 9:30 | İçerik: Ödev değerlendirme"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n29 Eylül 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n6 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n13 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n20 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n27 Ekim 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n3 Kasım 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n10 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n17 Kasım 2025\n\n\n\n24 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki\n\n\n\n8 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3)\n\n\n\n15 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki\n\n\n\n22 Aralık 2025 9:30\n\n\n\n29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)\n\n\n\n5 Ocak 2026 9:30 | İçerik: Ödev değerlendirme"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -319,35 +319,35 @@
     "href": "index.html#ders9",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3)"
-  },
-  {
-    "objectID": "index.html#vize-2",
-    "href": "index.html#vize-2",
-    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
-    "section": "",
-    "text": "8 Aralık 2025 (kesin değil)"
+    "text": "1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki"
   },
   {
     "objectID": "index.html#ders10",
     "href": "index.html#ders10",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "15 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd]"
+    "text": "8 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3)"
   },
   {
     "objectID": "index.html#ders11",
     "href": "index.html#ders11",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "22 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Quiz4)"
+    "text": "15 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki"
+  },
+  {
+    "objectID": "index.html#vize2",
+    "href": "index.html#vize2",
+    "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
+    "section": "",
+    "text": "22 Aralık 2025 9:30"
   },
   {
     "objectID": "index.html#ders12",
     "href": "index.html#ders12",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki"
+    "text": "29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)"
   },
   {
     "objectID": "index.html#ders13",
