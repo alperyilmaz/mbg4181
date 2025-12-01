@@ -44,198 +44,212 @@
   {
     "objectID": "ders-quarto.html#communicate",
     "href": "ders-quarto.html#communicate",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Communicate",
     "text": "Communicate\n\n\n\nWhat good is an image/analysis/result if you are unable to communicate\n\n\n\n\n\nsource: imgflip"
   },
   {
     "objectID": "ders-quarto.html#tidy-workflow",
     "href": "ders-quarto.html#tidy-workflow",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Tidy workflow",
     "text": "Tidy workflow\nCommunicating your findings is part of Data analysis/Data science\n\n\nsource: R for Data Science"
   },
   {
     "objectID": "ders-quarto.html#section",
     "href": "ders-quarto.html#section",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "Packages we have learned so far specialize in one part of the workflow. Quarto (also RMarkdown) helps communicating our results.\n\n\nsource: Getting Started with tidyverse in R"
   },
   {
     "objectID": "ders-quarto.html#quarto-aside-rmarkdown",
     "href": "ders-quarto.html#quarto-aside-rmarkdown",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Quarto (aside RMarkdown)",
     "text": "Quarto (aside RMarkdown)\n\n\n\n\n\n\n\nTip\n\n\nRMarkdown is still actively used but please use Quarto"
   },
   {
     "objectID": "ders-quarto.html#how-it-works",
     "href": "ders-quarto.html#how-it-works",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "How it works",
     "text": "How it works\n\nA compute engine (knitr for R or Jupyter Notebook) will compute and run your code chunks and embed their results in Markdown file\nPandoc will convert markdown format into various formats\n\n\n\nsource: Tutorial: Hello, Quarto"
   },
   {
-    "objectID": "ders-quarto.html#markdown-hakkında",
-    "href": "ders-quarto.html#markdown-hakkında",
-    "title": "Sonuçların ve çıktıların paylaşılması",
-    "section": "Markdown hakkında",
-    "text": "Markdown hakkında\nMarkdown formatı hakkında bilgi almak için Quarto sitesindeki Markdown Basics adresini ziyaret ediniz."
+    "objectID": "ders-quarto.html#about-markdown",
+    "href": "ders-quarto.html#about-markdown",
+    "title": "Sharing results and output",
+    "section": "About Markdown",
+    "text": "About Markdown\nFor information about Markdown format, please visit the Markdown Basics site on the Quarto site."
   },
   {
     "objectID": "ders-quarto.html#section-1",
     "href": "ders-quarto.html#section-1",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "Quarto document is a plain text file which can be rendered into …"
   },
   {
     "objectID": "ders-quarto.html#section-2",
     "href": "ders-quarto.html#section-2",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "… HTML"
   },
   {
     "objectID": "ders-quarto.html#your-turn",
     "href": "ders-quarto.html#your-turn",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Your turn",
     "text": "Your turn\nLet’s create our first Quarto document and then render it.\n\n\nquarto is installed in rstudio.cloud project. If you’re using your local RStudio, you might need to install quarto in your own computer (instructions)."
   },
   {
     "objectID": "ders-quarto.html#section-3",
     "href": "ders-quarto.html#section-3",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "Provide title for your document (this is not filename!)"
   },
   {
     "objectID": "ders-quarto.html#section-4",
     "href": "ders-quarto.html#section-4",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "We have Untitled file, let’s save this file"
   },
   {
     "objectID": "ders-quarto.html#section-5",
     "href": "ders-quarto.html#section-5",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "Now, we are ready to Render the document"
   },
   {
     "objectID": "ders-quarto.html#section-6",
     "href": "ders-quarto.html#section-6",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "The rendered HTML document will be opened automatically in your browser"
   },
   {
     "objectID": "ders-quarto.html#editor",
     "href": "ders-quarto.html#editor",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Editor",
     "text": "Editor\nYou can use Source (left) or Visual editor (right) when editing your Quarto document."
   },
   {
     "objectID": "ders-quarto.html#plotting-images",
     "href": "ders-quarto.html#plotting-images",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Plotting images",
     "text": "Plotting images\nLet’s imagine your’re preparing a document with plots. Probably, you’ll prepare the plot in Excel (or some other software) and then copy/paste it into Word.\nIf data changes later, then you have to repeat both preparing the plot and updating the Word steps.\nIn case of Quarto (or Jupyter Notebook), you just need to re-render the document. Images, tables and text will be updated at once.\nAlso, your Quarto document will contain the the recipe (i.e. the code) used for preparing the final document.\nConsider the Quarto document in next slide, it draws a plot using airquality data set using ggplot. As you have noticed, there’s no saving a file and then copying it in order to include the image file."
   },
   {
     "objectID": "ders-quarto.html#section-7",
     "href": "ders-quarto.html#section-7",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "---\ntitle: \"ggplot2 demo\"\nauthor: \"Norah Jones\"\ndate: \"5/22/2021\"\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n---\n\n## Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| warning: false\n\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\nlines 1-10 (called YAML header) describe document properties\nline 14 contains citation to the image (which will be calculated as Figure 1 automatically)\nlines 16-27 contains the R code chunk and lines 17-19 contains chunk options"
   },
   {
     "objectID": "ders-quarto.html#section-8",
     "href": "ders-quarto.html#section-8",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "This document will be rendered as follows\n\n\n\n\nAs you have noticed, the figure number is determined automatically, the caption is placed under the image, the code is folded (will be revealed when clicked)"
   },
   {
     "objectID": "ders-quarto.html#section-9",
     "href": "ders-quarto.html#section-9",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "Pandoc can convert markdown format into HTML, PDF or Word (actually many more). Let’s convert the same document into three different formats by changing the format: html into either format: pdf or format: docx"
   },
   {
     "objectID": "ders-quarto.html#section-10",
     "href": "ders-quarto.html#section-10",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "",
     "text": "For converting to PDF version, you have to install separate software"
   },
   {
     "objectID": "ders-quarto.html#more-code-chunk-options",
     "href": "ders-quarto.html#more-code-chunk-options",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "More code chunk options",
     "text": "More code chunk options\nIn HTML format, you can show the tables (data frames, tibbles) as HTML tables (browsing next page) just like in RStudio.\nLet’s add the following chunk to our document and then render it (also add df-print: paged option in document properties)\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nlibrary(tidyverse)\n\nmpg_avg &lt;- mpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n\nmpg_avg\n```\nLet’s go over the chunk options: echo: false means that the code will not be shown in final document, warning: false will suppress any warning or messages, cache: true means that the calculation in that chunk will be cached and won’t be re-calculated (unless chunk is modified) in following renderings."
   },
   {
     "objectID": "ders-quarto.html#packages-for-better-tables",
     "href": "ders-quarto.html#packages-for-better-tables",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Packages for better tables",
     "text": "Packages for better tables\nThere are numerous R packages for generating beautiful tables to be embedded into HTML or PDF formats. {reacttable} and {gt} are very capable, professional looking tables can be easily prepared with these packages.\nEspecially {gt} package is very capable. Please visit its introduction site and gallery"
   },
   {
     "objectID": "ders-quarto.html#gt-table-example",
     "href": "ders-quarto.html#gt-table-example",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "gt table example",
     "text": "gt table example\n\n\nsource: Riding tables with {gt} and {gtExtras}"
   },
   {
     "objectID": "ders-quarto.html#gt-table-example-1",
     "href": "ders-quarto.html#gt-table-example-1",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "gt table example 1",
     "text": "gt table example 1\n\n\nsource: Using {gt}, {gtExtras} and {openair} to present air quality monitoring data"
   },
   {
     "objectID": "ders-quarto.html#inline-code",
     "href": "ders-quarto.html#inline-code",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Inline code",
     "text": "Inline code\nAgain, let’s imagine, in our document we want to have statements like “the dataset contained 234 rows”. We’d face the same challenge if data is updated, we have to locate such statements scattered in our document and then update one by one. Actually, you can have inline R code have such calculations embedded by code.\nThe rendering of following line in Quarto document is shown in next slide.\nThere are 'r nrow(mtcars)' observations in **mtcars** data. The table below shows average city and highway mileage \nper make and cyclinder number."
   },
   {
     "objectID": "ders-quarto.html#and-much-more",
     "href": "ders-quarto.html#and-much-more",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "And much more",
     "text": "And much more\nQuarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found here\n---\ntitle: \"ggplot2 demo\"\nauthor: \"alper\"\ndate: \"6/1/2023\"\ntoc: true\nnumber-sections: true\nbibliography: references.bib\nformat: \n  html:\n    fig-width: 8\n    fig-height: 4\n    code-fold: true\n    code-link: true\n    df-print: paged\n  pdf:\n    geometry: \n      - top=30mm\n      - left=30mm\n  docx: default\n---\n\n# Air Quality\n\n@fig-airquality further explores the impact of temperature on ozone level.\n\n```{r}\n#| label: fig-airquality\n#| fig-cap: \"Temperature and ozone level.\"\n#| echo: true\n#| warning: false\n\nlibrary(tidyverse)\nlibrary(ggplot2)\n\nggplot(airquality, aes(Temp, Ozone)) + \n  geom_point() + \n  geom_smooth(method = \"loess\"\n)\n```\n\n\n## mpg scatter plot\n\n@fig-scatterplot shows correlation between highway and city mileages. \n\n```{r}\n#| label: fig-scatterplot\n#| fig-cap: \"City and highway mileage for 38 popular models of cars.\"\n#| fig-alt: \"Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases.\"\n#| fig-width: 6\n#| fig-height: 3.5\n\nggplot(mpg, aes(hwy, cty, color=cyl)) + \n  geom_point(alpha=0.5, size=2) +\n  scale_color_viridis_c() +\n  theme_minimal()\n```\n\n## the mpg data as table\n\nThere are 32 observations in our data.\n\n```{r}\n#| echo: false\n#| warning: false\n#| cache: true\nmpg |&gt;\n  group_by(manufacturer, cyl) |&gt;\n  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))\n```\n\nHypothetical `table_viewer` will show your tables in a much better way.\n\n```{r}\n#| eval: false\ntable_viewer(mpg)\n```\n\n# Formulas\n\nyou can have formulas in your document\n\n\n$$\nprice = \\hat{\\beta}_0 + \\hat{\\beta}_1 \\times area + \\epsilon\n$$\n\n# Citations\n\nWe're going to do this analysis using literate programming [@Knuth1984].\n\n# Layout\n\n## Callouts\n\n::: {.callout-note}\nHere's some information\n:::"
   },
   {
+    "objectID": "ders-quarto.html#various-types-of-documents",
+    "href": "ders-quarto.html#various-types-of-documents",
+    "title": "Sharing results and output",
+    "section": "Various types of documents",
+    "text": "Various types of documents\n\nDocuments (HTML, PDF, Word)\nPresentations\nDashboards\nWebsites\nBooks\nManuscripts\nPosters\nInteractivity\n\nShiny"
+  },
+  {
     "objectID": "ders-quarto.html#shiny",
     "href": "ders-quarto.html#shiny",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Shiny",
     "text": "Shiny\nShiny allows your users to interact with your content (i.e a web app) online without requiring any web development skills.\nIn a Shiny web app, web elements (text input, drop down menus, sliders, etc.) are used as input for your R code where the code is update upon user input.\nPlease visit the Gallery and interact with the demos."
   },
   {
+    "objectID": "ders-quarto.html#htmlcss-and-js-is-different-world",
+    "href": "ders-quarto.html#htmlcss-and-js-is-different-world",
+    "title": "Sharing results and output",
+    "section": "HTML/CSS and JS is different world!",
+    "text": "HTML/CSS and JS is different world!\nYou can embed powerful JS libraries in an HTML page.\n\nSimple example Example: protein structure"
+  },
+  {
     "objectID": "ders-quarto.html#additional-resources-about-quarto",
     "href": "ders-quarto.html#additional-resources-about-quarto",
-    "title": "Sonuçların ve çıktıların paylaşılması",
+    "title": "Sharing results and output",
     "section": "Additional resources about Quarto",
     "text": "Additional resources about Quarto\nPlease visit these sites for more information about Quarto and its capabilities\n\nQuarto Gallery site has lots of examples\nQuarto guide\nQuarto chapter at R for Data Science book\nPosit Quarto cheetsheet\nDataCamp Quarto Cheatsheet"
   },
   {
-    "objectID": "ders-quarto.html#bu-sunumun-kaynak-kodu",
-    "href": "ders-quarto.html#bu-sunumun-kaynak-kodu",
-    "title": "Sonuçların ve çıktıların paylaşılması",
-    "section": "Bu sunumun kaynak kodu",
-    "text": "Bu sunumun kaynak kodu\nŞu anda görüntülediğiniz sunum da Quarto ile hazırlanmıştır. Kaynak kodlarını alperyilmaz/mbg4181 Github sayfasında inceleyebilirsiniz."
+    "objectID": "ders-quarto.html#source-code-for-this-presentation",
+    "href": "ders-quarto.html#source-code-for-this-presentation",
+    "title": "Sharing results and output",
+    "section": "Source Code for This Presentation",
+    "text": "Source Code for This Presentation\nThe presentation you are currently viewing was also prepared with Quarto. You can examine the source code on the alperyilmaz/mbg4181 Github page."
   },
   {
     "objectID": "index.html",

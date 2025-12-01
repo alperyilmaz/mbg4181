@@ -1,7 +1,7 @@
 ---
-title: "Sonuçların ve çıktıların paylaşılması"
+title: "Sharing results and output"
 author: "alper yilmaz"
-date: 2025-05-23
+date: 2025-12-01
 format:
   revealjs:
     chalkboard: true
@@ -90,9 +90,10 @@ source: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstu
 :::
 
 
-## Markdown hakkında
+## About Markdown
 
-Markdown formatı hakkında bilgi almak için Quarto sitesindeki [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html) adresini ziyaret ediniz.
+For information about Markdown format, please visit the [Markdown Basics](https://quarto.org
+/docs/authoring/markdown-basics.html) site on the Quarto site.
 
 ## 
 
@@ -415,6 +416,17 @@ Here's some information
 
 ````
 
+## Various types of documents
+
+- Documents (HTML, PDF, Word)
+- Presentations
+- Dashboards
+- Websites
+- Books
+- Manuscripts
+- Posters
+- Interactivity
+  - Shiny
 
 ## Shiny
 
@@ -424,6 +436,12 @@ In a Shiny web app, web elements (text input, drop down menus, sliders, etc.) ar
 
 Please visit the [Gallery](https://shiny.posit.co/r/gallery/) and interact with the demos. 
 
+## HTML/CSS and JS is different world!
+
+You can embed powerful JS libraries in an HTML page. 
+
+- Simple example
+Example: [protein structure](protein-structure.html)
 
 ## Additional resources about Quarto
 
@@ -435,6 +453,6 @@ Please visit these sites for more information about Quarto and its capabilities
 * [Posit Quarto cheetsheet](https://rstudio.github.io/cheatsheets/quarto.pdf)
 * [DataCamp Quarto Cheatsheet](https://res.cloudinary.com/dyd911kmh/image/upload/v1676540721/Marketing/Blog/Quarto_Cheat_Sheet.pdf)
 
-## Bu sunumun kaynak kodu
+## Source Code for This Presentation
 
-Şu anda görüntülediğiniz sunum da Quarto ile hazırlanmıştır. Kaynak kodlarını [alperyilmaz/mbg4181](https://github.com/alperyilmaz/mbg4181/) Github sayfasında inceleyebilirsiniz.
+The presentation you are currently viewing was also prepared with Quarto. You can examine the source code on the [alperyilmaz/mbg4181](https://github.com/alperyilmaz/mbg4181/) Github page.
