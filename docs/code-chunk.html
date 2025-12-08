@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Deneme – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
+<title>Tick marks – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -104,7 +104,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 }</script>
 
 
-<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -152,20 +151,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#başlık" id="toc-başlık" class="nav-link active" data-scroll-target="#başlık">Başlık</a>
-  <ul class="collapse">
-  <li><a href="#alt-başlık" id="toc-alt-başlık" class="nav-link" data-scroll-target="#alt-başlık">Alt başlık</a></li>
-  </ul></li>
-  <li><a href="#iki-kolon" id="toc-iki-kolon" class="nav-link" data-scroll-target="#iki-kolon">iki kolon</a>
-  <ul class="collapse">
-  <li><a href="#alt-başlık-1" id="toc-alt-başlık-1" class="nav-link" data-scroll-target="#alt-başlık-1">alt başlık</a></li>
-  <li><a href="#quiz-deneme" id="toc-quiz-deneme" class="nav-link" data-scroll-target="#quiz-deneme">Quiz deneme</a></li>
-  <li><a href="#three.js-deneme" id="toc-three.js-deneme" class="nav-link" data-scroll-target="#three.js-deneme">Three.js deneme</a>
-  <ul class="collapse">
-  <li><a href="#ngl-viewer-deneme" id="toc-ngl-viewer-deneme" class="nav-link" data-scroll-target="#ngl-viewer-deneme">NGL viewer deneme</a></li>
-  <li><a href="#igv-genome-browser-deneme" id="toc-igv-genome-browser-deneme" class="nav-link" data-scroll-target="#igv-genome-browser-deneme">igv genome browser deneme</a></li>
-  </ul></li>
-  </ul></li>
+  <li><a href="#tick-marks-in-general" id="toc-tick-marks-in-general" class="nav-link active" data-scroll-target="#tick-marks-in-general">Tick marks in general</a></li>
+  <li><a href="#tick-marks-with-language" id="toc-tick-marks-with-language" class="nav-link" data-scroll-target="#tick-marks-with-language">tick marks with language</a></li>
+  <li><a href="#tick-marks-as-runnable-code" id="toc-tick-marks-as-runnable-code" class="nav-link" data-scroll-target="#tick-marks-as-runnable-code">tick marks as runnable code</a></li>
   </ul>
 </nav>
     </div>
@@ -174,7 +162,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Deneme</h1>
+<h1 class="title">Tick marks</h1>
 </div>
 
 
@@ -191,110 +179,31 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="başlık" class="level1">
-<h1>Başlık</h1>
-<section id="alt-başlık" class="level2">
-<h2 class="anchored" data-anchor-id="alt-başlık">Alt başlık</h2>
-<p>Bu yazı <em>yatık</em> bu da <strong>kalın punto</strong>. Bu da <span class="red-text">renkli yazı</span>.</p>
-<ul>
-<li>liste</li>
-<li>liste</li>
-</ul>
-<pre><code>bu bir kod</code></pre>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<section id="tick-marks-in-general" class="level1">
+<h1>Tick marks in general</h1>
+<p>tick marks show the content as “code” or “verbatim”</p>
+<pre><code>1 + 1
+mean(mtcars$mpg, na.rm=TRUE)</code></pre>
+</section>
+<section id="tick-marks-with-language" class="level1">
+<h1>tick marks with language</h1>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="tick-marks-as-runnable-code" class="level1">
+<h1>tick marks as runnable code</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="test_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<div class="cell" data-python.reticulate="false">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> <span class="dv">1</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1</code></pre>
+<pre><code>[1] 2</code></pre>
 </div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(mtcars<span class="sc">$</span>mpg, <span class="at">na.rm=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
-1          5.1         3.5          1.4         0.2  setosa
-2          4.9         3.0          1.4         0.2  setosa
-3          4.7         3.2          1.3         0.2  setosa
-4          4.6         3.1          1.5         0.2  setosa
-5          5.0         3.6          1.4         0.2  setosa
-6          5.4         3.9          1.7         0.4  setosa</code></pre>
+<pre><code>[1] 20.09062</code></pre>
 </div>
 </div>
-</section>
-</section>
-<section id="iki-kolon" class="level1">
-<h1>iki kolon</h1>
-<section id="alt-başlık-1" class="level2">
-<h2 class="anchored" data-anchor-id="alt-başlık-1">alt başlık</h2>
-<p>ldskmflsmfls slkfmsşd slşdfm sdfşsd mfşlsmfşlskdmf şlsdkf sşdlkşsdlkfmşslds</p>
-<div class="columns">
-<div class="column red-box" style="width:40%;">
-<p>contents…</p>
-</div><div class="column" style="width:60%;">
-<p><img src="rect2.png" class="img-fluid"></p>
-</div>
-</div>
-</section>
-<section id="quiz-deneme" class="level2">
-<h2 class="anchored" data-anchor-id="quiz-deneme">Quiz deneme</h2>
-<div id="quiz">
-  <p>What is 2 + 2?</p>
-  <button onclick="checkAnswer(4)">4</button>
-  <button onclick="checkAnswer(5)">5</button>
-  <p id="feedback"></p>
-</div>
-
-<script>
-function checkAnswer(answer) {
-  const feedback = document.getElementById("feedback");
-  feedback.textContent = answer === 4 ? "Correct! 🎉" : "Try again!";
-}
-</script>
-</section>
-<section id="three.js-deneme" class="level2">
-<h2 class="anchored" data-anchor-id="three.js-deneme">Three.js deneme</h2>
-<!-- include method didnt work {{< include 3d-scene.html >}}  -->
-<div class="scene-container">
-<iframe src="3d-scene.html" width="100%" height="400px" frameborder="0"></iframe>
-</div>
-<section id="ngl-viewer-deneme" class="level3">
-<h3 class="anchored" data-anchor-id="ngl-viewer-deneme">NGL viewer deneme</h3>
-<div class="protein-container">
-<iframe src="protein-structure.html" width="100%" height="800px" frameborder="0"></iframe>
-</div>
-</section>
-<section id="igv-genome-browser-deneme" class="level3">
-<h3 class="anchored" data-anchor-id="igv-genome-browser-deneme">igv genome browser deneme</h3>
-<div id="igv_div">
-
-<script type="module">
-
-    import igv from "https://cdn.jsdelivr.net/npm/igv@3.0.0/dist/igv.esm.min.js"
-
-    const div = document.getElementById("igv_div")
-
-    const config = {
-            genome: "hg19"
-    }
-
-    const browser = await igv.createBrowser(div, config) 
-
-</script>    
 
 
-</div></section>
-</section>
 </section>
 
 </main> <!-- /main -->

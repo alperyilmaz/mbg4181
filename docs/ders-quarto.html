@@ -271,7 +271,7 @@ alper yilmaz
 </section>
 <section id="about-markdown" class="slide level2">
 <h2>About Markdown</h2>
-<p>For information about Markdown format, please visit the <a href="https://quarto.org%20/docs/authoring/markdown-basics.html">Markdown Basics</a> site on the Quarto site.</p>
+<p>For information about Markdown format, please visit the <a href="https://quarto.org/docs/authoring/markdown-basics.html">Markdown Basics</a> site on the Quarto site.</p>
 </section>
 <section id="section-1" class="slide level2">
 <h2></h2>
@@ -304,7 +304,20 @@ alper yilmaz
 <h2></h2>
 <p>Now, we are ready to <strong>Render</strong> the document</p>
 
-<img data-src="images/image-20230603193032628.png" class="r-stretch"></section>
+<img data-src="images/image-20230603193032628.png" class="r-stretch"><div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Tip</strong></p>
+</div>
+<div class="callout-content">
+<p>On first use, you need to install rmarkdown package with <code>install.packages("rmarkdown")</code> in Console</p>
+</div>
+</div>
+</div>
+</section>
 <section id="section-6" class="slide level2">
 <h2></h2>
 <p>The rendered HTML document will be opened automatically in your browser</p>
@@ -580,6 +593,28 @@ alper yilmaz
 <section id="source-code-for-this-presentation" class="slide level2">
 <h2>Source Code for This Presentation</h2>
 <p>The presentation you are currently viewing was also prepared with Quarto. You can examine the source code on the <a href="https://github.com/alperyilmaz/mbg4181/">alperyilmaz/mbg4181</a> Github page.</p>
+</section>
+<section id="how-to-prepare-poster" class="slide level2">
+<h2>How to prepare poster</h2>
+<ul>
+<li>Go to posit.cloud OR run RStudio in your laptop</li>
+<li>Start a new project in posit.cloud</li>
+<li>Go to terminal and run the following command:
+<ul>
+<li>quarto use template bbucior/docposter</li>
+<li>Then put the following answers
+<ul>
+<li>Do you trust: yes</li>
+<li>Subdirectory: yes</li>
+<li>Name: <em>give any name</em></li>
+<li>Continue: yes</li>
+</ul></li>
+<li>It might install or update some packages (for once)</li>
+</ul></li>
+<li>Then go to folder, and open the qmd file with the name you selected</li>
+<li>Then Render the document (for first render, it might install or update packages)</li>
+<li>Open the resulting html file in “Web Browser”</li>
+</ul>
 
 
 </section>

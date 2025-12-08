@@ -92,8 +92,7 @@ source: [Tutorial: Hello, Quarto](https://quarto.org/docs/get-started/hello/rstu
 
 ## About Markdown
 
-For information about Markdown format, please visit the [Markdown Basics](https://quarto.org
-/docs/authoring/markdown-basics.html) site on the Quarto site.
+For information about Markdown format, please visit the [Markdown Basics](https://quarto.org/docs/authoring/markdown-basics.html) site on the Quarto site.
 
 ## 
 
@@ -140,7 +139,9 @@ Now, we are ready to **Render** the document
 
 ![](images/image-20230603193032628.png)
 
-
+:::{.callout-tip}
+On first use, you need to install rmarkdown package with `install.packages("rmarkdown")` in Console
+:::
 
 ##
 
@@ -456,3 +457,19 @@ Please visit these sites for more information about Quarto and its capabilities
 ## Source Code for This Presentation
 
 The presentation you are currently viewing was also prepared with Quarto. You can examine the source code on the [alperyilmaz/mbg4181](https://github.com/alperyilmaz/mbg4181/) Github page.
+
+## How to prepare poster
+
+- Go to posit.cloud OR run RStudio in your laptop
+- Start a new project in posit.cloud 
+- Go to terminal and run the following command:
+  - quarto use template bbucior/docposter
+  - Then put the following answers
+    - Do you trust: yes
+    - Subdirectory: yes
+    - Name: *give any name*
+    - Continue:  yes
+  - It might install or update some packages (for once)
+- Then go to folder, and open the qmd file with the name you selected
+- Then Render the document (for first render, it might install or update packages)
+- Open the resulting html file in "Web Browser"
