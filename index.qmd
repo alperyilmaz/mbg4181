@@ -46,11 +46,11 @@
 
 ## Ders10
 
-*8 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd) (Quiz3)
+*8 Aralık 2025 9:30* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd) (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)
 
 ## Ders11
 
-*15 Aralık 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd) 
+*15 Aralık 2025 9:30* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd) (Homework: minimum of 3 plots prepared with ggplot)
 
 ## Vize2
 

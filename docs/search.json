@@ -215,5 +215,26 @@
     "title": "Sharing results and output",
     "section": "How to prepare poster",
     "text": "How to prepare poster\n\nGo to posit.cloud OR run RStudio in your laptop\nStart a new project in posit.cloud\nGo to terminal and run the following command:\n\nquarto use template bbucior/docposter\nThen put the following answers\n\nDo you trust: yes\nSubdirectory: yes\nName: give any name\nContinue: yes\n\nIt might install or update some packages (for once)\n\nThen go to folder, and open the qmd file with the name you selected\nThen Render the document (for first render, it might install or update packages)\nOpen the resulting html file in “Web Browser”"
+  },
+  {
+    "objectID": "notlar.html",
+    "href": "notlar.html",
+    "title": "Notlar",
+    "section": "",
+    "text": "You can find all your quiz and midterm scores. Your assignment score is explained in second table below. For attendance score, if you attended 12 lectures you got 5 points and you missed 1 point for each missed lecture."
+  },
+  {
+    "objectID": "notlar.html#all-scores",
+    "href": "notlar.html#all-scores",
+    "title": "Notlar",
+    "section": "All scores",
+    "text": "All scores\n\n\n\n\n\n\n\n\nID\nQuiz1\nQuiz2\nMidterm1\nQuiz3\nQuiz4\nMidterm2\nAssignment\nAttendance-count\nAttendance-score\n\n\n\n\n21028913\n65\n30\n75\n45\n50\n57\n8\n11\n4\n\n\n21028917\n-\n-\n-\n-\n-\n-\n-\n-\n-\n\n\n22028065\n70\n50\n80\n70\n35\n70\n10\n11\n4\n\n\n22028069\n-\n0\n80\n35\n-\n15\n2\n12\n5\n\n\n22028082\n30\n40\n65\n70\n95\n63\n10\n11\n4\n\n\n23025044\n70\n55\n-\n55\n-\n33\n-\n7\n0\n\n\n23028030\n90\n-\n70\n65\n25\n54\n-\n10\n3\n\n\n23028031\n30\n10\n50\n50\n5\n48\n4\n11\n4\n\n\n23028032\n90\n60\n75\n75\n25\n70\n1\n11\n4\n\n\n23028040\n65\n55\n52\n85\n10\n53\n10\n10\n3\n\n\n24028603\n50\n45\n70\n75\n0\n-\n2\n11\n4\n\n\n25542005\n-\n55\n70\n90\n25\n68\n8\n7\n0\n\n\n25542018\n90\n65\n70\n100\n40\n84\n8\n9\n2"
+  },
+  {
+    "objectID": "notlar.html#poster-assignment-evaluation-chart",
+    "href": "notlar.html#poster-assignment-evaluation-chart",
+    "title": "Notlar",
+    "section": "Poster assignment evaluation chart",
+    "text": "Poster assignment evaluation chart\nThere are five items in evaluation, each score 2 points.\n\nIf you submitted draft figures, you got 2 points\nIf you have poster qmd file, you got 2 points\nIf your qmd file renders successfully you got 2 points\nIf your poster has at least 3 figures, you got 2 points\nIf your poster has meaningful context and story you got 2 points.\n\n\n\n\n\n\n\n\n\nID\nDraft figures\nPoster Qmd file\nRender\nAt least 3 figures\nStory\nTotal\n\n\n\n\n21028913\n-\n2\n2\n2\n2\n8\n\n\n22028065\n2\n2\n2\n2\n2\n10\n\n\n22028082\n2\n2\n2\n2\n2\n10\n\n\n23028031\n-\n2\n-\n2\n-\n4\n\n\n23028040\n2\n2\n2\n2\n2\n10\n\n\n24028603\n-\n-\n-\n2\n-\n2\n\n\n25542005\n-\n2\n2\n2\n2\n8\n\n\n25542018\n-\n2\n2\n2\n2\n8\n\n\n22028069\n2\n-\n-\n-\n-\n2\n\n\n23028032\n1\n-\n-\n-\n-\n1"
   }
 ]

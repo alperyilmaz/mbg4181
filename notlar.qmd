@@ -3,7 +3,9 @@ title: "Notlar"
 format: html
 ---
 
-Aşağıda, Quiz1, Quiz2 ve Vize notlarınızı görebilirsiniz:
+You can find all your quiz and midterm scores. Your assignment score is explained in second table below. For attendance score, if you attended 12 lectures you got 5 points and you missed 1 point for each missed lecture.
+
+## All scores
 
 ```{r}
 #| echo: false
@@ -12,6 +14,10 @@ library(gt)
 
 readr::read_csv("notlar-publish.csv") |>
 gt() |>
+cols_align(
+  align = c("center"),
+  columns = everything()
+) |>
 sub_missing(
   columns = everything(),
   rows = everything(),
@@ -19,3 +25,30 @@ sub_missing(
 )
 ```
 
+## Poster assignment evaluation chart
+
+There are five items in evaluation, each score 2 points. 
+
+- If you submitted draft figures, you got 2 points
+- If you have poster qmd file, you got 2 points
+- If your qmd file renders successfully you got 2 points
+- If your poster has at least 3 figures, you got 2 points
+- If your poster has meaningful context and story you got 2 points. 
+
+```{r}
+#| echo: false
+#| warning: false
+library(gt)
+
+readr::read_csv("notlar-poster.csv") |>
+gt() |>
+cols_align(
+  align = c("center"),
+  columns = everything()
+) |>
+sub_missing(
+  columns = everything(),
+  rows = everything(),
+  missing_text = "-"
+)
+```
