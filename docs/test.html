@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
+<title>Deneme – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -69,6 +104,7 @@ ul.task-list li input[type="checkbox"] {
 }</script>
 
 
+<link rel="stylesheet" href="custom.css">
 </head>
 
 <body class="nav-fixed quarto-light">
@@ -89,7 +125,7 @@ ul.task-list li input[type="checkbox"] {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link active" href="./index.html" aria-current="page"> 
+    <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Ana Sayfa</span></a>
   </li>  
   <li class="nav-item">
@@ -116,103 +152,148 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#mbg4181-biyolojik-veri-analizi-ve-görüntüleme" id="toc-mbg4181-biyolojik-veri-analizi-ve-görüntüleme" class="nav-link active" data-scroll-target="#mbg4181-biyolojik-veri-analizi-ve-görüntüleme">MBG4181 Biyolojik Veri Analizi ve Görüntüleme</a>
+  <li><a href="#başlık" id="toc-başlık" class="nav-link active" data-scroll-target="#başlık">Başlık</a>
   <ul class="collapse">
-  <li><a href="#kaynaklar" id="toc-kaynaklar" class="nav-link" data-scroll-target="#kaynaklar">Kaynaklar</a></li>
-  <li><a href="#ders1" id="toc-ders1" class="nav-link" data-scroll-target="#ders1">Ders1</a></li>
-  <li><a href="#ders2" id="toc-ders2" class="nav-link" data-scroll-target="#ders2">Ders2</a></li>
-  <li><a href="#ders3" id="toc-ders3" class="nav-link" data-scroll-target="#ders3">Ders3</a></li>
-  <li><a href="#ders4" id="toc-ders4" class="nav-link" data-scroll-target="#ders4">Ders4</a></li>
-  <li><a href="#ders5" id="toc-ders5" class="nav-link" data-scroll-target="#ders5">Ders5</a></li>
-  <li><a href="#ders6" id="toc-ders6" class="nav-link" data-scroll-target="#ders6">Ders6</a></li>
-  <li><a href="#ders7" id="toc-ders7" class="nav-link" data-scroll-target="#ders7">Ders7</a></li>
-  <li><a href="#vize1" id="toc-vize1" class="nav-link" data-scroll-target="#vize1">Vize1</a></li>
-  <li><a href="#ders8" id="toc-ders8" class="nav-link" data-scroll-target="#ders8">Ders8</a></li>
-  <li><a href="#ders9" id="toc-ders9" class="nav-link" data-scroll-target="#ders9">Ders9</a></li>
-  <li><a href="#ders10" id="toc-ders10" class="nav-link" data-scroll-target="#ders10">Ders10</a></li>
-  <li><a href="#ders11" id="toc-ders11" class="nav-link" data-scroll-target="#ders11">Ders11</a></li>
-  <li><a href="#vize2" id="toc-vize2" class="nav-link" data-scroll-target="#vize2">Vize2</a></li>
-  <li><a href="#ders12" id="toc-ders12" class="nav-link" data-scroll-target="#ders12">Ders12</a></li>
-  <li><a href="#ders13" id="toc-ders13" class="nav-link" data-scroll-target="#ders13">Ders13</a></li>
+  <li><a href="#alt-başlık" id="toc-alt-başlık" class="nav-link" data-scroll-target="#alt-başlık">Alt başlık</a></li>
+  </ul></li>
+  <li><a href="#iki-kolon" id="toc-iki-kolon" class="nav-link" data-scroll-target="#iki-kolon">iki kolon</a>
+  <ul class="collapse">
+  <li><a href="#alt-başlık-1" id="toc-alt-başlık-1" class="nav-link" data-scroll-target="#alt-başlık-1">alt başlık</a></li>
+  <li><a href="#quiz-deneme" id="toc-quiz-deneme" class="nav-link" data-scroll-target="#quiz-deneme">Quiz deneme</a></li>
+  <li><a href="#three.js-deneme" id="toc-three.js-deneme" class="nav-link" data-scroll-target="#three.js-deneme">Three.js deneme</a>
+  <ul class="collapse">
+  <li><a href="#ngl-viewer-deneme" id="toc-ngl-viewer-deneme" class="nav-link" data-scroll-target="#ngl-viewer-deneme">NGL viewer deneme</a></li>
+  <li><a href="#igv-genome-browser-deneme" id="toc-igv-genome-browser-deneme" class="nav-link" data-scroll-target="#igv-genome-browser-deneme">igv genome browser deneme</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Deneme</h1>
+</div>
 
 
 
+<div class="quarto-title-meta">
 
-<section id="mbg4181-biyolojik-veri-analizi-ve-görüntüleme" class="level1">
-<h1>MBG4181 Biyolojik Veri Analizi ve Görüntüleme</h1>
-<section id="kaynaklar" class="level2">
-<h2 class="anchored" data-anchor-id="kaynaklar">Kaynaklar</h2>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="başlık" class="level1">
+<h1>Başlık</h1>
+<section id="alt-başlık" class="level2">
+<h2 class="anchored" data-anchor-id="alt-başlık">Alt başlık</h2>
+<p>Bu yazı <em>yatık</em> bu da <strong>kalın punto</strong>. Bu da <span class="red-text">renkli yazı</span>.</p>
 <ul>
-<li><em>R for Data Science</em>, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 <a href="https://r4ds.hadley.nz/">link</a></li>
+<li>liste</li>
+<li>liste</li>
 </ul>
+<pre><code>bu bir kod</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x <span class="op">=</span> <span class="dv">1</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(mtcars)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="test_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="cell" data-python.reticulate="false">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span> <span class="dv">1</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>1</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(iris)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Sepal.Length Sepal.Width Petal.Length Petal.Width Species
+1          5.1         3.5          1.4         0.2  setosa
+2          4.9         3.0          1.4         0.2  setosa
+3          4.7         3.2          1.3         0.2  setosa
+4          4.6         3.1          1.5         0.2  setosa
+5          5.0         3.6          1.4         0.2  setosa
+6          5.4         3.9          1.7         0.4  setosa</code></pre>
+</div>
+</div>
 </section>
-<section id="ders1" class="level2">
-<h2 class="anchored" data-anchor-id="ders1">Ders1</h2>
-<p><em>29 Eylül 2025 9:30</em> | <strong>İçerik</strong>: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. <a href="./ders-intro.html">Sunum linki</a></p>
 </section>
-<section id="ders2" class="level2">
-<h2 class="anchored" data-anchor-id="ders2">Ders2</h2>
-<p><em>6 Ekim 2025 9:30</em> | <strong>İçerik</strong>: <em>unvotes</em> verisi üzerinde <strong>select</strong> ve <strong>filter</strong> komutları gösterildi. <a href="./ders-select-filter.html">Sunum linki</a></p>
+<section id="iki-kolon" class="level1">
+<h1>iki kolon</h1>
+<section id="alt-başlık-1" class="level2">
+<h2 class="anchored" data-anchor-id="alt-başlık-1">alt başlık</h2>
+<p>ldskmflsmfls slkfmsşd slşdfm sdfşsd mfşlsmfşlskdmf şlsdkf sşdlkşsdlkfmşslds</p>
+<div class="columns">
+<div class="column red-box" style="width:40%;">
+<p>contents…</p>
+</div><div class="column" style="width:60%;">
+<p><img src="rect2.png" class="img-fluid"></p>
+</div>
+</div>
 </section>
-<section id="ders3" class="level2">
-<h2 class="anchored" data-anchor-id="ders3">Ders3</h2>
-<p><em>13 Ekim 2025 9:30</em> | <strong>İçerik</strong>: <em>unvotes</em> verisi üzerinde <strong>mutate</strong> ve <strong>summarize</strong> komutları gösterildi. <a href="./ders-mutate-summarize.html">Sunum linki</a></p>
+<section id="quiz-deneme" class="level2">
+<h2 class="anchored" data-anchor-id="quiz-deneme">Quiz deneme</h2>
+<div id="quiz">
+  <p>What is 2 + 2?</p>
+  <button onclick="checkAnswer(4)">4</button>
+  <button onclick="checkAnswer(5)">5</button>
+  <p id="feedback"></p>
+</div>
+
+<script>
+function checkAnswer(answer) {
+  const feedback = document.getElementById("feedback");
+  feedback.textContent = answer === 4 ? "Correct! 🎉" : "Try again!";
+}
+</script>
 </section>
-<section id="ders4" class="level2">
-<h2 class="anchored" data-anchor-id="ders4">Ders4</h2>
-<p><em>20 Ekim 2025 9:30</em> | <strong>İçerik</strong>: <em>unvotes</em> verisi üzerinde <strong>mutate</strong> ve <strong>summarize</strong> komutları gösterildi. <a href="./ders-mutate-summarize.html">Sunum linki</a> (Quiz1)</p>
+<section id="three.js-deneme" class="level2">
+<h2 class="anchored" data-anchor-id="three.js-deneme">Three.js deneme</h2>
+<!-- include method didnt work {{< include 3d-scene.html >}}  -->
+<div class="scene-container">
+<iframe src="3d-scene.html" width="100%" height="400px" frameborder="0"></iframe>
+</div>
+<section id="ngl-viewer-deneme" class="level3">
+<h3 class="anchored" data-anchor-id="ngl-viewer-deneme">NGL viewer deneme</h3>
+<div class="protein-container">
+<iframe src="protein-structure.html" width="100%" height="800px" frameborder="0"></iframe>
+</div>
 </section>
-<section id="ders5" class="level2">
-<h2 class="anchored" data-anchor-id="ders5">Ders5</h2>
-<p><em>27 Ekim 2025 9:30</em> | <strong>İçerik</strong>: Dosya okuma komutları gösterildi. <a href="./ders-import.html">Sunum linki</a></p>
-</section>
-<section id="ders6" class="level2">
-<h2 class="anchored" data-anchor-id="ders6">Ders6</h2>
-<p><em>3 Kasım 2025 9:30</em> | <strong>İçerik</strong>: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). <a href="./ders-pivot-join.html">Sunum linki</a></p>
-</section>
-<section id="ders7" class="level2">
-<h2 class="anchored" data-anchor-id="ders7">Ders7</h2>
-<p><em>10 Kasım 2025 9:30</em> | <strong>İçerik</strong>: <em>ggplot</em> ile görselleştirme. <a href="./ders-ggplot.html">Sunum linki</a> (Quiz2)</p>
-</section>
-<section id="vize1" class="level2">
-<h2 class="anchored" data-anchor-id="vize1">Vize1</h2>
-<p><em>17 Kasım 2025</em></p>
-</section>
-<section id="ders8" class="level2">
-<h2 class="anchored" data-anchor-id="ders8">Ders8</h2>
-<p><em>24 Kasım 2025 9:30</em> | <strong>İçerik</strong>: <em>ggplot</em> ile görselleştirme konusuna devam edildi. <a href="./ders-ggplot.html">Sunum linki</a></p>
-</section>
-<section id="ders9" class="level2">
-<h2 class="anchored" data-anchor-id="ders9">Ders9</h2>
-<p><em>1 Aralık 2025 9:30</em> | <strong>İçerik</strong>: <em>quarto</em> veya <em>Rmarkdown</em> ile rapor, websayfası veya sunum oluşturma. <a href="./ders-quarto.html">Sunum linki</a></p>
-</section>
-<section id="ders10" class="level2">
-<h2 class="anchored" data-anchor-id="ders10">Ders10</h2>
-<p><em>8 Aralık 2025 9:30</em> | <strong>İçerik</strong>: <em>quarto</em> veya <em>Rmarkdown</em> ile rapor, websayfası veya sunum oluşturma. <a href="./ders-quarto.html">Sunum linki</a> (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)</p>
-</section>
-<section id="ders11" class="level2">
-<h2 class="anchored" data-anchor-id="ders11">Ders11</h2>
-<p><em>15 Aralık 2025 9:30</em> | <strong>İçerik</strong>: <em>tidytext</em> ile doğal dil işleme. <a href="./ders-tidytext.html">Sunum linki</a> (Homework: minimum of 3 plots prepared with ggplot)</p>
-</section>
-<section id="vize2" class="level2">
-<h2 class="anchored" data-anchor-id="vize2">Vize2</h2>
-<p><em>22 Aralık 2025 9:30</em></p>
-</section>
-<section id="ders12" class="level2">
-<h2 class="anchored" data-anchor-id="ders12">Ders12</h2>
-<p><em>29 Aralık 2025 9:30</em> | <strong>İçerik</strong>: <em>tidygraph</em> ile ağ analizi. <a href="./ders-tidygraph.html">Sunum linki</a> (Quiz4)</p>
-</section>
-<section id="ders13" class="level2">
-<h2 class="anchored" data-anchor-id="ders13">Ders13</h2>
-<p><em>5 Ocak 2026 9:30</em> | <strong>İçerik</strong>: Ödev değerlendirme</p>
+<section id="igv-genome-browser-deneme" class="level3">
+<h3 class="anchored" data-anchor-id="igv-genome-browser-deneme">igv genome browser deneme</h3>
+<div id="igv_div">
+
+<script type="module">
+
+    import igv from "https://cdn.jsdelivr.net/npm/igv@3.0.0/dist/igv.esm.min.js"
+
+    const div = document.getElementById("igv_div")
+
+    const config = {
+            genome: "hg19"
+    }
+
+    const browser = await igv.createBrowser(div, config) 
+
+</script>    
 
 
+</div></section>
 </section>
 </section>
 
