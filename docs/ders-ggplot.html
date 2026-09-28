@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="alper yilmaz">
   <meta name="dcterms.date" content="2025-05-09">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="custom.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -212,7 +218,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-alper yilmaz 
+alper yilmaz
 </div>
 </div>
 </div>
@@ -277,9 +283,9 @@ alper yilmaz
 <h3 id="kullanılacak-paket-ve-veri">Kullanılacak paket ve veri</h3>
 <p><strong>Gapminder</strong> veri setini kullanacağız</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(gapminder)</span>
-<span id="cb1-3"><a></a>gapminder</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(gapminder)</span>
+<span id="cb1-3"><a aria-label="3"></a>gapminder</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1,704 × 6
    country     continent  year lifeExp      pop gdpPercap
@@ -317,8 +323,8 @@ alper yilmaz
 
 <h3 id="ilk-görsel">İlk görsel</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb3-2"><a></a>  <span class="fu">ggplot</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb3-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-2-1.png" width="1056" class="r-stretch"></section>
@@ -326,8 +332,8 @@ alper yilmaz
 
 <h3 id="ikinci-görsel-veri-katmanı">İkinci görsel / veri katmanı</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb4-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb4-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-3-1.png" width="1056" class="r-stretch"><p>Veriyi x ve y koordinatlarına eşledik ama nasıl gösterileceğini belirtmedik (point, line, box, cirlce, vs.)</p>
@@ -345,9 +351,9 @@ alper yilmaz
 
 <h3 id="geomlar"><em>geom</em>lar</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb5-3"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb5-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-4-1.png" width="1056" class="r-stretch"><div class="footer">
@@ -365,10 +371,10 @@ alper yilmaz
 <section id="işlenmiş-veri-ggplota-pipe-ile-iletilebilir" class="slide level2">
 <h2>İşlenmiş veri ggplot’a pipe ile iletilebilir</h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a></a>gapminder <span class="sc">|&gt;</span> </span>
-<span id="cb6-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb6-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb6-4"><a></a>  <span class="fu">geom_point</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6" data-code-line-numbers="2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb6-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb6-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb6-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-5-1.png" width="1056" class="r-stretch"></section>
@@ -414,10 +420,10 @@ alper yilmaz
 
 <h3 id="change-color-of-all-points">Change color of all points</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb7-4"><a></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb7-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb7-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-6-1.png" width="1056" class="r-stretch"></section>
@@ -425,10 +431,10 @@ alper yilmaz
 
 <h3 id="map-color-to-variable">Map color to variable</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb8-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb8-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>continent))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb8-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb8-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>continent))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-7-1.png" width="1056" class="r-stretch"></section>
@@ -437,13 +443,13 @@ alper yilmaz
 <h3 id="color-to-map-or-not-to-map">Color: to map or not to map</h3>
 <p>Not mapping</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>)</span>
-<span id="cb9-2"><a></a><span class="co"># colour is given a concrete value ('red')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>)</span>
+<span id="cb9-2"><a aria-label="2"></a><span class="co"># colour is given a concrete value ('red')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>vs.&nbsp;mapping</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> continent))</span>
-<span id="cb10-2"><a></a><span class="co"># colour maps a *variable* (using `aes`)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> continent))</span>
+<span id="cb10-2"><a aria-label="2"></a><span class="co"># colour maps a *variable* (using `aes`)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -451,10 +457,10 @@ alper yilmaz
 <h3 id="mapping-more-features">Mapping more features</h3>
 <p>Let’s map color to continent and point size to population</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb11-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb11-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb11-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb11-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-10-1.png" width="1056" class="r-stretch"></section>
@@ -470,11 +476,11 @@ alper yilmaz
 
 <h3 id="discrete-mapping-scale">Discrete mapping scale</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb12-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb12-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb12-5"><a></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"black"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb12-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb12-5"><a aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"black"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-11-1.png" width="1056" class="r-stretch"></section>
@@ -483,11 +489,11 @@ alper yilmaz
 <h3 id="continuous-mapping-scale">Continuous mapping scale</h3>
 <p>Now, let’s map color to <code>lifeExp</code> and then modify the colors.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb13-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb13-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb13-5"><a></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low=</span><span class="st">"blue"</span>,<span class="at">high =</span> <span class="st">"red"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb13-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb13-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb13-5"><a aria-label="5"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low=</span><span class="st">"blue"</span>,<span class="at">high =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-12-1.png" width="1056" class="r-stretch"></section>
@@ -503,17 +509,17 @@ alper yilmaz
 <p><code>ggplot</code> is very powerful and flexible. You can combine different geoms and generate unique plots. Let’s color and emphasize countries which have population greater than 100 million.</p>
 <p>We’ll generate another data frame keeping those countries and then plot as a separate <code>geom_point</code> layer.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>populated <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(pop <span class="sc">&gt;</span> <span class="dv">100000000</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>populated <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(pop <span class="sc">&gt;</span> <span class="dv">100000000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb15-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb15-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb15-5"><a></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>populated, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb15-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb15-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>populated, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-15-1.png" width="1056" class="r-stretch"></section>
@@ -521,11 +527,11 @@ alper yilmaz
 
 <h3 id="faceting-layer">Faceting layer</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb16-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb16-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-5"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)  <span class="co"># separate plots for each continent</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb16-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb16-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb16-5"><a aria-label="5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)  <span class="co"># separate plots for each continent</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-16-1.png" width="1056" class="r-stretch"></section>
@@ -541,12 +547,12 @@ alper yilmaz
 
 <h3 id="statistical-summary-as-layer">Statistical summary as layer</h3>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb17-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
-<span id="cb17-4"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb17-5"><a></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb17-6"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb17-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
+<span id="cb17-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
+<span id="cb17-5"><a aria-label="5"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb17-6"><a aria-label="6"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-17-1.png" width="1056" class="r-stretch"></section>
@@ -556,12 +562,12 @@ alper yilmaz
 <p>You can customize almost all aspects of your plot with <code>theme()</code> function. There are <code>theme_*</code> functions which can modify the appearance of the plot by altering several aspects at the same time.</p>
 <p>Let’s apply <code>theme_classic()</code> to our plot (result in next slide).</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb18-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb18-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
-<span id="cb18-5"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb18-6"><a></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb18-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb18-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
+<span id="cb18-5"><a aria-label="5"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb18-6"><a aria-label="6"></a>  <span class="fu">theme_classic</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -578,14 +584,14 @@ alper yilmaz
 <h3 id="theme-packages">Theme packages</h3>
 <p>There are many theme packages which can be used to apply themes of popular resources. Let’s apply <em>The Economist</em> theme to your plot with single line of code</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb19-2"><a></a></span>
-<span id="cb19-3"><a></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb19-6"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
-<span id="cb19-7"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb19-8"><a></a>  <span class="fu">theme_economist</span>()     <span class="co"># requires ggthemes package</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb19-2"><a aria-label="2"></a></span>
+<span id="cb19-3"><a aria-label="3"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb19-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb19-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
+<span id="cb19-7"><a aria-label="7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb19-8"><a aria-label="8"></a>  <span class="fu">theme_economist</span>()     <span class="co"># requires ggthemes package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -601,9 +607,9 @@ alper yilmaz
 
 <h3 class="smaller" id="titles">Titles</h3>
 <p><code>labs()</code> function can be used to add title, subtitle and change X and Y axis labels. Below, we added the following layer</p>
-<div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a></a><span class="fu">labs</span>(<span class="at">x=</span><span class="st">"GDP Per Capita (USD, Log10)"</span>, <span class="at">y=</span><span class="st">"Life Expectancy (years)"</span>, </span>
-<span id="cb20-2"><a></a>       <span class="at">title=</span><span class="st">"Wealth vs. Life Expectancy"</span>, </span>
-<span id="cb20-3"><a></a>       <span class="at">subtitle=</span><span class="st">"Source: Gapminder (range: 1952-2007)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">labs</span>(<span class="at">x=</span><span class="st">"GDP Per Capita (USD, Log10)"</span>, <span class="at">y=</span><span class="st">"Life Expectancy (years)"</span>, </span>
+<span id="cb20-2"><a aria-label="2"></a>       <span class="at">title=</span><span class="st">"Wealth vs. Life Expectancy"</span>, </span>
+<span id="cb20-3"><a aria-label="3"></a>       <span class="at">subtitle=</span><span class="st">"Source: Gapminder (range: 1952-2007)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-20-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
@@ -612,16 +618,16 @@ alper yilmaz
 <p>There are many packages which can embed html compatable plots/tables to your output. The code below generates an interactive plot by <code>plotly</code> package. See the next slide for results.</p>
 <p>You can hover, zoom in and out, select regions.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a><span class="fu">library</span>(plotly)</span>
-<span id="cb21-2"><a></a></span>
-<span id="cb21-3"><a></a>gap_plot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-5"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb21-6"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
-<span id="cb21-7"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb21-8"><a></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb21-9"><a></a></span>
-<span id="cb21-10"><a></a><span class="fu">ggplotly</span>(gap_plot)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">library</span>(plotly)</span>
+<span id="cb21-2"><a aria-label="2"></a></span>
+<span id="cb21-3"><a aria-label="3"></a>gap_plot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb21-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
+<span id="cb21-7"><a aria-label="7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb21-8"><a aria-label="8"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb21-9"><a aria-label="9"></a></span>
+<span id="cb21-10"><a aria-label="10"></a><span class="fu">ggplotly</span>(gap_plot)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -635,11 +641,11 @@ alper yilmaz
 <h3 id="ggplot-figures-are-objects">ggplot figures are objects</h3>
 <p>You can assign plots to an object and then re-use them. You can add a layer to an existing plot. Let’s make a plot and try different themes with it.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a></a>baseplot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
-<span id="cb22-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
-<span id="cb22-4"><a></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
-<span id="cb22-5"><a></a>  <span class="fu">scale_x_log10</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>baseplot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
+<span id="cb22-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
+<span id="cb22-5"><a aria-label="5"></a>  <span class="fu">scale_x_log10</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
@@ -648,7 +654,7 @@ alper yilmaz
 <div class="columns">
 <div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a>baseplot <span class="sc">+</span> <span class="fu">theme_dark</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>baseplot <span class="sc">+</span> <span class="fu">theme_dark</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -659,7 +665,7 @@ alper yilmaz
 </div>
 </div><div class="column">
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>baseplot <span class="sc">+</span> <span class="fu">theme_linedraw</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>baseplot <span class="sc">+</span> <span class="fu">theme_linedraw</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure>
@@ -676,38 +682,38 @@ alper yilmaz
 <h3 id="saving-figures">Saving figures</h3>
 <p><code>ggsave()</code> function is used to save the plots you generated. It can save plots in PNG, PDF, SVG formats. The resolution and size of the image can be adjusted for high quality/resolution images.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>newplot <span class="ot">&lt;-</span> baseplot <span class="sc">+</span> <span class="fu">theme_classic</span>()  </span>
-<span id="cb25-2"><a></a>  </span>
-<span id="cb25-3"><a></a><span class="fu">ggsave</span>(newplot, <span class="at">filename=</span><span class="st">"gpd-health.png"</span>, <span class="at">dpi =</span> <span class="dv">200</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>newplot <span class="ot">&lt;-</span> baseplot <span class="sc">+</span> <span class="fu">theme_classic</span>()  </span>
+<span id="cb25-2"><a aria-label="2"></a>  </span>
+<span id="cb25-3"><a aria-label="3"></a><span class="fu">ggsave</span>(newplot, <span class="at">filename=</span><span class="st">"gpd-health.png"</span>, <span class="at">dpi =</span> <span class="dv">200</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="custom-plot" class="slide level2">
 <h2>Custom plot</h2>
 <p>Let’s plot a custom plot showing Turkey’s change over years, adding OECD mean as horizontal line with The Economist theme. Let’s prepare the data to be overlaid:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>milli <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"Turkey"</span>)</span>
-<span id="cb26-2"><a></a>etiket <span class="ot">&lt;-</span> milli <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1982</span>)</span>
-<span id="cb26-3"><a></a>oecd_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">country=</span><span class="st">"oecd"</span>,<span class="at">year=</span><span class="dv">2007</span>,<span class="at">life_mean=</span><span class="dv">81</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>milli <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"Turkey"</span>)</span>
+<span id="cb26-2"><a aria-label="2"></a>etiket <span class="ot">&lt;-</span> milli <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1982</span>)</span>
+<span id="cb26-3"><a aria-label="3"></a>oecd_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">country=</span><span class="st">"oecd"</span>,<span class="at">year=</span><span class="dv">2007</span>,<span class="at">life_mean=</span><span class="dv">81</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a></a>gapminder <span class="sc">|&gt;</span></span>
-<span id="cb27-2"><a></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb27-3"><a></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">alpha=</span>year)) <span class="sc">+</span> </span>
-<span id="cb27-4"><a></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
-<span id="cb27-5"><a></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb27-6"><a></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb27-7"><a></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>milli, <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb27-8"><a></a>  <span class="fu">geom_hline</span>(<span class="at">data=</span>oecd_data, </span>
-<span id="cb27-9"><a></a>             <span class="fu">aes</span>(<span class="at">yintercept=</span>life_mean), </span>
-<span id="cb27-10"><a></a>             <span class="at">color=</span><span class="st">"gray"</span>, </span>
-<span id="cb27-11"><a></a>             <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
-<span id="cb27-12"><a></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>etiket, <span class="fu">aes</span>(<span class="at">label=</span>country)) <span class="sc">+</span></span>
-<span id="cb27-13"><a></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span> </span>
-<span id="cb27-14"><a></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">100</span>) <span class="sc">+</span> </span>
-<span id="cb27-15"><a></a>  <span class="fu">theme_economist</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span></span>
+<span id="cb27-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb27-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">alpha=</span>year)) <span class="sc">+</span> </span>
+<span id="cb27-4"><a aria-label="4"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
+<span id="cb27-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb27-6"><a aria-label="6"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
+<span id="cb27-7"><a aria-label="7"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>milli, <span class="at">color=</span><span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb27-8"><a aria-label="8"></a>  <span class="fu">geom_hline</span>(<span class="at">data=</span>oecd_data, </span>
+<span id="cb27-9"><a aria-label="9"></a>             <span class="fu">aes</span>(<span class="at">yintercept=</span>life_mean), </span>
+<span id="cb27-10"><a aria-label="10"></a>             <span class="at">color=</span><span class="st">"gray"</span>, </span>
+<span id="cb27-11"><a aria-label="11"></a>             <span class="at">linetype=</span><span class="st">"dashed"</span>) <span class="sc">+</span></span>
+<span id="cb27-12"><a aria-label="12"></a>  <span class="fu">geom_text</span>(<span class="at">data=</span>etiket, <span class="fu">aes</span>(<span class="at">label=</span>country)) <span class="sc">+</span></span>
+<span id="cb27-13"><a aria-label="13"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent) <span class="sc">+</span> </span>
+<span id="cb27-14"><a aria-label="14"></a>  <span class="fu">ylim</span>(<span class="dv">0</span>,<span class="dv">100</span>) <span class="sc">+</span> </span>
+<span id="cb27-15"><a aria-label="15"></a>  <span class="fu">theme_economist</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -943,7 +949,7 @@ alper yilmaz
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1055,13 +1061,14 @@ alper yilmaz
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

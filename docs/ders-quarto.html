@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="alper yilmaz">
   <meta name="dcterms.date" content="2025-12-01">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="custom.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -203,7 +209,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-alper yilmaz 
+alper yilmaz
 </div>
 </div>
 </div>
@@ -338,33 +344,33 @@ alper yilmaz
 </section>
 <section id="section-7" class="slide level2">
 <h2></h2>
-<div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="sc">---</span></span>
-<span id="cb1-2"><a></a>title<span class="sc">:</span> <span class="st">"ggplot2 demo"</span></span>
-<span id="cb1-3"><a></a>author<span class="sc">:</span> <span class="st">"Norah Jones"</span></span>
-<span id="cb1-4"><a></a>date<span class="sc">:</span> <span class="st">"5/22/2021"</span></span>
-<span id="cb1-5"><a></a>format<span class="sc">:</span> </span>
-<span id="cb1-6"><a></a>  html<span class="sc">:</span></span>
-<span id="cb1-7"><a></a>    fig<span class="sc">-</span>width<span class="sc">:</span> <span class="dv">8</span></span>
-<span id="cb1-8"><a></a>    fig<span class="sc">-</span>height<span class="sc">:</span> <span class="dv">4</span></span>
-<span id="cb1-9"><a></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
-<span id="cb1-10"><a></a><span class="sc">---</span></span>
-<span id="cb1-11"><a></a></span>
-<span id="cb1-12"><a></a><span class="do">## Air Quality</span></span>
-<span id="cb1-13"><a></a></span>
-<span id="cb1-14"><a></a><span class="er">@</span>fig<span class="sc">-</span>airquality further explores the impact of temperature on ozone level.</span>
-<span id="cb1-15"><a></a></span>
-<span id="cb1-16"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb1-17"><a></a><span class="at">#| label: fig-airquality</span></span>
-<span id="cb1-18"><a></a><span class="at">#| fig-cap: "Temperature and ozone level."</span></span>
-<span id="cb1-19"><a></a><span class="at">#| warning: false</span></span>
-<span id="cb1-20"><a></a></span>
-<span id="cb1-21"><a></a><span class="at">library(ggplot2)</span></span>
-<span id="cb1-22"><a></a></span>
-<span id="cb1-23"><a></a><span class="at">ggplot(airquality, aes(Temp, Ozone)) + </span></span>
-<span id="cb1-24"><a></a><span class="at">  geom_point() + </span></span>
-<span id="cb1-25"><a></a><span class="at">  geom_smooth(method = "loess"</span></span>
-<span id="cb1-26"><a></a><span class="at">)</span></span>
-<span id="cb1-27"><a></a><span class="st">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="sc">---</span></span>
+<span id="cb1-2"><a aria-label="2"></a>title<span class="sc">:</span> <span class="st">"ggplot2 demo"</span></span>
+<span id="cb1-3"><a aria-label="3"></a>author<span class="sc">:</span> <span class="st">"Norah Jones"</span></span>
+<span id="cb1-4"><a aria-label="4"></a>date<span class="sc">:</span> <span class="st">"5/22/2021"</span></span>
+<span id="cb1-5"><a aria-label="5"></a>format<span class="sc">:</span> </span>
+<span id="cb1-6"><a aria-label="6"></a>  html<span class="sc">:</span></span>
+<span id="cb1-7"><a aria-label="7"></a>    fig<span class="sc">-</span>width<span class="sc">:</span> <span class="dv">8</span></span>
+<span id="cb1-8"><a aria-label="8"></a>    fig<span class="sc">-</span>height<span class="sc">:</span> <span class="dv">4</span></span>
+<span id="cb1-9"><a aria-label="9"></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
+<span id="cb1-10"><a aria-label="10"></a><span class="sc">---</span></span>
+<span id="cb1-11"><a aria-label="11"></a></span>
+<span id="cb1-12"><a aria-label="12"></a><span class="do">## Air Quality</span></span>
+<span id="cb1-13"><a aria-label="13"></a></span>
+<span id="cb1-14"><a aria-label="14"></a><span class="er">@</span>fig<span class="sc">-</span>airquality further explores the impact of temperature on ozone level.</span>
+<span id="cb1-15"><a aria-label="15"></a></span>
+<span id="cb1-16"><a aria-label="16"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb1-17"><a aria-label="17"></a><span class="at">#| label: fig-airquality</span></span>
+<span id="cb1-18"><a aria-label="18"></a><span class="at">#| fig-cap: "Temperature and ozone level."</span></span>
+<span id="cb1-19"><a aria-label="19"></a><span class="at">#| warning: false</span></span>
+<span id="cb1-20"><a aria-label="20"></a></span>
+<span id="cb1-21"><a aria-label="21"></a><span class="at">library(ggplot2)</span></span>
+<span id="cb1-22"><a aria-label="22"></a></span>
+<span id="cb1-23"><a aria-label="23"></a><span class="at">ggplot(airquality, aes(Temp, Ozone)) + </span></span>
+<span id="cb1-24"><a aria-label="24"></a><span class="at">  geom_point() + </span></span>
+<span id="cb1-25"><a aria-label="25"></a><span class="at">  geom_smooth(method = "loess"</span></span>
+<span id="cb1-26"><a aria-label="26"></a><span class="at">)</span></span>
+<span id="cb1-27"><a aria-label="27"></a><span class="st">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <ul>
 <li>lines 1-10 (called <em>YAML header</em>) describe document properties</li>
 <li>line 14 contains citation to the image (which will be calculated as <em>Figure 1</em> automatically)</li>
@@ -400,18 +406,18 @@ alper yilmaz
 <h2>More code chunk options</h2>
 <p>In HTML format, you can show the tables (data frames, tibbles) as HTML tables (browsing next page) just like in RStudio.</p>
 <p>Let’s add the following chunk to our document and then render it (also add <em>df-print: paged</em> option in document properties)</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb2-2"><a></a><span class="at">#| echo: false</span></span>
-<span id="cb2-3"><a></a><span class="at">#| warning: false</span></span>
-<span id="cb2-4"><a></a><span class="at">#| cache: true</span></span>
-<span id="cb2-5"><a></a><span class="at">library(tidyverse)</span></span>
-<span id="cb2-6"><a></a></span>
-<span id="cb2-7"><a></a><span class="at">mpg_avg &lt;- mpg |&gt;</span></span>
-<span id="cb2-8"><a></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
-<span id="cb2-9"><a></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
-<span id="cb2-10"><a></a></span>
-<span id="cb2-11"><a></a><span class="at">mpg_avg</span></span>
-<span id="cb2-12"><a></a><span class="st">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb2-2"><a aria-label="2"></a><span class="at">#| echo: false</span></span>
+<span id="cb2-3"><a aria-label="3"></a><span class="at">#| warning: false</span></span>
+<span id="cb2-4"><a aria-label="4"></a><span class="at">#| cache: true</span></span>
+<span id="cb2-5"><a aria-label="5"></a><span class="at">library(tidyverse)</span></span>
+<span id="cb2-6"><a aria-label="6"></a></span>
+<span id="cb2-7"><a aria-label="7"></a><span class="at">mpg_avg &lt;- mpg |&gt;</span></span>
+<span id="cb2-8"><a aria-label="8"></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
+<span id="cb2-9"><a aria-label="9"></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
+<span id="cb2-10"><a aria-label="10"></a></span>
+<span id="cb2-11"><a aria-label="11"></a><span class="at">mpg_avg</span></span>
+<span id="cb2-12"><a aria-label="12"></a><span class="st">```</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Let’s go over the chunk options: <em>echo: false</em> means that the code will not be shown in final document, <em>warning: false</em> will suppress any warning or messages, <em>cache: true</em> means that the calculation in that chunk will be cached and won’t be re-calculated (unless chunk is modified) in following renderings.</p>
 </section>
 <section id="section-12" class="slide level2">
@@ -441,8 +447,8 @@ alper yilmaz
 <h2>Inline code</h2>
 <p>Again, let’s imagine, in our document we want to have statements like <em>“the dataset contained 234 rows”</em>. We’d face the same challenge if data is updated, we have to locate such statements scattered in our document and then update one by one. Actually, you can have inline R code have such calculations embedded by code.</p>
 <p>The rendering of following line in Quarto document is shown in next slide.</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>There are <span class="st">'r nrow(mtcars)'</span> observations <span class="cf">in</span> <span class="sc">**</span>mtcars<span class="sc">**</span> data. The table below shows average city and highway mileage </span>
-<span id="cb3-2"><a></a>per make and cyclinder number.</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>There are <span class="st">'r nrow(mtcars)'</span> observations <span class="cf">in</span> <span class="sc">**</span>mtcars<span class="sc">**</span> data. The table below shows average city and highway mileage </span>
+<span id="cb3-2"><a aria-label="2"></a>per make and cyclinder number.</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="section-13" class="slide level2">
 <h2></h2>
@@ -451,104 +457,104 @@ alper yilmaz
 <section id="and-much-more" class="slide level2">
 <h2>And much more</h2>
 <p>Quarto supports much more features; citations, formulas, cross references, callouts, publishing. Please review the contents of the following quarto document (please scroll down to view whole source). The published version is found <a href="https://rpubs.com/alperyilmaz/my-first-quarto">here</a></p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a></a><span class="sc">---</span></span>
-<span id="cb4-2"><a></a>title<span class="sc">:</span> <span class="st">"ggplot2 demo"</span></span>
-<span id="cb4-3"><a></a>author<span class="sc">:</span> <span class="st">"alper"</span></span>
-<span id="cb4-4"><a></a>date<span class="sc">:</span> <span class="st">"6/1/2023"</span></span>
-<span id="cb4-5"><a></a>toc<span class="sc">:</span> true</span>
-<span id="cb4-6"><a></a>number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
-<span id="cb4-7"><a></a>bibliography<span class="sc">:</span> references.bib</span>
-<span id="cb4-8"><a></a>format<span class="sc">:</span> </span>
-<span id="cb4-9"><a></a>  html<span class="sc">:</span></span>
-<span id="cb4-10"><a></a>    fig<span class="sc">-</span>width<span class="sc">:</span> <span class="dv">8</span></span>
-<span id="cb4-11"><a></a>    fig<span class="sc">-</span>height<span class="sc">:</span> <span class="dv">4</span></span>
-<span id="cb4-12"><a></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
-<span id="cb4-13"><a></a>    code<span class="sc">-</span>link<span class="sc">:</span> true</span>
-<span id="cb4-14"><a></a>    df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
-<span id="cb4-15"><a></a>  pdf<span class="sc">:</span></span>
-<span id="cb4-16"><a></a>    geometry<span class="sc">:</span> </span>
-<span id="cb4-17"><a></a>      <span class="sc">-</span> top<span class="ot">=</span><span class="dv">30</span>mm</span>
-<span id="cb4-18"><a></a>      <span class="sc">-</span> left<span class="ot">=</span><span class="dv">30</span>mm</span>
-<span id="cb4-19"><a></a>  docx<span class="sc">:</span> default</span>
-<span id="cb4-20"><a></a><span class="sc">---</span></span>
-<span id="cb4-21"><a></a></span>
-<span id="cb4-22"><a></a><span class="co"># Air Quality</span></span>
-<span id="cb4-23"><a></a></span>
-<span id="cb4-24"><a></a><span class="er">@</span>fig<span class="sc">-</span>airquality further explores the impact of temperature on ozone level.</span>
-<span id="cb4-25"><a></a></span>
-<span id="cb4-26"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-27"><a></a><span class="at">#| label: fig-airquality</span></span>
-<span id="cb4-28"><a></a><span class="at">#| fig-cap: "Temperature and ozone level."</span></span>
-<span id="cb4-29"><a></a><span class="at">#| echo: true</span></span>
-<span id="cb4-30"><a></a><span class="at">#| warning: false</span></span>
-<span id="cb4-31"><a></a></span>
-<span id="cb4-32"><a></a><span class="at">library(tidyverse)</span></span>
-<span id="cb4-33"><a></a><span class="at">library(ggplot2)</span></span>
-<span id="cb4-34"><a></a></span>
-<span id="cb4-35"><a></a><span class="at">ggplot(airquality, aes(Temp, Ozone)) + </span></span>
-<span id="cb4-36"><a></a><span class="at">  geom_point() + </span></span>
-<span id="cb4-37"><a></a><span class="at">  geom_smooth(method = "loess"</span></span>
-<span id="cb4-38"><a></a><span class="at">)</span></span>
-<span id="cb4-39"><a></a><span class="st">```</span></span>
-<span id="cb4-40"><a></a></span>
-<span id="cb4-41"><a></a></span>
-<span id="cb4-42"><a></a><span class="do">## mpg scatter plot</span></span>
-<span id="cb4-43"><a></a></span>
-<span id="cb4-44"><a></a><span class="sc">@</span>fig<span class="sc">-</span>scatterplot shows correlation between highway and city mileages. </span>
-<span id="cb4-45"><a></a></span>
-<span id="cb4-46"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-47"><a></a><span class="at">#| label: fig-scatterplot</span></span>
-<span id="cb4-48"><a></a><span class="at">#| fig-cap: "City and highway mileage for 38 popular models of cars."</span></span>
-<span id="cb4-49"><a></a><span class="at">#| fig-alt: "Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases."</span></span>
-<span id="cb4-50"><a></a><span class="at">#| fig-width: 6</span></span>
-<span id="cb4-51"><a></a><span class="at">#| fig-height: 3.5</span></span>
-<span id="cb4-52"><a></a></span>
-<span id="cb4-53"><a></a><span class="at">ggplot(mpg, aes(hwy, cty, color=cyl)) + </span></span>
-<span id="cb4-54"><a></a><span class="at">  geom_point(alpha=0.5, size=2) +</span></span>
-<span id="cb4-55"><a></a><span class="at">  scale_color_viridis_c() +</span></span>
-<span id="cb4-56"><a></a><span class="at">  theme_minimal()</span></span>
-<span id="cb4-57"><a></a><span class="st">```</span></span>
-<span id="cb4-58"><a></a></span>
-<span id="cb4-59"><a></a><span class="do">## the mpg data as table</span></span>
-<span id="cb4-60"><a></a></span>
-<span id="cb4-61"><a></a>There are <span class="dv">32</span> observations <span class="cf">in</span> our data.</span>
-<span id="cb4-62"><a></a></span>
-<span id="cb4-63"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-64"><a></a><span class="at">#| echo: false</span></span>
-<span id="cb4-65"><a></a><span class="at">#| warning: false</span></span>
-<span id="cb4-66"><a></a><span class="at">#| cache: true</span></span>
-<span id="cb4-67"><a></a><span class="at">mpg |&gt;</span></span>
-<span id="cb4-68"><a></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
-<span id="cb4-69"><a></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
-<span id="cb4-70"><a></a><span class="st">```</span></span>
-<span id="cb4-71"><a></a></span>
-<span id="cb4-72"><a></a>Hypothetical <span class="st">`</span><span class="at">table_viewer</span><span class="st">`</span> will show your tables <span class="cf">in</span> a much better way.</span>
-<span id="cb4-73"><a></a></span>
-<span id="cb4-74"><a></a><span class="st">```</span><span class="at">{r}</span></span>
-<span id="cb4-75"><a></a><span class="at">#| eval: false</span></span>
-<span id="cb4-76"><a></a><span class="at">table_viewer(mpg)</span></span>
-<span id="cb4-77"><a></a><span class="st">```</span></span>
-<span id="cb4-78"><a></a></span>
-<span id="cb4-79"><a></a><span class="co"># Formulas</span></span>
-<span id="cb4-80"><a></a></span>
-<span id="cb4-81"><a></a>you can have formulas <span class="cf">in</span> your document</span>
-<span id="cb4-82"><a></a></span>
-<span id="cb4-83"><a></a></span>
-<span id="cb4-84"><a></a><span class="sc">$</span><span class="er">$</span></span>
-<span id="cb4-85"><a></a>price <span class="ot">=</span> \hat{\beta}_0 <span class="sc">+</span> \hat{\beta}_1 \times area <span class="sc">+</span> \epsilon</span>
-<span id="cb4-86"><a></a><span class="sc">$</span><span class="er">$</span></span>
-<span id="cb4-87"><a></a></span>
-<span id="cb4-88"><a></a><span class="co"># Citations</span></span>
-<span id="cb4-89"><a></a></span>
-<span id="cb4-90"><a></a>We<span class="st">'re going to do this analysis using literate programming [@Knuth1984].</span></span>
-<span id="cb4-91"><a></a></span>
-<span id="cb4-92"><a></a><span class="st"># Layout</span></span>
-<span id="cb4-93"><a></a></span>
-<span id="cb4-94"><a></a><span class="st">## Callouts</span></span>
-<span id="cb4-95"><a></a></span>
-<span id="cb4-96"><a></a><span class="st">::: {.callout-note}</span></span>
-<span id="cb4-97"><a></a><span class="st">Here'</span>s some information</span>
-<span id="cb4-98"><a></a><span class="sc">:::</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="sc">---</span></span>
+<span id="cb4-2"><a aria-label="2"></a>title<span class="sc">:</span> <span class="st">"ggplot2 demo"</span></span>
+<span id="cb4-3"><a aria-label="3"></a>author<span class="sc">:</span> <span class="st">"alper"</span></span>
+<span id="cb4-4"><a aria-label="4"></a>date<span class="sc">:</span> <span class="st">"6/1/2023"</span></span>
+<span id="cb4-5"><a aria-label="5"></a>toc<span class="sc">:</span> true</span>
+<span id="cb4-6"><a aria-label="6"></a>number<span class="sc">-</span>sections<span class="sc">:</span> true</span>
+<span id="cb4-7"><a aria-label="7"></a>bibliography<span class="sc">:</span> references.bib</span>
+<span id="cb4-8"><a aria-label="8"></a>format<span class="sc">:</span> </span>
+<span id="cb4-9"><a aria-label="9"></a>  html<span class="sc">:</span></span>
+<span id="cb4-10"><a aria-label="10"></a>    fig<span class="sc">-</span>width<span class="sc">:</span> <span class="dv">8</span></span>
+<span id="cb4-11"><a aria-label="11"></a>    fig<span class="sc">-</span>height<span class="sc">:</span> <span class="dv">4</span></span>
+<span id="cb4-12"><a aria-label="12"></a>    code<span class="sc">-</span>fold<span class="sc">:</span> true</span>
+<span id="cb4-13"><a aria-label="13"></a>    code<span class="sc">-</span>link<span class="sc">:</span> true</span>
+<span id="cb4-14"><a aria-label="14"></a>    df<span class="sc">-</span>print<span class="sc">:</span> paged</span>
+<span id="cb4-15"><a aria-label="15"></a>  pdf<span class="sc">:</span></span>
+<span id="cb4-16"><a aria-label="16"></a>    geometry<span class="sc">:</span> </span>
+<span id="cb4-17"><a aria-label="17"></a>      <span class="sc">-</span> top<span class="ot">=</span><span class="dv">30</span>mm</span>
+<span id="cb4-18"><a aria-label="18"></a>      <span class="sc">-</span> left<span class="ot">=</span><span class="dv">30</span>mm</span>
+<span id="cb4-19"><a aria-label="19"></a>  docx<span class="sc">:</span> default</span>
+<span id="cb4-20"><a aria-label="20"></a><span class="sc">---</span></span>
+<span id="cb4-21"><a aria-label="21"></a></span>
+<span id="cb4-22"><a aria-label="22"></a><span class="co"># Air Quality</span></span>
+<span id="cb4-23"><a aria-label="23"></a></span>
+<span id="cb4-24"><a aria-label="24"></a><span class="er">@</span>fig<span class="sc">-</span>airquality further explores the impact of temperature on ozone level.</span>
+<span id="cb4-25"><a aria-label="25"></a></span>
+<span id="cb4-26"><a aria-label="26"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-27"><a aria-label="27"></a><span class="at">#| label: fig-airquality</span></span>
+<span id="cb4-28"><a aria-label="28"></a><span class="at">#| fig-cap: "Temperature and ozone level."</span></span>
+<span id="cb4-29"><a aria-label="29"></a><span class="at">#| echo: true</span></span>
+<span id="cb4-30"><a aria-label="30"></a><span class="at">#| warning: false</span></span>
+<span id="cb4-31"><a aria-label="31"></a></span>
+<span id="cb4-32"><a aria-label="32"></a><span class="at">library(tidyverse)</span></span>
+<span id="cb4-33"><a aria-label="33"></a><span class="at">library(ggplot2)</span></span>
+<span id="cb4-34"><a aria-label="34"></a></span>
+<span id="cb4-35"><a aria-label="35"></a><span class="at">ggplot(airquality, aes(Temp, Ozone)) + </span></span>
+<span id="cb4-36"><a aria-label="36"></a><span class="at">  geom_point() + </span></span>
+<span id="cb4-37"><a aria-label="37"></a><span class="at">  geom_smooth(method = "loess"</span></span>
+<span id="cb4-38"><a aria-label="38"></a><span class="at">)</span></span>
+<span id="cb4-39"><a aria-label="39"></a><span class="st">```</span></span>
+<span id="cb4-40"><a aria-label="40"></a></span>
+<span id="cb4-41"><a aria-label="41"></a></span>
+<span id="cb4-42"><a aria-label="42"></a><span class="do">## mpg scatter plot</span></span>
+<span id="cb4-43"><a aria-label="43"></a></span>
+<span id="cb4-44"><a aria-label="44"></a><span class="sc">@</span>fig<span class="sc">-</span>scatterplot shows correlation between highway and city mileages. </span>
+<span id="cb4-45"><a aria-label="45"></a></span>
+<span id="cb4-46"><a aria-label="46"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-47"><a aria-label="47"></a><span class="at">#| label: fig-scatterplot</span></span>
+<span id="cb4-48"><a aria-label="48"></a><span class="at">#| fig-cap: "City and highway mileage for 38 popular models of cars."</span></span>
+<span id="cb4-49"><a aria-label="49"></a><span class="at">#| fig-alt: "Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases."</span></span>
+<span id="cb4-50"><a aria-label="50"></a><span class="at">#| fig-width: 6</span></span>
+<span id="cb4-51"><a aria-label="51"></a><span class="at">#| fig-height: 3.5</span></span>
+<span id="cb4-52"><a aria-label="52"></a></span>
+<span id="cb4-53"><a aria-label="53"></a><span class="at">ggplot(mpg, aes(hwy, cty, color=cyl)) + </span></span>
+<span id="cb4-54"><a aria-label="54"></a><span class="at">  geom_point(alpha=0.5, size=2) +</span></span>
+<span id="cb4-55"><a aria-label="55"></a><span class="at">  scale_color_viridis_c() +</span></span>
+<span id="cb4-56"><a aria-label="56"></a><span class="at">  theme_minimal()</span></span>
+<span id="cb4-57"><a aria-label="57"></a><span class="st">```</span></span>
+<span id="cb4-58"><a aria-label="58"></a></span>
+<span id="cb4-59"><a aria-label="59"></a><span class="do">## the mpg data as table</span></span>
+<span id="cb4-60"><a aria-label="60"></a></span>
+<span id="cb4-61"><a aria-label="61"></a>There are <span class="dv">32</span> observations <span class="cf">in</span> our data.</span>
+<span id="cb4-62"><a aria-label="62"></a></span>
+<span id="cb4-63"><a aria-label="63"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-64"><a aria-label="64"></a><span class="at">#| echo: false</span></span>
+<span id="cb4-65"><a aria-label="65"></a><span class="at">#| warning: false</span></span>
+<span id="cb4-66"><a aria-label="66"></a><span class="at">#| cache: true</span></span>
+<span id="cb4-67"><a aria-label="67"></a><span class="at">mpg |&gt;</span></span>
+<span id="cb4-68"><a aria-label="68"></a><span class="at">  group_by(manufacturer, cyl) |&gt;</span></span>
+<span id="cb4-69"><a aria-label="69"></a><span class="at">  summarize(avg_cty=mean(cty), avg_hwy=mean(hwy))</span></span>
+<span id="cb4-70"><a aria-label="70"></a><span class="st">```</span></span>
+<span id="cb4-71"><a aria-label="71"></a></span>
+<span id="cb4-72"><a aria-label="72"></a>Hypothetical <span class="st">`</span><span class="at">table_viewer</span><span class="st">`</span> will show your tables <span class="cf">in</span> a much better way.</span>
+<span id="cb4-73"><a aria-label="73"></a></span>
+<span id="cb4-74"><a aria-label="74"></a><span class="st">```</span><span class="at">{r}</span></span>
+<span id="cb4-75"><a aria-label="75"></a><span class="at">#| eval: false</span></span>
+<span id="cb4-76"><a aria-label="76"></a><span class="at">table_viewer(mpg)</span></span>
+<span id="cb4-77"><a aria-label="77"></a><span class="st">```</span></span>
+<span id="cb4-78"><a aria-label="78"></a></span>
+<span id="cb4-79"><a aria-label="79"></a><span class="co"># Formulas</span></span>
+<span id="cb4-80"><a aria-label="80"></a></span>
+<span id="cb4-81"><a aria-label="81"></a>you can have formulas <span class="cf">in</span> your document</span>
+<span id="cb4-82"><a aria-label="82"></a></span>
+<span id="cb4-83"><a aria-label="83"></a></span>
+<span id="cb4-84"><a aria-label="84"></a><span class="sc">$</span><span class="er">$</span></span>
+<span id="cb4-85"><a aria-label="85"></a>price <span class="ot">=</span> \hat{\beta}_0 <span class="sc">+</span> \hat{\beta}_1 \times area <span class="sc">+</span> \epsilon</span>
+<span id="cb4-86"><a aria-label="86"></a><span class="sc">$</span><span class="er">$</span></span>
+<span id="cb4-87"><a aria-label="87"></a></span>
+<span id="cb4-88"><a aria-label="88"></a><span class="co"># Citations</span></span>
+<span id="cb4-89"><a aria-label="89"></a></span>
+<span id="cb4-90"><a aria-label="90"></a>We<span class="st">'re going to do this analysis using literate programming [@Knuth1984].</span></span>
+<span id="cb4-91"><a aria-label="91"></a></span>
+<span id="cb4-92"><a aria-label="92"></a><span class="st"># Layout</span></span>
+<span id="cb4-93"><a aria-label="93"></a></span>
+<span id="cb4-94"><a aria-label="94"></a><span class="st">## Callouts</span></span>
+<span id="cb4-95"><a aria-label="95"></a></span>
+<span id="cb4-96"><a aria-label="96"></a><span class="st">::: {.callout-note}</span></span>
+<span id="cb4-97"><a aria-label="97"></a><span class="st">Here'</span>s some information</span>
+<span id="cb4-98"><a aria-label="98"></a><span class="sc">:::</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="various-types-of-documents" class="slide level2">
 <h2>Various types of documents</h2>
@@ -809,7 +815,7 @@ alper yilmaz
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -921,13 +927,14 @@ alper yilmaz
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

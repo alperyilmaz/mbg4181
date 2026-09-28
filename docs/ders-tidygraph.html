@@ -6,8 +6,8 @@
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
 <link href="site_libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-0815c480559380816a4d1ea211a47e91.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.7.29">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Alper Yılmaz">
   <meta name="dcterms.date" content="2025-05-02">
@@ -18,10 +18,16 @@
   <link rel="stylesheet" href="site_libs/revealjs/dist/reset.css">
   <link rel="stylesheet" href="site_libs/revealjs/dist/reveal.css">
   <style>
-    code{white-space: pre-wrap;}
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
     span.smallcaps{font-variant: small-caps;}
-    div.columns{display: flex; gap: min(4vw, 1.5em);}
-    div.column{flex: auto; overflow-x: auto;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
     div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
     ul.task-list{list-style: none;}
     ul.task-list li input[type="checkbox"] {
@@ -96,7 +102,7 @@
     code span.vs { color: #20794d; } /* VerbatimString */
     code span.wa { color: #5e5e5e; font-style: italic; } /* Warning */
   </style>
-  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-f563837468303362081e247dddd440d0.css">
+  <link rel="stylesheet" href="site_libs/revealjs/dist/theme/quarto-2740581606dc327e82f18f789b69d8a0.css">
   <link rel="stylesheet" href="custom.css">
   <link href="site_libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
   <link href="site_libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
@@ -204,7 +210,7 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Alper Yılmaz 
+Alper Yılmaz
 </div>
 </div>
 </div>
@@ -303,13 +309,13 @@ Alper Yılmaz
 <h2>Sample network</h2>
 <p>simple friend or following network</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a></a><span class="fu">library</span>(tidygraph)</span>
-<span id="cb1-3"><a></a></span>
-<span id="cb1-4"><a></a>friends <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">person1 =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>, <span class="st">"gary"</span>, <span class="st">"bob"</span>, <span class="st">"alice"</span>, <span class="st">"david"</span>), </span>
-<span id="cb1-5"><a></a>                  <span class="at">person2 =</span> <span class="fu">c</span>(<span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"allen"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>, <span class="st">"fiona"</span>))</span>
-<span id="cb1-6"><a></a></span>
-<span id="cb1-7"><a></a>friends</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(tidygraph)</span>
+<span id="cb1-3"><a aria-label="3"></a></span>
+<span id="cb1-4"><a aria-label="4"></a>friends <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">person1 =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>, <span class="st">"gary"</span>, <span class="st">"bob"</span>, <span class="st">"alice"</span>, <span class="st">"david"</span>), </span>
+<span id="cb1-5"><a aria-label="5"></a>                  <span class="at">person2 =</span> <span class="fu">c</span>(<span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"allen"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>, <span class="st">"fiona"</span>))</span>
+<span id="cb1-6"><a aria-label="6"></a></span>
+<span id="cb1-7"><a aria-label="7"></a>friends</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
   person1 person2
@@ -330,9 +336,9 @@ Alper Yılmaz
 
 <p>let’s convert this dataframe to a graph/network</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a></a>friends_g <span class="ot">&lt;-</span> friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>()</span>
-<span id="cb3-2"><a></a></span>
-<span id="cb3-3"><a></a>friends_g</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>friends_g <span class="ot">&lt;-</span> friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>()</span>
+<span id="cb3-2"><a aria-label="2"></a></span>
+<span id="cb3-3"><a aria-label="3"></a>friends_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -364,7 +370,7 @@ Alper Yılmaz
 
 <p>Let’s calculate degrees. Notice that “bob” is followed by 5 people, “bob” follows 2 people (total degree 7)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a></a>friends_g <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>friends_g <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -397,8 +403,8 @@ Alper Yılmaz
 
 <p>Let’s get all connections (in and out)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a></a>friends_g <span class="sc">|&gt;</span></span>
-<span id="cb7-2"><a></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>friends_g <span class="sc">|&gt;</span></span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -430,10 +436,10 @@ Alper Yılmaz
 
 <p>Compare “in”, “out” and “all” degree counts for <strong>directed</strong> and <strong>undirected</strong> graphs. Remember, the defaul is “Directed” graph and defult degree is “out”</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a></a>friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">default_deg=</span><span class="fu">centrality_degree</span>(),</span>
-<span id="cb9-2"><a></a>                                    <span class="at">in_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"in"</span>),</span>
-<span id="cb9-3"><a></a>                                    <span class="at">out_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"out"</span>),</span>
-<span id="cb9-4"><a></a>                                    <span class="at">all_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a>friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>() <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">default_deg=</span><span class="fu">centrality_degree</span>(),</span>
+<span id="cb9-2"><a aria-label="2"></a>                                    <span class="at">in_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"in"</span>),</span>
+<span id="cb9-3"><a aria-label="3"></a>                                    <span class="at">out_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"out"</span>),</span>
+<span id="cb9-4"><a aria-label="4"></a>                                    <span class="at">all_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -464,10 +470,10 @@ Alper Yılmaz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a></a>friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">default_deg=</span><span class="fu">centrality_degree</span>(),</span>
-<span id="cb11-2"><a></a>                                    <span class="at">in_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"in"</span>),</span>
-<span id="cb11-3"><a></a>                                    <span class="at">out_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"out"</span>),</span>
-<span id="cb11-4"><a></a>                                    <span class="at">all_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span> <span class="fu">mutate</span>(<span class="at">default_deg=</span><span class="fu">centrality_degree</span>(),</span>
+<span id="cb11-2"><a aria-label="2"></a>                                    <span class="at">in_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"in"</span>),</span>
+<span id="cb11-3"><a aria-label="3"></a>                                    <span class="at">out_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"out"</span>),</span>
+<span id="cb11-4"><a aria-label="4"></a>                                    <span class="at">all_deg=</span><span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -500,25 +506,25 @@ Alper Yılmaz
 <p>We can use <em>dplyr</em> verbs on <em>nodes</em> (or <em>edges</em>) tibbles. Let’s do <em>inner_join</em> and <em>filter</em>ing.</p>
 <p>Let’s have a data frame of birth years for people</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a></a>friends_bday <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>, <span class="st">"gary"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>), </span>
-<span id="cb13-2"><a></a>       <span class="at">bday =</span> <span class="fu">c</span>(<span class="st">"2001"</span>, <span class="st">"2001"</span>, <span class="st">"2002"</span>, <span class="st">"1999"</span>, <span class="st">"1997"</span>, <span class="st">"2003"</span>, <span class="st">"2000"</span>, <span class="st">"2005"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>friends_bday <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">name =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>, <span class="st">"gary"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>), </span>
+<span id="cb13-2"><a aria-label="2"></a>       <span class="at">bday =</span> <span class="fu">c</span>(<span class="st">"2001"</span>, <span class="st">"2001"</span>, <span class="st">"2002"</span>, <span class="st">"1999"</span>, <span class="st">"1997"</span>, <span class="st">"2003"</span>, <span class="st">"2000"</span>, <span class="st">"2005"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here are various processes (annotated)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a></a>result <span class="ot">&lt;-</span> friends_g <span class="sc">|&gt;</span></span>
-<span id="cb14-2"><a></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>)) <span class="sc">|&gt;</span>  <span class="co"># calculate degree for nodes</span></span>
-<span id="cb14-3"><a></a>  <span class="fu">filter</span>(deg <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span>                              <span class="co"># remove nodes with deg==1</span></span>
-<span id="cb14-4"><a></a>  <span class="fu">inner_join</span>(friends_bday) <span class="sc">|&gt;</span>                     <span class="co"># join bday data with nodes</span></span>
-<span id="cb14-5"><a></a>  <span class="fu">arrange</span>(bday) <span class="sc">|&gt;</span>                                <span class="co"># arrange nodes according to bday</span></span>
-<span id="cb14-6"><a></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span>                              <span class="co"># switch to edge tibble</span></span>
-<span id="cb14-7"><a></a>  <span class="fu">mutate</span>(<span class="at">betw =</span> <span class="fu">centrality_edge_betweenness</span>()) <span class="sc">|&gt;</span> <span class="co"># calculate betweenness for edges</span></span>
-<span id="cb14-8"><a></a>  <span class="fu">activate</span>(nodes)                                 <span class="co"># switch back to nodes tibble</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>result <span class="ot">&lt;-</span> friends_g <span class="sc">|&gt;</span></span>
+<span id="cb14-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode=</span><span class="st">"all"</span>)) <span class="sc">|&gt;</span>  <span class="co"># calculate degree for nodes</span></span>
+<span id="cb14-3"><a aria-label="3"></a>  <span class="fu">filter</span>(deg <span class="sc">&gt;</span> <span class="dv">1</span>) <span class="sc">|&gt;</span>                              <span class="co"># remove nodes with deg==1</span></span>
+<span id="cb14-4"><a aria-label="4"></a>  <span class="fu">inner_join</span>(friends_bday) <span class="sc">|&gt;</span>                     <span class="co"># join bday data with nodes</span></span>
+<span id="cb14-5"><a aria-label="5"></a>  <span class="fu">arrange</span>(bday) <span class="sc">|&gt;</span>                                <span class="co"># arrange nodes according to bday</span></span>
+<span id="cb14-6"><a aria-label="6"></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span>                              <span class="co"># switch to edge tibble</span></span>
+<span id="cb14-7"><a aria-label="7"></a>  <span class="fu">mutate</span>(<span class="at">betw =</span> <span class="fu">centrality_edge_betweenness</span>()) <span class="sc">|&gt;</span> <span class="co"># calculate betweenness for edges</span></span>
+<span id="cb14-8"><a aria-label="8"></a>  <span class="fu">activate</span>(nodes)                                 <span class="co"># switch back to nodes tibble</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a></a>result</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>result</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 5 nodes and 6 edges
 #
@@ -554,10 +560,10 @@ Alper Yılmaz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a></a>sample_net <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/sample_network.xlsx"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb17-2"><a></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>)</span>
-<span id="cb17-3"><a></a></span>
-<span id="cb17-4"><a></a>sample_net</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>sample_net <span class="ot">&lt;-</span> readxl<span class="sc">::</span><span class="fu">read_excel</span>(<span class="st">"data/sample_network.xlsx"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>)</span>
+<span id="cb17-3"><a aria-label="3"></a></span>
+<span id="cb17-4"><a aria-label="4"></a>sample_net</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 19 nodes and 32 edges
 #
@@ -603,9 +609,9 @@ Alper Yılmaz
 <h2></h2>
 <p>Let’s calculate degree (connections) for each node and then arrange according to degree</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a></a>sample_net <span class="sc">%&gt;%</span> </span>
-<span id="cb19-2"><a></a>  <span class="fu">mutate</span>(<span class="at">deg=</span><span class="fu">centrality_degree</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb19-3"><a></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a>sample_net <span class="sc">%&gt;%</span> </span>
+<span id="cb19-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deg=</span><span class="fu">centrality_degree</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a aria-label="3"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 19 nodes and 32 edges
 #
@@ -661,9 +667,9 @@ Alper Yılmaz
 
 <p>Which node was expected have highest betweenness?</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a></a>sample_net <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a></a>  <span class="fu">mutate</span>(<span class="at">betw=</span><span class="fu">centrality_betweenness</span>()) <span class="sc">%&gt;%</span> </span>
-<span id="cb21-3"><a></a>  <span class="fu">arrange</span>(<span class="sc">-</span>betw)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a>sample_net <span class="sc">%&gt;%</span> </span>
+<span id="cb21-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">betw=</span><span class="fu">centrality_betweenness</span>()) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a aria-label="3"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>betw)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 19 nodes and 32 edges
 #
@@ -706,12 +712,12 @@ Alper Yılmaz
 <h2>{ggraph} package</h2>
 <p><em>ggraph</em> is very similar to <em>ggplot</em>. We don’t need to map <em>x</em> and <em>y</em> values, we just have <em>node</em> and <em>edge</em> info. We need to choose geom for the nodes (point, circle, text, etc.) and geom for edges (link, arc, diagonal, elbow, etc.)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb23-2"><a></a></span>
-<span id="cb23-3"><a></a>sample_net <span class="sc">|&gt;</span></span>
-<span id="cb23-4"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
-<span id="cb23-5"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
-<span id="cb23-6"><a></a>  <span class="fu">geom_edge_link</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb23-2"><a aria-label="2"></a></span>
+<span id="cb23-3"><a aria-label="3"></a>sample_net <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a aria-label="4"></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
+<span id="cb23-5"><a aria-label="5"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
+<span id="cb23-6"><a aria-label="6"></a>  <span class="fu">geom_edge_link</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-tidygraph_files/figure-revealjs/unnamed-chunk-13-1.png" width="1056" class="r-stretch"></section>
@@ -719,11 +725,11 @@ Alper Yılmaz
 <h2>Labels as layer</h2>
 <p>Let’s add node labels with <em>geom_node_label</em>. This geom need mapping of <strong>label</strong> to a column, we’ll be using <em>name</em> column.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a></a>sample_net <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
-<span id="cb24-3"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
-<span id="cb24-4"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
-<span id="cb24-5"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>sample_net <span class="sc">|&gt;</span></span>
+<span id="cb24-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
+<span id="cb24-3"><a aria-label="3"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span></span>
+<span id="cb24-4"><a aria-label="4"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb24-5"><a aria-label="5"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-tidygraph_files/figure-revealjs/unnamed-chunk-14-1.png" width="960" class="r-stretch"></section>
@@ -731,12 +737,12 @@ Alper Yılmaz
 
 <p>We can map graph features (in this case <em>centrality_degree</em>) to node properties. Let’s add <em>repel</em> for labels and use a theme specific for graphs.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a></a>sample_net <span class="sc">|&gt;</span></span>
-<span id="cb25-2"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
-<span id="cb25-3"><a></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size=</span><span class="fu">centrality_degree</span>())) <span class="sc">+</span></span>
-<span id="cb25-4"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
-<span id="cb25-5"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name),<span class="at">repel =</span> T) <span class="sc">+</span></span>
-<span id="cb25-6"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>sample_net <span class="sc">|&gt;</span></span>
+<span id="cb25-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
+<span id="cb25-3"><a aria-label="3"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size=</span><span class="fu">centrality_degree</span>())) <span class="sc">+</span></span>
+<span id="cb25-4"><a aria-label="4"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a aria-label="5"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name),<span class="at">repel =</span> T) <span class="sc">+</span></span>
+<span id="cb25-6"><a aria-label="6"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -751,13 +757,13 @@ Alper Yılmaz
 </div></section><section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a></a>sample_net <span class="sc">%&gt;%</span></span>
-<span id="cb26-2"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size=</span><span class="fu">centrality_degree</span>(), </span>
-<span id="cb26-4"><a></a>                      <span class="at">color=</span><span class="fu">centrality_betweenness</span>())) <span class="sc">+</span>  </span>
-<span id="cb26-5"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
-<span id="cb26-6"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name),<span class="at">repel =</span> T) <span class="sc">+</span></span>
-<span id="cb26-7"><a></a>  <span class="fu">theme_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>sample_net <span class="sc">%&gt;%</span></span>
+<span id="cb26-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>() <span class="sc">+</span></span>
+<span id="cb26-3"><a aria-label="3"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size=</span><span class="fu">centrality_degree</span>(), </span>
+<span id="cb26-4"><a aria-label="4"></a>                      <span class="at">color=</span><span class="fu">centrality_betweenness</span>())) <span class="sc">+</span>  </span>
+<span id="cb26-5"><a aria-label="5"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb26-6"><a aria-label="6"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name),<span class="at">repel =</span> T) <span class="sc">+</span></span>
+<span id="cb26-7"><a aria-label="7"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -791,21 +797,21 @@ Alper Yılmaz
 <h2>Packages</h2>
 <p>These are the packages that will be used</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a></a><span class="fu">library</span>(tidytext)</span>
-<span id="cb28-2"><a></a><span class="fu">library</span>(janeaustenr)</span>
-<span id="cb28-3"><a></a><span class="fu">library</span>(widyr)</span>
-<span id="cb28-4"><a></a><span class="fu">library</span>(ggraph)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a aria-label="1"></a><span class="fu">library</span>(tidytext)</span>
+<span id="cb28-2"><a aria-label="2"></a><span class="fu">library</span>(janeaustenr)</span>
+<span id="cb28-3"><a aria-label="3"></a><span class="fu">library</span>(widyr)</span>
+<span id="cb28-4"><a aria-label="4"></a><span class="fu">library</span>(ggraph)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Here’s how bigram words are tokenized</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a></a>austen_bigrams <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb29-2"><a></a>  <span class="fu">unnest_tokens</span>(bigram, text, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>austen_bigrams <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb29-2"><a aria-label="2"></a>  <span class="fu">unnest_tokens</span>(bigram, text, <span class="at">token =</span> <span class="st">"ngrams"</span>, <span class="at">n =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a></a>austen_bigrams</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a aria-label="1"></a>austen_bigrams</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 675,025 × 2
    book                bigram         
@@ -825,7 +831,7 @@ Alper Yılmaz
 </div>
 <p>Let’s check most frequent bigrams</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a></a>austen_bigrams <span class="sc">|&gt;</span> <span class="fu">count</span>(bigram, <span class="at">sort=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a aria-label="1"></a>austen_bigrams <span class="sc">|&gt;</span> <span class="fu">count</span>(bigram, <span class="at">sort=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 193,210 × 2
    bigram      n
@@ -848,14 +854,14 @@ Alper Yılmaz
 
 <p>Removing stop words won’t be a simple <code>anti_join</code> since we have two words in a row. We need to <code>separate</code> them into individual words.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a></a>austen_bigram_clean <span class="ot">&lt;-</span>   austen_bigrams <span class="sc">|&gt;</span> </span>
-<span id="cb34-2"><a></a>  <span class="fu">separate</span>(bigram, <span class="at">into=</span><span class="fu">c</span>(<span class="st">"word1"</span>,<span class="st">"word2"</span>)) <span class="sc">|&gt;</span> </span>
-<span id="cb34-3"><a></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word1"</span><span class="ot">=</span><span class="st">"word"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word2"</span><span class="ot">=</span><span class="st">"word"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>austen_bigram_clean <span class="ot">&lt;-</span>   austen_bigrams <span class="sc">|&gt;</span> </span>
+<span id="cb34-2"><a aria-label="2"></a>  <span class="fu">separate</span>(bigram, <span class="at">into=</span><span class="fu">c</span>(<span class="st">"word1"</span>,<span class="st">"word2"</span>)) <span class="sc">|&gt;</span> </span>
+<span id="cb34-3"><a aria-label="3"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word1"</span><span class="ot">=</span><span class="st">"word"</span>)) <span class="sc">|&gt;</span></span>
+<span id="cb34-4"><a aria-label="4"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by=</span><span class="fu">c</span>(<span class="st">"word2"</span><span class="ot">=</span><span class="st">"word"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Let’s count now</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a></a>austen_bigram_clean <span class="sc">|&gt;</span> <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>austen_bigram_clean <span class="sc">|&gt;</span> <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> <span class="fu">head</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 6 × 3
   word1   word2         n
@@ -873,11 +879,11 @@ Alper Yılmaz
 <h2>Network of bigrams</h2>
 <p>In bigram count outout, we have “word1”, “word2” and then frequency of them. This looks like two nodes and edge between them. Let’s convert this data into network</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a></a>austen_bigram_clean <span class="sc">|&gt;</span> </span>
-<span id="cb37-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1)) <span class="sc">|&gt;</span> </span>
-<span id="cb37-3"><a></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb37-4"><a></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span>                    <span class="co"># filtering out infrequent pairs for cleaner result</span></span>
-<span id="cb37-5"><a></a>  <span class="fu">as_tbl_graph</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>austen_bigram_clean <span class="sc">|&gt;</span> </span>
+<span id="cb37-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1)) <span class="sc">|&gt;</span> </span>
+<span id="cb37-3"><a aria-label="3"></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb37-4"><a aria-label="4"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span>                    <span class="co"># filtering out infrequent pairs for cleaner result</span></span>
+<span id="cb37-5"><a aria-label="5"></a>  <span class="fu">as_tbl_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 86 nodes and 70 edges
 #
@@ -912,15 +918,15 @@ Alper Yılmaz
 
 <p>Let’s visualize the network</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a></a>austen_bigram_clean <span class="sc">|&gt;</span> </span>
-<span id="cb39-2"><a></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1)) <span class="sc">|&gt;</span> </span>
-<span id="cb39-3"><a></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb39-4"><a></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span>                    </span>
-<span id="cb39-5"><a></a>  <span class="fu">as_tbl_graph</span>() <span class="sc">|&gt;</span></span>
-<span id="cb39-6"><a></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span> </span>
-<span id="cb39-7"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
-<span id="cb39-8"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
-<span id="cb39-9"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a>austen_bigram_clean <span class="sc">|&gt;</span> </span>
+<span id="cb39-2"><a aria-label="2"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1)) <span class="sc">|&gt;</span> </span>
+<span id="cb39-3"><a aria-label="3"></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort=</span><span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb39-4"><a aria-label="4"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span>                    </span>
+<span id="cb39-5"><a aria-label="5"></a>  <span class="fu">as_tbl_graph</span>() <span class="sc">|&gt;</span></span>
+<span id="cb39-6"><a aria-label="6"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span> </span>
+<span id="cb39-7"><a aria-label="7"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
+<span id="cb39-8"><a aria-label="8"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
+<span id="cb39-9"><a aria-label="9"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -944,14 +950,14 @@ Alper Yılmaz
 
 <p>Let’s count words in 10 line sections (considering single book)</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a></a>austen_section_words <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">|&gt;</span></span>
-<span id="cb40-2"><a></a>  <span class="fu">filter</span>(book <span class="sc">==</span> <span class="st">"Pride &amp; Prejudice"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-3"><a></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">row_number</span>() <span class="sc">%/%</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-4"><a></a>  <span class="fu">filter</span>(section <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
-<span id="cb40-5"><a></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">|&gt;</span></span>
-<span id="cb40-6"><a></a>  <span class="fu">anti_join</span>(stop_words)</span>
-<span id="cb40-7"><a></a></span>
-<span id="cb40-8"><a></a>austen_section_words</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>austen_section_words <span class="ot">&lt;-</span> <span class="fu">austen_books</span>() <span class="sc">|&gt;</span></span>
+<span id="cb40-2"><a aria-label="2"></a>  <span class="fu">filter</span>(book <span class="sc">==</span> <span class="st">"Pride &amp; Prejudice"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">row_number</span>() <span class="sc">%/%</span> <span class="dv">10</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-4"><a aria-label="4"></a>  <span class="fu">filter</span>(section <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span></span>
+<span id="cb40-5"><a aria-label="5"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">|&gt;</span></span>
+<span id="cb40-6"><a aria-label="6"></a>  <span class="fu">anti_join</span>(stop_words)</span>
+<span id="cb40-7"><a aria-label="7"></a></span>
+<span id="cb40-8"><a aria-label="8"></a>austen_section_words</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 37,240 × 3
    book              section word        
@@ -973,8 +979,8 @@ Alper Yılmaz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a></a>austen_section_words <span class="sc">|&gt;</span></span>
-<span id="cb42-2"><a></a>  <span class="fu">pairwise_count</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>austen_section_words <span class="sc">|&gt;</span></span>
+<span id="cb42-2"><a aria-label="2"></a>  <span class="fu">pairwise_count</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 796,008 × 3
    item1     item2         n
@@ -998,16 +1004,16 @@ Alper Yılmaz
 
 <p>Again, words are nodes and count is the edge data, let’s convert this into network</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a></a>austen_section_words <span class="sc">|&gt;</span></span>
-<span id="cb44-2"><a></a>  <span class="fu">pairwise_count</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb44-3"><a></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb44-4"><a></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> F) <span class="sc">|&gt;</span> </span>
-<span id="cb44-5"><a></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span> </span>
-<span id="cb44-6"><a></a>  <span class="fu">distinct</span>() <span class="sc">|&gt;</span>            <span class="co"># removing duplicate edges</span></span>
-<span id="cb44-7"><a></a>  <span class="fu">ggraph</span>() <span class="sc">+</span> </span>
-<span id="cb44-8"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
-<span id="cb44-9"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
-<span id="cb44-10"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a aria-label="1"></a>austen_section_words <span class="sc">|&gt;</span></span>
+<span id="cb44-2"><a aria-label="2"></a>  <span class="fu">pairwise_count</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-3"><a aria-label="3"></a>  <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">20</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb44-4"><a aria-label="4"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> F) <span class="sc">|&gt;</span> </span>
+<span id="cb44-5"><a aria-label="5"></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span> </span>
+<span id="cb44-6"><a aria-label="6"></a>  <span class="fu">distinct</span>() <span class="sc">|&gt;</span>            <span class="co"># removing duplicate edges</span></span>
+<span id="cb44-7"><a aria-label="7"></a>  <span class="fu">ggraph</span>() <span class="sc">+</span> </span>
+<span id="cb44-8"><a aria-label="8"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
+<span id="cb44-9"><a aria-label="9"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
+<span id="cb44-10"><a aria-label="10"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -1067,11 +1073,11 @@ Alper Yılmaz
 <section class="slide level2">
 
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a></a>austen_section_words <span class="sc">|&gt;</span></span>
-<span id="cb45-2"><a></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb45-3"><a></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>   <span class="co"># removing infrequent words for simpler calculations</span></span>
-<span id="cb45-4"><a></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
-<span id="cb45-5"><a></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a aria-label="1"></a>austen_section_words <span class="sc">|&gt;</span></span>
+<span id="cb45-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb45-3"><a aria-label="3"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>   <span class="co"># removing infrequent words for simpler calculations</span></span>
+<span id="cb45-4"><a aria-label="4"></a>  <span class="fu">ungroup</span>() <span class="sc">|&gt;</span></span>
+<span id="cb45-5"><a aria-label="5"></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 742,182 × 3
    item1     item2     correlation
@@ -1094,16 +1100,16 @@ Alper Yılmaz
 
 <p>Let’s convert this to network and visualize it</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a></a>austen_section_words <span class="sc">|&gt;</span></span>
-<span id="cb47-2"><a></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
-<span id="cb47-3"><a></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>   <span class="co"># try lower numbers and see what happens</span></span>
-<span id="cb47-4"><a></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-5"><a></a>  <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="fl">0.25</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-6"><a></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
-<span id="cb47-7"><a></a>  <span class="fu">ggraph</span>(<span class="at">layout=</span><span class="st">"kk"</span>) <span class="sc">+</span> </span>
-<span id="cb47-8"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
-<span id="cb47-9"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
-<span id="cb47-10"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb47"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a aria-label="1"></a>austen_section_words <span class="sc">|&gt;</span></span>
+<span id="cb47-2"><a aria-label="2"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span></span>
+<span id="cb47-3"><a aria-label="3"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>   <span class="co"># try lower numbers and see what happens</span></span>
+<span id="cb47-4"><a aria-label="4"></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-5"><a aria-label="5"></a>  <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="fl">0.25</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-6"><a aria-label="6"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb47-7"><a aria-label="7"></a>  <span class="fu">ggraph</span>(<span class="at">layout=</span><span class="st">"kk"</span>) <span class="sc">+</span> </span>
+<span id="cb47-8"><a aria-label="8"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span> </span>
+<span id="cb47-9"><a aria-label="9"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span> </span>
+<span id="cb47-10"><a aria-label="10"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -1119,22 +1125,22 @@ Alper Yılmaz
 <h2>Legos of tidy verbs</h2>
 <p>Consider the following code, since different functions from different packages take in tidy data and output tidy data, we can combine them easily. The packages of each function is annotated at each line.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a></a><span class="fu">austen_books</span>() <span class="sc">|&gt;</span></span>
-<span id="cb48-2"><a></a>  <span class="fu">filter</span>(book <span class="sc">==</span> <span class="st">"Pride &amp; Prejudice"</span>) <span class="sc">|&gt;</span>       <span class="co"># dplyr</span></span>
-<span id="cb48-3"><a></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">row_number</span>() <span class="sc">%/%</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>     <span class="co"># dplyr</span></span>
-<span id="cb48-4"><a></a>  <span class="fu">filter</span>(section <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span>                       <span class="co"># dplyr</span></span>
-<span id="cb48-5"><a></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">|&gt;</span>                 <span class="co"># tidytext</span></span>
-<span id="cb48-6"><a></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">|&gt;</span>                     <span class="co"># dplyr</span></span>
-<span id="cb48-7"><a></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span>                            <span class="co"># dplyr</span></span>
-<span id="cb48-8"><a></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>                         <span class="co"># dplyr</span></span>
-<span id="cb48-9"><a></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>  <span class="co"># widyr</span></span>
-<span id="cb48-10"><a></a>  <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="fl">0.25</span>) <span class="sc">|&gt;</span>                <span class="co"># dplyr</span></span>
-<span id="cb48-11"><a></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span>              <span class="co"># tidygraph</span></span>
-<span id="cb48-12"><a></a>  <span class="fu">mutate</span>(<span class="at">deg=</span><span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span>           <span class="co"># dplyr / tidygraph</span></span>
-<span id="cb48-13"><a></a>  <span class="fu">ggraph</span>(<span class="at">layout=</span><span class="st">"kk"</span>) <span class="sc">+</span>                        <span class="co"># ggraph</span></span>
-<span id="cb48-14"><a></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span>                          <span class="co"># ggraph</span></span>
-<span id="cb48-15"><a></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span>                           <span class="co"># ggraph</span></span>
-<span id="cb48-16"><a></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))             <span class="co"># ggraph</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a aria-label="1"></a><span class="fu">austen_books</span>() <span class="sc">|&gt;</span></span>
+<span id="cb48-2"><a aria-label="2"></a>  <span class="fu">filter</span>(book <span class="sc">==</span> <span class="st">"Pride &amp; Prejudice"</span>) <span class="sc">|&gt;</span>       <span class="co"># dplyr</span></span>
+<span id="cb48-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">section =</span> <span class="fu">row_number</span>() <span class="sc">%/%</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>     <span class="co"># dplyr</span></span>
+<span id="cb48-4"><a aria-label="4"></a>  <span class="fu">filter</span>(section <span class="sc">&gt;</span> <span class="dv">0</span>) <span class="sc">|&gt;</span>                       <span class="co"># dplyr</span></span>
+<span id="cb48-5"><a aria-label="5"></a>  <span class="fu">unnest_tokens</span>(word, text) <span class="sc">|&gt;</span>                 <span class="co"># tidytext</span></span>
+<span id="cb48-6"><a aria-label="6"></a>  <span class="fu">anti_join</span>(stop_words) <span class="sc">|&gt;</span>                     <span class="co"># dplyr</span></span>
+<span id="cb48-7"><a aria-label="7"></a>  <span class="fu">group_by</span>(word) <span class="sc">|&gt;</span>                            <span class="co"># dplyr</span></span>
+<span id="cb48-8"><a aria-label="8"></a>  <span class="fu">filter</span>(<span class="fu">n</span>() <span class="sc">&gt;=</span> <span class="dv">10</span>) <span class="sc">|&gt;</span>                         <span class="co"># dplyr</span></span>
+<span id="cb48-9"><a aria-label="9"></a>  <span class="fu">pairwise_cor</span>(word, section, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span>  <span class="co"># widyr</span></span>
+<span id="cb48-10"><a aria-label="10"></a>  <span class="fu">filter</span>(correlation <span class="sc">&gt;</span> <span class="fl">0.25</span>) <span class="sc">|&gt;</span>                <span class="co"># dplyr</span></span>
+<span id="cb48-11"><a aria-label="11"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed=</span><span class="cn">FALSE</span>) <span class="sc">|&gt;</span>              <span class="co"># tidygraph</span></span>
+<span id="cb48-12"><a aria-label="12"></a>  <span class="fu">mutate</span>(<span class="at">deg=</span><span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span>           <span class="co"># dplyr / tidygraph</span></span>
+<span id="cb48-13"><a aria-label="13"></a>  <span class="fu">ggraph</span>(<span class="at">layout=</span><span class="st">"kk"</span>) <span class="sc">+</span>                        <span class="co"># ggraph</span></span>
+<span id="cb48-14"><a aria-label="14"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span>                          <span class="co"># ggraph</span></span>
+<span id="cb48-15"><a aria-label="15"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span>                           <span class="co"># ggraph</span></span>
+<span id="cb48-16"><a aria-label="16"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label=</span>name))             <span class="co"># ggraph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 
@@ -1330,7 +1336,7 @@ Alper Yılmaz
         margin: 0.1,
 
         math: {
-          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/MathJax.js',
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
           config: 'TeX-AMS_HTML-full',
           tex2jax: {
             inlineMath: [['\\(','\\)']],
@@ -1442,13 +1448,14 @@ Alper Yılmaz
           e.clearSelection();
         }
         const getTextToCopy = function(trigger) {
-            const codeEl = trigger.previousElementSibling.cloneNode(true);
-            for (const childEl of codeEl.children) {
-              if (isCodeAnnotation(childEl)) {
-                childEl.remove();
-              }
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
             }
-            return codeEl.innerText;
+          }
+          return codeEl.innerText;
         }
         const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
           text: getTextToCopy

@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 470">
+<text x="40" y="30" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#DC2626" font-style="italic">✗ untidy — the variable gene is hiding in the column names</text>
+<rect x="40" y="44" width="296" height="34" fill="#222B57"/>
+<text x="50" y="66" font-size="15" font-weight="bold" fill="#FFFFFF">sample</text>
+<text x="114" y="66" font-size="15" font-weight="bold" fill="#FCA5A5">TP53</text>
+<text x="190" y="66" font-size="15" font-weight="bold" fill="#FCA5A5">BRCA1</text>
+<text x="270" y="66" font-size="15" font-weight="bold" fill="#FCA5A5">EGFR</text>
+<rect x="40" y="78" width="296" height="30" fill="#FFFFFF"/>
+<text x="50" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s1</text>
+<text x="114" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">300</text>
+<text x="190" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">100</text>
+<text x="270" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">450</text>
+<rect x="40" y="108" width="296" height="30" fill="#F1F5F9"/>
+<text x="50" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s2</text>
+<text x="114" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">320</text>
+<text x="190" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">110</text>
+<text x="270" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">470</text>
+<rect x="59.900000000000006" y="152" width="256.2" height="34" rx="17" fill="#222B57"/><text x="188" y="174" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="13" fill="#FFFFFF">pivot_longer(cols = TP53:EGFR)</text>
+<line x1="188" y1="196" x2="188" y2="244" stroke="#222B57" stroke-width="3"/><polygon points="188,256 181,242 195,242" fill="#222B57"/>
+<text x="188" y="268" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-style="italic">gene and expr become columns</text>
+<rect x="40" y="278" width="218" height="34" fill="#222B57"/>
+<text x="50" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">sample</text>
+<text x="120" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">gene</text>
+<text x="204" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">expr</text>
+<rect x="40" y="312" width="218" height="30" fill="#FFFFFF"/>
+<text x="50" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s1</text>
+<text x="120" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">TP53</text>
+<text x="204" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">300</text>
+<rect x="40" y="342" width="218" height="30" fill="#F1F5F9"/>
+<text x="50" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s1</text>
+<text x="120" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">BRCA1</text>
+<text x="204" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">100</text>
+<rect x="40" y="372" width="218" height="30" fill="#FFFFFF"/>
+<text x="50" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s2</text>
+<text x="120" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">TP53</text>
+<text x="204" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">320</text>
+<rect x="40" y="402" width="218" height="30" fill="#F1F5F9"/>
+<text x="50" y="422" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">s2</text>
+<text x="120" y="422" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">BRCA1</text>
+<text x="204" y="422" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">110</text>
+<text x="40" y="452" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#15803D" font-style="italic">✓ tidy — one row per gene per sample</text>
+<text x="480" y="30" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#DC2626" font-style="italic">✗ untidy — two variables in one column</text>
+<rect x="480" y="44" width="194" height="34" fill="#222B57"/>
+<text x="490" y="66" font-size="15" font-weight="bold" fill="#FFFFFF">sample</text>
+<text x="614" y="66" font-size="15" font-weight="bold" fill="#FFFFFF">expr</text>
+<rect x="480" y="78" width="194" height="30" fill="#FFFFFF"/>
+<text x="490" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#DC2626" font-weight="bold">ctrl_rep1</text>
+<text x="614" y="98" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">300</text>
+<rect x="480" y="108" width="194" height="30" fill="#F1F5F9"/>
+<text x="490" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#DC2626" font-weight="bold">ctrl_rep2</text>
+<text x="614" y="128" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">320</text>
+<rect x="480" y="138" width="194" height="30" fill="#FFFFFF"/>
+<text x="490" y="158" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#DC2626" font-weight="bold">drug_rep1</text>
+<text x="614" y="158" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">450</text>
+<rect x="422.51" y="178" width="304.97999999999996" height="58" rx="8" fill="#F1F5F9"/>
+<text x="575" y="202" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="13" fill="#1E293B">separate(sample,</text>
+<text x="575" y="224" text-anchor="middle" font-family="SFMono-Regular, Consolas, Menlo, monospace" font-size="13" fill="#1E293B">  into = c("condition", "replicate"))</text>
+<line x1="575" y1="238" x2="575" y2="246" stroke="#222B57" stroke-width="3"/><polygon points="575,258 568,244 582,244" fill="#222B57"/>
+<text x="575" y="268" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-style="italic">the sample label splits into two columns</text>
+<rect x="480" y="278" width="260" height="34" fill="#222B57"/>
+<text x="490" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">condition</text>
+<text x="590" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">replicate</text>
+<text x="686" y="300" font-size="15" font-weight="bold" fill="#FFFFFF">expr</text>
+<rect x="480" y="312" width="260" height="30" fill="#FFFFFF"/>
+<text x="490" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">ctrl</text>
+<text x="590" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">1</text>
+<text x="686" y="332" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">300</text>
+<rect x="480" y="342" width="260" height="30" fill="#F1F5F9"/>
+<text x="490" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">ctrl</text>
+<text x="590" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">2</text>
+<text x="686" y="362" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">320</text>
+<rect x="480" y="372" width="260" height="30" fill="#FFFFFF"/>
+<text x="490" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">drug</text>
+<text x="590" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">1</text>
+<text x="686" y="392" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">450</text>
+<text x="480" y="424" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#15803D" font-style="italic">✓ tidy — every variable its own column</text>
+</svg>

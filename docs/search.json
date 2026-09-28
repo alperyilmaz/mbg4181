@@ -32,7 +32,7 @@
     "href": "about.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme Ders Notları",
     "section": "",
-    "text": "YTÜ MBG Bölümünde 2025 Bahar döneminde verilen MBG4181 kodlu dersin içerikleri sayfasıdır.\n\n\n\nVize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
+    "text": "YTÜ MBG Bölümünde 2026 Güz döneminde verilen MBG4181 kodlu dersin içerikleri sayfasıdır.\n\n\n\nVize soruları test şeklinde mi olacaktır? Cevap: Vize soruları klasik tarzda olacaktır, genelde belirli bir çıktıyı (tablo veya grafik) elde etmek için gerekli kısa kodlar yazmanız istenecektir.\nYüklenen sunumlar dışında bir kaynaktan soru sorulacak mıdır? Cevap: Temel olarak sunumlar kullanılacaktır fakat derste anlatılanlardan da sorumluyuz, derste aldığınız notlarınızı da çalışınız\nKaç sınav yapılacaktır? Cevap: İki vize ve bir final yapılacaktır."
   },
   {
     "objectID": "about.html#sıkça-sorulan-sorular",
@@ -263,7 +263,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n29 Eylül 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n6 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n13 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n20 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n27 Ekim 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n3 Kasım 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n10 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n17 Kasım 2025\n\n\n\n24 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki\n\n\n\n8 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)\n\n\n\n15 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)\n\n\n\n22 Aralık 2025 9:30\n\n\n\n29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)\n\n\n\n5 Ocak 2026 9:30 | İçerik: Ödev değerlendirme"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Eylül 2026 13:00 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n5 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n12 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n19 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n26 Ekim 2026 13:000 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n2 Kasım 2026 13:00 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n16 Kasım 2026\n\n\n\n23 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n30 Kasım 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki\n\n\n\n7 Aralık 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)\n\n\n\n14 Aralık 2026 13:00 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)\n\n\n\n21 Aralık 2026 13:00\n\n\n\n28 Aralık 2026 13:00 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)\n\n\n\n4 Ocak 2027 13:00 | İçerik: Ödev değerlendirme"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -277,105 +277,105 @@
     "href": "index.html#ders1",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "29 Eylül 2025 9:30 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
+    "text": "28 Eylül 2026 13:00 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki"
   },
   {
     "objectID": "index.html#ders2",
     "href": "index.html#ders2",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "6 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
+    "text": "5 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki"
   },
   {
     "objectID": "index.html#ders3",
     "href": "index.html#ders3",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "13 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
+    "text": "12 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki"
   },
   {
     "objectID": "index.html#ders4",
     "href": "index.html#ders4",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "20 Ekim 2025 9:30 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)"
+    "text": "19 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)"
   },
   {
     "objectID": "index.html#ders5",
     "href": "index.html#ders5",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "27 Ekim 2025 9:30 | İçerik: Dosya okuma komutları gösterildi. Sunum linki"
+    "text": "26 Ekim 2026 13:000 | İçerik: Dosya okuma komutları gösterildi. Sunum linki"
   },
   {
     "objectID": "index.html#ders6",
     "href": "index.html#ders6",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "3 Kasım 2025 9:30 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
+    "text": "2 Kasım 2026 13:00 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
   },
   {
     "objectID": "index.html#ders7",
     "href": "index.html#ders7",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "10 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)"
+    "text": "9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)"
   },
   {
     "objectID": "index.html#vize1",
     "href": "index.html#vize1",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "17 Kasım 2025"
+    "text": "16 Kasım 2026"
   },
   {
     "objectID": "index.html#ders8",
     "href": "index.html#ders8",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "24 Kasım 2025 9:30 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki"
+    "text": "23 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki"
   },
   {
     "objectID": "index.html#ders9",
     "href": "index.html#ders9",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "1 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki"
+    "text": "30 Kasım 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki"
   },
   {
     "objectID": "index.html#ders10",
     "href": "index.html#ders10",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "8 Aralık 2025 9:30 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)"
+    "text": "7 Aralık 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)"
   },
   {
     "objectID": "index.html#ders11",
     "href": "index.html#ders11",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "15 Aralık 2025 9:30 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)"
+    "text": "14 Aralık 2026 13:00 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)"
   },
   {
     "objectID": "index.html#vize2",
     "href": "index.html#vize2",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "22 Aralık 2025 9:30"
+    "text": "21 Aralık 2026 13:00"
   },
   {
     "objectID": "index.html#ders12",
     "href": "index.html#ders12",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "29 Aralık 2025 9:30 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)"
+    "text": "28 Aralık 2026 13:00 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)"
   },
   {
     "objectID": "index.html#ders13",
     "href": "index.html#ders13",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "5 Ocak 2026 9:30 | İçerik: Ödev değerlendirme"
+    "text": "4 Ocak 2027 13:00 | İçerik: Ödev değerlendirme"
   },
   {
     "objectID": "ders-select-filter.html#önce-keki-yiyelim",
@@ -1120,6 +1120,48 @@
     "text": "Data Science / Veri Bilimi\n \n\n\nKaynak"
   },
   {
+    "objectID": "ders-intro.html#where-does-the-time-go",
+    "href": "ders-intro.html#where-does-the-time-go",
+    "title": "Veri Analizi Temelleri",
+    "section": "Where does the time go?",
+    "text": "Where does the time go?\n\n\n\nSurveys put ~80% of analysis time into getting the data ready: importing, tidying and transforming.\ntidyverse makes you efficient in exactly that 80%.\n\nKaynak"
+  },
+  {
+    "objectID": "ders-intro.html#why-r-neden-r",
+    "href": "ders-intro.html#why-r-neden-r",
+    "title": "Veri Analizi Temelleri",
+    "section": "Why R? / Neden R?",
+    "text": "Why R? / Neden R?\n\n\n\n\nTool\nShines at\nBut\n\n\n\n\nLinux terminal (grep, awk, sed)\nquick jobs on huge text files\nno statistics or graphics, hard to reuse\n\n\nExcel\nsmall tables, quick charts, sharing\nsilent errors — turns gene symbols into dates (~1 in 5 papers!), not reproducible\n\n\nPython (pandas + Jupyter)\ngeneral purpose scripting, machine learning\nthinner tooling for genomics and statistics\n\n\nSQL (duckdb, databases)\nthe lingua franca of data analysis: query databases and even CSV files directly (DuckDB), scales beyond memory\nno statistics or graphics — pair it with R\n\n\nR (tidyverse + RStudio)\nstatistics, visualization, Bioconductor with 2,000+ biology packages\nbase-R quirks — which we avoid with tidyverse\n\n\n\n\nAll five can analyze data. We’ll see SQL again in this course; for biology we pick R: Bioconductor, reproducible scripts, free."
+  },
+  {
+    "objectID": "ders-intro.html#same-analysis-four-languages",
+    "href": "ders-intro.html#same-analysis-four-languages",
+    "title": "Veri Analizi Temelleri",
+    "section": "Same analysis, four languages",
+    "text": "Same analysis, four languages\nPer condition: how many genes, how many with expression above 350, and what fraction?\n\nR — tidyversePython — pandasSQLawk — Linux terminal\n\n\nread_csv(\"expr.csv\") |&gt;\n  group_by(condition) |&gt;\n  summarise(n         = n(),\n            n_high    = sum(expr &gt; 350),\n            frac_high = mean(expr &gt; 350))\nReads like the question — no dialect, no hidden steps.\n\n\nimport pandas as pd\n\ndf = pd.read_csv(\"expr.csv\")\ndf.groupby(\"condition\").agg(\n    n         = (\"gene\", \"size\"),\n    n_high    = (\"expr\", lambda s: (s &gt; 350).sum()),\n    frac_high = (\"expr\", lambda s: (s &gt; 350).mean()),\n)\nSame idea, but the two lambdas hide inside agg.\n\n\nSELECT condition,\n       COUNT(*) AS n,\n       SUM(CASE WHEN expr &gt; 350 THEN 1 ELSE 0 END)   AS n_high,\n       AVG(CASE WHEN expr &gt; 350 THEN 1.0 ELSE 0 END) AS frac_high\nFROM expr\nGROUP BY condition;\nCASE WHEN boilerplate, twice.\n\n\nawk -F, 'NR&gt;1{n[$2]++; if($3&gt;350) h[$2]++}\nEND{for(g in n) printf \"%s %d %d %.2f\\n\", g, n[g], h[g], h[g]/n[g]}' expr.csv\n$2/$3 column indexes and manual accumulators.\n\n\n\nAll four give the same answer — the difference is what you can still read tomorrow."
+  },
+  {
+    "objectID": "ders-intro.html#what-is-reproducibility",
+    "href": "ders-intro.html#what-is-reproducibility",
+    "title": "Veri Analizi Temelleri",
+    "section": "What is reproducibility?",
+    "text": "What is reproducibility?"
+  },
+  {
+    "objectID": "ders-intro.html#how-to-run-r",
+    "href": "ders-intro.html#how-to-run-r",
+    "title": "Veri Analizi Temelleri",
+    "section": "How to run R",
+    "text": "How to run R\n\n\n\nOn your own computer\n\nInstall R: cran.r-project.org\nInstall RStudio Desktop: posit.co/download/rstudio-desktop\n\nFree, fast, works offline.\n\nIn the cloud\nPosit Cloud — a full RStudio session in your browser, nothing to install. Free student plan.\n\n\nOr use nothing at all: these slides run R themselves →"
+  },
+  {
+    "objectID": "ders-intro.html#r-running-inside-these-slides",
+    "href": "ders-intro.html#r-running-inside-these-slides",
+    "title": "Veri Analizi Temelleri",
+    "section": "R, running inside these slides",
+    "text": "R, running inside these slides\nThese slides carry their own R engine: webR — R compiled to WebAssembly, running in your browser. No installation, no cloud account.\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nquarto-webr extension — first run downloads the R engine, give it a few seconds"
+  },
+  {
     "objectID": "ders-intro.html#tidyverse-paketleri",
     "href": "ders-intro.html#tidyverse-paketleri",
     "title": "Veri Analizi Temelleri",
@@ -1127,11 +1169,25 @@
     "text": "Tidyverse paketleri\n\n\nhttp://www.seec.uct.ac.za/r-tidyverse"
   },
   {
+    "objectID": "ders-intro.html#cleaning-the-data",
+    "href": "ders-intro.html#cleaning-the-data",
+    "title": "Veri Analizi Temelleri",
+    "section": "Cleaning the data",
+    "text": "Cleaning the data"
+  },
+  {
     "objectID": "ders-intro.html#what-is-tidy",
     "href": "ders-intro.html#what-is-tidy",
     "title": "Veri Analizi Temelleri",
     "section": "What is tidy?",
-    "text": "What is tidy?\n\n\n\nR for Data Science https://r4ds.had.co.nz/"
+    "text": "What is tidy?\n\n\n\n\nVariables are the columns — everything you measured: gene, condition, expr\nObservations are the rows — one row per unit: one sample\nValues are the cells — a single value at each variable × observation crossing\n\n\n\nR for Data Science https://r4ds.had.co.nz/"
+  },
+  {
+    "objectID": "ders-intro.html#untidy-examples",
+    "href": "ders-intro.html#untidy-examples",
+    "title": "Veri Analizi Temelleri",
+    "section": "Untidy examples",
+    "text": "Untidy examples"
   },
   {
     "objectID": "ders-intro.html#pillars-of-data-analysis",
@@ -1152,14 +1208,42 @@
     "href": "ders-intro.html#common-dplyr-verbs",
     "title": "Veri Analizi Temelleri",
     "section": "Common dplyr verbs",
-    "text": "Common dplyr verbs\n\n\n\n\n\n\n\n\n\nverb\naction\nexample\n\n\n\n\nfilter()\nSelect rows based on some criteria\nfilter(age &gt; 40 & treatment == \"drug\")\n\n\narrange()\nSort rows\narrange(date, group)\n\n\nselect()\nSelect columns (and ignore all others)\nselect(age, treatment)\n\n\nrename()\nRename columns\nrename(DATE_MONTHS_trial24, date)\n\n\nmutate()\nAdd new columns\nmutate(height.m = height.cm / 100)\n\n\ngroup_by(), summarise()\nGroup data and then calculate summary statistics\ngroup_by(treatment) %&gt;% summarise(...)"
+    "text": "Common dplyr verbs\n\n\n\n\n\n\n\n\n\nverb\naction\nexample\n\n\n\n\nfilter()\nSelect rows based on some criteria\nfilter(age &gt; 40 & treatment == \"drug\")\n\n\narrange()\nSort rows\narrange(date, group)\n\n\nselect()\nSelect columns (and ignore all others)\nselect(age, treatment)\n\n\nrename()\nRename columns\nrename(date = DATE_MONTHS_trial24)\n\n\nmutate()\nAdd new columns\nmutate(height.m = height.cm / 100)\n\n\ngroup_by(), summarise()\nGroup data and then calculate summary statistics\ngroup_by(treatment) |&gt; summarise(...)"
+  },
+  {
+    "objectID": "ders-intro.html#filter-keep-matching-rows",
+    "href": "ders-intro.html#filter-keep-matching-rows",
+    "title": "Veri Analizi Temelleri",
+    "section": "filter(): keep matching rows",
+    "text": "filter(): keep matching rows"
+  },
+  {
+    "objectID": "ders-intro.html#select-keep-columns",
+    "href": "ders-intro.html#select-keep-columns",
+    "title": "Veri Analizi Temelleri",
+    "section": "select(): keep columns",
+    "text": "select(): keep columns"
+  },
+  {
+    "objectID": "ders-intro.html#mutate-compute-new-columns",
+    "href": "ders-intro.html#mutate-compute-new-columns",
+    "title": "Veri Analizi Temelleri",
+    "section": "mutate(): compute new columns",
+    "text": "mutate(): compute new columns"
+  },
+  {
+    "objectID": "ders-intro.html#group_by-summarise-collapse-groups",
+    "href": "ders-intro.html#group_by-summarise-collapse-groups",
+    "title": "Veri Analizi Temelleri",
+    "section": "group_by() + summarise(): collapse groups",
+    "text": "group_by() + summarise(): collapse groups"
   },
   {
     "objectID": "ders-intro.html#helper-functions",
     "href": "ders-intro.html#helper-functions",
     "title": "Veri Analizi Temelleri",
     "section": "Helper functions",
-    "text": "Helper functions\nselect might look simple but it becomes very useful with helper functions\n\n\nRStudio Cheatsheets: Data transformation with dplyr cheatsheet]"
+    "text": "Helper functions\nselect might look simple but it becomes very useful with helper functions\n\n\nRStudio Cheatsheets: Data transformation with dplyr cheatsheet"
   },
   {
     "objectID": "ders-intro.html#group-by",
@@ -1169,25 +1253,18 @@
     "text": "Group by\n\n\nR for Reproducible Scientific Analysis"
   },
   {
-    "objectID": "ders-intro.html#connecting-verbsactions",
-    "href": "ders-intro.html#connecting-verbsactions",
+    "objectID": "ders-intro.html#connecting-verbsactions---the-pipe",
+    "href": "ders-intro.html#connecting-verbsactions---the-pipe",
     "title": "Veri Analizi Temelleri",
-    "section": "Connecting verbs/actions",
-    "text": "Connecting verbs/actions\n\n\n\nData Manipulation with dplyr"
+    "section": "Connecting verbs/actions - the pipe",
+    "text": "Connecting verbs/actions - the pipe\n\n\n\nData Manipulation with dplyr"
   },
   {
     "objectID": "ders-intro.html#in-other-words",
     "href": "ders-intro.html#in-other-words",
     "title": "Veri Analizi Temelleri",
     "section": "In other words",
-    "text": "In other words\nwhite_and_yolk &lt;- crack(egg, add_seasoning)\nomelette_batter &lt;- beat(white_and_yolk)\nomelette_with_chives &lt;- cook(omelette_batter,add_chives)\nversus\negg %&gt;%\n  crack(add_seasoning) %&gt;%\n  beat() %&gt;%\n  cook(add_chives) -&gt; omelette_with_chives\n\nLise Vaudor’s blog"
-  },
-  {
-    "objectID": "ders-intro.html#the-pipe",
-    "href": "ders-intro.html#the-pipe",
-    "title": "Veri Analizi Temelleri",
-    "section": "The pipe",
-    "text": "The pipe"
+    "text": "In other words\nwhite_and_yolk &lt;- crack(egg, add_seasoning)\nomelette_batter &lt;- beat(white_and_yolk)\nomelette_with_chives &lt;- cook(omelette_batter,add_chives)\nversus\negg |&gt;\n  crack(add_seasoning) |&gt;\n  beat() |&gt;\n  cook(add_chives) -&gt; omelette_with_chives\n\nLise Vaudor’s blog"
   },
   {
     "objectID": "ders-intro.html#reshaping-data",
@@ -1208,14 +1285,14 @@
     "href": "ders-intro.html#scenario-2",
     "title": "Veri Analizi Temelleri",
     "section": "Scenario 2",
-    "text": "Scenario 2\nWorking on multiple columns\n\n\n  \n\n\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(c))\nversus\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(a:d, mean))\n\n# or with a function\ndf %&gt;%\n  group_by(g1, g2) %&gt;%\n  summarise(across(where(is.numeric), mean))"
+    "text": "Scenario 2\nWorking on multiple columns\n\n\n  \n\n\ndf |&gt;\n  group_by(g1, g2) |&gt;\n  summarise(a = mean(a), b = mean(b), c = mean(c), d = mean(d))\nversus\ndf |&gt;\n  group_by(g1, g2) |&gt;\n  summarise(across(a:d, mean))\n\n# or with a function\ndf |&gt;\n  group_by(g1, g2) |&gt;\n  summarise(across(where(is.numeric), mean))"
   },
   {
     "objectID": "ders-intro.html#scenario-3",
     "href": "ders-intro.html#scenario-3",
     "title": "Veri Analizi Temelleri",
     "section": "Scenario 3",
-    "text": "Scenario 3\nRead many files at once\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") %&gt;%\n  map_dfr(read_csv)\n\n\n\n\nhttps://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/"
+    "text": "Scenario 3\nRead many files at once\n\n\nfs::dir_ls(data_dir,\n           regexp = \"\\\\.csv$\") |&gt;\n  map_dfr(read_csv)\n\n\n\n\nhttps://www.gerkelab.com/blog/2018/09/import-directory-csv-purrr-readr/"
   },
   {
     "objectID": "ders-intro.html#scenario-4",
@@ -1229,14 +1306,14 @@
     "href": "ders-intro.html#section-3",
     "title": "Veri Analizi Temelleri",
     "section": "",
-    "text": "janeaustenr::austen_books() %&gt;%                              #tidytext\n  unnest_tokens(bigram, text, token = \"ngrams\", n=2) %&gt;%     #tidytext\n  filter(!is.na(bigram)) %&gt;%                                 #dplyr\n  separate(bigram, into = c(\"word1\",\"word2\")) %&gt;%            #tidyr\n  anti_join(stop_words, by=c(\"word1\"=\"word\")) %&gt;%            #dplyr\n  anti_join(stop_words, by=c(\"word2\"=\"word\")) %&gt;%            #dplyr\n  count(word1, word2, sort=T) %&gt;%                            #dplyr\n  filter(n&gt;20) %&gt;%                                           #dplyr\n  as_tbl_graph() %&gt;%                                         #tidygraph\n  mutate(central=centrality_degree(mode = \"all\")) %&gt;%        #dplyr/tidygraph\n  ggraph(layout = 'nicely') +                                #ggraph\n  geom_edge_link() +\n  geom_node_point(aes(color=central)) +\n  geom_node_label(aes(label=name), repel=T) +\n  theme_graph()"
+    "text": "janeaustenr::austen_books() |&gt;                              #tidytext\n  unnest_tokens(bigram, text, token = \"ngrams\", n=2) |&gt;     #tidytext\n  filter(!is.na(bigram)) |&gt;                                 #dplyr\n  separate(bigram, into = c(\"word1\",\"word2\")) |&gt;            #tidyr\n  anti_join(stop_words, by=c(\"word1\"=\"word\")) |&gt;            #dplyr\n  anti_join(stop_words, by=c(\"word2\"=\"word\")) |&gt;            #dplyr\n  count(word1, word2, sort=T) |&gt;                            #dplyr\n  filter(n&gt;20) |&gt;                                           #dplyr\n  as_tbl_graph() |&gt;                                         #tidygraph\n  mutate(central=centrality_degree(mode = \"all\")) |&gt;        #dplyr/tidygraph\n  ggraph(layout = 'nicely') +                                #ggraph\n  geom_edge_link() +\n  geom_node_point(aes(color=central)) +\n  geom_node_label(aes(label=name), repel=T) +\n  theme_graph()"
   },
   {
     "objectID": "ders-intro.html#visualization",
     "href": "ders-intro.html#visualization",
     "title": "Veri Analizi Temelleri",
     "section": "Visualization",
-    "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse. Due to time limit, visualization part is skipped.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
+    "text": "Visualization\n\nThe popular ggplot2 package is part of tidyverse.\nFor stunning figures in your publications, reports you’re encouraged to use ggplot2 package"
   },
   {
     "objectID": "ders-intro.html#biyoloji-ve-tidyverse",
