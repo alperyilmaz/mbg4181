@@ -417,7 +417,7 @@
     "href": "ders-select-filter.html#select-1",
     "title": "Tidyverse Select/Filter",
     "section": "Select",
-    "text": "Select\nselect() fonksiyonu:\n\nsütun numarası\nsütun adı\nher ikisi için de aralık (2:5 veya country:vote gibi)\neksi(-) işareti ile sütun almama\nyardımcı fonskiyonlar ile belirli örüntü (starts_with, ends_with)\neverything() kısayolu\n\nile sütun seçimi yapabilir.\nSütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak."
+    "text": "Select\nselect() fonksiyonu:\n\nsütun numarası\nsütun adı\nher ikisi için de aralık (2:5 veya country:vote gibi)\neksi(-) veya ünlem(!) işareti ile sütun almama\nyardımcı fonskiyonlar ile belirli örüntü (starts_with, ends_with, contains)\neverything() kısayolu\n\nile sütun seçimi yapabilir.\nSütunları yazdığınız sıra, sütunları seçtiğiniz sıra olur otomatik olarak."
   },
   {
     "objectID": "ders-select-filter.html#select-2",
@@ -487,7 +487,7 @@
     "href": "ders-select-filter.html#filter-3",
     "title": "Tidyverse Select/Filter",
     "section": "Filter",
-    "text": "Filter\nZaman kazandıracak bazı yöntemler:\n\nfilter(country==\"Turkey\", country==\"Brazil\", country==\"Japan\") yerine %in% operatörü kullanmak daha pratik olacaktır filter(country %in% c(\"Turkey\",\"Brazil\",\"Japan\")\nstringr paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. filter(str_detect(descr,\"conflict\")\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nkarmaşık örüntüler aramayı mümkün kılan str_detect() örnekleri içeren sayfayı ziyaret ediniz"
+    "text": "Filter\nZaman kazandıracak bazı yöntemler:\n\nfilter(country==\"Turkey\" | country==\"Brazil\" | country==\"Japan\") yerine %in% operatörü kullanmak daha pratik olacaktır filter(country %in% c(\"Turkey\",\"Brazil\",\"Japan\")\nstringr paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. filter(str_detect(descr,\"conflict\")\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nkarmaşık örüntüler aramayı mümkün kılan str_detect() örnekleri içeren sayfayı ziyaret ediniz"
   },
   {
     "objectID": "ders-pivot-join.html#veri-şekillendirme-ve-birleştirme",
