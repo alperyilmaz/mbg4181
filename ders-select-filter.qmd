@@ -145,7 +145,7 @@ Bir önceki slaytlarda kullandığımız pipe `|` karakteri, kendinden önce gel
 #| label: pipe-hakkinda
 istedigim_kolonlar <- select(unvotes, short_name, country, everything())
 yeni_isimler <- rename(istedigim_kolonlar, cc=country_code, imp=importantvote)
-son hal <- relocate(yeni_isimler, cc, .after=country)
+son_hal <- relocate(yeni_isimler, cc, .after=country)
 
 #eşittir
 
