@@ -16,7 +16,7 @@ format:
     slide-number: c/t
 typora-copy-images-to: images
 webr:
-  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','htmltools','stringr'] # Install R packages on document open
+  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','stringr'] # Install R packages on document open
   autoload-packages: false       # Disable automatic loading of packages
   show-startup-message: true     # Disable displaying status of webR initialization
   #render-df: gt-interactive
@@ -42,6 +42,8 @@ unvotes <- un_votes |>
 ```
 
 ## Kullanılan veri
+
+`glimpse(unvotes)` ile bütün sütunlara bakılabilir.
 
 ```{webr}
 
