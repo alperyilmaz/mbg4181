@@ -2,7 +2,7 @@
 title: "Tidyverse Select/Filter"
 subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders2"
 author: "Alper Yılmaz"
-date: 2025-10-06
+date: 2026-10-05
 format:
   revealjs:
     chalkboard: true
@@ -16,7 +16,7 @@ format:
     slide-number: c/t
 typora-copy-images-to: images
 webr:
-  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','gt','htmltools','stringr'] # Install R packages on document open
+  packages: ['dplyr','unvotes','lubridate','scales','ggplot2','htmltools','stringr'] # Install R packages on document open
   autoload-packages: false       # Disable automatic loading of packages
   show-startup-message: true     # Disable displaying status of webR initialization
   #render-df: gt-interactive
@@ -44,11 +44,8 @@ unvotes <- un_votes |>
 ## Kullanılan veri
 
 ```{webr}
-library(gt)
-library(htmltools)
 
-my_data <- unvotes |> head(100) |> gt()
-html_print(my_data)
+unvotes 
 ```
 ## 
 
@@ -106,8 +103,8 @@ names(unvotes)
 - sütun numarası
 - sütun adı
 - her ikisi için de aralık (`2:5` veya `country:vote` gibi)
-- eksi(-) işareti ile sütun almama
-- yardımcı fonskiyonlar ile belirli örüntü (*starts_with*, *ends_with*)
+- eksi(-) veya ünlem(!) işareti ile sütun almama
+- yardımcı fonskiyonlar ile belirli örüntü (*starts_with*, *ends_with*, *contains*)
 - *everything()* kısayolu
 
 ile sütun seçimi yapabilir.
@@ -151,7 +148,7 @@ son hal <- relocate(yeni_isimler, cc, .after=country)
 #eşittir
 
 unvotes |>
-  select(unvotes, short_name, country, everything()) |>
+  select(short_name, country, everything()) |>
   rename(cc=country_code, imp=importantvote) |>
   relocate(cc, .after=country) -> son_hal
 ```
@@ -235,7 +232,7 @@ unvotes |>
 
 Zaman kazandıracak bazı yöntemler:
 
-- `filter(country=="Turkey", country=="Brazil", country=="Japan")` yerine *%in%* operatörü kullanmak daha pratik olacaktır `filter(country %in% c("Turkey","Brazil","Japan")`
+- `filter(country=="Turkey" | country=="Brazil" | country=="Japan")` yerine *%in%* operatörü kullanmak daha pratik olacaktır `filter(country %in% c("Turkey","Brazil","Japan")`
 - `stringr` paketi yardımıyla, belirli bir metni içeren satırları filtreleyebiliriz. `filter(str_detect(descr,"conflict")`
 
 ```{webr}
