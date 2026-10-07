@@ -7,23 +7,6 @@ You can find all your quiz and midterm scores. Your assignment score is explaine
 
 ## All scores
 
-```{r}
-#| echo: false
-#| warning: false
-library(gt)
-
-readr::read_csv("notlar-publish.csv") |>
-gt() |>
-cols_align(
-  align = c("center"),
-  columns = everything()
-) |>
-sub_missing(
-  columns = everything(),
-  rows = everything(),
-  missing_text = "-"
-)
-```
 
 ## Poster assignment evaluation chart
 
@@ -35,20 +18,3 @@ There are five items in evaluation, each score 2 points.
 - If your poster has at least 3 figures, you got 2 points
 - If your poster has meaningful context and story you got 2 points. 
 
-```{r}
-#| echo: false
-#| warning: false
-library(gt)
-
-readr::read_csv("notlar-poster.csv") |>
-gt() |>
-cols_align(
-  align = c("center"),
-  columns = everything()
-) |>
-sub_missing(
-  columns = everything(),
-  rows = everything(),
-  missing_text = "-"
-)
-```
