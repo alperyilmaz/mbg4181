@@ -515,7 +515,7 @@
     "href": "ders-pivot-join.html#yaygın-veri-problemleri",
     "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
     "section": "Yaygın Veri Problemleri",
-    "text": "Yaygın Veri Problemleri\n\n\nGeniş Format (Wide)\n\nDeğişkenler sütun isimlerinde saklanır\nAnaliz için uygun değil\nExcel’de görüntülemek için uygun\n\nUzun Format (Long)\n\nHer değişken kendi sütununda\nAnaliz ve görselleştirme için uygun\nDaha fazla satır içerir\n\n\n\n\n\nWide vs Long"
+    "text": "Yaygın Veri Problemleri\n\n\nGeniş Format (Wide)\n\nDeğişkenler sütun isimlerinde saklanır\nAnaliz için uygun değil\nExcel’de görüntülemek için uygun\n\nUzun Format (Long)\n\nHer değişken kendi sütununda\nAnaliz ve görselleştirme için uygun\nDaha fazla satır içerir\n\n\n\n\n\nTidyr Cheatsheet"
   },
   {
     "objectID": "ders-pivot-join.html#tidyr-ile-format-dönüşümleri",
