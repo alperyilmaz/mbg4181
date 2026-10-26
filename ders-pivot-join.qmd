@@ -2,7 +2,7 @@
 title: "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)"
 subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders5"
 author: "Alper Yılmaz"
-date: 2025-10-03
+date: 2026-10-26
 format:
   revealjs:
     chalkboard: true
@@ -18,10 +18,10 @@ typora-copy-images-to: images
 resources:
   - data
 webr:
-  packages: ['dplyr','tidyr','readr','ggplot2','htmltools'] # Install R packages on document open
+  packages: ['dplyr','tidyr','readr','ggplot2'] # Install R packages on document open
   autoload-packages: false       # Disable automatic loading of packages
   show-startup-message: true     # Disable displaying status of webR initialization
-  render-df: gt-interactive
+  #render-df: gt-interactive
   resources:
     - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/census.csv
     - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv
@@ -41,6 +41,7 @@ execute:
 library(dplyr)
 library(tidyr)
 library(ggplot2)
+library(readr)
 ```
 
 ## Bu derste
@@ -106,7 +107,7 @@ Tidy veri ilkelerine göre:
 :::
 
 ::: {.column width="50%"}
-![Wide vs Long](https://tidyr.tidyverse.org/articles/pivot-wider-longer_files/figure-html/unnamed-chunk-3-1.png)
+![Tidyr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
 :::
 
 ::::
@@ -161,7 +162,7 @@ geniş_format
 
 ```{webr}
 # Dini inanç ve gelir verisi (geniş format)
-relig_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv")
+relig_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/refs/heads/main/data-raw/relig_income.csv")
 
 # İlk birkaç satıra bakalım
 head(relig_income)
@@ -201,7 +202,7 @@ Bazen birden fazla sütun, değer sütunu olarak kullanılabilir:
 
 ```{webr}
 # ABD kira ve gelir verisi
-us_rent_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv")
+us_rent_income <- read_csv("https://github.com/tidyverse/tidyr/blob/main/data-raw/us_rent_income.csv")
 
 head(us_rent_income)
 ```
@@ -225,7 +226,7 @@ Veri şekillendirilirken eksik değerler ortaya çıkabilir:
 
 ```{webr}
 # Eksik değer içeren bir örnek veri
-balık_örnek <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv")
+balık_örnek <- read_csv("https://github.com/tidyverse/tidyr/blob/main/data-raw/fish_encounters.csv")
 
 head(balık_örnek)
 ```
@@ -335,7 +336,7 @@ anti_join(öğrenciler, notlar, by = "öğrenci_id")
 
 ## Görsel Özet: Join Türleri
 
-![Join Türleri](https://d33wubrfki0l68.cloudfront.net/9c12ca9e12ed26a7c5d2aa08e36f5c4e080a58a2/28f6a/diagrams/join-venn.png)
+![Join Türleri](https://intro2r.library.duke.edu/images/join_diagram.png)
 
 ## Farklı İsimlerde Sütunlar Kullanarak Birleştirme
 
@@ -375,7 +376,7 @@ inner_join(sınav1, sınav2, by = c("öğrenci_id", "ders"), suffix = c("_1", "_
 
 ```{webr}
 # Star Wars veri setini yükleyelim
-starwars <- read_csv("https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv")
+starwars <- read_csv("https://github.com/tidyverse/dplyr/blob/main/data-raw/starwars.csv")
 
 # İlk birkaç satıra bakalım
 glimpse(starwars)
