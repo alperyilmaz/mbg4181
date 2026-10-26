@@ -107,7 +107,7 @@ Tidy veri ilkelerine göre:
 :::
 
 ::: {.column width="50%"}
-![Tidyr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
+[Tidyr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
 :::
 
 ::::
@@ -202,7 +202,7 @@ Bazen birden fazla sütun, değer sütunu olarak kullanılabilir:
 
 ```{webr}
 # ABD kira ve gelir verisi
-us_rent_income <- read_csv("https://github.com/tidyverse/tidyr/blob/main/data-raw/us_rent_income.csv")
+us_rent_income <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/refs/heads/main/data-raw/us_rent_income.csv")
 
 head(us_rent_income)
 ```
@@ -226,7 +226,7 @@ Veri şekillendirilirken eksik değerler ortaya çıkabilir:
 
 ```{webr}
 # Eksik değer içeren bir örnek veri
-balık_örnek <- read_csv("https://github.com/tidyverse/tidyr/blob/main/data-raw/fish_encounters.csv")
+balık_örnek <- read_csv("https://raw.githubusercontent.com/tidyverse/tidyr/refs/heads/main/data-raw/fish_encounters.csv")
 
 head(balık_örnek)
 ```
@@ -257,6 +257,9 @@ balık_geniş_0 <- balık_örnek |>
 
 balık_geniş_0
 ```
+## Join
+
+Tidyexplain sayfasındaki [animasyonları](https://www.garrickadenbuie.com/project/tidyexplain/) izleyiniz.
 
 ## İki Tablo Nasıl Birleştirilir?
 
@@ -376,7 +379,7 @@ inner_join(sınav1, sınav2, by = c("öğrenci_id", "ders"), suffix = c("_1", "_
 
 ```{webr}
 # Star Wars veri setini yükleyelim
-starwars <- read_csv("https://github.com/tidyverse/dplyr/blob/main/data-raw/starwars.csv")
+starwars <- read_csv("https://raw.githubusercontent.com/tidyverse/dplyr/refs/heads/main/data-raw/starwars.csv")
 
 # İlk birkaç satıra bakalım
 glimpse(starwars)
