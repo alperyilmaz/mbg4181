@@ -17,6 +17,7 @@ format:
 typora-copy-images-to: images
 filters:
   - webr
+engine: knitr
 webr:
   show-startup-message: false
   packages: ['dplyr']
