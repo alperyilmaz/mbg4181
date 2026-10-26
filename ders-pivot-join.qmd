@@ -44,6 +44,8 @@ library(ggplot2)
 library(readr)
 ```
 
+> **Not:** Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman `library(tidyverse)` komutunu kullanırsanız, otomatik olarak, `dplyr`,`tidyr`,`forcats`,`purrr`,`readr`,`stringr`,`tibble`,`ggplot2` paketleri yüklenecektir.
+
 ## Bu derste
 
 :::: {.columns}
