@@ -11,7 +11,7 @@
 
   <meta name="author" content="Alper Yılmaz">
   <meta name="dcterms.date" content="2026-10-26">
-  <title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme – Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)</title>
+  <title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme – pivot ve join işlemleri</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -1975,7 +1975,7 @@ globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)</h1>
+  <h1 class="title">pivot ve join işlemleri</h1>
   <p class="subtitle">MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders5</p>
 
 <div class="quarto-title-authors">
@@ -1992,9 +1992,9 @@ Alper Yılmaz
 <h2>Veri Şekillendirme ve Birleştirme</h2>
 <div id="qwebr-insertion-location-1"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
-<blockquote>
-<p><strong>Not:</strong> Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman <code>library(tidyverse)</code> komutunu kullanırsanız, otomatik olarak, <code>dplyr</code>,<code>tidyr</code>,<code>forcats</code>,<code>purrr</code>,<code>readr</code>,<code>stringr</code>,<code>tibble</code>,<code>ggplot2</code> paketleri yüklenecektir.</p>
-</blockquote>
+<div class="bottom">
+<p><strong>Not:</strong> Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman <code>library(tidyverse)</code> komutunu kullanırsanız, otomatik olarak, <code>dplyr</code>, <code>tidyr</code>, <code>forcats</code>, <code>purrr</code>, <code>readr</code>, <code>stringr</code>, <code>tibble</code>, <code>ggplot2</code> paketleri yüklenecektir.</p>
+</div>
 </section>
 <section id="bu-derste" class="slide level2">
 <h2>Bu derste</h2>
@@ -2065,7 +2065,10 @@ Alper Yılmaz
 <li>Daha fazla satır içerir</li>
 </ul>
 </div><div class="column" style="width:50%;">
+<p><img data-src="images/clipboard_image_1793102375.png" style="width:85.0%"></p>
+<div class="footer">
 <p><a href="https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf">Tidyr Cheatsheet</a></p>
+</div>
 </div></div>
 </section>
 <section id="tidyr-ile-format-dönüşümleri" class="slide level2">
@@ -2080,15 +2083,17 @@ Alper Yılmaz
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="pivot_longer-ile-geniş-formatı-uzun-formata-çevirme" class="slide level2">
-<h2>pivot_longer() ile Geniş Formatı Uzun Formata Çevirme</h2>
+<section id="pivot_longer" class="slide level2">
+<h2>pivot_longer()</h2>
+<p>Geniş Formatı Uzun Formata Çevirme</p>
 <div class="cell">
 <div id="qwebr-insertion-location-3"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="pivot_wider-ile-uzun-formatı-geniş-formata-çevirme" class="slide level2">
-<h2>pivot_wider() ile Uzun Formatı Geniş Formata Çevirme</h2>
+<section id="pivot_wider" class="slide level2">
+<h2>pivot_wider()</h2>
+<p>Uzun Formatı Geniş Formata Çevirme</p>
 <div class="cell">
 <div id="qwebr-insertion-location-4"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2108,8 +2113,9 @@ Alper Yılmaz
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="görselleştirme-için-uzun-format-avantajı" class="slide level2">
-<h2>Görselleştirme için Uzun Format Avantajı</h2>
+<section id="görselleştirme-için-hangi-format" class="slide level2">
+<h2>Görselleştirme için Hangi Format?</h2>
+<p>Görselleştirme için uzun formattaki tablolar daha uygundur</p>
 <div class="cell">
 <div id="qwebr-insertion-location-7"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2145,8 +2151,9 @@ Alper Yılmaz
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
 </section>
-<section id="na-değerlerini-belirli-bir-değerle-doldurma" class="slide level2">
-<h2>NA değerlerini belirli bir değerle doldurma</h2>
+<section id="na-değerlerini-doldurma" class="slide level2">
+<h2>NA değerlerini doldurma</h2>
+<p><code>NA</code> değerleri belirli bir değer ile (0, -) ile doldurulabilir</p>
 <div class="cell">
 <div id="qwebr-insertion-location-12"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
@@ -2154,7 +2161,11 @@ Alper Yılmaz
 </section>
 <section id="join" class="slide level2">
 <h2>Join</h2>
-<p>Tidyexplain sayfasındaki <a href="https://www.garrickadenbuie.com/project/tidyexplain/">animasyonları</a> izleyiniz.</p>
+
+<img data-src="images/inner.png" class="r-stretch"><p>Ayrıca, Tidyexplain sayfasındaki <a href="https://www.garrickadenbuie.com/project/tidyexplain/">animasyonları</a> izleyiniz.</p>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/diagrams/join/inner.png">kaynak R4DS</a></p>
+</div>
 </section>
 <section id="iki-tablo-nasıl-birleştirilir" class="slide level2">
 <h2>İki Tablo Nasıl Birleştirilir?</h2>
@@ -2175,60 +2186,119 @@ Alper Yılmaz
 <section id="left_join-sol-tabloya-göre-birleştirme" class="slide level2">
 <h2>left_join: Sol Tabloya Göre Birleştirme</h2>
 <p>Sol tablodaki tüm kayıtları korur, sağ tabloda eşleşme yoksa NA değerleri ekler:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <div class="cell">
 <div id="qwebr-insertion-location-15"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/left.png"></p>
+</div></div>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work">kaynak</a></p>
+</div>
 </section>
-<section id="right_join-sağ-tabloya-göre-birleştirme" class="slide level2">
-<h2>right_join: Sağ Tabloya Göre Birleştirme</h2>
+<section id="right_join-sağ-tabloya-göre" class="slide level2">
+<h2>right_join: Sağ Tabloya Göre</h2>
 <p>Sağ tablodaki tüm kayıtları korur, sol tabloda eşleşme yoksa NA değerleri ekler:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <div class="cell">
 <div id="qwebr-insertion-location-16"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/right.png"></p>
+</div></div>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work">image source</a></p>
 </div>
 </section>
 <section id="full_join-tam-birleştirme" class="slide level2">
 <h2>full_join: Tam Birleştirme</h2>
 <p>Her iki tablodaki tüm kayıtları korur, eşleşme yoksa NA değerleri ekler:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <div class="cell">
 <div id="qwebr-insertion-location-17"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/full.png"></p>
+</div></div>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work">image source</a></p>
 </div>
 </section>
 <section id="semi_join-yarı-birleştirme" class="slide level2">
 <h2>semi_join: Yarı Birleştirme</h2>
 <p>Sol tablodaki, sağ tabloda eşleşen kayıtları döndürür, ancak sağ tablodaki sütunları almaz:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <div class="cell">
 <div id="qwebr-insertion-location-18"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/semi.png"></p>
+</div></div>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work">image source</a></p>
 </div>
 </section>
 <section id="anti_join-zıt-birleştirme" class="slide level2">
 <h2>anti_join: Zıt Birleştirme</h2>
 <p>Sol tablodaki, sağ tabloda eşleşmeyen kayıtları döndürür:</p>
+<div class="columns">
+<div class="column" style="width:65%;">
 <div class="cell">
 <div id="qwebr-insertion-location-19"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</div><div class="column" style="width:35%;">
+<p><img data-src="images/anti.png"></p>
+</div></div>
+<div class="footer">
+<p><a href="https://r4ds.hadley.nz/joins.html#how-do-joins-work">image source</a></p>
 </div>
 </section>
 <section id="görsel-özet-join-türleri" class="slide level2">
 <h2>Görsel Özet: Join Türleri</h2>
 
-<img data-src="https://intro2r.library.duke.edu/images/join_diagram.png" class="r-stretch quarto-figure-center"><p class="caption">Join Türleri</p></section>
-<section id="farklı-isimlerde-sütunlar-kullanarak-birleştirme" class="slide level2">
-<h2>Farklı İsimlerde Sütunlar Kullanarak Birleştirme</h2>
+<img data-src="images/venn.png" class="r-stretch"><div class="footer">
+<p><a href="https://r4ds.hadley.nz/diagrams/join/venn.png">kaynak R4DS</a></p>
+</div>
+</section>
+<section id="farklı-isimlerde-sütunlar" class="slide level2">
+<h2>Farklı İsimlerde Sütunlar</h2>
+<p>Birleştirmek istenilen tablolarda ortak sütunların isimleri farklı olduğunda, <code>by=c()</code> veya <code>join_by()</code> ile belirtmemiz gerekir.</p>
 <div class="cell">
 <div id="qwebr-insertion-location-20"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
+<div class="bottom">
+<p><code>by = c("öğrenci_id" = "numara")</code> yerine <code>join_by(öğrenci_id==numara)</code> kullanılabilir</p>
+</div>
 </section>
-<section id="birden-fazla-sütun-kullanarak-birleştirme" class="slide level2">
-<h2>Birden Fazla Sütun Kullanarak Birleştirme</h2>
+<section id="birden-fazla-sütun-kullanımı" class="slide level2">
+<h2>Birden Fazla Sütun Kullanımı</h2>
 <div class="cell">
 <div id="qwebr-insertion-location-21"></div>
 <noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
 </div>
+<div class="bottom">
+<p>Bu durumda da, <code>join_by(ogrenci_id, ders)</code> kullanılabilir</p>
+</div>
+</section>
+<section id="join_by-ile-eşit-olmayan-join" class="slide level2">
+<h2>join_by ile eşit olmayan join</h2>
+<p>R For Data Science kitabının “<a href="https://r4ds.hadley.nz/joins.html#sec-non-equi-joins">Non-equi joins</a>” bölümünü inceleyiniz.</p>
+<ul>
+<li><code>join_by(key == key)</code> yerine <code>join_by(key &lt; key)</code></li>
+<li><code>join_by(closest(x &lt;= y))</code></li>
+<li><code>join_by(overlaps(start, end, start, end))</code></li>
+</ul>
 </section>
 <section id="gerçek-veri-seti-örneği-star-wars-karakterleri" class="slide level2">
 <h2>Gerçek Veri Seti Örneği: Star Wars Karakterleri</h2>
@@ -2256,7 +2326,7 @@ Alper Yılmaz
 <h2>Özet</h2>
 <div class="columns">
 <div class="column" style="width:50%;">
-<h3 id="öğrendiğimiz-veri-şekillendirme-işlemleri">Öğrendiğimiz Veri Şekillendirme İşlemleri</h3>
+<h3 id="veri-şekillendirme-işlemleri">Veri Şekillendirme İşlemleri</h3>
 <ul>
 <li><code>pivot_longer()</code> - Geniş formatı uzun formata çevirme</li>
 <li><code>pivot_wider()</code> - Uzun formatı geniş formata çevirme</li>
@@ -2264,7 +2334,7 @@ Alper Yılmaz
 <li>Eksik değerlerle başa çıkma</li>
 </ul>
 </div><div class="column" style="width:50%;">
-<h3 id="öğrendiğimiz-tablo-birleştirme-işlemleri">Öğrendiğimiz Tablo Birleştirme İşlemleri</h3>
+<h3 id="tablo-birleştirme-işlemleri">Tablo Birleştirme İşlemleri</h3>
 <ul>
 <li><code>inner_join()</code> - Kesişim birleştirme</li>
 <li><code>left_join()</code> - Sol tabloya göre birleştirme</li>
@@ -2274,17 +2344,6 @@ Alper Yılmaz
 <li><code>anti_join()</code> - Zıt birleştirme</li>
 </ul>
 </div></div>
-</section>
-<section id="bir-sonraki-derste" class="slide level2">
-<h2>Bir Sonraki Derste</h2>
-<p>Bir sonraki derste <strong>dplyr</strong> paketinin detayları ve veri manipülasyonu işlemlerini daha derinlemesine inceleyeceğiz:</p>
-<ul>
-<li>Gruplama ve özet istatistikler</li>
-<li>Koşullu işlemler</li>
-<li>Pencereleme fonksiyonları (window functions)</li>
-<li>Örnek uygulamalar</li>
-</ul>
-<p>İlgili derslere hazırlık için dplyr belgelerini inceleyiniz.</p>
 
 
 </section>

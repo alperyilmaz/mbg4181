@@ -63,6 +63,18 @@
   margin-bottom: 30px; /* Adds a 30px margin to the bottom of each <p> element */
 }
 
+/* ::: {.bottom} — pin content (text, quote, ...) to the bottom of the slide */
+.reveal .slide .bottom {
+  position: absolute;
+  bottom: 18px;   /* same height as ::: footer */
+  left: 0;
+  right: 0;
+}
+
+.reveal .slide .bottom > :last-child {
+  margin-bottom: 0;
+}
+
 figcaption {
   text-align: center;
   color: gray;

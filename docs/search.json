@@ -263,7 +263,7 @@
     "href": "index.html",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Eylül 2026 13:00 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n5 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n12 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n19 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n26 Ekim 2026 13:000 | İçerik: Dosya okuma komutları gösterildi. Sunum linki\n\n\n\n2 Kasım 2026 13:00 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n16 Kasım 2026\n\n\n\n23 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n30 Kasım 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki\n\n\n\n7 Aralık 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)\n\n\n\n14 Aralık 2026 13:00 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)\n\n\n\n21 Aralık 2026 13:00\n\n\n\n28 Aralık 2026 13:00 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)\n\n\n\n4 Ocak 2027 13:00 | İçerik: Ödev değerlendirme"
+    "text": "R for Data Science, Hadley Wickham, Mine Cetinkaya-Rundel, Garrett Grolemund. 2.baskı, 2023 link\n\n\n\n\n28 Eylül 2026 13:00 | İçerik: İlk derste, dönem boyunca kullanacağımız import-transform-model-communicate akışına genel bir bakış yapılacak. Tidyverse hakkında bilgi verilecektir. Sunum linki\n\n\n\n5 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde select ve filter komutları gösterildi. Sunum linki\n\n\n\n12 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki\n\n\n\n19 Ekim 2026 13:00 | İçerik: Dosya okuma komutları gösterildi. Sunum linki (Quiz1)\n\n\n\n26 Ekim 2026 13:000 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki\n\n\n\n2 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)\n\n\n\n9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki\n\n\n\n16 Kasım 2026\n\n\n\n23 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme konusuna devam edildi. Sunum linki\n\n\n\n30 Kasım 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki\n\n\n\n7 Aralık 2026 13:00 | İçerik: quarto veya Rmarkdown ile rapor, websayfası veya sunum oluşturma. Sunum linki (Quiz3-ggplot) (Homework: Please select a data, make sure that you can import it and sketch desired plots)\n\n\n\n14 Aralık 2026 13:00 | İçerik: tidytext ile doğal dil işleme. Sunum linki (Homework: minimum of 3 plots prepared with ggplot)\n\n\n\n21 Aralık 2026 13:00\n\n\n\n28 Aralık 2026 13:00 | İçerik: tidygraph ile ağ analizi. Sunum linki (Quiz4)\n\n\n\n4 Ocak 2027 13:00 | İçerik: Ödev değerlendirme"
   },
   {
     "objectID": "index.html#kaynaklar",
@@ -298,28 +298,28 @@
     "href": "index.html#ders4",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "19 Ekim 2026 13:00 | İçerik: unvotes verisi üzerinde mutate ve summarize komutları gösterildi. Sunum linki (Quiz1)"
+    "text": "19 Ekim 2026 13:00 | İçerik: Dosya okuma komutları gösterildi. Sunum linki (Quiz1)"
   },
   {
     "objectID": "index.html#ders5",
     "href": "index.html#ders5",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "26 Ekim 2026 13:000 | İçerik: Dosya okuma komutları gösterildi. Sunum linki"
+    "text": "26 Ekim 2026 13:000 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
   },
   {
     "objectID": "index.html#ders6",
     "href": "index.html#ders6",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "2 Kasım 2026 13:00 | İçerik: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). Sunum linki"
+    "text": "2 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)"
   },
   {
     "objectID": "index.html#ders7",
     "href": "index.html#ders7",
     "title": "MBG4181 Biyolojik Veri Analizi ve Görüntüleme",
     "section": "",
-    "text": "9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki (Quiz2)"
+    "text": "9 Kasım 2026 13:00 | İçerik: ggplot ile görselleştirme. Sunum linki"
   },
   {
     "objectID": "index.html#vize1",
@@ -492,219 +492,219 @@
   {
     "objectID": "ders-pivot-join.html#veri-şekillendirme-ve-birleştirme",
     "href": "ders-pivot-join.html#veri-şekillendirme-ve-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Veri Şekillendirme ve Birleştirme",
-    "text": "Veri Şekillendirme ve Birleştirme\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "Veri Şekillendirme ve Birleştirme\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\nNot: Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman library(tidyverse) komutunu kullanırsanız, otomatik olarak, dplyr, tidyr, forcats, purrr, readr, stringr, tibble, ggplot2 paketleri yüklenecektir."
   },
   {
     "objectID": "ders-pivot-join.html#bu-derste",
     "href": "ders-pivot-join.html#bu-derste",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Bu derste",
     "text": "Bu derste\n\n\n\ntidyr paketi\n\npivot_longer()\npivot_wider()\nTidy veri nedir?\nGeniş ve uzun format\n\nTemel örnekler\n\nVeri şekillendirme\nGörselleştirme için uygun format\n\n\n\n\ndplyr paketi ile tablolar arası işlemler\n\ninner_join()\nleft_join()\nright_join()\nfull_join()\nsemi_join()\nanti_join()\n\nUygulama örnekleri"
   },
   {
     "objectID": "ders-pivot-join.html#tidy-veri-nedir",
     "href": "ders-pivot-join.html#tidy-veri-nedir",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Tidy Veri Nedir?",
     "text": "Tidy Veri Nedir?\n\n\nTidy veri ilkelerine göre:\n\nHer değişken bir sütunda olmalıdır\nHer gözlem bir satırda olmalıdır\nHer değer kendi hücresindedir\n\n\n\n\n\nTidy Veri İlkeleri"
   },
   {
     "objectID": "ders-pivot-join.html#yaygın-veri-problemleri",
     "href": "ders-pivot-join.html#yaygın-veri-problemleri",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Yaygın Veri Problemleri",
-    "text": "Yaygın Veri Problemleri\n\n\nGeniş Format (Wide)\n\nDeğişkenler sütun isimlerinde saklanır\nAnaliz için uygun değil\nExcel’de görüntülemek için uygun\n\nUzun Format (Long)\n\nHer değişken kendi sütununda\nAnaliz ve görselleştirme için uygun\nDaha fazla satır içerir\n\n\nTidyr Cheatsheet"
+    "text": "Yaygın Veri Problemleri\n\n\nGeniş Format (Wide)\n\nDeğişkenler sütun isimlerinde saklanır\nAnaliz için uygun değil\nExcel’de görüntülemek için uygun\n\nUzun Format (Long)\n\nHer değişken kendi sütununda\nAnaliz ve görselleştirme için uygun\nDaha fazla satır içerir\n\n\n\n\nTidyr Cheatsheet"
   },
   {
     "objectID": "ders-pivot-join.html#tidyr-ile-format-dönüşümleri",
     "href": "ders-pivot-join.html#tidyr-ile-format-dönüşümleri",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "tidyr ile Format Dönüşümleri",
     "text": "tidyr ile Format Dönüşümleri\ntidyr iki temel fonksiyon sağlar:\n\npivot_longer(): Geniş formatı uzun formata çevirir\npivot_wider(): Uzun formatı geniş formata çevirir\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders-pivot-join.html#pivot_longer-ile-geniş-formatı-uzun-formata-çevirme",
-    "href": "ders-pivot-join.html#pivot_longer-ile-geniş-formatı-uzun-formata-çevirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "pivot_longer() ile Geniş Formatı Uzun Formata Çevirme",
-    "text": "pivot_longer() ile Geniş Formatı Uzun Formata Çevirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#pivot_longer",
+    "href": "ders-pivot-join.html#pivot_longer",
+    "title": "pivot ve join işlemleri",
+    "section": "pivot_longer()",
+    "text": "pivot_longer()\nGeniş Formatı Uzun Formata Çevirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders-pivot-join.html#pivot_wider-ile-uzun-formatı-geniş-formata-çevirme",
-    "href": "ders-pivot-join.html#pivot_wider-ile-uzun-formatı-geniş-formata-çevirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "pivot_wider() ile Uzun Formatı Geniş Formata Çevirme",
-    "text": "pivot_wider() ile Uzun Formatı Geniş Formata Çevirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#pivot_wider",
+    "href": "ders-pivot-join.html#pivot_wider",
+    "title": "pivot ve join işlemleri",
+    "section": "pivot_wider()",
+    "text": "pivot_wider()\nUzun Formatı Geniş Formata Çevirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#gerçek-veri-örneği-dini-inanç-ve-gelir",
     "href": "ders-pivot-join.html#gerçek-veri-örneği-dini-inanç-ve-gelir",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Gerçek Veri Örneği: Dini İnanç ve Gelir",
     "text": "Gerçek Veri Örneği: Dini İnanç ve Gelir\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#gelir-verilerini-uzun-formata-çevirme",
     "href": "ders-pivot-join.html#gelir-verilerini-uzun-formata-çevirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Gelir Verilerini Uzun Formata Çevirme",
     "text": "Gelir Verilerini Uzun Formata Çevirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders-pivot-join.html#görselleştirme-için-uzun-format-avantajı",
-    "href": "ders-pivot-join.html#görselleştirme-için-uzun-format-avantajı",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "Görselleştirme için Uzun Format Avantajı",
-    "text": "Görselleştirme için Uzun Format Avantajı\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#görselleştirme-için-hangi-format",
+    "href": "ders-pivot-join.html#görselleştirme-için-hangi-format",
+    "title": "pivot ve join işlemleri",
+    "section": "Görselleştirme için Hangi Format?",
+    "text": "Görselleştirme için Hangi Format?\nGörselleştirme için uzun formattaki tablolar daha uygundur\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#çoklu-değişkenleri-pivot-etme",
     "href": "ders-pivot-join.html#çoklu-değişkenleri-pivot-etme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Çoklu Değişkenleri Pivot Etme",
     "text": "Çoklu Değişkenleri Pivot Etme\nBazen birden fazla sütun, değer sütunu olarak kullanılabilir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#karmaşık-pivot_wider-örneği",
     "href": "ders-pivot-join.html#karmaşık-pivot_wider-örneği",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Karmaşık pivot_wider Örneği",
     "text": "Karmaşık pivot_wider Örneği\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#eksik-değerlerle-başa-çıkma",
     "href": "ders-pivot-join.html#eksik-değerlerle-başa-çıkma",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Eksik Değerlerle Başa Çıkma",
     "text": "Eksik Değerlerle Başa Çıkma\nVeri şekillendirilirken eksik değerler ortaya çıkabilir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#pivot_wider-ve-na-değerleri",
     "href": "ders-pivot-join.html#pivot_wider-ve-na-değerleri",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "pivot_wider ve NA değerleri",
     "text": "pivot_wider ve NA değerleri\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
-    "objectID": "ders-pivot-join.html#na-değerlerini-belirli-bir-değerle-doldurma",
-    "href": "ders-pivot-join.html#na-değerlerini-belirli-bir-değerle-doldurma",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "NA değerlerini belirli bir değerle doldurma",
-    "text": "NA değerlerini belirli bir değerle doldurma\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#na-değerlerini-doldurma",
+    "href": "ders-pivot-join.html#na-değerlerini-doldurma",
+    "title": "pivot ve join işlemleri",
+    "section": "NA değerlerini doldurma",
+    "text": "NA değerlerini doldurma\nNA değerleri belirli bir değer ile (0, -) ile doldurulabilir\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#join",
     "href": "ders-pivot-join.html#join",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Join",
-    "text": "Join\nTidyexplain sayfasındaki animasyonları izleyiniz."
+    "text": "Join\n\nAyrıca, Tidyexplain sayfasındaki animasyonları izleyiniz.\n\nkaynak R4DS"
   },
   {
     "objectID": "ders-pivot-join.html#iki-tablo-nasıl-birleştirilir",
     "href": "ders-pivot-join.html#iki-tablo-nasıl-birleştirilir",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "İki Tablo Nasıl Birleştirilir?",
     "text": "İki Tablo Nasıl Birleştirilir?\ndplyr paketindeki join fonksiyonları ile tablolar birleştirilebilir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#inner_join-kesişim-birleştirme",
     "href": "ders-pivot-join.html#inner_join-kesişim-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "inner_join: Kesişim Birleştirme",
     "text": "inner_join: Kesişim Birleştirme\nHer iki tabloda da eşleşen kayıtları birleştirir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#left_join-sol-tabloya-göre-birleştirme",
     "href": "ders-pivot-join.html#left_join-sol-tabloya-göre-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "left_join: Sol Tabloya Göre Birleştirme",
-    "text": "left_join: Sol Tabloya Göre Birleştirme\nSol tablodaki tüm kayıtları korur, sağ tabloda eşleşme yoksa NA değerleri ekler:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "left_join: Sol Tabloya Göre Birleştirme\nSol tablodaki tüm kayıtları korur, sağ tabloda eşleşme yoksa NA değerleri ekler:\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\nkaynak"
   },
   {
-    "objectID": "ders-pivot-join.html#right_join-sağ-tabloya-göre-birleştirme",
-    "href": "ders-pivot-join.html#right_join-sağ-tabloya-göre-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "right_join: Sağ Tabloya Göre Birleştirme",
-    "text": "right_join: Sağ Tabloya Göre Birleştirme\nSağ tablodaki tüm kayıtları korur, sol tabloda eşleşme yoksa NA değerleri ekler:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#right_join-sağ-tabloya-göre",
+    "href": "ders-pivot-join.html#right_join-sağ-tabloya-göre",
+    "title": "pivot ve join işlemleri",
+    "section": "right_join: Sağ Tabloya Göre",
+    "text": "right_join: Sağ Tabloya Göre\nSağ tablodaki tüm kayıtları korur, sol tabloda eşleşme yoksa NA değerleri ekler:\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\nimage source"
   },
   {
     "objectID": "ders-pivot-join.html#full_join-tam-birleştirme",
     "href": "ders-pivot-join.html#full_join-tam-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "full_join: Tam Birleştirme",
-    "text": "full_join: Tam Birleştirme\nHer iki tablodaki tüm kayıtları korur, eşleşme yoksa NA değerleri ekler:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "full_join: Tam Birleştirme\nHer iki tablodaki tüm kayıtları korur, eşleşme yoksa NA değerleri ekler:\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\nimage source"
   },
   {
     "objectID": "ders-pivot-join.html#semi_join-yarı-birleştirme",
     "href": "ders-pivot-join.html#semi_join-yarı-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "semi_join: Yarı Birleştirme",
-    "text": "semi_join: Yarı Birleştirme\nSol tablodaki, sağ tabloda eşleşen kayıtları döndürür, ancak sağ tablodaki sütunları almaz:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "semi_join: Yarı Birleştirme\nSol tablodaki, sağ tabloda eşleşen kayıtları döndürür, ancak sağ tablodaki sütunları almaz:\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\nimage source"
   },
   {
     "objectID": "ders-pivot-join.html#anti_join-zıt-birleştirme",
     "href": "ders-pivot-join.html#anti_join-zıt-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "anti_join: Zıt Birleştirme",
-    "text": "anti_join: Zıt Birleştirme\nSol tablodaki, sağ tabloda eşleşmeyen kayıtları döndürür:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "text": "anti_join: Zıt Birleştirme\nSol tablodaki, sağ tabloda eşleşmeyen kayıtları döndürür:\n\n\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\nimage source"
   },
   {
     "objectID": "ders-pivot-join.html#görsel-özet-join-türleri",
     "href": "ders-pivot-join.html#görsel-özet-join-türleri",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Görsel Özet: Join Türleri",
-    "text": "Görsel Özet: Join Türleri\n\nJoin Türleri"
+    "text": "Görsel Özet: Join Türleri\n\n\nkaynak R4DS"
   },
   {
-    "objectID": "ders-pivot-join.html#farklı-isimlerde-sütunlar-kullanarak-birleştirme",
-    "href": "ders-pivot-join.html#farklı-isimlerde-sütunlar-kullanarak-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "Farklı İsimlerde Sütunlar Kullanarak Birleştirme",
-    "text": "Farklı İsimlerde Sütunlar Kullanarak Birleştirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#farklı-isimlerde-sütunlar",
+    "href": "ders-pivot-join.html#farklı-isimlerde-sütunlar",
+    "title": "pivot ve join işlemleri",
+    "section": "Farklı İsimlerde Sütunlar",
+    "text": "Farklı İsimlerde Sütunlar\nBirleştirmek istenilen tablolarda ortak sütunların isimleri farklı olduğunda, by=c() veya join_by() ile belirtmemiz gerekir.\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nby = c(\"öğrenci_id\" = \"numara\") yerine join_by(öğrenci_id==numara) kullanılabilir"
   },
   {
-    "objectID": "ders-pivot-join.html#birden-fazla-sütun-kullanarak-birleştirme",
-    "href": "ders-pivot-join.html#birden-fazla-sütun-kullanarak-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "Birden Fazla Sütun Kullanarak Birleştirme",
-    "text": "Birden Fazla Sütun Kullanarak Birleştirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
+    "objectID": "ders-pivot-join.html#birden-fazla-sütun-kullanımı",
+    "href": "ders-pivot-join.html#birden-fazla-sütun-kullanımı",
+    "title": "pivot ve join işlemleri",
+    "section": "Birden Fazla Sütun Kullanımı",
+    "text": "Birden Fazla Sütun Kullanımı\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\nBu durumda da, join_by(ogrenci_id, ders) kullanılabilir"
+  },
+  {
+    "objectID": "ders-pivot-join.html#join_by-ile-eşit-olmayan-join",
+    "href": "ders-pivot-join.html#join_by-ile-eşit-olmayan-join",
+    "title": "pivot ve join işlemleri",
+    "section": "join_by ile eşit olmayan join",
+    "text": "join_by ile eşit olmayan join\nR For Data Science kitabının “Non-equi joins” bölümünü inceleyiniz.\n\njoin_by(key == key) yerine join_by(key &lt; key)\njoin_by(closest(x &lt;= y))\njoin_by(overlaps(start, end, start, end))"
   },
   {
     "objectID": "ders-pivot-join.html#gerçek-veri-seti-örneği-star-wars-karakterleri",
     "href": "ders-pivot-join.html#gerçek-veri-seti-örneği-star-wars-karakterleri",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Gerçek Veri Seti Örneği: Star Wars Karakterleri",
     "text": "Gerçek Veri Seti Örneği: Star Wars Karakterleri\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#veri-setini-bölme-ve-birleştirme",
     "href": "ders-pivot-join.html#veri-setini-bölme-ve-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Veri Setini Bölme ve Birleştirme",
     "text": "Veri Setini Bölme ve Birleştirme\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#uygulama-biyolojik-veri-şekillendirme-ve-birleştirme",
     "href": "ders-pivot-join.html#uygulama-biyolojik-veri-şekillendirme-ve-birleştirme",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Uygulama: Biyolojik Veri Şekillendirme ve Birleştirme",
     "text": "Uygulama: Biyolojik Veri Şekillendirme ve Birleştirme\nGenom verileri genellikle farklı tablolarda saklanır ve analiz için birleştirilmesi gerekir:\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page."
   },
   {
     "objectID": "ders-pivot-join.html#özet",
     "href": "ders-pivot-join.html#özet",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
+    "title": "pivot ve join işlemleri",
     "section": "Özet",
-    "text": "Özet\n\n\nÖğrendiğimiz Veri Şekillendirme İşlemleri\n\npivot_longer() - Geniş formatı uzun formata çevirme\npivot_wider() - Uzun formatı geniş formata çevirme\nTidy veri prensipleri\nEksik değerlerle başa çıkma\n\n\nÖğrendiğimiz Tablo Birleştirme İşlemleri\n\ninner_join() - Kesişim birleştirme\nleft_join() - Sol tabloya göre birleştirme\nright_join() - Sağ tabloya göre birleştirme\nfull_join() - Tam birleştirme\nsemi_join() - Yarı birleştirme\nanti_join() - Zıt birleştirme"
-  },
-  {
-    "objectID": "ders-pivot-join.html#bir-sonraki-derste",
-    "href": "ders-pivot-join.html#bir-sonraki-derste",
-    "title": "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)",
-    "section": "Bir Sonraki Derste",
-    "text": "Bir Sonraki Derste\nBir sonraki derste dplyr paketinin detayları ve veri manipülasyonu işlemlerini daha derinlemesine inceleyeceğiz:\n\nGruplama ve özet istatistikler\nKoşullu işlemler\nPencereleme fonksiyonları (window functions)\nÖrnek uygulamalar\n\nİlgili derslere hazırlık için dplyr belgelerini inceleyiniz."
+    "text": "Özet\n\n\nVeri Şekillendirme İşlemleri\n\npivot_longer() - Geniş formatı uzun formata çevirme\npivot_wider() - Uzun formatı geniş formata çevirme\nTidy veri prensipleri\nEksik değerlerle başa çıkma\n\n\nTablo Birleştirme İşlemleri\n\ninner_join() - Kesişim birleştirme\nleft_join() - Sol tabloya göre birleştirme\nright_join() - Sağ tabloya göre birleştirme\nfull_join() - Tam birleştirme\nsemi_join() - Yarı birleştirme\nanti_join() - Zıt birleştirme"
   },
   {
     "objectID": "ders-import.html#veri-içe-aktarma",
