@@ -1,5 +1,5 @@
 ---
-title: "Veri Şekillendirme ve Birleştirme (tidyr ve dplyr)"
+title: "pivot ve join işlemleri"
 subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders5"
 author: "Alper Yılmaz"
 date: 2026-10-26
@@ -23,10 +23,7 @@ webr:
   show-startup-message: true     # Disable displaying status of webR initialization
   #render-df: gt-interactive
   resources:
-    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/census.csv
     - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/us-rent-income.csv
-    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/relig-income.csv
-    - https://raw.githubusercontent.com/tidyverse/tidyr/main/vignettes/fish_encounters.csv
     - https://raw.githubusercontent.com/tidyverse/dplyr/main/vignettes/starwars.csv
 filters:
   - webr
@@ -44,7 +41,9 @@ library(ggplot2)
 library(readr)
 ```
 
-> **Not:** Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman `library(tidyverse)` komutunu kullanırsanız, otomatik olarak, `dplyr`,`tidyr`,`forcats`,`purrr`,`readr`,`stringr`,`tibble`,`ggplot2` paketleri yüklenecektir.
+:::bottom
+**Not:** Slaytlarımızda paket yüklemesinin pratik olması için sadece gerekli olan paketler yüklenmektedir. Rstudio kullandığınız zaman `library(tidyverse)` komutunu kullanırsanız, otomatik olarak, `dplyr`, `tidyr`, `forcats`, `purrr`, `readr`, `stringr`, `tibble`, `ggplot2` paketleri yüklenecektir.
+:::
 
 ## Bu derste
 
@@ -109,9 +108,13 @@ Tidy veri ilkelerine göre:
 :::
 
 ::: {.column width="50%"}
+
+![](images/clipboard_image_1793102375.png){width=85%}
+
+:::footer
 [Tidyr Cheatsheet](https://github.com/rstudio/cheatsheets/blob/main/tidyr.pdf)
 :::
-
+:::
 ::::
 
 ## tidyr ile Format Dönüşümleri
@@ -133,7 +136,9 @@ tidyr iki temel fonksiyon sağlar:
 örnek_veri
 ```
 
-## pivot_longer() ile Geniş Formatı Uzun Formata Çevirme
+## pivot_longer()
+
+Geniş Formatı Uzun Formata Çevirme
 
 ```{webr}
 # Ders sütunlarını uzun formata çevirelim
@@ -147,7 +152,9 @@ uzun_format <- örnek_veri |>
 uzun_format
 ```
 
-## pivot_wider() ile Uzun Formatı Geniş Formata Çevirme
+## pivot_wider() 
+
+Uzun Formatı Geniş Formata Çevirme
 
 ```{webr}
 # Şimdi tekrar geniş formata dönelim
@@ -184,7 +191,9 @@ relig_income_uzun <- relig_income |>
 head(relig_income_uzun, 10)
 ```
 
-## Görselleştirme için Uzun Format Avantajı
+## Görselleştirme için Hangi Format?
+
+Görselleştirme için uzun formattaki tablolar daha uygundur
 
 ```{webr}
 # Uzun format ile görselleştirme yapabiliriz
@@ -246,7 +255,9 @@ balık_geniş <- balık_örnek |>
 balık_geniş
 ```
 
-## NA değerlerini belirli bir değerle doldurma
+## NA değerlerini doldurma
+
+`NA` değerleri belirli bir değer ile (0, -) ile doldurulabilir
 
 ```{webr}
 # NA değerlerini 0 ile dolduralım
@@ -261,7 +272,14 @@ balık_geniş_0
 ```
 ## Join
 
-Tidyexplain sayfasındaki [animasyonları](https://www.garrickadenbuie.com/project/tidyexplain/) izleyiniz.
+![](images/inner.png)
+
+Ayrıca, Tidyexplain sayfasındaki [animasyonları](https://www.garrickadenbuie.com/project/tidyexplain/) izleyiniz.
+
+:::footer
+[kaynak R4DS](https://r4ds.hadley.nz/diagrams/join/inner.png)
+:::
+
 
 ## İki Tablo Nasıl Birleştirilir?
 
@@ -298,52 +316,121 @@ inner_join(öğrenciler, notlar, by = "öğrenci_id")
 
 Sol tablodaki tüm kayıtları korur, sağ tabloda eşleşme yoksa NA değerleri ekler:
 
+:::: {.columns}
+
+::: {.column width="65%"}
 ```{webr}
 # left_join - tüm öğrenciler, not bilgisi yoksa NA
 left_join(öğrenciler, notlar, by = "öğrenci_id")
 ```
+:::
+ 
+::: {.column width="35%"}
+![](images/left.png)
+:::
+::::
 
-## right_join: Sağ Tabloya Göre Birleştirme
+:::footer
+[kaynak](https://r4ds.hadley.nz/joins.html#how-do-joins-work)
+:::
+
+
+## right_join: Sağ Tabloya Göre
 
 Sağ tablodaki tüm kayıtları korur, sol tabloda eşleşme yoksa NA değerleri ekler:
 
+:::: {.columns}
+
+::: {.column width="65%"}
 ```{webr}
 # right_join - tüm not kayıtları, öğrenci bilgisi yoksa NA
 right_join(öğrenciler, notlar, by = "öğrenci_id")
 ```
+:::
+
+::: {.column width="35%"}
+![](images/right.png)
+:::
+::::
+
+:::footer
+[image source](https://r4ds.hadley.nz/joins.html#how-do-joins-work)
+:::
+
 
 ## full_join: Tam Birleştirme
 
 Her iki tablodaki tüm kayıtları korur, eşleşme yoksa NA değerleri ekler:
 
+:::: {.columns}
+
+::: {.column width="65%"}
 ```{webr}
 # full_join - her iki tablodaki tüm kayıtlar
 full_join(öğrenciler, notlar, by = "öğrenci_id")
 ```
+:::
+::: {.column width="35%"}
+![](images/full.png)
+:::
+::::
+
+:::footer
+[image source](https://r4ds.hadley.nz/joins.html#how-do-joins-work)
+:::
 
 ## semi_join: Yarı Birleştirme
 
 Sol tablodaki, sağ tabloda eşleşen kayıtları döndürür, ancak sağ tablodaki sütunları almaz:
 
+:::: {.columns}
+::: {.column width="65%"}
 ```{webr}
 # semi_join - notu olan öğrenciler (sadece öğrenci bilgileri)
 semi_join(öğrenciler, notlar, by = "öğrenci_id")
 ```
+:::
+::: {.column width="35%"}
+![](images/semi.png)
+:::
+::::
+
+:::footer
+[image source](https://r4ds.hadley.nz/joins.html#how-do-joins-work)
+:::
 
 ## anti_join: Zıt Birleştirme
 
 Sol tablodaki, sağ tabloda eşleşmeyen kayıtları döndürür:
 
+:::: {.columns}
+::: {.column width="65%"}
 ```{webr}
 # anti_join - notu olmayan öğrenciler
 anti_join(öğrenciler, notlar, by = "öğrenci_id")
 ```
+:::
+::: {.column width="35%"}
+![](images/anti.png)
+:::
+::::
+
+:::footer
+[image source](https://r4ds.hadley.nz/joins.html#how-do-joins-work)
+:::
+
 
 ## Görsel Özet: Join Türleri
 
-![Join Türleri](https://intro2r.library.duke.edu/images/join_diagram.png)
+![](images/venn.png)
 
-## Farklı İsimlerde Sütunlar Kullanarak Birleştirme
+:::footer
+[kaynak R4DS](https://r4ds.hadley.nz/diagrams/join/venn.png)
+:::
+
+## Farklı İsimlerde Sütunlar 
+
+Birleştirmek istenilen tablolarda ortak sütunların isimleri farklı olduğunda, `by=c()` veya `join_by()` ile belirtmemiz gerekir.
 
 ```{webr}
 # Sütun isimleri farklı olduğunda
@@ -357,7 +444,11 @@ anti_join(öğrenciler, notlar, by = "öğrenci_id")
 inner_join(öğrenciler, öğrenci_notlar, by = c("öğrenci_id" = "numara"))
 ```
 
-## Birden Fazla Sütun Kullanarak Birleştirme
+:::bottom
+`by = c("öğrenci_id" = "numara")` yerine `join_by(öğrenci_id==numara)` kullanılabilir
+:::
+
+## Birden Fazla Sütun Kullanımı
 
 ```{webr}
 # İki sütunla birleştirme örneği
@@ -376,6 +467,18 @@ sınav2 <- tibble(
 # İki sütunla birleştirme
 inner_join(sınav1, sınav2, by = c("öğrenci_id", "ders"), suffix = c("_1", "_2"))
 ```
+
+:::bottom
+Bu durumda da, `join_by(ogrenci_id, ders)` kullanılabilir
+:::
+
+## join_by ile eşit olmayan join
+
+R For Data Science kitabının "[Non-equi joins](https://r4ds.hadley.nz/joins.html#sec-non-equi-joins)" bölümünü inceleyiniz.
+
+* `join_by(key == key)` yerine `join_by(key < key)`
+* `join_by(closest(x <= y))`
+* `join_by(overlaps(start, end, start, end))`
 
 ## Gerçek Veri Seti Örneği: Star Wars Karakterleri
 
@@ -439,7 +542,7 @@ gen_mutasyon_sayısı
 :::: {.columns}
 
 ::: {.column width="50%"}
-### Öğrendiğimiz Veri Şekillendirme İşlemleri
+### Veri Şekillendirme İşlemleri
 - `pivot_longer()` - Geniş formatı uzun formata çevirme
 - `pivot_wider()` - Uzun formatı geniş formata çevirme
 - Tidy veri prensipleri
@@ -447,7 +550,7 @@ gen_mutasyon_sayısı
 :::
 
 ::: {.column width="50%"}
-### Öğrendiğimiz Tablo Birleştirme İşlemleri
+### Tablo Birleştirme İşlemleri
 - `inner_join()` - Kesişim birleştirme
 - `left_join()` - Sol tabloya göre birleştirme
 - `right_join()` - Sağ tabloya göre birleştirme
@@ -458,13 +561,3 @@ gen_mutasyon_sayısı
 
 ::::
 
-## Bir Sonraki Derste
-
-Bir sonraki derste **dplyr** paketinin detayları ve veri manipülasyonu işlemlerini daha derinlemesine inceleyeceğiz:
-
-- Gruplama ve özet istatistikler
-- Koşullu işlemler
-- Pencereleme fonksiyonları (window functions)
-- Örnek uygulamalar
-
-İlgili derslere hazırlık için dplyr belgelerini inceleyiniz.

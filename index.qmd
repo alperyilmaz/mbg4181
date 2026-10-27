@@ -18,19 +18,19 @@
 
 ## Ders4
 
-*19 Ekim 2026 13:00* | **İçerik**: *unvotes* verisi üzerinde **mutate** ve **summarize** komutları gösterildi. [Sunum linki](ders-mutate-summarize.qmd) (Quiz1)
+*19 Ekim 2026 13:00* | **İçerik**:  Dosya okuma komutları gösterildi. [Sunum linki](ders-import.qmd) (Quiz1)
 
 ## Ders5
 
-*26 Ekim 2026 13:000* | **İçerik**: Dosya okuma komutları gösterildi. [Sunum linki](ders-import.qmd)
+*26 Ekim 2026 13:000* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders-pivot-join.qmd)
 
 ## Ders6
 
-*2 Kasım 2026 13:00* | **İçerik**: Tablo şeklini değiştirme (pivot) ve tablo birleştirme (join). [Sunum linki](ders-pivot-join.qmd)
+*2 Kasım 2026 13:00* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders-ggplot.qmd) (Quiz2)
 
 ## Ders7
 
-*9 Kasım 2026 13:00* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders-ggplot.qmd) (Quiz2)
+*9 Kasım 2026 13:00* | **İçerik**: *ggplot* ile görselleştirme. [Sunum linki](ders-ggplot.qmd)
 
 ## Vize1
 
