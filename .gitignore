@@ -53,3 +53,7 @@ rsconnect/
 /_freeze/
 
 **/*.quarto_ipynb
+
+# do not include agent folders
+.omp
+.claude
