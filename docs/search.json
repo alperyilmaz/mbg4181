@@ -1691,21 +1691,21 @@
     "href": "notlar.html",
     "title": "Notlar",
     "section": "",
-    "text": "You can find all your quiz and midterm scores. Your assignment score is explained in second table below. For attendance score, if you attended 12 lectures you got 5 points and you missed 1 point for each missed lecture."
+    "text": "Quiz1 sonuçları aşağıdaki gibidir.\n\n\n\n\n\n\n\n\nid\nquiz1\n\n\n\n\n22028007\n30\n\n\n23028004\n88\n\n\n23028008\n61\n\n\n23028016\n89\n\n\n23028033\n85\n\n\n23028047\n56\n\n\n23028050\n91\n\n\n23028051\n75\n\n\n23028055\n75\n\n\n23028058\n61\n\n\n23028086\n40\n\n\n23028087\n83\n\n\n24028041\n10\n\n\n24028042\n88\n\n\n24028044\n88\n\n\n24028054\n60\n\n\n24028062\n65\n\n\n24028063\n71\n\n\n24028612\n73\n\n\n24028616\n80\n\n\n24028902\n75\n\n\n24028913\n65\n\n\n25023659\n70\n\n\n25028601\n45"
   },
   {
-    "objectID": "notlar.html#all-scores",
-    "href": "notlar.html#all-scores",
+    "objectID": "notlar.html#quiz",
+    "href": "notlar.html#quiz",
     "title": "Notlar",
-    "section": "All scores",
-    "text": "All scores"
+    "section": "",
+    "text": "Quiz1 sonuçları aşağıdaki gibidir.\n\n\n\n\n\n\n\n\nid\nquiz1\n\n\n\n\n22028007\n30\n\n\n23028004\n88\n\n\n23028008\n61\n\n\n23028016\n89\n\n\n23028033\n85\n\n\n23028047\n56\n\n\n23028050\n91\n\n\n23028051\n75\n\n\n23028055\n75\n\n\n23028058\n61\n\n\n23028086\n40\n\n\n23028087\n83\n\n\n24028041\n10\n\n\n24028042\n88\n\n\n24028044\n88\n\n\n24028054\n60\n\n\n24028062\n65\n\n\n24028063\n71\n\n\n24028612\n73\n\n\n24028616\n80\n\n\n24028902\n75\n\n\n24028913\n65\n\n\n25023659\n70\n\n\n25028601\n45"
   },
   {
-    "objectID": "notlar.html#poster-assignment-evaluation-chart",
-    "href": "notlar.html#poster-assignment-evaluation-chart",
+    "objectID": "notlar.html#poster-ödevine-dair-değerlendirme",
+    "href": "notlar.html#poster-ödevine-dair-değerlendirme",
     "title": "Notlar",
-    "section": "Poster assignment evaluation chart",
-    "text": "Poster assignment evaluation chart\nThere are five items in evaluation, each score 2 points.\n\nIf you submitted draft figures, you got 2 points\nIf you have poster qmd file, you got 2 points\nIf your qmd file renders successfully you got 2 points\nIf your poster has at least 3 figures, you got 2 points\nIf your poster has meaningful context and story you got 2 points."
+    "section": "Poster ödevine dair değerlendirme",
+    "text": "Poster ödevine dair değerlendirme\nNot verilen 5 madde olacaktır, her biri 2 puandır.\n\nTaslak figür\nPoster qmd dosyası\nPoster qmd dosyası başarılı şekilde PDF dönüşmesi\nPosterde en az 3 figür bulunması\nPoster içeriğinin mantıklı bir akış içermesi"
   },
   {
     "objectID": "test.html",
