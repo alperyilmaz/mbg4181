@@ -1134,6 +1134,27 @@
     "text": "Galeriler\nGithub’daki awesome-ggplot2 reposu kapsamlı bir kaynak listesidir\nR Graph Gallery kategorilere ayrılmış halde mümkün grafikleri gösterir\nggplot oldukça esnek bu yüzden çok özelleşmiş grafikler hazırlamak için kullanılabilir. Aşağıdaki kullanıcılar ggplot ile oldukça güzel grafikler hazırlamışlar (Bazı kullanıcılar için ayrı klasörlere bakmanız gerekebilir)\n\nCédric Scherer ggplot ile profesyonel düzeyde grafikler yapıyor. Galerisine göz atın (R kodu için ayrı klasörlere bakın) Bu tasarımcı tarafından çizilen kahve puanlamasına dair grafiğin detayları için kahve sayfasını ziyaret ediniz.\nTanya Shapiro https://github.com/tashapiro/TidyTuesday\nRyan Hart https://github.com/curatedmess/TidyTuesday\nChristophe Nicault https://github.com/cnicault/tidytuesday\nGeorgios Karamanis https://github.com/gkaramanis/tidytuesday"
   },
   {
+    "objectID": "ders-ggplot.html#sonunda",
+    "href": "ders-ggplot.html#sonunda",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "Sonunda",
+    "text": "Sonunda\n\nlibrary(tidyverse)   # ggplot2 + dplyr\nlibrary(gapminder)\nlibrary(scales)      # alpha()\n\n# Gapminder.org continent colors; Oceania shares Asia's pink\npal &lt;- c(Africa   = \"#00D5E8\",\n         Americas = \"#7FE521\",\n         Asia     = \"#FF5872\",\n         Europe   = \"#FFE700\",\n         Oceania  = \"#FF5872\")\n\ndarken &lt;- function(x, f = 0.75) {           # darker bubble rims\n  m &lt;- col2rgb(x) / 255\n  setNames(rgb(m[1, ] * f, m[2, ] * f, m[3, ] * f), names(x))\n}\n\ngapminder |&gt;\n  filter(year == 2007) |&gt;\n  arrange(desc(pop)) |&gt;                     # big bubbles first, small on top\n  ggplot(aes(gdpPercap, lifeExp)) +\n  annotate(\"text\", x = 6000, y = 49, label = \"2007\",          # watermark\n           size = 112, colour = \"#C7CFD4\") +\n  annotate(\"text\", x = c(1290, 4400, 13100, 41000), y = 96.4, # level strip\n           label = c(\"INCOME LEVEL 1\", \"LEVEL 2\", \"LEVEL 3\", \"LEVEL 4\"),\n           size = 2.9, colour = \"grey58\") +\n  annotate(\"point\", x = c(2600, 7800, 23400), y = 96.4,\n           shape = 18, size = 1.4, colour = \"grey60\") +\n  annotate(\"text\", x = 280, y = 96, label = \"years\",\n           angle = 90, size = 2.6, colour = \"grey50\") +\n  annotate(\"text\", x = 94000, y = 10.7, hjust = 1, size = 2.9,\n           colour = \"grey45\",\n           label = \"per person (GDP/capita, PPP$ inflation-adjusted)\") +\n  geom_point(aes(fill = continent, colour = continent, size = pop),\n             shape = 21, stroke = 0.4) +\n  scale_x_log10(\n    limits = c(275, 150000), expand = c(0, 0),\n    breaks = c(500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000),\n    labels = c(\"500\", \"1000\", \"2000\", \"4000\", \"8000\",\n               \"16k\", \"32k\", \"64k\", \"128k\")\n  ) +\n  scale_y_continuous(limits = c(8.4, 98), expand = c(0, 0),\n                     breaks = seq(10, 90, 10)) +\n  scale_fill_manual(values = alpha(pal, 0.8)) +   # translucent fill\n  scale_colour_manual(values = darken(pal)) +     # opaque darker rim\n  scale_size(range = c(1, 34), guide = \"none\") +  # China ≈ 34 mm wide\n  labs(x = \"Income\", y = \"Life expectancy\") +\n  theme_minimal(base_size = 11) +\n  theme(\n    text              = element_text(colour = \"grey30\"),\n    panel.grid.major  = element_line(colour = \"grey90\", linewidth = 0.4),\n    panel.grid.minor  = element_blank(),\n    axis.line         = element_line(colour = \"grey70\", linewidth = 0.4),\n    axis.ticks        = element_line(colour = \"grey70\", linewidth = 0.4),\n    axis.ticks.length = unit(3, \"pt\"),\n    axis.text         = element_text(colour = \"grey40\", size = 12),\n    axis.title        = element_text(colour = \"grey30\", size = 14),\n    legend.position   = \"none\",\n    plot.background   = element_rect(fill = \"white\", colour = NA),\n    panel.background  = element_rect(fill = \"white\", colour = NA),\n    plot.margin       = margin(40, 8, 18, 42)\n  )"
+  },
+  {
+    "objectID": "ders-ggplot.html#sonunda-output",
+    "href": "ders-ggplot.html#sonunda-output",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "Sonunda",
+    "text": "Sonunda"
+  },
+  {
+    "objectID": "ders-ggplot.html#gganimate",
+    "href": "ders-ggplot.html#gganimate",
+    "title": "Grammar of Graphics: ggplot2 paketi",
+    "section": "gganimate",
+    "text": "gganimate\nVarolan figüre tek satır ekleyerek, transition_time(year), yıllara göre animasyon elde edilebilir.\n\n\nKaynak: gganimate sitesi"
+  },
+  {
     "objectID": "ders-ggplot.html#biyoloji-ve-biyoinformatik-ile-ilgili-ggplot-paketleri",
     "href": "ders-ggplot.html#biyoloji-ve-biyoinformatik-ile-ilgili-ggplot-paketleri",
     "title": "Grammar of Graphics: ggplot2 paketi",
@@ -1797,19 +1818,5 @@
     "title": "Deneme",
     "section": "Three.js deneme",
     "text": "Three.js deneme\n\n\n\n\n\nNGL viewer deneme\n\n\n\n\n\nigv genome browser deneme"
-  },
-  {
-    "objectID": "ders-ggplot.html#sonunda",
-    "href": "ders-ggplot.html#sonunda",
-    "title": "Grammar of Graphics: ggplot2 paketi",
-    "section": "Sonunda",
-    "text": "Sonunda\n\nlibrary(tidyverse)   # ggplot2 + dplyr\nlibrary(gapminder)\nlibrary(scales)      # alpha()\n\n# Gapminder.org continent colors; Oceania shares Asia's pink\npal &lt;- c(Africa   = \"#00D5E8\",\n         Americas = \"#7FE521\",\n         Asia     = \"#FF5872\",\n         Europe   = \"#FFE700\",\n         Oceania  = \"#FF5872\")\n\ndarken &lt;- function(x, f = 0.75) {           # darker bubble rims\n  m &lt;- col2rgb(x) / 255\n  setNames(rgb(m[1, ] * f, m[2, ] * f, m[3, ] * f), names(x))\n}\n\ngapminder |&gt;\n  filter(year == 2007) |&gt;\n  arrange(desc(pop)) |&gt;                     # big bubbles first, small on top\n  ggplot(aes(gdpPercap, lifeExp)) +\n  annotate(\"text\", x = 6000, y = 49, label = \"2007\",          # watermark\n           size = 112, colour = \"#C7CFD4\") +\n  annotate(\"text\", x = c(1290, 4400, 13100, 41000), y = 96.4, # level strip\n           label = c(\"INCOME LEVEL 1\", \"LEVEL 2\", \"LEVEL 3\", \"LEVEL 4\"),\n           size = 2.9, colour = \"grey58\") +\n  annotate(\"point\", x = c(2600, 7800, 23400), y = 96.4,\n           shape = 18, size = 1.4, colour = \"grey60\") +\n  annotate(\"text\", x = 280, y = 96, label = \"years\",\n           angle = 90, size = 2.6, colour = \"grey50\") +\n  annotate(\"text\", x = 94000, y = 10.7, hjust = 1, size = 2.9,\n           colour = \"grey45\",\n           label = \"per person (GDP/capita, PPP$ inflation-adjusted)\") +\n  geom_point(aes(fill = continent, colour = continent, size = pop),\n             shape = 21, stroke = 0.4) +\n  scale_x_log10(\n    limits = c(275, 150000), expand = c(0, 0),\n    breaks = c(500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 128000),\n    labels = c(\"500\", \"1000\", \"2000\", \"4000\", \"8000\",\n               \"16k\", \"32k\", \"64k\", \"128k\")\n  ) +\n  scale_y_continuous(limits = c(8.4, 98), expand = c(0, 0),\n                     breaks = seq(10, 90, 10)) +\n  scale_fill_manual(values = alpha(pal, 0.8)) +   # translucent fill\n  scale_colour_manual(values = darken(pal)) +     # opaque darker rim\n  scale_size(range = c(1, 34), guide = \"none\") +  # China ≈ 34 mm wide\n  labs(x = \"Income\", y = \"Life expectancy\") +\n  theme_minimal(base_size = 11) +\n  theme(\n    text              = element_text(colour = \"grey30\"),\n    panel.grid.major  = element_line(colour = \"grey90\", linewidth = 0.4),\n    panel.grid.minor  = element_blank(),\n    axis.line         = element_line(colour = \"grey70\", linewidth = 0.4),\n    axis.ticks        = element_line(colour = \"grey70\", linewidth = 0.4),\n    axis.ticks.length = unit(3, \"pt\"),\n    axis.text         = element_text(colour = \"grey40\", size = 12),\n    axis.title        = element_text(colour = \"grey30\", size = 14),\n    legend.position   = \"none\",\n    plot.background   = element_rect(fill = \"white\", colour = NA),\n    panel.background  = element_rect(fill = \"white\", colour = NA),\n    plot.margin       = margin(40, 8, 18, 42)\n  )"
-  },
-  {
-    "objectID": "ders-ggplot.html#sonunda-output",
-    "href": "ders-ggplot.html#sonunda-output",
-    "title": "Grammar of Graphics: ggplot2 paketi",
-    "section": "Sonunda",
-    "text": "Sonunda"
   }
 ]
