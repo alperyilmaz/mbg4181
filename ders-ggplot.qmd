@@ -690,6 +690,15 @@ gapminder |>
     plot.margin       = margin(40, 8, 18, 42)
   )
 ```
+## gganimate
+
+Varolan figüre tek satır ekleyerek, `transition_time(year)`, yıllara göre animasyon elde edilebilir.
+
+![](images/gganimate-gapminder.gif)
+
+:::footer
+Kaynak: [gganimate sitesi](https://gganimate.com/#yet-another-example)
+:::
 
 ## Biyoloji ve biyoinformatik ile ilgili ggplot paketleri {.segue}
 
