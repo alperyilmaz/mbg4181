@@ -580,13 +580,13 @@ gapminder |>
 
 ## Galeriler {.smaller}
 
-`ggplot` ile ilgili kaynakların kapsamlı listesine Github'daki [awesome-ggplot2](https://github.com/erikgahner/awesome-ggplot2) reposundan ulaşabilirsiniz.
+Github'daki [awesome-ggplot2](https://github.com/erikgahner/awesome-ggplot2) reposu kapsamlı bir kaynak listesidir
 
-[R Graph Gallery](https://r-graph-gallery.com/) yapılabilecek grafikleri güzel biçimde kategorilere ayırmış; neler olabileceği hakkında fikir verebilir.
+[R Graph Gallery](https://r-graph-gallery.com/) kategorilere ayrılmış halde mümkün grafikleri gösterir
 
 `ggplot` oldukça esnek bu yüzden çok özelleşmiş grafikler hazırlamak için kullanılabilir. Aşağıdaki kullanıcılar ggplot ile oldukça güzel grafikler hazırlamışlar (Bazı kullanıcılar için ayrı klasörlere bakmanız gerekebilir)
 
-* Cédric Scherer ggplot ile profesyonel düzeyde grafikler yapıyor. [Galerisine](https://github.com/z3tt/TidyTuesday) göz atın (R kodu için [ayrı klasörlere](https://github.com/z3tt/TidyTuesday/tree/main/plots) bakın)
+* Cédric Scherer ggplot ile profesyonel düzeyde grafikler yapıyor. [Galerisine](https://github.com/z3tt/TidyTuesday) göz atın (R kodu için [ayrı klasörlere](https://github.com/z3tt/TidyTuesday/tree/main/plots) bakın) Bu tasarımcı tarafından çizilen kahve puanlamasına dair grafiğin detayları için [kahve](coffee.qmd) sayfasını ziyaret ediniz.
 
 * Tanya Shapiro [https://github.com/tashapiro/TidyTuesday](https://github.com/tashapiro/TidyTuesday)
 * Ryan Hart [https://github.com/curatedmess/TidyTuesday](https://github.com/curatedmess/TidyTuesday)
