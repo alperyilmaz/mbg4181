@@ -1050,6 +1050,62 @@
     "text": "Legos of tidy verbs\nConsider the following code, since different functions from different packages take in tidy data and output tidy data, we can combine them easily. The packages of each function is annotated at each line.\n\nausten_books() |&gt;\n  filter(book == \"Pride & Prejudice\") |&gt;       # dplyr\n  mutate(section = row_number() %/% 10) |&gt;     # dplyr\n  filter(section &gt; 0) |&gt;                       # dplyr\n  unnest_tokens(word, text) |&gt;                 # tidytext\n  anti_join(stop_words) |&gt;                     # dplyr\n  group_by(word) |&gt;                            # dplyr\n  filter(n() &gt;= 10) |&gt;                         # dplyr\n  pairwise_cor(word, section, sort = TRUE) |&gt;  # widyr\n  filter(correlation &gt; 0.25) |&gt;                # dplyr\n  as_tbl_graph(directed=FALSE) |&gt;              # tidygraph\n  mutate(deg=centrality_degree()) |&gt;           # dplyr / tidygraph\n  ggraph(layout=\"kk\") +                        # ggraph\n  geom_node_point() +                          # ggraph\n  geom_edge_link() +                           # ggraph\n  geom_node_label(aes(label=name))             # ggraph"
   },
   {
+    "objectID": "coffee.html",
+    "href": "coffee.html",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "",
+    "text": "Bu sayfada, TidyTuesday 2020, 28. hafta kahve puanları verisi üzerinde Cédric Scherer’in Not my cup of coffee… adlı görseli ggplot2 katmanlarıyla adım adım yeniden üretilecektir. Veri, kahve çekirdeklerine Coffee Quality Institute uzmanlarınca verilen 0–100 arası puanları içerir."
+  },
+  {
+    "objectID": "coffee.html#paketler-ve-tema",
+    "href": "coffee.html#paketler-ve-tema",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Paketler ve tema",
+    "text": "Paketler ve tema\ntidyverse veri işleme ve ggplot2’yi getirir; ggdist puan dağılımını şerit (stat_interval) ve nokta (stat_dots) katmanlarıyla çizer; ggtext HTML biçimli metin kutusunu (geom_textbox), grid inç birimlerini, ragg yüksek kaliteli PNG çıktısını sağlar. Tema minimal ve Bebas Neue; panel çizgileri ile eksen yazıları kapatılıp zemin krem rengine boyanıyor.\n\nlibrary(tidyverse)\nlibrary(ggdist)\nlibrary(grid)\nlibrary(ggtext)\nlibrary(ragg)\n\n\ntheme_set(theme_minimal(base_family = \"Bebas Neue\", base_size = 16))\n\ntheme_update(\n  panel.grid = element_blank(),\n  axis.title = element_blank(),\n  axis.text = element_blank(),\n  plot.background = element_rect(color = NA, fill = \"#faf9f5\")\n)"
+  },
+  {
+    "objectID": "coffee.html#veri",
+    "href": "coffee.html#veri",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Veri",
+    "text": "Veri\nVeri TidyTuesday deposundan read_csv ile okunuyor\n\ndf_coffee &lt;- readr::read_csv('https://raw.githubusercontent.com/rfordatascience/tidytuesday/master/data/2020/2020-07-07/coffee_ratings.csv')\n\nhead(df_coffee)\n\n# A tibble: 6 × 43\n  total_cup_points species owner    country_of_origin farm_name lot_number mill \n             &lt;dbl&gt; &lt;chr&gt;   &lt;chr&gt;    &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt;      &lt;chr&gt;\n1             90.6 Arabica metad p… Ethiopia          \"metad p… &lt;NA&gt;       meta…\n2             89.9 Arabica metad p… Ethiopia          \"metad p… &lt;NA&gt;       meta…\n3             89.8 Arabica grounds… Guatemala         \"san mar… &lt;NA&gt;       &lt;NA&gt; \n4             89   Arabica yidneka… Ethiopia          \"yidneka… &lt;NA&gt;       wole…\n5             88.8 Arabica metad p… Ethiopia          \"metad p… &lt;NA&gt;       meta…\n6             88.8 Arabica ji-ae a… Brazil             &lt;NA&gt;     &lt;NA&gt;       &lt;NA&gt; \n# ℹ 36 more variables: ico_number &lt;chr&gt;, company &lt;chr&gt;, altitude &lt;chr&gt;,\n#   region &lt;chr&gt;, producer &lt;chr&gt;, number_of_bags &lt;dbl&gt;, bag_weight &lt;chr&gt;,\n#   in_country_partner &lt;chr&gt;, harvest_year &lt;chr&gt;, grading_date &lt;chr&gt;,\n#   owner_1 &lt;chr&gt;, variety &lt;chr&gt;, processing_method &lt;chr&gt;, aroma &lt;dbl&gt;,\n#   flavor &lt;dbl&gt;, aftertaste &lt;dbl&gt;, acidity &lt;dbl&gt;, body &lt;dbl&gt;, balance &lt;dbl&gt;,\n#   uniformity &lt;dbl&gt;, clean_cup &lt;dbl&gt;, sweetness &lt;dbl&gt;, cupper_points &lt;dbl&gt;,\n#   moisture &lt;dbl&gt;, category_one_defects &lt;dbl&gt;, quakers &lt;dbl&gt;, color &lt;chr&gt;, …\n\n\nglimpse ile kısa özet görelim\n\nglimpse(df_coffee)\n\nRows: 1,339\nColumns: 43\n$ total_cup_points      &lt;dbl&gt; 90.58, 89.92, 89.75, 89.00, 88.83, 88.83, 88.75,…\n$ species               &lt;chr&gt; \"Arabica\", \"Arabica\", \"Arabica\", \"Arabica\", \"Ara…\n$ owner                 &lt;chr&gt; \"metad plc\", \"metad plc\", \"grounds for health ad…\n$ country_of_origin     &lt;chr&gt; \"Ethiopia\", \"Ethiopia\", \"Guatemala\", \"Ethiopia\",…\n$ farm_name             &lt;chr&gt; \"metad plc\", \"metad plc\", \"san marcos barrancas …\n$ lot_number            &lt;chr&gt; NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, NA, …\n$ mill                  &lt;chr&gt; \"metad plc\", \"metad plc\", NA, \"wolensu\", \"metad …\n$ ico_number            &lt;chr&gt; \"2014/2015\", \"2014/2015\", NA, NA, \"2014/2015\", N…\n$ company               &lt;chr&gt; \"metad agricultural developmet plc\", \"metad agri…\n$ altitude              &lt;chr&gt; \"1950-2200\", \"1950-2200\", \"1600 - 1800 m\", \"1800…\n$ region                &lt;chr&gt; \"guji-hambela\", \"guji-hambela\", NA, \"oromia\", \"g…\n$ producer              &lt;chr&gt; \"METAD PLC\", \"METAD PLC\", NA, \"Yidnekachew Dabes…\n$ number_of_bags        &lt;dbl&gt; 300, 300, 5, 320, 300, 100, 100, 300, 300, 50, 3…\n$ bag_weight            &lt;chr&gt; \"60 kg\", \"60 kg\", \"1\", \"60 kg\", \"60 kg\", \"30 kg\"…\n$ in_country_partner    &lt;chr&gt; \"METAD Agricultural Development plc\", \"METAD Agr…\n$ harvest_year          &lt;chr&gt; \"2014\", \"2014\", NA, \"2014\", \"2014\", \"2013\", \"201…\n$ grading_date          &lt;chr&gt; \"April 4th, 2015\", \"April 4th, 2015\", \"May 31st,…\n$ owner_1               &lt;chr&gt; \"metad plc\", \"metad plc\", \"Grounds for Health Ad…\n$ variety               &lt;chr&gt; NA, \"Other\", \"Bourbon\", NA, \"Other\", NA, \"Other\"…\n$ processing_method     &lt;chr&gt; \"Washed / Wet\", \"Washed / Wet\", NA, \"Natural / D…\n$ aroma                 &lt;dbl&gt; 8.67, 8.75, 8.42, 8.17, 8.25, 8.58, 8.42, 8.25, …\n$ flavor                &lt;dbl&gt; 8.83, 8.67, 8.50, 8.58, 8.50, 8.42, 8.50, 8.33, …\n$ aftertaste            &lt;dbl&gt; 8.67, 8.50, 8.42, 8.42, 8.25, 8.42, 8.33, 8.50, …\n$ acidity               &lt;dbl&gt; 8.75, 8.58, 8.42, 8.42, 8.50, 8.50, 8.50, 8.42, …\n$ body                  &lt;dbl&gt; 8.50, 8.42, 8.33, 8.50, 8.42, 8.25, 8.25, 8.33, …\n$ balance               &lt;dbl&gt; 8.42, 8.42, 8.42, 8.25, 8.33, 8.33, 8.25, 8.50, …\n$ uniformity            &lt;dbl&gt; 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00,…\n$ clean_cup             &lt;dbl&gt; 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, …\n$ sweetness             &lt;dbl&gt; 10.00, 10.00, 10.00, 10.00, 10.00, 10.00, 10.00,…\n$ cupper_points         &lt;dbl&gt; 8.75, 8.58, 9.25, 8.67, 8.58, 8.33, 8.50, 9.00, …\n$ moisture              &lt;dbl&gt; 0.12, 0.12, 0.00, 0.11, 0.12, 0.11, 0.11, 0.03, …\n$ category_one_defects  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ quakers               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, …\n$ color                 &lt;chr&gt; \"Green\", \"Green\", NA, \"Green\", \"Green\", \"Bluish-…\n$ category_two_defects  &lt;dbl&gt; 0, 1, 0, 2, 2, 1, 0, 0, 0, 4, 1, 0, 0, 2, 2, 0, …\n$ expiration            &lt;chr&gt; \"April 3rd, 2016\", \"April 3rd, 2016\", \"May 31st,…\n$ certification_body    &lt;chr&gt; \"METAD Agricultural Development plc\", \"METAD Agr…\n$ certification_address &lt;chr&gt; \"309fcf77415a3661ae83e027f7e5f05dad786e44\", \"309…\n$ certification_contact &lt;chr&gt; \"19fef5a731de2db57d16da10287413f5f99bc2dd\", \"19f…\n$ unit_of_measurement   &lt;chr&gt; \"m\", \"m\", \"m\", \"m\", \"m\", \"m\", \"m\", \"m\", \"m\", \"m\"…\n$ altitude_low_meters   &lt;dbl&gt; 1950.0, 1950.0, 1600.0, 1800.0, 1950.0, NA, NA, …\n$ altitude_high_meters  &lt;dbl&gt; 2200.0, 2200.0, 1800.0, 2200.0, 2200.0, NA, NA, …\n$ altitude_mean_meters  &lt;dbl&gt; 2075.0, 2075.0, 1700.0, 2000.0, 2075.0, NA, NA, …"
+  },
+  {
+    "objectID": "coffee.html#veri-hazırlığı",
+    "href": "coffee.html#veri-hazırlığı",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Veri hazırlığı",
+    "text": "Veri hazırlığı\nSıfır puanlı satırlar atılır; her (tür, üretici, çiftlik, öğütme tesisi, ICO no, hasat yılı, derecelendirme tarihi) kombinasyonunun ortalaması alınır; en az 25 çekirdeği olan ülkeler tutulur; her satıra ülkenin medyan ve minimum değeri ile örnek sayısı eklenir; ülke adları kısaltılır; son olarak ülkeler medyana göre sıralanıp faktör yapılır ve y konumu bu sıradan türetilir.\n\ndf_coffee_p &lt;-\n  df_coffee %&gt;% \n  filter(total_cup_points != 0) %&gt;% \n  group_by(species, owner, country_of_origin, farm_name, mill, ico_number, harvest_year, grading_date) %&gt;% \n  summarize(total_cup_points = mean(total_cup_points, na.rm = T)) %&gt;% \n  group_by(country_of_origin) %&gt;%\n  filter(n() &gt;= 25) %&gt;%\n  mutate(\n    med = median(total_cup_points),\n    min = min(total_cup_points),\n    n = n(),\n    country_of_origin = case_when(\n      country_of_origin == \"Tanzania, United Republic Of\" ~ \"Tanzania\",\n      str_detect(country_of_origin, \"United States\") ~ \"United States\",\n      TRUE ~ country_of_origin\n    )\n  ) %&gt;% \n  ungroup() %&gt;% \n  mutate(\n    country = fct_reorder(country_of_origin, med),\n    y = as.numeric(country) - .3 ## denemelerle bulunmus ince ayar (kaydirma)\n  )\n\nYeni oluşan tabloya göz atalım\n\nhead(df_coffee_p)\n\n# A tibble: 6 × 14\n  species owner        country_of_origin farm_name mill  ico_number harvest_year\n  &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       \n1 Arabica acacia hill… Tanzania          acacia h… acac… C30        2014        \n2 Arabica adam kline   Guatemala         &lt;NA&gt;      &lt;NA&gt;  11/0052/0… &lt;NA&gt;        \n3 Arabica adriana tor… Mexico            cre-leg … cre-… 0          2012        \n4 Arabica afca         Tanzania          mondul c… mond… C27        2014        \n5 Arabica afca         Uganda            &lt;NA&gt;      buko… x          2012        \n6 Arabica afca         Uganda            &lt;NA&gt;      grea… x          2012        \n# ℹ 7 more variables: grading_date &lt;chr&gt;, total_cup_points &lt;dbl&gt;, med &lt;dbl&gt;,\n#   min &lt;dbl&gt;, n &lt;int&gt;, country &lt;fct&gt;, y &lt;dbl&gt;\n\nglimpse(df_coffee_p)\n\nRows: 1,087\nColumns: 14\n$ species           &lt;chr&gt; \"Arabica\", \"Arabica\", \"Arabica\", \"Arabica\", \"Arabica…\n$ owner             &lt;chr&gt; \"acacia hills ltd\", \"adam kline\", \"adriana torres ri…\n$ country_of_origin &lt;chr&gt; \"Tanzania\", \"Guatemala\", \"Mexico\", \"Tanzania\", \"Ugan…\n$ farm_name         &lt;chr&gt; \"acacia hills\", NA, \"cre-leg l-4\", \"mondul coffee es…\n$ mill              &lt;chr&gt; \"acacia hills ltd\", NA, \"cre-leg beneficio\", \"mondul…\n$ ico_number        &lt;chr&gt; \"C30\", \"11/0052/0538\", \"0\", \"C27\", \"x\", \"x\", \"x\", \"x…\n$ harvest_year      &lt;chr&gt; \"2014\", NA, \"2012\", \"2014\", \"2012\", \"2012\", \"2012\", …\n$ grading_date      &lt;chr&gt; \"December 18th, 2014\", \"July 23rd, 2010\", \"September…\n$ total_cup_points  &lt;dbl&gt; 81.580, 82.500, 79.420, 83.330, 84.125, 84.170, 84.6…\n$ med               &lt;dbl&gt; 82.17, 82.50, 81.58, 82.17, 83.17, 83.17, 83.17, 83.…\n$ min               &lt;dbl&gt; 80.33, 59.83, 68.33, 80.33, 80.50, 80.50, 80.50, 80.…\n$ n                 &lt;int&gt; 40, 181, 218, 40, 35, 35, 35, 35, 218, 218, 218, 218…\n$ country           &lt;fct&gt; Tanzania, Guatemala, Mexico, Tanzania, Uganda, Ugand…\n$ y                 &lt;dbl&gt; 4.7, 6.7, 1.7, 4.7, 9.7, 9.7, 9.7, 9.7, 1.7, 1.7, 1.…"
+  },
+  {
+    "objectID": "coffee.html#ülke-özet-satırları",
+    "href": "coffee.html#ülke-özet-satırları",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Ülke özet satırları",
+    "text": "Ülke özet satırları\nEtiketler ve işaretler için her ülkeden tek satır (slice(1)) alınır; medyan (med) ve minimum (min) değerleri bu satırlardan okunur.\n\ndf_coffee_sum &lt;- \n  df_coffee_p %&gt;% \n  group_by(country)  %&gt;% \n  slice(1)\n\nhead(df_coffee_sum)\n\n# A tibble: 6 × 14\n# Groups:   country [6]\n  species owner        country_of_origin farm_name mill  ico_number harvest_year\n  &lt;chr&gt;   &lt;chr&gt;        &lt;chr&gt;             &lt;chr&gt;     &lt;chr&gt; &lt;chr&gt;      &lt;chr&gt;       \n1 Arabica asociación … Nicaragua         asociaci… bene… 017/191/4… 2014        \n2 Arabica adriana tor… Mexico            cre-leg … cre-… 0          2012        \n3 Arabica beneficio s… Honduras          bsr       bene… 13-123-238 2014        \n4 Arabica cqi taiwan … Taiwan            a shu sh… a sh… &lt;NA&gt;       2013/2014   \n5 Arabica acacia hill… Tanzania          acacia h… acac… C30        2014        \n6 Arabica alexandra k… Brazil            &lt;NA&gt;      &lt;NA&gt;  TEST       TEST        \n# ℹ 7 more variables: grading_date &lt;chr&gt;, total_cup_points &lt;dbl&gt;, med &lt;dbl&gt;,\n#   min &lt;dbl&gt;, n &lt;int&gt;, country &lt;fct&gt;, y &lt;dbl&gt;"
+  },
+  {
+    "objectID": "coffee.html#grafik-içi-dipnotlar",
+    "href": "coffee.html#grafik-içi-dipnotlar",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Grafik içi dipnotlar",
+    "text": "Grafik içi dipnotlar\nAçıklama metinleri elle konumlandırılmış bir tibble’da durur; \\n satır sonları metinleri bloklara böler.\n\ndf_labs &lt;-\n  tibble(\n    x = c(60.5, 88.2, 61.7, 86.2),\n    y = c(6.2, 12.2, 1.2, 2.1),\n    label = c(\"The coffee bean with the lowest\\nrating has its origin in Guatemala.\", \"The best coffee—in\\nterms of both median and\\nmaximum rating—is shipped\\nto you from Ethiopia!\", \"One bean from Nicaragua\\ngot a bad rating, too.\", \"With 218 tested beans,\\nMexico is the country with\\nthe most reviews.\")\n  )"
+  },
+  {
+    "objectID": "coffee.html#katman-katman-grafik",
+    "href": "coffee.html#katman-katman-grafik",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Katman katman grafik",
+    "text": "Katman katman grafik\n\nTemel ve ülke adları\nGrafik tek bir aes eşlemesiyle (x = puan, y = ülke konumu) başlar; ilk katman ülke adlarını minimum puan hizasından gri renkte, kalın ve örnek sayısına göre boyutlandırarak yazar: çekirdek sayısı fazla olan ülkelerin adı daha büyük görünür.\n\nthe_plot &lt;- ggplot(df_coffee_p, aes(\n    total_cup_points, \n    y = y\n  )) + \n  ## ülke adları\n  geom_text(\n    data = df_coffee_sum,\n    aes(\n      x = min, \n      y = y,\n      label = country,\n      size = n\n    ),\n    family = \"Bebas Neue\",\n    color = \"grey88\",\n    fontface = \"bold\",\n    vjust = 0,\n    hjust = -0.01\n  )\n\nthe_plot\n\n\n\n\n\n\n\n\n\n\nAralık şeritleri ve işaretler\nstat_interval puanların %25, %50, %95 ve %100 aralıklarını koyu-açık kahve tonlarında yatay şeritler olarak boyar. Dolu siyah üçgen medyanı, boş kırmızı üçgen minimumu gösterir; yanlarındaki metinler değerleri yazar.\n\nthe_plot &lt;- the_plot +\n  ## aralık şeritleri\n  stat_interval(\n    aes(y = y - .05),\n    orientation = \"horizontal\",\n    .width = c(.25, .5, .95, 1),\n    stroke = 0,\n    size = 1.4\n  ) +\n  ## medyan işareti\n  geom_point(\n    data = df_coffee_sum,\n    aes(x = med, y = y - .18),\n    shape = 17,\n    color = \"grey20\",\n    size = 2\n  ) + \n  geom_text(\n    data = df_coffee_sum,\n    aes(\n      x = med + .16, \n      y = y - .11,\n      label = glue::glue(\"{round(med, 1)} points\") \n    ),\n    family = \"Bebas Neue\",\n    color = \"grey20\",\n    size = 2.5,\n    vjust = 1,\n    hjust = 0\n  ) +\n  ## minimum işareti\n  geom_point(\n    data = df_coffee_sum,\n    aes(x = min + .01, y = y - .19),\n    shape = 2,\n    color = \"firebrick\",\n    size = 1.9\n  ) + \n  geom_text(\n    data = df_coffee_sum,\n    aes(\n      x = min + .17, \n      y = y - .11,\n      label = glue::glue(\"{round(min, 1)} points\") \n    ),\n    family = \"Bebas Neue\",\n    color = \"firebrick\",\n    size = 2.5,\n    vjust = 1,\n    hjust = 0\n  )\n\nthe_plot\n\n\n\n\n\n\n\n\n\n\nÇekirdek noktaları ve eksen\nstat_dots her bir çekirdeği tek nokta olarak dizer (quantiles = NA olduğu için özetleme yapılmaz). Eksen ise standart eksen yerine elle konumlandırılmış metin ve çizgi işaretleriyle çizilir.\n\nthe_plot &lt;- the_plot +\n  ## çekirdek noktaları\n  stat_dots(\n    quantiles = NA,\n    orientation = \"horizontal\",\n    normalize = \"none\",\n    scale = .87,\n    color = \"#6f4e37\",\n    fill = \"#6f4e37\"\n  ) +\n  ## eksen etiketleri\n  geom_text(\n    data = tibble(\n      x = seq(60, 90, by = 10),\n      y = 8.385,\n      label = glue::glue(\"{seq(60, 90, by = 10)} points\")\n    ),\n    aes(\n      x = x, \n      y = y,\n      label = label\n    ),\n    inherit.aes = F,\n    family = \"Bebas Neue\",\n    color = \"grey65\",\n    size = 3.5\n  ) +\n  geom_point(\n    data = tibble(\n      x = rep(seq(60, 90, by = 10), 2),\n      y = rep(c(8.55, 8.22), each = 4)\n    ),\n    aes(\n      x = x, \n      y = y\n    ),\n    inherit.aes = F,\n    color = \"grey65\",\n    shape = \"|\",\n    size = 1\n  )\n\nthe_plot\n\n\n\n\n\n\n\n\n\n\nAçıklama kutusu ve dipnotlar\ngeom_textbox, HTML etiketli başlık ve açıklama metnini belirtilen genişlikte sarmalayıp sağ üst köşeye yerleştirir; dipnotlar ilgili ülkelere yakın konumlandırılır.\n\nthe_plot &lt;- the_plot +\n  ## açıklama kutusu\n  geom_textbox(\n    data = tibble(\n      x = 64.5,\n      y = 9.2,\n      label = \"&lt;b style='font-size:24pt;'&gt;Not my cup of coffee...&lt;/b&gt;&lt;br&gt;&lt;br&gt;Each dot depicts one coffee bean rated by Coffee Quality Institute's trained reviewers. In addition, the multiple interval stripes show where &lt;b style='color:#6F2808;'&gt;25%&lt;/b&gt;, &lt;b style='color:#CE711B;'&gt;50%&lt;/b&gt;, &lt;b style='color:#AE9760;'&gt; 95%&lt;/b&gt;, and &lt;b style='color:#A3A3A3;'&gt;100%&lt;/b&gt; of the beans fall along the rating gradient from 0 to 100 points. The rated coffee beans range from 59.8 points (Guatemala) to 89.9 (Ethiopia). Only countries of origin with 25 or more tested beans are shown. The red empty triangle marks the minimum rating, the black filled triangle indicates each country's median score.&lt;br&gt;&lt;br&gt;&lt;i style='color:#99754d;'&gt;Visualization by Cédric Scherer&lt;/i&gt;&lt;br&gt;&lt;i style='font-size:5pt;color:#99754d;'&gt;Coffee stain: \n© paperwork.&lt;/i&gt;\n\"\n    ),\n    aes(\n      x = x, y = y, label = label\n    ),\n    inherit.aes = F,\n    family = \"Playfair Display\",\n    size = 3,\n    lineheight = 1.5,\n    width = unit(3.8, \"inch\"),\n    fill = NA,\n    box.colour = NA,\n    hjust = .5,\n    vjust = 0\n  ) +\n  ## dipnotlar\n  geom_text(\n    data = df_labs,\n    aes(x, y, label = label),\n    inherit.aes = F,\n    family = \"Arapey\",\n    color = \"#99754d\",\n    size = 2.8,\n    lineheight = .87\n  )\n\nthe_plot"
+  },
+  {
+    "objectID": "coffee.html#ölçekler-çizim-ve-kaydetme",
+    "href": "coffee.html#ölçekler-çizim-ve-kaydetme",
+    "title": "Kahve Puanları Görseli — ggplot2 ile katman katman",
+    "section": "Ölçekler, çizim ve kaydetme",
+    "text": "Ölçekler, çizim ve kaydetme\nSon katmanlar: x ekseni kırıkları ve etiketleri, şerit renkleri (scale_color_manual) ve ülke adı boyutu (scale_size). Grafik çizilir ve 12,5 × 9 inç boyutunda files/ klasörüne SVG olarak kaydedilir; dosyayı buradan indirip inceleyebilirsiniz (Bebas Neue, Playfair Display ve Arapey fontları bilgisayarınızda yüklü değilse tarayıcı yedek font kullanır).\n\nthe_plot &lt;- the_plot +\n  scale_x_continuous(\n    breaks = seq(60, 90, by = 10),\n    labels = function(x) paste0(x, \" points\")\n  ) +\n  scale_y_continuous(expand = c(0, 0)) +\n  scale_color_manual(\n    values = c(\"grey85\", \"#ccbe9b\", \"#e8984e\", \"#94350b\"),\n    guide = F\n  ) +\n  scale_size(\n    range = c(8.75, 15.5),\n    guide = F\n  )\n\nthe_plot\n\n\n\n\n\n\n\nggsave(\"files/2020_28_CoffeeRatings.svg\", the_plot, width = 12.5, height = 9)\n\nDosyayı indirip inceleyebilirsiniz: link"
+  },
+  {
     "objectID": "ders-ggplot.html#işlenmiş-veri-ggplota-pipe-ile-iletilebilir",
     "href": "ders-ggplot.html#işlenmiş-veri-ggplota-pipe-ile-iletilebilir",
     "title": "Grammar of Graphics: ggplot2 paketi",
@@ -1057,11 +1113,11 @@
     "text": "İşlenmiş veri ggplot’a pipe ile iletilebilir\n\ngapminder |&gt; \n  filter(year==\"2007\") |&gt;\n  ggplot(aes(x=gdpPercap, y=lifeExp)) +\n  geom_point()"
   },
   {
-    "objectID": "ders-ggplot.html#custom-plot",
-    "href": "ders-ggplot.html#custom-plot",
+    "objectID": "ders-ggplot.html#özelleşmiş-bir-görsel",
+    "href": "ders-ggplot.html#özelleşmiş-bir-görsel",
     "title": "Grammar of Graphics: ggplot2 paketi",
-    "section": "Custom plot",
-    "text": "Custom plot\nLet’s plot a custom plot showing Turkey’s change over years, adding OECD mean as horizontal line with The Economist theme. Let’s prepare the data to be overlaid:\n\nmilli &lt;- gapminder |&gt; filter(country==\"Turkey\")\netiket &lt;- milli |&gt; filter(year==1982)\noecd_data &lt;- tibble(country=\"oecd\",year=2007,life_mean=81)"
+    "section": "Özelleşmiş bir görsel",
+    "text": "Özelleşmiş bir görsel\nTürkiye’nin yıllara göre değişimini gösteren, OECD ortalamasını yatay çizgi olarak ekleyen ve The Economist temasını kullanan özel bir grafik çizelim. Üstüne bindireceğimiz veriyi hazırlayalım:\n\nmilli &lt;- gapminder |&gt; filter(country==\"Turkey\")\netiket &lt;- milli |&gt; filter(year==1982)\noecd_data &lt;- tibble(country=\"oecd\",year=2007,life_mean=81)"
   },
   {
     "objectID": "ders-ggplot.html#section",
@@ -1071,46 +1127,46 @@
     "text": "gapminder |&gt;\n  filter(year==\"2007\") |&gt;\n  ggplot(aes(x=gdpPercap, y=lifeExp, alpha=year)) + \n  geom_smooth() +\n  geom_point() + \n  scale_x_log10() +\n  geom_point(data=milli, color=\"red\") +\n  geom_hline(data=oecd_data, \n             aes(yintercept=life_mean), \n             color=\"gray\", \n             linetype=\"dashed\") +\n  geom_text(data=etiket, aes(label=country)) +\n  facet_wrap(~continent) + \n  ylim(0,100) + \n  theme_economist()"
   },
   {
-    "objectID": "ders-ggplot.html#galleries",
-    "href": "ders-ggplot.html#galleries",
+    "objectID": "ders-ggplot.html#galeriler",
+    "href": "ders-ggplot.html#galeriler",
     "title": "Grammar of Graphics: ggplot2 paketi",
-    "section": "Galleries",
-    "text": "Galleries\nPlease check the comprehensive list of ggplot related resources at awesome-ggplot2 repo at Github.\nR Graph Gallery has nicely categorized possible plots which might give an idea about what is available.\nGgplot is much more powerful than you can ever imagine. Please browse the galleries by the following users. For some users you might need to browse the individual folders.\n\nCédric Scherer makes professional plots with ggplot. Check out his gallery at https://github.com/z3tt/TidyTuesday (visit individual folders for R code)\nTanya Shapiro https://github.com/tashapiro/TidyTuesday\nRyan Hart https://github.com/curatedmess/TidyTuesday\nChristophe Nicault https://github.com/cnicault/tidytuesday\nGeorgios Karamanis https://github.com/gkaramanis/tidytuesday"
+    "section": "Galeriler",
+    "text": "Galeriler\nGithub’daki awesome-ggplot2 reposu kapsamlı bir kaynak listesidir\nR Graph Gallery kategorilere ayrılmış halde mümkün grafikleri gösterir\nggplot oldukça esnek bu yüzden çok özelleşmiş grafikler hazırlamak için kullanılabilir. Aşağıdaki kullanıcılar ggplot ile oldukça güzel grafikler hazırlamışlar (Bazı kullanıcılar için ayrı klasörlere bakmanız gerekebilir)\n\nCédric Scherer ggplot ile profesyonel düzeyde grafikler yapıyor. Galerisine göz atın (R kodu için ayrı klasörlere bakın) Bu tasarımcı tarafından çizilen kahve puanlamasına dair grafiğin detayları için kahve sayfasını ziyaret ediniz.\nTanya Shapiro https://github.com/tashapiro/TidyTuesday\nRyan Hart https://github.com/curatedmess/TidyTuesday\nChristophe Nicault https://github.com/cnicault/tidytuesday\nGeorgios Karamanis https://github.com/gkaramanis/tidytuesday"
   },
   {
-    "objectID": "ders-ggplot.html#biology-and-bioinformatics-related-ggplot-packages",
-    "href": "ders-ggplot.html#biology-and-bioinformatics-related-ggplot-packages",
+    "objectID": "ders-ggplot.html#biyoloji-ve-biyoinformatik-ile-ilgili-ggplot-paketleri",
+    "href": "ders-ggplot.html#biyoloji-ve-biyoinformatik-ile-ilgili-ggplot-paketleri",
     "title": "Grammar of Graphics: ggplot2 paketi",
-    "section": "Biology and bioinformatics related ggplot packages",
-    "text": "Biology and bioinformatics related ggplot packages"
+    "section": "Biyoloji ve biyoinformatik ile ilgili ggplot paketleri",
+    "text": "Biyoloji ve biyoinformatik ile ilgili ggplot paketleri"
   },
   {
     "objectID": "ders-ggplot.html#ggbio",
     "href": "ders-ggplot.html#ggbio",
     "title": "Grammar of Graphics: ggplot2 paketi",
     "section": "ggbio",
-    "text": "ggbio"
+    "text": "ggbio\n\n\nKaynak: ggbio sitesi"
   },
   {
     "objectID": "ders-ggplot.html#ggenomes",
     "href": "ders-ggplot.html#ggenomes",
     "title": "Grammar of Graphics: ggplot2 paketi",
     "section": "ggenomes",
-    "text": "ggenomes"
+    "text": "ggenomes\n\n\nKaynak: gggenomes sitesi Bu paket, geom_seq(), geom_gene() gibi katmanlar kullanır"
   },
   {
     "objectID": "ders-ggplot.html#ggtrees-ggtreeextra",
     "href": "ders-ggplot.html#ggtrees-ggtreeextra",
     "title": "Grammar of Graphics: ggplot2 paketi",
     "section": "ggtrees / ggtreeextra",
-    "text": "ggtrees / ggtreeextra"
+    "text": "ggtrees / ggtreeextra\n\nKaynak"
   },
   {
     "objectID": "ders-ggplot.html#ggmsa",
     "href": "ders-ggplot.html#ggmsa",
     "title": "Grammar of Graphics: ggplot2 paketi",
     "section": "ggmsa",
-    "text": "ggmsa"
+    "text": "ggmsa\n\n\nKaynak"
   },
   {
     "objectID": "code-chunk.html",

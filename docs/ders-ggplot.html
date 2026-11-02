@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="alper yilmaz">
-  <meta name="dcterms.date" content="2025-05-09">
+  <meta name="dcterms.date" content="2026-11-02">
   <title>MBG4181 Biyolojik Veri Analizi ve Görüntüleme – Grammar of Graphics: ggplot2 paketi</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -198,17 +198,1854 @@
       margin-right: 0; 
     }
   </style>
-  <link href="site_libs/htmltools-fill-0.5.8.1/fill.css" rel="stylesheet">
+  <link href="site_libs/htmltools-fill-0.5.9/fill.css" rel="stylesheet">
   <script src="site_libs/htmlwidgets-1.6.4/htmlwidgets.js"></script>
-  <script src="site_libs/plotly-binding-4.11.0/plotly.js"></script>
+  <script src="site_libs/plotly-binding-4.12.0/plotly.js"></script>
   <script src="site_libs/typedarray-0.1/typedarray.min.js"></script>
   <script src="site_libs/jquery-3.5.1/jquery.min.js"></script>
   <link href="site_libs/crosstalk-1.2.2/css/crosstalk.min.css" rel="stylesheet">
   <script src="site_libs/crosstalk-1.2.2/js/crosstalk.min.js"></script>
-  <link href="site_libs/plotly-htmlwidgets-css-2.11.1/plotly-htmlwidgets.css" rel="stylesheet">
-  <script src="site_libs/plotly-main-2.11.1/plotly-latest.min.js"></script>
+  <link href="site_libs/plotly-htmlwidgets-css-2.25.2/plotly-htmlwidgets.css" rel="stylesheet">
+  <script src="site_libs/plotly-main-2.25.2/plotly-latest.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/editor/editor.main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+  <style type="text/css">
+  .monaco-editor pre {
+    background-color: unset !important;
+  }
+
+  .qwebr-editor-toolbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+  }
+
+  .qwebr-editor-toolbar-left-buttons, .qwebr-editor-toolbar-right-buttons {
+    display: flex;
+  }
+
+  .qwebr-non-interactive-loading-container.qwebr-cell-needs-evaluation, .qwebr-non-interactive-loading-container.qwebr-cell-evaluated {
+    justify-content: center;
+    display: flex;
+    background-color: rgba(250, 250, 250, 0.65);
+    border: 1px solid rgba(233, 236, 239, 0.65);
+    border-radius: 0.5rem;
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .qwebr-r-project-logo {
+    color: #2767B0; /* R Project's blue color */
+  }
+
+  .qwebr-icon-status-spinner {
+    color: #7894c4;
+  }
+
+  .qwebr-icon-run-code {
+    color: #0d9c29
+  }
+
+  body.quarto-light .qwebr-output-code-stdout {
+    color: #111;
+  }
+
+  body.quarto-dark .qwebr-output-code-stdout {
+    color: #EEE;
+  }
+
+  .qwebr-output-code-stderr {
+    color: #db4133;
+  }
+
+  body.quarto-light .qwebr-editor {
+    border: 1px solid #EEEEEE;
+  }
+
+  body.quarto-light .qwebr-editor-toolbar {
+    background-color: #EEEEEE;
+    padding: 0.2rem 0.5rem;
+  }
+
+  body.quarto-dark .qwebr-editor {
+    border: 1px solid #111;
+  }
+
+  body.quarto-dark .qwebr-editor-toolbar {
+    background-color: #111;
+    padding: 0.2rem 0.5rem;
+  }
+
+  .qwebr-button {
+    display: inline-block;
+    font-weight: 400;
+    line-height: 1;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.375rem 0.75rem;
+    font-size: .9rem;
+    border-radius: 0.25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+  }
+
+  body.quarto-light .qwebr-button {
+    background-color: #EEEEEE;
+    color: #000;
+    border-color: #dee2e6;
+    border: 1px solid rgba(0,0,0,0);
+  }
+
+  body.quarto-dark .qwebr-button {
+    background-color: #111;
+    color: #EEE;
+    border-color: #dee2e6;
+    border: 1px solid rgba(0,0,0,0);
+  }
+
+  body.quarto-light .qwebr-button:hover {
+    color: #000;
+    background-color: #d9dce0;
+    border-color: #c8ccd0;
+  }
+
+  body.quarto-dark .qwebr-button:hover {
+    color: #d9dce0;
+    background-color: #323232;
+    border-color: #d9dce0;
+  }
+
+  .qwebr-button:disabled,.qwebr-button.disabled,fieldset:disabled .qwebr-button {
+    pointer-events: none;
+    opacity: .65
+  }
+
+  .qwebr-button-reset {
+    color: #696969; /*#4682b4;*/
+  }
+
+  .qwebr-button-copy {
+    color: #696969;
+  }
+
+  /* Style the code highlight lines */
+  body.quarto-light .qwebr-editor-highlight-line {
+    background-color: lightblue;
+  }
+
+  body.quarto-dark .qwebr-editor-highlight-line {
+    background-color: darkblue;
+  }
+
+  /* Style the modal pop-up */
+
+  /* The Modal (background) */
+  .qwebr-modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 60px;
+  }
+
+  /* Modal Content */
+  .qwebr-modal-content {
+    background-color: #fefefe;
+    margin: 5% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+  }
+
+  .qwebr-modal-content-code {
+    max-height: 50vh;
+    min-height: 5vh;
+    overflow: scroll;
+    border: 1px solid #888;
+  }
+
+  /* The Close Button */
+  .qwebr-modal-close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+
+  .qwebr-modal-close:hover,
+  .qwebr-modal-close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .qwebr-download-btn {
+    margin-top: 10px;
+    text-decoration: none !important;
+  }
+
+  /* Styling to download image that is created */
+
+  .qwebr-canvas-image {
+    position: relative;
+    display: inline-block;
+    margin: 10px;
+  }
+
+  .qwebr-canvas-image-download-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  figure:hover .qwebr-canvas-image-download-btn {
+    display: block;
+  }
+
+  /* Custom styling for RevealJS Presentations*/
+
+  /* Reset the style of the interactive area */
+  .reveal div.qwebr-interactive-area {
+    display: block;
+    box-shadow: none;
+    max-width: 100%;
+    max-height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+
+  /* Provide space to entries */
+  .reveal div.qwebr-output-code-area pre div {
+    margin: 1px 2px 1px 10px;
+  }
+
+  /* Collapse the inside code tags to avoid extra space between line outputs */
+  .reveal pre div code.qwebr-output-code-stdout, .reveal pre div code.qwebr-output-code-stderr {
+    padding: 0;
+    display: contents;
+  }
+
+  body.reveal.quarto-light pre div code.qwebr-output-code-stdout {
+    color: #111;
+  }
+
+  body.reveal.quarto-dark pre div code.qwebr-output-code-stdout {
+    color: #EEEEEE;
+  }
+
+  .reveal pre div code.qwebr-output-code-stderr {
+    color: #db4133;
+  }
+
+
+  /* Create a border around console and output (does not effect graphs) */
+  body.reveal.quarto-light div.qwebr-console-area {
+    border: 1px solid #EEEEEE;
+    box-shadow: 2px 2px 10px #EEEEEE;
+  }
+
+  body.reveal.quarto-dark div.qwebr-console-area {
+    border: 1px solid #111;
+    box-shadow: 2px 2px 10px #111;
+  }
+
+
+  /* Cap output height and allow text to scroll */
+  /* TODO: Is there a better way to fit contents/max it parallel to the monaco editor size? */
+  .reveal div.qwebr-output-code-area pre {
+    max-height: 400px;
+    overflow: scroll;
+  }
+
+  iframe.qwebr-output-code-browse {
+    width: 100%;
+
+    /*
+      TODO: How to make the height automatic according to the widget size,
+      or respect the quarto code block options?
+    */
+    min-height: 500px;
+  }
+
+  </style>
+  <script type="module">
+  // Document level settings ----
+
+  // Determine if we need to install R packages
+  globalThis.qwebrInstallRPackagesList = ['dplyr', 'ggplot2', 'gapminder'];
+
+  // Specify possible locations to search for the repository
+  globalThis.qwebrPackageRepoURLS = ['https://repo.r-wasm.org/'];
+
+  // Check to see if we have an empty array, if we do set to skip the installation.
+  globalThis.qwebrSetupRPackages = !(qwebrInstallRPackagesList.indexOf("") !== -1);
+  globalThis.qwebrAutoloadRPackages = false;
+
+  // Display a startup message?
+  globalThis.qwebrShowStartupMessage = true;
+  globalThis.qwebrShowHeaderMessage = false;
+
+  // Describe the webR settings that should be used
+  globalThis.qwebrCustomizedWebROptions = {
+    "baseURL": "https://webr.r-wasm.org/v0.4.0/",
+    "serviceWorkerUrl": "",
+    "homedir": "/home/web_user", 
+    "channelType": "ChannelType.Automatic"
+  };
+
+  // Store cell data
+  globalThis.qwebrCellDetails = [{"code":"library(dplyr)\nlibrary(ggplot2)\nlibrary(gapminder)\n\npopulated <- gapminder |> filter(year==\"2007\") |> filter(pop > 100000000)\n\ngapminder","id":1,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-1","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}},{"code":"gapminder |> \n  filter(year==\"2007\") |> \n  ggplot(aes(x=gdpPercap, y=lifeExp)) +\n  geom_point() +\n  facet_wrap(~continent, scales=\" \")","id":2,"options":{"autorun":"false","classes":"","comment":"","context":"interactive","dpi":72,"editor-font-scale":"0.5","editor-max-height":"","editor-quick-suggestions":"false","editor-word-wrap":"true","fig-cap":"","fig-height":5,"fig-width":7,"label":"unnamed-chunk-2","message":"true","out-height":"","out-width":"700px","output":"true","read-only":"false","results":"markup","warning":"true"}}];
+
+  </script>
+  <script type="module">
+  // Declare startupMessageQWebR globally
+  globalThis.qwebrStartupMessage = document.createElement("p");
+
+  // Verify if OffScreenCanvas is supported
+  globalThis.qwebrOffScreenCanvasSupport = function() {
+    return typeof OffscreenCanvas !== 'undefined'
+  }
+
+  // Function to set the button text
+  globalThis.qwebrSetInteractiveButtonState = function(buttonText, enableCodeButton = true) {
+    document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+      btn.innerHTML = buttonText;
+      btn.disabled = !enableCodeButton;
+    });
+  }
+
+  // Function to update the status message in non-interactive cells
+  globalThis.qwebrUpdateStatusMessage = function(message) {
+    document.querySelectorAll(".qwebr-status-text.qwebr-cell-needs-evaluation").forEach((elem) => {
+      elem.innerText = message;
+    });
+  }
+
+  // Function to update the status message
+  globalThis.qwebrUpdateStatusHeader = function(message) {
+    qwebrStartupMessage.innerHTML = `
+      <i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i>
+      <span>${message}</span>`;
+  }
+
+  // Function to return true if element is found, false if not
+  globalThis.qwebrCheckHTMLElementExists = function(selector) {
+    const element = document.querySelector(selector);
+    return !!element;
+  }
+
+  // Function that detects whether reveal.js slides are present
+  globalThis.qwebrIsRevealJS = function() {
+    // If the '.reveal .slides' selector exists, RevealJS is likely present
+    return qwebrCheckHTMLElementExists('.reveal .slides');
+  }
+
+  // Initialize the Quarto sidebar element
+  function qwebrSetupQuartoSidebar() {
+    var newSideBarDiv = document.createElement('div');
+    newSideBarDiv.id = 'quarto-margin-sidebar';
+    newSideBarDiv.className = 'sidebar margin-sidebar';
+    newSideBarDiv.style.top = '0px';
+    newSideBarDiv.style.maxHeight = 'calc(0px + 100vh)';
+
+    return newSideBarDiv;
+  }
+
+  // Position the sidebar in the document
+  function qwebrPlaceQuartoSidebar() {
+    // Get the reference to the element with id 'quarto-document-content'
+    var referenceNode = document.getElementById('quarto-document-content');
+
+    // Create the new div element
+    var newSideBarDiv = qwebrSetupQuartoSidebar();
+
+    // Insert the new div before the 'quarto-document-content' element
+    referenceNode.parentNode.insertBefore(newSideBarDiv, referenceNode);
+  }
+
+  function qwebrPlaceMessageContents(content, html_location = "title-block-header", revealjs_location = "title-slide") {
+
+    // Get references to header elements
+    const headerHTML = document.getElementById(html_location);
+    const headerRevealJS = document.getElementById(revealjs_location);
+
+    // Determine where to insert the quartoTitleMeta element
+    if (headerHTML || headerRevealJS) {
+      // Append to the existing "title-block-header" element or "title-slide" div
+      (headerHTML || headerRevealJS).appendChild(content);
+    } else {
+      // If neither headerHTML nor headerRevealJS is found, insert after "webr-monaco-editor-init" script
+      const monacoScript = document.getElementById("qwebr-monaco-editor-init");
+      const header = document.createElement("header");
+      header.setAttribute("id", "title-block-header");
+      header.appendChild(content);
+      monacoScript.after(header);
+    }
+  }
+
+
+
+  function qwebrOffScreenCanvasSupportWarningMessage() {
+    
+    // Verify canvas is supported.
+    if(qwebrOffScreenCanvasSupport()) return;
+
+    // Create the main container div
+    var calloutContainer = document.createElement('div');
+    calloutContainer.classList.add('callout', 'callout-style-default', 'callout-warning', 'callout-titled');
+
+    // Create the header div
+    var headerDiv = document.createElement('div');
+    headerDiv.classList.add('callout-header', 'd-flex', 'align-content-center');
+
+    // Create the icon container div
+    var iconContainer = document.createElement('div');
+    iconContainer.classList.add('callout-icon-container');
+
+    // Create the icon element
+    var iconElement = document.createElement('i');
+    iconElement.classList.add('callout-icon');
+
+    // Append the icon element to the icon container
+    iconContainer.appendChild(iconElement);
+
+    // Create the title container div
+    var titleContainer = document.createElement('div');
+    titleContainer.classList.add('callout-title-container', 'flex-fill');
+    titleContainer.innerText = 'Warning: Web Browser Does Not Support Graphing!';
+
+    // Append the icon container and title container to the header div
+    headerDiv.appendChild(iconContainer);
+    headerDiv.appendChild(titleContainer);
+
+    // Create the body container div
+    var bodyContainer = document.createElement('div');
+    bodyContainer.classList.add('callout-body-container', 'callout-body');
+
+    // Create the paragraph element for the body content
+    var paragraphElement = document.createElement('p');
+    paragraphElement.innerHTML = 'This web browser does not have support for displaying graphs through the <code>quarto-webr</code> extension since it lacks an <code>OffScreenCanvas</code>. Please upgrade your web browser to one that supports <code>OffScreenCanvas</code>.';
+
+    // Append the paragraph element to the body container
+    bodyContainer.appendChild(paragraphElement);
+
+    // Append the header div and body container to the main container div
+    calloutContainer.appendChild(headerDiv);
+    calloutContainer.appendChild(bodyContainer);
+
+    // Append the main container div to the document depending on format
+    qwebrPlaceMessageContents(calloutContainer, "title-block-header"); 
+
+  }
+
+
+  // Function that attaches the document status message and diagnostics
+  function displayStartupMessage(showStartupMessage, showHeaderMessage) {
+    if (!showStartupMessage) {
+      return;
+    }
+
+    // Create the outermost div element for metadata
+    const quartoTitleMeta = document.createElement("div");
+    quartoTitleMeta.classList.add("quarto-title-meta");
+
+    // Create the first inner div element
+    const firstInnerDiv = document.createElement("div");
+    firstInnerDiv.setAttribute("id", "qwebr-status-message-area");
+
+    // Create the second inner div element for "WebR Status" heading and contents
+    const secondInnerDiv = document.createElement("div");
+    secondInnerDiv.setAttribute("id", "qwebr-status-message-title");
+    secondInnerDiv.classList.add("quarto-title-meta-heading");
+    secondInnerDiv.innerText = "WebR Status";
+
+    // Create another inner div for contents
+    const secondInnerDivContents = document.createElement("div");
+    secondInnerDivContents.setAttribute("id", "qwebr-status-message-body");
+    secondInnerDivContents.classList.add("quarto-title-meta-contents");
+
+    // Describe the WebR state
+    qwebrStartupMessage.innerText = "🟡 Loading...";
+    qwebrStartupMessage.setAttribute("id", "qwebr-status-message-text");
+    // Add `aria-live` to auto-announce the startup status to screen readers
+    qwebrStartupMessage.setAttribute("aria-live", "assertive");
+
+    // Append the startup message to the contents
+    secondInnerDivContents.appendChild(qwebrStartupMessage);
+
+    // Add a status indicator for COOP and COEP Headers if needed
+    if (showHeaderMessage) {
+      const crossOriginMessage = document.createElement("p");
+      crossOriginMessage.innerText = `${crossOriginIsolated ? '🟢' : '🟡'} COOP & COEP Headers`;
+      crossOriginMessage.setAttribute("id", "qwebr-coop-coep-header");
+      secondInnerDivContents.appendChild(crossOriginMessage);
+    }
+
+    // Combine the inner divs and contents
+    firstInnerDiv.appendChild(secondInnerDiv);
+    firstInnerDiv.appendChild(secondInnerDivContents);
+    quartoTitleMeta.appendChild(firstInnerDiv);
+
+    // Place message on webpage
+    qwebrPlaceMessageContents(quartoTitleMeta); 
+  }
+
+  function qwebrAddCommandHistoryModal() {
+    // Create the modal div
+    var modalDiv = document.createElement('div');
+    modalDiv.id = 'qwebr-history-modal';
+    modalDiv.className = 'qwebr-modal';
+
+    // Create the modal content div
+    var modalContentDiv = document.createElement('div');
+    modalContentDiv.className = 'qwebr-modal-content';
+
+    // Create the span for closing the modal
+    var closeSpan = document.createElement('span');
+    closeSpan.id = 'qwebr-command-history-close-btn';
+    closeSpan.className = 'qwebr-modal-close';
+    closeSpan.innerHTML = '&times;';
+
+    // Create the h1 element for the modal
+    var modalH1 = document.createElement('h1');
+    modalH1.textContent = 'R History Command Contents';
+
+    // Create an anchor element for downloading the Rhistory file 
+    var downloadLink = document.createElement('a');
+    downloadLink.href = '#';
+    downloadLink.id = 'qwebr-download-history-btn';
+    downloadLink.className = 'qwebr-download-btn';
+
+    // Create an 'i' element for the icon
+    var icon = document.createElement('i');
+    icon.className = 'bi bi-file-code';
+
+    // Append the icon to the anchor element
+    downloadLink.appendChild(icon);
+
+    // Add the text 'Download R History' to the anchor element
+    downloadLink.appendChild(document.createTextNode(' Download R History File'));
+
+    // Create the pre for command history contents
+    var commandContentsPre = document.createElement('pre');
+    commandContentsPre.id = 'qwebr-command-history-contents';
+    commandContentsPre.className = 'qwebr-modal-content-code';
+
+    // Append the close span, h1, and history contents pre to the modal content div
+    modalContentDiv.appendChild(closeSpan);
+    modalContentDiv.appendChild(modalH1);
+    modalContentDiv.appendChild(downloadLink);
+    modalContentDiv.appendChild(commandContentsPre);
+
+    // Append the modal content div to the modal div
+    modalDiv.appendChild(modalContentDiv);
+
+    // Append the modal div to the body
+    document.body.appendChild(modalDiv);
+  }
+
+  function qwebrRegisterRevealJSCommandHistoryModal() {
+    // Select the <ul> element inside the <div> with data-panel="Custom0"
+    let ulElement = document.querySelector('div[data-panel="Custom0"] > ul.slide-menu-items');
+
+    // Find the last <li> element with class slide-tool-item
+    let lastItem = ulElement.querySelector('li.slide-tool-item:last-child');
+
+    // Calculate the next data-item value
+    let nextItemValue = 0;
+    if (lastItem) {
+        nextItemValue = parseInt(lastItem.dataset.item) + 1;
+    }
+
+    // Create a new <li> element
+    let newListItem = document.createElement('li');
+    newListItem.className = 'slide-tool-item';
+    newListItem.dataset.item = nextItemValue.toString(); // Set the next available data-item value
+
+    // Create the <a> element inside the <li>
+    let newLink = document.createElement('a');
+    newLink.href = '#';
+    newLink.id = 'qwebrRHistoryButton'; // Set the ID for the new link
+    
+    // Create the <kbd> element inside the <a>
+    let newKbd = document.createElement('kbd');
+    newKbd.textContent = ' '; // Set to empty as we are not registering a keyboard shortcut
+
+    // Create text node for the link text
+    let newText = document.createTextNode(' View R History');
+
+    // Append <kbd> and text node to <a>
+    newLink.appendChild(newKbd);
+    newLink.appendChild(newText);
+
+    // Append <a> to <li>
+    newListItem.appendChild(newLink);
+
+    // Append <li> to <ul>
+    ulElement.appendChild(newListItem);
+  }
+
+  // Handle setting up the R history modal
+  function qwebrCodeLinks() {
+
+    if (qwebrIsRevealJS()) {
+      qwebrRegisterRevealJSCommandHistoryModal();
+      return;
+    }
+
+    // Create the container div
+    var containerDiv = document.createElement('div');
+    containerDiv.className = 'quarto-code-links';
+
+    // Create the h2 element
+    var h2 = document.createElement('h2');
+    h2.textContent = 'webR Code Links';
+
+    // Create the ul element
+    var ul = document.createElement('ul');
+
+    // Create the li element
+    var li = document.createElement('li');
+
+    // Create the a_history_btn element
+    var a_history_btn = document.createElement('a');
+    a_history_btn.href = 'javascript:void(0)';
+    a_history_btn.setAttribute('id', 'qwebrRHistoryButton');
+
+    // Create the i_history_btn element
+    var i_history_btn = document.createElement('i');
+    i_history_btn.className = 'bi bi-file-code';
+
+    // Create the text node for the link text
+    var text_history_btn = document.createTextNode('View R History');
+
+    // Append the icon element and link text to the a element
+    a_history_btn.appendChild(i_history_btn);
+    a_history_btn.appendChild(text_history_btn);
+
+    // Append the a element to the li element
+    li.appendChild(a_history_btn);
+
+    // Append the li element to the ul element
+    ul.appendChild(li);
+
+    // Append the h2 and ul elements to the container div
+    containerDiv.appendChild(h2);
+    containerDiv.appendChild(ul);
+
+    // Append the container div to the element with the ID 'quarto-margin-sidebar'
+    var sidebar = document.getElementById('quarto-margin-sidebar');
+      
+    // If the sidebar element is not found, create it
+    if(!sidebar) {
+      qwebrPlaceQuartoSidebar();
+    }
+    
+    // Re-select the sidebar element (if it was just created)
+    sidebar = document.getElementById('quarto-margin-sidebar');   
+
+
+    // If the sidebar element exists, append the container div to it
+    if(sidebar) {
+      // Append the container div to the sidebar
+      sidebar.appendChild(containerDiv);
+      // Force the sidebar to be clickable by removing the 'zindex-bottom' class
+      // added in pre-release: https://github.com/quarto-dev/quarto-cli/commit/f0c53a1ffcaa1de4eccbf07803b096898248adcc
+      sidebar.className = 'sidebar margin-sidebar';
+    } else {
+      // Get a debugger ...
+      console.warn('Element with ID "quarto-margin-sidebar" not found.');
+    }
+  }
+
+  // Call the function to append the code links for qwebR into the right sidebar
+  qwebrCodeLinks();
+
+  // Add the command history modal
+  qwebrAddCommandHistoryModal();
+
+  displayStartupMessage(qwebrShowStartupMessage, qwebrShowHeaderMessage);
+  qwebrOffScreenCanvasSupportWarningMessage();
+  </script>
+  <script type="module">
+  // Define a global storage and retrieval solution ----
+
+  // Store commands executed in R
+  globalThis.qwebrRCommandHistory = [];
+
+  // Function to retrieve the command history
+  globalThis.qwebrFormatRHistory = function() {
+     return qwebrRCommandHistory.join("\n\n");
+  }
+
+  // Retrieve HTML Elements ----
+
+  // Get the command modal
+  const command_history_modal = document.getElementById("qwebr-history-modal");
+
+  // Get the button that opens the command modal
+  const command_history_btn = document.getElementById("qwebrRHistoryButton");
+
+  // Get the <span> element that closes the command modal
+  const command_history_close_span = document.getElementById("qwebr-command-history-close-btn");
+
+  // Get the download button for r history information
+  const command_history_download_btn = document.getElementById("qwebr-download-history-btn");
+
+  // Plug in command history into modal/download button ----
+
+  // Function to populate the modal with command history
+  function populateCommandHistoryModal() {
+      document.getElementById("qwebr-command-history-contents").innerHTML = qwebrFormatRHistory() || "No commands have been executed yet.";
+  }
+
+  // Function to format the current date and time to
+  // a string with the format YYYY-MM-DD-HH-MM-SS
+  function formatDateTime() {
+      const now = new Date();
+
+      const year = now.getFullYear();
+      const day = String(now.getDate()).padStart(2, '0');
+      const month = String(now.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+
+      return `${year}-${month}-${day}-${hours}-${minutes}-${seconds}`;
+  }
+
+
+  // Function to convert document title with datetime to a safe filename
+  function safeFileName() {
+      // Get the current page title
+      let pageTitle = document.title;
+
+      // Combine the current page title with the current date and time
+      let pageNameWithDateTime = `Rhistory-${pageTitle}-${formatDateTime()}`;
+
+      // Replace unsafe characters with safe alternatives
+      let safeFilename = pageNameWithDateTime.replace(/[\\/:\*\?! "<>\|]/g, '-');
+
+      return safeFilename;
+  }
+
+
+  // Function to download list contents as text file
+  function downloadRHistory() {
+      // Get the current page title + datetime and use it as the filename
+      const filename = `${safeFileName()}.R`;
+
+      // Get the text contents of the R History list
+      const text = qwebrFormatRHistory();
+
+      // Create a new Blob object with the text contents
+      const blob = new Blob([text], { type: 'text/plain' });
+    
+      // Create a new anchor element for the download
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = URL.createObjectURL(blob);
+      a.download = filename;
+
+      // Append the anchor to the body, click it, and remove it
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+  }
+
+  // Register event handlers ----
+
+  // When the user clicks the View R History button, open the command modal
+  command_history_btn.onclick = function() {
+      populateCommandHistoryModal();
+      command_history_modal.style.display = "block";
+  }
+
+  // When the user clicks on <span> (x), close the command modal
+  command_history_close_span.onclick = function() {
+      command_history_modal.style.display = "none";
+  }
+
+  // When the user clicks anywhere outside of the command modal, close it
+  window.onclick = function(event) {
+      if (event.target == command_history_modal) {
+          command_history_modal.style.display = "none";
+      }
+  }
+
+  // Add an onclick event listener to the download button so that
+  // the user can download the R history as a text file
+  command_history_download_btn.onclick = function() {
+      downloadRHistory();
+  };
+  </script>
+  <script type="module">
+  // Supported Evaluation Types for Context
+  globalThis.EvalTypes = Object.freeze({
+    Interactive: 'interactive',
+    Setup: 'setup',
+    Output: 'output',
+  });
+
+  // Function that obtains the font size for a given element 
+  globalThis.qwebrCurrentFontSizeOnElement = function(element, cssProperty = 'font-size') {
+
+    const currentFontSize = parseFloat(
+      window
+      .getComputedStyle(element)
+      .getPropertyValue(cssProperty)
+    );
+    
+    return currentFontSize;
+  }
+
+  // Function to determine font scaling
+  globalThis.qwebrScaledFontSize = function(div, qwebrOptions) {
+    // Determine if we should compute font-size using RevealJS's `--r-main-font-size` 
+    // or if we can directly use the document's `font-size`.
+    const cssProperty = document.body.classList.contains('reveal') ? 
+      "--r-main-font-size" : "font-size";
+    
+    // Get the current font size on the div element
+    const elementFontSize = qwebrCurrentFontSizeOnElement(div, cssProperty);
+
+    // Determine the scaled font size value
+    const scaledFontSize = ((qwebrOptions['editor-font-scale'] ?? 1) * elementFontSize) ?? 17.5;
+
+    return scaledFontSize;
+  }
+
+
+  // Function that dispatches the creation request
+  globalThis.qwebrCreateHTMLElement = function (
+    cellData
+  ) {
+
+    // Extract key components
+    const evalType = cellData.options.context;
+    const qwebrCounter = cellData.id;
+
+    // We make an assumption that insertion points are defined by the Lua filter as:
+    // qwebr-insertion-location-{qwebrCounter} 
+    const elementLocator = document.getElementById(`qwebr-insertion-location-${qwebrCounter}`);
+
+    // Figure out the routine to use to insert the element.
+    let qwebrElement;
+    switch ( evalType ) {
+      case EvalTypes.Interactive:
+        qwebrElement = qwebrCreateInteractiveElement(qwebrCounter, cellData.options);
+        break;
+      case EvalTypes.Output: 
+        qwebrElement = qwebrCreateNonInteractiveOutputElement(qwebrCounter, cellData.options);
+        break;
+      case EvalTypes.Setup: 
+        qwebrElement = qwebrCreateNonInteractiveSetupElement(qwebrCounter, cellData.options);
+        break;
+      default: 
+        qwebrElement = document.createElement('div');
+        qwebrElement.textContent = 'Error creating `quarto-webr` element';
+    }
+
+    // Insert the dynamically generated object at the document location.
+    elementLocator.appendChild(qwebrElement);
+  };
+
+  // Function that setups the interactive element creation
+  globalThis.qwebrCreateInteractiveElement = function (qwebrCounter, qwebrOptions) {
+
+    // Create main div element
+    var mainDiv = document.createElement('div');
+    mainDiv.id = 'qwebr-interactive-area-' + qwebrCounter;
+    mainDiv.className = `qwebr-interactive-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
+
+    // Create toolbar div
+    var toolbarDiv = document.createElement('div');
+    toolbarDiv.className = 'qwebr-editor-toolbar';
+    toolbarDiv.id = 'qwebr-editor-toolbar-' + qwebrCounter;
+
+    // Create a div to hold the left buttons
+    var leftButtonsDiv = document.createElement('div');
+    leftButtonsDiv.className = 'qwebr-editor-toolbar-left-buttons';
+
+    // Create a div to hold the right buttons
+    var rightButtonsDiv = document.createElement('div');
+    rightButtonsDiv.className = 'qwebr-editor-toolbar-right-buttons';
+
+    // Create Run Code button
+    var runCodeButton = document.createElement('button');
+    runCodeButton.className = 'btn btn-default qwebr-button qwebr-button-run';
+    runCodeButton.disabled = true;
+    runCodeButton.type = 'button';
+    runCodeButton.id = 'qwebr-button-run-' + qwebrCounter;
+    runCodeButton.textContent = '🟡 Loading webR...';
+    runCodeButton.title = `Run code (Shift + Enter)`;
+
+    // Append buttons to the leftButtonsDiv
+    leftButtonsDiv.appendChild(runCodeButton);
+
+    // Create Reset button
+    var resetButton = document.createElement('button');
+    resetButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-reset';
+    resetButton.type = 'button';
+    resetButton.id = 'qwebr-button-reset-' + qwebrCounter;
+    resetButton.title = 'Start over';
+    resetButton.innerHTML = '<i class="fa-solid fa-arrows-rotate"></i>';
+
+    // Create Copy button
+    var copyButton = document.createElement('button');
+    copyButton.className = 'btn btn-light btn-xs qwebr-button qwebr-button-copy';
+    copyButton.type = 'button';
+    copyButton.id = 'qwebr-button-copy-' + qwebrCounter;
+    copyButton.title = 'Copy code';
+    copyButton.innerHTML = '<i class="fa-regular fa-copy"></i>';
+
+    // Append buttons to the rightButtonsDiv
+    rightButtonsDiv.appendChild(resetButton);
+    rightButtonsDiv.appendChild(copyButton);
+
+    // Create console area div
+    var consoleAreaDiv = document.createElement('div');
+    consoleAreaDiv.id = 'qwebr-console-area-' + qwebrCounter;
+    consoleAreaDiv.className = 'qwebr-console-area';
+
+    // Create editor div
+    var editorDiv = document.createElement('div');
+    editorDiv.id = 'qwebr-editor-' + qwebrCounter;
+    editorDiv.className = 'qwebr-editor';
+
+    // Create output code area div
+    var outputCodeAreaDiv = document.createElement('div');
+    outputCodeAreaDiv.id = 'qwebr-output-code-area-' + qwebrCounter;
+    outputCodeAreaDiv.className = 'qwebr-output-code-area';
+    outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+    // Create pre element inside output code area
+    var preElement = document.createElement('pre');
+    preElement.style.visibility = 'hidden';
+    outputCodeAreaDiv.appendChild(preElement);
+
+    // Create output graph area div
+    var outputGraphAreaDiv = document.createElement('div');
+    outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
+    outputGraphAreaDiv.className = 'qwebr-output-graph-area';
+
+    // Append buttons to the toolbar
+    toolbarDiv.appendChild(leftButtonsDiv);
+    toolbarDiv.appendChild(rightButtonsDiv);
+
+    // Append all elements to the main div
+    mainDiv.appendChild(toolbarDiv);
+    consoleAreaDiv.appendChild(editorDiv);
+    consoleAreaDiv.appendChild(outputCodeAreaDiv);
+    mainDiv.appendChild(consoleAreaDiv);
+    mainDiv.appendChild(outputGraphAreaDiv);
+
+    return mainDiv;
+  }
+
+  // Function that adds output structure for non-interactive output
+  globalThis.qwebrCreateNonInteractiveOutputElement = function(qwebrCounter, qwebrOptions) {
+    // Create main div element
+    var mainDiv = document.createElement('div');
+    mainDiv.id = 'qwebr-noninteractive-area-' + qwebrCounter;
+    mainDiv.className = `qwebr-noninteractive-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+    
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
+    
+    // Create a status container div
+    var statusContainer = createLoadingContainer(qwebrCounter);
+
+    // Create output code area div
+    var outputCodeAreaDiv = document.createElement('div');
+    outputCodeAreaDiv.id = 'qwebr-output-code-area-' + qwebrCounter;
+    outputCodeAreaDiv.className = 'qwebr-output-code-area';
+    outputCodeAreaDiv.setAttribute('aria-live', 'assertive');
+
+    // Create pre element inside output code area
+    var preElement = document.createElement('pre');
+    preElement.style.visibility = 'hidden';
+    outputCodeAreaDiv.appendChild(preElement);
+
+    // Create output graph area div
+    var outputGraphAreaDiv = document.createElement('div');
+    outputGraphAreaDiv.id = 'qwebr-output-graph-area-' + qwebrCounter;
+    outputGraphAreaDiv.className = 'qwebr-output-graph-area';
+
+    // Append all elements to the main div
+    mainDiv.appendChild(statusContainer);
+    mainDiv.appendChild(outputCodeAreaDiv);
+    mainDiv.appendChild(outputGraphAreaDiv);
+
+    return mainDiv;
+  };
+
+  // Function that adds a stub in the page to indicate a setup cell was used.
+  globalThis.qwebrCreateNonInteractiveSetupElement = function(qwebrCounter, qwebrOptions) {
+    // Create main div element
+    var mainDiv = document.createElement('div');
+    mainDiv.id = `qwebr-noninteractive-setup-area-${qwebrCounter}`;
+    mainDiv.className = `qwebr-noninteractive-setup-area`;
+    if (qwebrOptions.classes) {
+      mainDiv.className += " " + qwebrOptions.classes
+    }
+
+
+    // Add a unique cell identifier that users can customize
+    if (qwebrOptions.label) {
+      mainDiv.setAttribute('data-id', qwebrOptions.label);
+    }
+
+    // Create a status container div
+    var statusContainer = createLoadingContainer(qwebrCounter);
+
+    // Append status onto the main div
+    mainDiv.appendChild(statusContainer);
+
+    return mainDiv;
+  }
+
+
+  // Function to create loading container with specified ID
+  globalThis.createLoadingContainer = function(qwebrCounter) {
+
+    // Create a status container
+    const container = document.createElement('div');
+    container.id = `qwebr-non-interactive-loading-container-${qwebrCounter}`;
+    container.className = 'qwebr-non-interactive-loading-container qwebr-cell-needs-evaluation';
+
+    // Create an R project logo to indicate its a code space
+    const rProjectIcon = document.createElement('i');
+    rProjectIcon.className = 'fa-brands fa-r-project fa-3x qwebr-r-project-logo';
+
+    // Setup a loading icon from font awesome
+    const spinnerIcon = document.createElement('i');
+    spinnerIcon.className = 'fa-solid fa-spinner fa-spin fa-1x qwebr-icon-status-spinner';
+
+    // Add a section for status text
+    const statusText = document.createElement('p');
+    statusText.id = `qwebr-status-text-${qwebrCounter}`;
+    statusText.className = `qwebr-status-text qwebr-cell-needs-evaluation`;
+    statusText.innerText = 'Loading webR...';
+
+    // Incorporate an inner container
+    const innerContainer = document.createElement('div');
+
+    // Append elements to the inner container
+    innerContainer.appendChild(spinnerIcon);
+    innerContainer.appendChild(statusText);
+
+    // Append elements to the main container
+    container.appendChild(rProjectIcon);
+    container.appendChild(innerContainer);
+
+    return container;
+  }
+  </script>
+  <script type="module">
+  // Function to install a single package
+  async function qwebrInstallRPackage(packageName) {
+    await mainWebR.evalRVoid(`webr::install('${packageName}');`);
+  }
+
+  // Function to load a single package
+  async function qwebrLoadRPackage(packageName) {
+    await mainWebR.evalRVoid(`require('${packageName}', quietly = TRUE)`);
+  }
+
+  // Generic function to process R packages
+  async function qwebrProcessRPackagesWithStatus(packages, processType, displayStatusMessageUpdate = true) {
+    // Switch between contexts
+    const messagePrefix = processType === 'install' ? 'Installing' : 'Loading';
+
+    // Modify button state
+    qwebrSetInteractiveButtonState(`🟡 ${messagePrefix} package ...`, false);
+
+    // Iterate over packages
+    for (let i = 0; i < packages.length; i++) {
+      const activePackage = packages[i];
+      const formattedMessage = `${messagePrefix} package ${i + 1} out of ${packages.length}: ${activePackage}`;
+
+      // Display the update in header
+      if (displayStatusMessageUpdate) {
+        qwebrUpdateStatusHeader(formattedMessage);
+      }
+
+      // Display the update in non-active areas
+      qwebrUpdateStatusMessage(formattedMessage);
+
+      // Run package installation
+      if (processType === 'install') {
+        await qwebrInstallRPackage(activePackage);
+      } else {
+        await qwebrLoadRPackage(activePackage);
+      }
+    }
+
+    // Clean slate
+    if (processType === 'load') {
+      await mainWebR.flush();
+    }
+  }
+
+  // Start a timer
+  const initializeWebRTimerStart = performance.now();
+
+  // Encase with a dynamic import statement
+  globalThis.qwebrInstance = import(qwebrCustomizedWebROptions.baseURL + "webr.mjs").then(
+    async ({ WebR, ChannelType }) => {
+      // Populate WebR options with defaults or new values based on `webr` meta
+      globalThis.mainWebR = new WebR(qwebrCustomizedWebROptions);
+
+      // Initialization WebR
+      await mainWebR.init();
+
+      // Setup a shelter
+      globalThis.mainWebRCodeShelter = await new mainWebR.Shelter();
+
+      // Setup a pager to allow processing help documentation
+      await mainWebR.evalRVoid('webr::pager_install()');
+
+      // Setup a viewer to allow processing htmlwidgets.
+      // This might not be available in old webr version
+      await mainWebR.evalRVoid('try({ webr::viewer_install() })');
+
+      // Override the existing install.packages() to use webr::install()
+      await mainWebR.evalRVoid('webr::shim_install()');
+
+      // Specify the repositories to pull from
+      // Note: webR does not use the `repos` option, but instead uses `webr_pkg_repos`
+      // inside of `install()`. However, other R functions still pull from `repos`.
+      await mainWebR.evalRVoid(`
+        options(
+          webr_pkg_repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')}),
+          repos = c(${qwebrPackageRepoURLS.map(repoURL => `'${repoURL}'`).join(',')})
+        )
+      `);
+
+      // Check to see if any packages need to be installed
+      if (qwebrSetupRPackages) {
+        // Obtain only a unique list of packages
+        const uniqueRPackageList = Array.from(new Set(qwebrInstallRPackagesList));
+
+        // Install R packages one at a time (either silently or with a status update)
+        await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'install', qwebrShowStartupMessage);
+
+        if (qwebrAutoloadRPackages) {
+          // Load R packages one at a time (either silently or with a status update)
+          await qwebrProcessRPackagesWithStatus(uniqueRPackageList, 'load', qwebrShowStartupMessage);
+        }
+      }
+    }
+  );
+
+  // Stop timer
+  const initializeWebRTimerEnd = performance.now();
+
+  </script>
+  <script type="module">
+  // Function to verify a given JavaScript Object is empty
+  globalThis.qwebrIsObjectEmpty = function (arr) {
+      return Object.keys(arr).length === 0;
+  }
+
+  // Global version of the Escape HTML function that converts HTML
+  // characters to their HTML entities.
+  globalThis.qwebrEscapeHTMLCharacters = function(unsafe) {
+      return unsafe
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+  };
+
+  // Passthrough results
+  globalThis.qwebrIdentity = function(x) {
+      return x;
+  };
+
+  // Append a comment
+  globalThis.qwebrPrefixComment = function(x, comment) {
+      return `${comment}${x}`;
+  };
+
+  // Function to store the code in the history
+  globalThis.qwebrLogCodeToHistory = function(codeToRun, options) {
+      qwebrRCommandHistory.push(
+          `# Ran code in ${options.label} at ${new Date().toLocaleString()} ----\n${codeToRun}`
+      );
+  };
+
+  // Function to attach a download button onto the canvas
+  // allowing the user to download the image.
+  function qwebrImageCanvasDownloadButton(canvas, canvasContainer) {
+
+      // Create the download button
+      const downloadButton = document.createElement('button');
+      downloadButton.className = 'qwebr-canvas-image-download-btn';
+      downloadButton.textContent = 'Download Image';
+      canvasContainer.appendChild(downloadButton);
+
+      // Trigger a download of the image when the button is clicked
+      downloadButton.addEventListener('click', function() {
+          const image = canvas.toDataURL('image/png');
+          const link = document.createElement('a');
+          link.href = image;
+          link.download = 'qwebr-canvas-image.png';
+          link.click();
+      });
+  }
+
+
+  // Function to parse the pager results
+  globalThis.qwebrParseTypePager = async function (msg) {
+
+      // Split out the event data
+      const { path, title, deleteFile } = msg.data;
+
+      // Process the pager data by reading the information from disk
+      const paged_data = await mainWebR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          // Remove excessive backspace characters until none remain
+          while(content.match(/.[\b]/)){
+              content = content.replace(/.[\b]/g, '');
+          }
+
+          // Returned cleaned data
+          return content;
+      });
+
+      // Unlink file if needed
+      if (deleteFile) {
+          await mainWebR.FS.unlink(path);
+      }
+
+      // Return extracted data with spaces
+      return paged_data;
+  };
+
+
+  // Function to parse the browse results
+  globalThis.qwebrParseTypeBrowse = async function (msg) {
+
+      // msg.type === "browse"
+      const path = msg.data.url;
+
+      // Process the browse data by reading the information from disk
+      const browse_data = await mainWebR.FS.readFile(path).then((data) => {
+          // Obtain the file content
+          let content = new TextDecoder().decode(data);
+
+          return content;
+      });
+
+      // Return extracted data as-is
+      return browse_data;
+  };
+
+  // Function to run the code using webR and parse the output
+  globalThis.qwebrComputeEngine = async function(
+      codeToRun,
+      elements,
+      options) {
+
+      // Call into the R compute engine that persists within the document scope.
+      // To be prepared for all scenarios, the following happens:
+      // 1. We setup a canvas device to write to by making a namespace call into the {webr} package
+      // 2. We use values inside of the options array to set the figure size.
+      // 3. We capture the output stream information (STDOUT and STERR)
+      // 4. We disable the current device's image creation.
+      // 5. Piece-wise parse the results into the different output areas
+
+      // Create a pager variable for help/file contents
+      let pager = [];
+
+      // Handle how output is processed
+      let showMarkup = options.results === "markup" && options.output !== "asis";
+      let processOutput;
+
+      if (showMarkup) {
+          processOutput = qwebrEscapeHTMLCharacters;
+      } else {
+          processOutput = qwebrIdentity;
+      }
+
+      // ----
+      // Convert from Inches to Pixels by using DPI (dots per inch)
+      // for bitmap devices (dpi * inches = pixels)
+      let fig_width = options["fig-width"] * options["dpi"];
+      let fig_height = options["fig-height"] * options["dpi"];
+
+      // Initialize webR
+      await mainWebR.init();
+
+      // Configure capture output
+      let captureOutputOptions = {
+          withAutoprint: true,
+          captureStreams: true,
+          captureConditions: false,
+          // env: webR.objs.emptyEnv, // maintain a global environment for webR v0.2.0
+      };
+
+      // Determine if the browser supports OffScreen
+      if (qwebrOffScreenCanvasSupport()) {
+          // Mirror default options of webr::canvas()
+          // with changes to figure height and width.
+          captureOutputOptions.captureGraphics = {
+              width: fig_width,
+              height: fig_height,
+              bg: "white", // default: transparent
+              pointsize: 12,
+              capture: true
+          };
+      }  else {
+          // Disable generating graphics
+          captureOutputOptions.captureGraphics = false;
+      }
+
+      // Store the code to run in history
+      qwebrLogCodeToHistory(codeToRun, options);
+
+      // Setup a webR canvas by making a namespace call into the {webr} package
+      // Evaluate the R code
+      // Remove the active canvas silently
+      const result = await mainWebRCodeShelter.captureR(
+          `${codeToRun}`,
+          captureOutputOptions
+      );
+
+      // -----
+
+      // Start attempting to parse the result data
+      processResultOutput:try {
+
+          // Avoid running through output processing
+          if (options.results === "hide" || options.output === "false") {
+              break processResultOutput;
+          }
+
+          // Merge output streams of STDOUT and STDErr (messages and errors are combined.)
+          // Require both `warning` and `message` to be true to display `STDErr`.
+          const out = result.output
+          .filter(
+              evt => evt.type === "stdout" ||
+              ( evt.type === "stderr" && (options.warning === "true" && options.message === "true"))
+          )
+          .map((evt, index) => {
+              const className = `qwebr-output-code-${evt.type}`;
+              const outputResult = qwebrPrefixComment(processOutput(evt.data), options.comment);
+              return `<code id="${className}-editor-${elements.id}-result-${index + 1}" class="${className}">${outputResult}</code>`;
+          })
+          .join("\n");
+
+
+          // Clean the state
+          // We're now able to process pager events.
+          // As a result, we cannot maintain a true 1-to-1 output order
+          // without individually feeding each line
+          const msgs = await mainWebR.flush();
+
+          // Use `map` to process the filtered "pager" events asynchronously
+          const pager = [];
+          const browse = [];
+
+          await Promise.all(
+              msgs.map(
+                  async (msg) => {
+
+                      const msgType = msg.type || "unknown";
+
+                      switch(msgType) {
+                          case 'pager':
+                              const pager_data = await qwebrParseTypePager(msg);
+                              pager.push(pager_data);
+                              break;
+                          case 'browse':
+                              const browse_data = await qwebrParseTypeBrowse(msg);
+                              browse.push(browse_data);
+                              break;
+                      }
+                      return;
+                  }
+              )
+          );
+
+          // Nullify the output area of content
+          elements.outputCodeDiv.innerHTML = "";
+          elements.outputGraphDiv.innerHTML = "";
+
+          // Design an output object for messages
+          const pre = document.createElement("pre");
+          if (/\S/.test(out)) {
+              // Display results as HTML elements to retain output styling
+              const div = document.createElement("div");
+              div.innerHTML = out;
+
+              // Calculate a scaled font-size value
+              const scaledFontSize = qwebrScaledFontSize(
+                  elements.outputCodeDiv, options);
+
+              // Override output code cell size
+              pre.style.fontSize = `${scaledFontSize}px`;
+              pre.appendChild(div);
+          } else {
+              // If nothing is present, hide the element.
+              pre.style.visibility = "hidden";
+          }
+
+          elements.outputCodeDiv.appendChild(pre);
+
+          // Determine if we have graphs to display
+          if (result.images.length > 0) {
+
+              // Create figure element
+              const figureElement = document.createElement("figure");
+              figureElement.className = "qwebr-canvas-image";
+
+              // Place each rendered graphic onto a canvas element
+              result.images.forEach((img) => {
+
+                  // Construct canvas for object
+                  const canvas = document.createElement("canvas");
+
+                  // Add an image download button
+                  qwebrImageCanvasDownloadButton(canvas, figureElement);
+
+                  // Set canvas size to image
+                  canvas.width = img.width;
+                  canvas.height = img.height;
+
+                  // Apply output truncations
+                  canvas.style.width = options["out-width"] ? options["out-width"] : `${fig_width}px`;
+                  if (options["out-height"]) {
+                      canvas.style.height = options["out-height"];
+                  }
+
+                  // Apply styling
+                  canvas.style.display = "block";
+                  canvas.style.margin = "auto";
+
+                  // Draw image onto Canvas
+                  const ctx = canvas.getContext("2d");
+                  ctx.drawImage(img, 0, 0, img.width, img.height);
+
+                  // Append canvas to figure output area
+                  figureElement.appendChild(canvas);
+
+              });
+
+              if (options['fig-cap']) {
+                  // Create figcaption element
+                  const figcaptionElement = document.createElement('figcaption');
+                  figcaptionElement.innerText = options['fig-cap'];
+                  // Append figcaption to figure
+                  figureElement.appendChild(figcaptionElement);
+              }
+
+              elements.outputGraphDiv.appendChild(figureElement);
+
+          }
+
+          // Display the pager data
+          if (pager.length > 0) {
+              // Use the `pre` element to preserve whitespace.
+              pager.forEach((paged_data, index) => {
+                  const pre_pager = document.createElement("pre");
+                  pre_pager.innerText = paged_data;
+                  pre_pager.classList.add("qwebr-output-code-pager");
+                  pre_pager.setAttribute("id", `qwebr-output-code-pager-editor-${elements.id}-result-${index + 1}`);
+                  elements.outputCodeDiv.appendChild(pre_pager);
+              });
+          }
+
+          // Display the browse data
+          if (browse.length > 0) {
+              // Use the `pre` element to preserve whitespace.
+              browse.forEach((browse_data, index) => {
+                  const iframe_browse = document.createElement('iframe');
+                  iframe_browse.classList.add("qwebr-output-code-browse");
+                  iframe_browse.setAttribute("id", `qwebr-output-code-browse-editor-${elements.id}-result-${index + 1}`);
+                  iframe_browse.style.width = "100%";
+                  iframe_browse.style.minHeight = "500px";
+                  elements.outputCodeDiv.appendChild(iframe_browse);
+
+                  iframe_browse.contentWindow.document.open();
+                  iframe_browse.contentWindow.document.write(browse_data);
+                  iframe_browse.contentWindow.document.close();
+              });
+          }
+      } finally {
+          // Clean up the remaining code
+          mainWebRCodeShelter.purge();
+      }
+  };
+
+  // Function to execute the code (accepts code as an argument)
+  globalThis.qwebrExecuteCode = async function (
+      codeToRun,
+      id,
+      options = {}) {
+
+      // If options are not passed, we fall back on the bare minimum to handle the computation
+      if (qwebrIsObjectEmpty(options)) {
+          options = {
+              "context": "interactive",
+              "fig-width": 7, "fig-height": 5,
+              "out-width": "700px", "out-height": "",
+              "dpi": 72,
+              "results": "markup",
+              "warning": "true", "message": "true",
+          };
+      }
+
+      // Next, we access the compute areas values
+      const elements = {
+          runButton: document.getElementById(`qwebr-button-run-${id}`),
+          outputCodeDiv: document.getElementById(`qwebr-output-code-area-${id}`),
+          outputGraphDiv: document.getElementById(`qwebr-output-graph-area-${id}`),
+          id: id,
+      }
+
+      // Disallowing execution of other code cells
+      document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+          btn.disabled = true;
+      });
+
+      if (options.context == EvalTypes.Interactive) {
+          // Emphasize the active code cell
+          elements.runButton.innerHTML = '<i class="fa-solid fa-spinner fa-spin qwebr-icon-status-spinner"></i> <span>Run Code</span>';
+      }
+
+      // Evaluate the code and parse the output into the document
+      await qwebrComputeEngine(codeToRun, elements, options);
+
+      // Switch to allowing execution of code
+      document.querySelectorAll(".qwebr-button-run").forEach((btn) => {
+          btn.disabled = false;
+      });
+
+      if (options.context == EvalTypes.Interactive) {
+          // Revert to the initial code cell state
+          elements.runButton.innerHTML = '<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>';
+      }
+  }
+
+  </script>
 </head>
 <body class="quarto-light">
+<script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs/loader.js"></script>
+<script type="module" id="qwebr-monaco-editor-init">
+
+  // Configure the Monaco Editor's loader
+  require.config({
+    paths: {
+      'vs': 'https://cdn.jsdelivr.net/npm/monaco-editor@0.47.0/min/vs'
+    }
+  });
+</script>
+<script type="module">
+// Function to update Monaco Editors when body class changes
+function updateMonacoEditorsOnBodyClassChange() {
+    // Select the body element
+    const body = document.querySelector('body');
+
+    // Options for the observer (which mutations to observe)
+    const observerOptions = {
+        attributes: true,  // Observe changes to attributes
+        attributeFilter: ['class'] // Only observe changes to the 'class' attribute
+    };
+
+    // Callback function to execute when mutations are observed
+    const bodyClassChangeCallback = function(mutationsList, observer) {
+        for(let mutation of mutationsList) {
+            if (mutation.type === 'attributes' && mutation.attributeName === 'class') {
+                // Class attribute has changed
+                // Update all Monaco Editors on the page
+                updateMonacoEditorTheme();
+            }
+        }
+    };
+
+    // Create an observer instance linked to the callback function
+    const observer = new MutationObserver(bodyClassChangeCallback);
+
+    // Start observing the target node for configured mutations
+    observer.observe(body, observerOptions);
+}
+
+// Function to update all instances of Monaco Editors on the page
+function updateMonacoEditorTheme() {
+    // Determine what VS Theme to use
+    const vsThemeToUse = document.body.classList.contains("quarto-dark") ? 'vs-dark' : 'vs' ;
+
+    // Iterate through all initialized Monaco Editors
+    qwebrEditorInstances.forEach( function(editorInstance) { 
+        editorInstance.updateOptions({ theme: vsThemeToUse }); 
+    });
+}
+
+// Call the function to start observing changes to body class
+updateMonacoEditorsOnBodyClassChange();
+</script>
+<script type="module">
+// Global array to store Monaco Editor instances
+globalThis.qwebrEditorInstances = [];
+
+function isValidCodeLineNumbers(stringCodeLineNumbers) {
+  // Regular expression to match valid input strings
+  const regex = /^(\d+(-\d+)?)(,\d+(-\d+)?)*$/;
+  return regex.test(stringCodeLineNumbers);
+}
+
+// Function that builds and registers a Monaco Editor instance    
+globalThis.qwebrCreateMonacoEditorInstance = function (cellData) {
+
+  const initialCode = cellData.code;
+  const qwebrCounter = cellData.id;
+  const qwebrOptions = cellData.options;
+
+  // Retrieve the previously created document elements
+  let runButton = document.getElementById(`qwebr-button-run-${qwebrCounter}`);
+  let resetButton = document.getElementById(`qwebr-button-reset-${qwebrCounter}`);
+  let copyButton = document.getElementById(`qwebr-button-copy-${qwebrCounter}`);
+  let editorDiv = document.getElementById(`qwebr-editor-${qwebrCounter}`);
+
+  // Load the Monaco Editor and create an instance
+  let editor;
+  require(['vs/editor/editor.main'], function () {
+    editor = monaco.editor.create(editorDiv, {
+      value: initialCode,
+      language: 'r',
+      theme: 'vs-light',
+      automaticLayout: true,           // Works wonderfully with RevealJS
+      scrollBeyondLastLine: false,
+      minimap: {
+        enabled: false
+      },
+      fontSize: qwebrScaledFontSize(editorDiv, qwebrOptions),         
+      renderLineHighlight: "none",      // Disable current line highlighting
+      hideCursorInOverviewRuler: true,  // Remove cursor indictor in right hand side scroll bar
+      readOnly: qwebrOptions['read-only'] ?? false,
+      quickSuggestions: qwebrOptions['editor-quick-suggestions'] ?? false,
+      wordWrap: (qwebrOptions['editor-word-wrap'] == 'true' ? "on" : "off")
+    });
+
+    // Store the official counter ID to be used in keyboard shortcuts
+    editor.__qwebrCounter = qwebrCounter;
+
+    // Store the official div container ID
+    editor.__qwebrEditorId = `qwebr-editor-${qwebrCounter}`;
+
+    // Store the initial code value and options
+    editor.__qwebrinitialCode = initialCode;
+    editor.__qwebrOptions = qwebrOptions;
+
+    // Set at the model level the preferred end of line (EOL) character to LF.
+    // This prevent `\r\n` from being given to the webR engine if the user is on Windows.
+    // See details in: https://github.com/coatless/quarto-webr/issues/94
+    // Associated error text: 
+    // Error: <text>:1:7 unexpected input
+
+    // Retrieve the underlying model
+    const model = editor.getModel();
+    // Set EOL for the model
+    model.setEOL(monaco.editor.EndOfLineSequence.LF);
+    
+    // Dynamically modify the height of the editor window if new lines are added.
+    let ignoreEvent = false;
+    const updateHeight = () => {
+      // Increment editor height by 2 to prevent vertical scroll bar from appearing
+      const contentHeight = editor.getContentHeight() + 2;
+
+      // Retrieve editor-max-height option
+      const maxEditorHeight = qwebrOptions['editor-max-height'];
+
+      // If editor-max-height is missing, allow infinite growth. Otherwise, threshold.
+      const editorHeight = !maxEditorHeight ?  contentHeight : Math.min(contentHeight, maxEditorHeight);
+
+      // We're avoiding a width change
+      //editorDiv.style.width = `${width}px`;
+      editorDiv.style.height = `${editorHeight}px`;
+      try {
+        ignoreEvent = true;
+
+        // The key to resizing is this call
+        editor.layout();
+      } finally {
+        ignoreEvent = false;
+      }
+    };
+
+    // Function to generate decorations to highlight lines
+    // in the editor based on input string.
+    function decoratorHighlightLines(codeLineNumbers) {
+      // Store the lines to be lighlight
+      let linesToHighlight = [];
+      
+      // Parse the codeLineNumbers string to get the line numbers to highlight
+      // First, split the string by commas
+      codeLineNumbers.split(',').forEach(part => {
+        // Check if we have a range of lines
+        if (part.includes('-')) {
+            // Handle range of lines (e.g., "6-8")
+            const [start, end] = part.split('-').map(Number);
+            for (let i = start; i <= end; i++) {
+                linesToHighlight.push(i);
+            }
+        } else {
+            // Handle single line (e.g., "7")
+            linesToHighlight.push(Number(part));
+        }
+      });
+  
+      // Create monaco decorations for the lines to highlight
+      const decorations = linesToHighlight.map(lineNumber => ({
+          range: new monaco.Range(lineNumber, 1, lineNumber, 1),
+          options: {
+              isWholeLine: true,
+              className: 'qwebr-editor-highlight-line'
+          }
+      }));
+  
+      // Return decorations to be applied to the editor
+      return decorations;
+    }
+
+    // Ensure that the editor-code-line-numbers option is set and valid
+    // then apply styling
+    if (qwebrOptions['editor-code-line-numbers']) {
+      // Remove all whitespace from the string
+      const codeLineNumbers = qwebrOptions['editor-code-line-numbers'].replace(/\s/g,'');
+      // Check if the string is valid for line numbers, e.g., "1,3-5,7"
+      if (isValidCodeLineNumbers(codeLineNumbers)) {
+        // Apply the decorations to the editor
+        editor.createDecorationsCollection(decoratorHighlightLines(codeLineNumbers));
+      } else {
+        // Warn the user that the input is invalid
+        console.warn(`Invalid "editor-code-line-numbers" value in code cell ${qwebrOptions['label']}: ${codeLineNumbers}`);
+      }
+    }
+
+    // Helper function to check if selected text is empty
+    function isEmptyCodeText(selectedCodeText) {
+      return (selectedCodeText === null || selectedCodeText === undefined || selectedCodeText === "");
+    }
+
+    // Registry of keyboard shortcuts that should be re-added to each editor window
+    // when focus changes.
+    const addWebRKeyboardShortCutCommands = () => {
+      // Add a keydown event listener for Shift+Enter to run all code in cell
+      editor.addCommand(monaco.KeyMod.Shift | monaco.KeyCode.Enter, () => {
+
+        // Retrieve all text inside the editor
+        qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
+      });
+
+      // Add a keydown event listener for CMD/Ctrl+Enter to run selected code
+      editor.addCommand(monaco.KeyMod.CtrlCmd | monaco.KeyCode.Enter, () => {
+
+        // Get the selected text from the editor
+        const selectedText = editor.getModel().getValueInRange(editor.getSelection());
+        // Check if no code is selected
+        if (isEmptyCodeText(selectedText)) {
+          // Obtain the current cursor position
+          let currentPosition = editor.getPosition();
+          // Retrieve the current line content
+          let currentLine = editor.getModel().getLineContent(currentPosition.lineNumber);
+
+          // Propose a new position to move the cursor to
+          let newPosition = new monaco.Position(currentPosition.lineNumber + 1, 1);
+
+          // Check if the new position is beyond the last line of the editor
+          if (newPosition.lineNumber > editor.getModel().getLineCount()) {
+            // Add a new line at the end of the editor
+            editor.executeEdits("addNewLine", [{
+            range: new monaco.Range(newPosition.lineNumber, 1, newPosition.lineNumber, 1),
+            text: "\n", 
+            forceMoveMarkers: true,
+            }]);
+          }
+          
+          // Run the entire line of code.
+          qwebrExecuteCode(currentLine, editor.__qwebrCounter, editor.__qwebrOptions);
+
+          // Move cursor to new position
+          editor.setPosition(newPosition);
+        } else {
+          // Code to run when Ctrl+Enter is pressed with selected code
+          qwebrExecuteCode(selectedText, editor.__qwebrCounter, editor.__qwebrOptions);
+        }
+      });
+    }
+
+    // Register an on focus event handler for when a code cell is selected to update
+    // what keyboard shortcut commands should work.
+    // This is a workaround to fix a regression that happened with multiple
+    // editor windows since Monaco 0.32.0 
+    // https://github.com/microsoft/monaco-editor/issues/2947
+    editor.onDidFocusEditorText(addWebRKeyboardShortCutCommands);
+
+    // Register an on change event for when new code is added to the editor window
+    editor.onDidContentSizeChange(updateHeight);
+
+    // Manually re-update height to account for the content we inserted into the call
+    updateHeight();
+
+    // Store the editor instance in the global dictionary
+    qwebrEditorInstances[editor.__qwebrCounter] = editor;
+
+  });
+
+  // Add a click event listener to the run button
+  runButton.onclick = function () {
+    qwebrExecuteCode(editor.getValue(), editor.__qwebrCounter, editor.__qwebrOptions);
+  };
+
+  // Add a click event listener to the reset button
+  copyButton.onclick = function () {
+    // Retrieve current code data
+    const data = editor.getValue();
+    
+    // Write code data onto the clipboard.
+    navigator.clipboard.writeText(data || "");
+  };
+  
+  // Add a click event listener to the copy button
+  resetButton.onclick = function () {
+    editor.setValue(editor.__qwebrinitialCode);
+  };
+  
+}
+</script>
   <div class="reveal">
     <div class="slides">
 
@@ -223,7 +2060,7 @@ alper yilmaz
 </div>
 </div>
 
-  <p class="date">2025-05-09</p>
+  <p class="date">2026-11-02</p>
 </section>
 <section class="slide level2">
 
@@ -247,11 +2084,10 @@ alper yilmaz
 
 <h3 id="birçok-kaynak-mevcut">Birçok kaynak mevcut</h3>
 <ul>
-<li><a href="https://ggplot2.tidyverse.org/reference/">Official ggplot2 documentation</a></li>
-<li><a href="https://ggplot2.tidyverse.org/reference/">Official ggplot2 documentation</a></li>
-<li><a href="https://github.com/hadley/ggplot2-book">ggplot2 book</a></li>
+<li><a href="https://ggplot2.tidyverse.org/reference/">Resmi ggplot2 dokümantasyonu</a></li>
+<li><a href="https://github.com/hadley/ggplot2-book">ggplot2 kitabı</a></li>
 <li><a href="http://www.cookbook-r.com/Graphs/">Cookbook for R</a></li>
-<li><a href="https://r4ds.had.co.nz/data-visualisation.html">Data visualisation chapter in R for Data Science</a></li>
+<li><em>R for Data Science</em> kitabındaki <a href="https://r4ds.had.co.nz/data-visualisation.html">veri görselleştirme bölümü</a></li>
 <li><a href="https://www.cedricscherer.com/2019/08/05/a-ggplot2-tutorial-for-beautiful-plotting-in-r/">A ggplot2 Tutorial for Beautiful Plotting in R (C. Scherer)</a></li>
 <li><a href="https://socviz.co/">Data visualization: a practical introduction (K. Healy)</a></li>
 <li><a href="https://clauswilke.com/dataviz/">Fundamentals of data visualization (C. Wilke)</a></li>
@@ -262,7 +2098,7 @@ alper yilmaz
 <h3 id="cheatsheet">Cheatsheet</h3>
 
 <img data-src="images/ggplot-cheatsheet.png" class="r-stretch"><div class="footer">
-<p>Kaynak: <a href="https://posit.co/wp-content/uploads/2022/10/data-visualization-1.pdf">Posit: Data visualization with ggplot2 cheatsheet</a></p>
+<p>Kaynak: <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">Rstudio ggplot2 cheatsheet</a></p>
 </div>
 </section>
 <section class="slide level2">
@@ -275,7 +2111,7 @@ alper yilmaz
 </ul>
 
 <img data-src="images/tidy-1.png" class="r-stretch"><div class="footer">
-<p>Kaynak: <em>R for Data Science</em> book, <a href="https://r4ds.had.co.nz/tidy-data.html">Chapter 12 Tidy Data</a></p>
+<p>Kaynak: <em>R for Data Science</em> kitabı, <a href="https://r4ds.had.co.nz/tidy-data.html">Bölüm 12 Tidy Data</a></p>
 </div>
 </section>
 <section class="slide level2">
@@ -315,15 +2151,12 @@ alper yilmaz
 <h3 id="ggplot-katmanları">ggplot katmanları</h3>
 
 <img data-src="images/ge_themes.png" class="r-stretch"><p><strong>Scales</strong>, <em>Geometry</em> ve <em>Facets</em> arasında bir katman olarak sayılabilir. <br> <br> <br></p>
-<div class="footer">
-<p>Kaynak: <a href="https://englelab.gatech.edu/useRguide/introduction-to-ggplot2.html">Chapter 15 - Introduction to ggplot2</a> of <em>EngleLab: useRguide</em> online book.</p>
-</div>
 </section>
 <section class="slide level2">
 
 <h3 id="ilk-görsel">İlk görsel</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
 <span id="cb3-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
@@ -332,7 +2165,7 @@ alper yilmaz
 
 <h3 id="ikinci-görsel-veri-katmanı">İkinci görsel / veri katmanı</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
 <span id="cb4-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
@@ -351,7 +2184,7 @@ alper yilmaz
 
 <h3 id="geomlar"><em>geom</em>lar</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
 <span id="cb5-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb5-3"><a aria-label="3"></a>  <span class="fu">geom_point</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
@@ -402,26 +2235,26 @@ alper yilmaz
 <p><strong>Warning</strong></p>
 </div>
 <div class="callout-content">
-<p>Fonksiyonları birleştirmek için <code>|&gt;</code> veya <code>%&gt;%</code> kullanılırken ggplot katmanlarını birleştirmek için <code>+</code> kullanılır</p>
+<p>Fonksiyonları birleştirmek için <code>%&gt;%</code> veya <code>|&gt;</code> kullanılırken ggplot katmanlarını birleştirmek için <code>+</code> kullanılır</p>
 </div>
 </div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="geom-properties">Geom properties</h3>
-<p>Size, color, shape, width, transparency (alpha) of geoms can be either:</p>
+<h3 id="geom-özellikleri">Geom özellikleri</h3>
+<p>Geomların boyutu, rengi, şekli, genişliği ve saydamlığı (alpha):</p>
 <ul>
-<li>set to constant value</li>
-<li>or, mapped to variable in our data</li>
+<li>sabit bir değer olarak verilebilir</li>
+<li>ya da verimizdeki bir değişkene eşlenebilir</li>
 </ul>
 </section>
 <section class="slide level2">
 
-<h3 id="change-color-of-all-points">Change color of all points</h3>
+<h3 id="tüm-noktaların-rengini-değiştirme">Tüm noktaların rengini değiştirme</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb7-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb7-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb7-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">color=</span><span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
@@ -429,10 +2262,10 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-6-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="map-color-to-variable">Map color to variable</h3>
+<h3 id="rengi-bir-değişkene-eşleme">Rengi bir değişkene eşleme</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb8-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb8-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">color=</span>continent))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
@@ -440,25 +2273,25 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-7-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="color-to-map-or-not-to-map">Color: to map or not to map</h3>
-<p>Not mapping</p>
+<h3 id="renk-eşlemek-vs.-eşlememek">Renk: eşlemek vs.&nbsp;eşlememek</h3>
+<p>Eşlemeden (sabit değer)</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a aria-label="1"></a><span class="fu">geom_point</span>(<span class="at">colour =</span> <span class="st">"red"</span>)</span>
-<span id="cb9-2"><a aria-label="2"></a><span class="co"># colour is given a concrete value ('red')</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb9-2"><a aria-label="2"></a><span class="co"># colour'a somut bir değer ('red') verilir</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>vs.&nbsp;mapping</p>
+<p>vs.&nbsp;eşleyerek</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">colour =</span> continent))</span>
-<span id="cb10-2"><a aria-label="2"></a><span class="co"># colour maps a *variable* (using `aes`)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-2"><a aria-label="2"></a><span class="co"># colour bir *değişkeni* eşler (`aes` ile)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
 <section class="slide level2">
 
-<h3 id="mapping-more-features">Mapping more features</h3>
-<p>Let’s map color to continent and point size to population</p>
+<h3 id="daha-fazla-özelliği-eşleme">Daha fazla özelliği eşleme</h3>
+<p>Rengi kıtaya (<code>continent</code>), nokta boyutunu nüfusa (<code>pop</code>) eşleyelim</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb11-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb11-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb11-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
@@ -466,18 +2299,18 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-10-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="mapped-values-can-be-scaled-scales-layer">Mapped values can be scaled (<em>Scales</em> layer)</h3>
-<p>Colors of discrete values are controlled by <code>scale_color_discrete</code>, <code>scale_color_manual</code> (and much more color palette packages)</p>
-<p>Colors of continuous data is controlled by <code>scale_color_continuous</code>, <code>scale_color_gradient</code> (and much more color palette packages)</p>
-<p><code>continent</code> is discrete and <code>lifeExp</code> is continuous.</p>
-<p>Let’s map color to <code>continent</code> and then modify the colors.</p>
+<h3 class="smaller" id="eşlenen-değerler-ölçeklenebilir-scales-katmanı">Eşlenen değerler ölçeklenebilir (<em>Scales</em> katmanı)</h3>
+<p>Ayrık değerlerin renkleri <code>scale_color_discrete</code>, <code>scale_color_manual</code> (ve daha birçok renk paleti paketi) ile düzenlenebilir</p>
+<p>Sürekli verilerin renkleri <code>scale_color_continuous</code>, <code>scale_color_gradient</code> (ve daha birçok renk paleti paketi) ile denetlenir</p>
+<p><code>continent</code> ayrık, <code>lifeExp</code> ise sürekli bir değişkendir.</p>
+<p>Rengi <code>continent</code>’e eşleyip renkleri değiştirelim.</p>
 </section>
 <section class="slide level2">
 
-<h3 id="discrete-mapping-scale">Discrete mapping scale</h3>
+<h3 id="ayrık-eşleme-ölçeği">Ayrık eşleme ölçeği</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb12-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb12-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb12-5"><a aria-label="5"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"orange"</span>, <span class="st">"blue"</span>,<span class="st">"red"</span>,<span class="st">"green"</span>,<span class="st">"black"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -486,11 +2319,11 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-11-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="continuous-mapping-scale">Continuous mapping scale</h3>
-<p>Now, let’s map color to <code>lifeExp</code> and then modify the colors.</p>
+<h3 id="sürekli-eşleme-ölçeği">Sürekli eşleme ölçeği</h3>
+<p>Şimdi rengi <code>lifeExp</code>’e eşleyip renkleri değiştirelim.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb13-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb13-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb13-5"><a aria-label="5"></a>  <span class="fu">scale_color_gradient</span>(<span class="at">low=</span><span class="st">"blue"</span>,<span class="at">high =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -499,15 +2332,22 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-12-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="scaling-of-x-or-y-coordinates">Scaling of X or Y coordinates</h3>
-<p>General rule of thumb, if the range is large and large numbers skew results, use log scale. You can either use <code>mutate</code> and generate new column or you can use scaling functions. (Please type <em>scale_</em> and then press Tab). Below, <code>scale_x_log10()</code> was used for scaling <em>gdpPercap</em> data.</p>
+<h3 class="smaller" id="x-veya-y-koordinatlarının-ölçeklenmesi">X veya Y koordinatlarının ölçeklenmesi</h3>
+<p>Pratik bir kural: değer aralığı çok genişse ve büyük sayılar sonuçları görmeyi engelliyorsa logaritmik ölçek kullanın. Ya <code>mutate</code> ile yeni bir sütun üretebilir ya da ölçekleme fonksiyonlarını kullanabilirsiniz. (<em>scale_</em> yazıp Tab tuşuna basarak fonksiyonları listeleyebilirsiniz). Aşağıda <em>gdpPercap</em> verisini ölçeklemek için <code>scale_x_log10()</code> kullanıldı.</p>
 
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-13-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="multiple-geom_point-layers">Multiple <code>geom_point</code> layers</h3>
-<p><code>ggplot</code> is very powerful and flexible. You can combine different geoms and generate unique plots. Let’s color and emphasize countries which have population greater than 100 million.</p>
-<p>We’ll generate another data frame keeping those countries and then plot as a separate <code>geom_point</code> layer.</p>
+<h3 id="soru-1">Soru</h3>
+<ul>
+<li>Bir önceki görseli mutate kullanarak ( örn. <code>mutate(lifelog=log(lifeExp))</code>) çizerseniz, Y eksenindeki sayılar nasıl görünür?</li>
+</ul>
+</section>
+<section class="slide level2">
+
+<h3 id="birden-fazla-geom_point-katmanı">Birden fazla <code>geom_point</code> katmanı</h3>
+<p><code>ggplot</code> çok güçlü ve esnektir. Farklı geomları birleştirerek özgün grafikler üretebilirsiniz. Nüfusu 100 milyondan fazla olan ülkeleri renklendirip vurgulayalım.</p>
+<p>Bu ülkeleri içeren ayrı bir veri çerçevesi oluşturup bu ülkeleri ayrı bir <code>geom_point</code> katmanı olarak çizeceğiz.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a aria-label="1"></a>populated <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> <span class="fu">filter</span>(pop <span class="sc">&gt;</span> <span class="dv">100000000</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -515,8 +2355,8 @@ alper yilmaz
 <section class="slide level2">
 
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15" data-code-line-numbers="5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb15-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb15-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb15-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb15-5"><a aria-label="5"></a>  <span class="fu">geom_point</span>(<span class="at">data=</span>populated, <span class="at">color=</span><span class="st">"red"</span>, <span class="at">size=</span><span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -525,30 +2365,43 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-15-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="faceting-layer">Faceting layer</h3>
+<h3 id="egzersiz">Egzersiz</h3>
+<p>Siyah noktaları <code>size=3</code>, kırmızı noktaları <code>size=1</code> şeklinde çizdirin. Katmanları ayırt edebiliyor musunuz?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div id="qwebr-insertion-location-1"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
+</section>
+<section class="slide level2">
+
+<h3 id="facet-katmanı">Facet katmanı</h3>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb16-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb16-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb16-5"><a aria-label="5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)  <span class="co"># separate plots for each continent</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb16-5"><a aria-label="5"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>continent)  <span class="co"># her kıta için ayrı grafikler</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 
 </div>
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-16-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="questions">Questions</h3>
+<h3 id="sorular">Sorular</h3>
 <ul>
-<li>The default (and correct) option for x and y is “not free”. What happens if we have “free_x”, “free_y” and both?</li>
-<li>How can we have life expectancy starting from 0 (not minimum value)?</li>
+<li>x ve y eksenleri için varsayılan (ve doğru) limitler “not free”dir. “free_x”, “free_y” veya her ikisi birlikte olursa ne olur?</li>
+<li>Yaşam beklentisi ekseninin 0’dan (en küçük değerden değil) başlamasını nasıl sağlayabiliriz?</li>
 </ul>
+<div class="cell">
+<div id="qwebr-insertion-location-2"></div>
+<noscript>Please enable JavaScript to experience the dynamic code cell content on this page.</noscript>
+</div>
 </section>
 <section class="slide level2">
 
-<h3 id="statistical-summary-as-layer">Statistical summary as layer</h3>
+<h3 id="istatistiksel-özet-katmanı">İstatistiksel özet katmanı</h3>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb17-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb17-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp)) <span class="sc">+</span></span>
 <span id="cb17-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
 <span id="cb17-5"><a aria-label="5"></a>  <span class="fu">geom_smooth</span>() <span class="sc">+</span></span>
@@ -558,12 +2411,12 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-17-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 id="theme-as-layer">Theme as layer</h3>
-<p>You can customize almost all aspects of your plot with <code>theme()</code> function. There are <code>theme_*</code> functions which can modify the appearance of the plot by altering several aspects at the same time.</p>
-<p>Let’s apply <code>theme_classic()</code> to our plot (result in next slide).</p>
+<h3 id="tema-katmanı">Tema katmanı</h3>
+<p>Grafiğinizin neredeyse tüm özelliklerini <code>theme()</code> fonksiyonuyla özelleştirebilirsiniz. Aynı anda birden çok özelliği değiştirerek grafiğin görünümünü değiştiren <code>theme_*</code> fonksiyonları da vardır.</p>
+<p>Grafiğimize <code>theme_classic()</code> uygulayalım (sonuç bir sonraki slaytta).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb18-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb18-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb18-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
 <span id="cb18-5"><a aria-label="5"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
@@ -581,17 +2434,17 @@ alper yilmaz
 </div>
 </div></section><section class="slide level2">
 
-<h3 id="theme-packages">Theme packages</h3>
-<p>There are many theme packages which can be used to apply themes of popular resources. Let’s apply <em>The Economist</em> theme to your plot with single line of code</p>
+<h3 id="tema-paketleri">Tema paketleri</h3>
+<p>Popüler kaynakların temalarını uygulamak için kullanabileceğiniz birçok tema paketi vardır. Tek satır kodla grafiğinize <em>The Economist</em> temasını uygulayalım</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">library</span>(ggthemes)</span>
 <span id="cb19-2"><a aria-label="2"></a></span>
-<span id="cb19-3"><a aria-label="3"></a>gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb19-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb19-3"><a aria-label="3"></a>gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb19-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb19-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb19-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
 <span id="cb19-7"><a aria-label="7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
-<span id="cb19-8"><a aria-label="8"></a>  <span class="fu">theme_economist</span>()     <span class="co"># requires ggthemes package</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb19-8"><a aria-label="8"></a>  <span class="fu">theme_economist</span>()     <span class="co"># ggthemes paketi gerektirir</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -605,8 +2458,8 @@ alper yilmaz
 </div>
 </div></section><section class="slide level2">
 
-<h3 class="smaller" id="titles">Titles</h3>
-<p><code>labs()</code> function can be used to add title, subtitle and change X and Y axis labels. Below, we added the following layer</p>
+<h3 class="smaller" id="başlıklar">Başlıklar</h3>
+<p><code>labs()</code> fonksiyonu başlık ve alt başlık eklemek, X ve Y eksen etiketlerini değiştirmek için kullanılabilir. Aşağıda grafiğe şu katmanı ekledik</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">labs</span>(<span class="at">x=</span><span class="st">"GDP Per Capita (USD, Log10)"</span>, <span class="at">y=</span><span class="st">"Life Expectancy (years)"</span>, </span>
 <span id="cb20-2"><a aria-label="2"></a>       <span class="at">title=</span><span class="st">"Wealth vs. Life Expectancy"</span>, </span>
 <span id="cb20-3"><a aria-label="3"></a>       <span class="at">subtitle=</span><span class="st">"Source: Gapminder (range: 1952-2007)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -614,14 +2467,14 @@ alper yilmaz
 <img data-src="ders-ggplot_files/figure-revealjs/unnamed-chunk-20-1.png" width="1056" class="r-stretch"></section>
 <section class="slide level2">
 
-<h3 class="smaller" id="interactive-html-output">Interactive HTML output</h3>
-<p>There are many packages which can embed html compatable plots/tables to your output. The code below generates an interactive plot by <code>plotly</code> package. See the next slide for results.</p>
-<p>You can hover, zoom in and out, select regions.</p>
+<h3 class="smaller" id="interaktif-html-çıktısı">İnteraktif HTML çıktısı</h3>
+<p>Çıktınıza HTML uyumlu grafik/tablolar ekleyebilecek birçok paket vardır. Aşağıdaki kod <code>plotly</code> paketiyle etkileşimli bir grafik üretir. Sonuç için bir sonraki slayta bakın.</p>
+<p>Üzerine gelerek (hover) inceleyebilir, yakınlaşıp uzaklaşabilir ve bölgeler seçebilirsiniz.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">library</span>(plotly)</span>
 <span id="cb21-2"><a aria-label="2"></a></span>
-<span id="cb21-3"><a aria-label="3"></a>gap_plot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-3"><a aria-label="3"></a>gap_plot <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb21-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb21-6"><a aria-label="6"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
 <span id="cb21-7"><a aria-label="7"></a>  <span class="fu">scale_x_log10</span>() <span class="sc">+</span></span>
@@ -633,16 +2486,16 @@ alper yilmaz
 </section>
 <section id="" class="slide level2 output-location-slide"><div class="cell output-location-slide">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-1c71097e15d3f8b2daaa" style="width:960px;height:480px;"></div>
-<script type="application/json" data-for="htmlwidget-1c71097e15d3f8b2daaa">{"x":{"data":[{"x":[3.7940254450966644,3.6809906556268164,3.1587498285200959,4.0993301562976825,3.0853023521971163,2.6335398473202094,3.3100759930113757,2.8488148736349985,3.2314858313133699,2.9939420450679588,2.443344140046372,3.5602125331291146,3.1888582353745463,3.3185811659560813,3.7467261069384517,4.0847224390037145,2.8071083194109296,2.8393558343569563,4.120787226641542,2.8766506063906259,3.1230701584328973,2.9743524119826992,2.7628523540039867,3.1653183196828425,3.195714676047237,2.6175322269121151,4.0812572446605149,3.0190207459573766,2.8804419458658828,3.0181100381010961,3.2560322165243099,4.0396913096789095,3.5820832842930348,2.9157614843495785,3.6822408118633683,2.7921653017164396,3.3040545722906871,3.884802303432406,2.9360553118387509,3.2036950046605677,3.2336235137236495,2.9357796251727324,2.9666771427490164,3.9670637023386344,3.4153732150271123,3.6545115842375888,3.0443367476975203,2.9459459204926648,3.8508252467512323,3.0238202200422353,3.1042178448294138,2.6718291573166399],"y":[72.301000000000002,42.731000000000002,56.728000000000002,50.728000000000002,52.295000000000002,49.579999999999998,50.43,44.741,50.651000000000003,65.152000000000001,46.462000000000003,55.322000000000003,48.328000000000003,54.790999999999997,71.337999999999994,51.579000000000001,58.039999999999999,52.947000000000003,56.734999999999999,59.448,60.021999999999998,56.006999999999998,46.387999999999998,54.109999999999999,42.591999999999999,45.677999999999997,73.951999999999998,59.442999999999998,48.302999999999997,54.466999999999999,64.164000000000001,72.801000000000002,71.164000000000001,42.082000000000001,52.905999999999999,56.866999999999997,46.859000000000002,76.441999999999993,46.241999999999997,65.528000000000006,63.061999999999998,42.567999999999998,48.158999999999999,49.338999999999999,58.555999999999997,39.613,52.517000000000003,58.420000000000002,73.923000000000002,51.542000000000002,42.384,43.487000000000002],"text":["gdpPercap:  6223.3675<br />lifeExp: 72.301<br />continent: Africa<br />pop:   33333216","gdpPercap:  4797.2313<br />lifeExp: 42.731<br />continent: Africa<br />pop:   12420476","gdpPercap:  1441.2849<br />lifeExp: 56.728<br />continent: Africa<br />pop:    8078314","gdpPercap: 12569.8518<br />lifeExp: 50.728<br />continent: Africa<br />pop:    1639131","gdpPercap:  1217.0330<br />lifeExp: 52.295<br />continent: Africa<br />pop:   14326203","gdpPercap:   430.0707<br />lifeExp: 49.580<br />continent: Africa<br />pop:    8390505","gdpPercap:  2042.0952<br />lifeExp: 50.430<br />continent: Africa<br />pop:   17696293","gdpPercap:   706.0165<br />lifeExp: 44.741<br />continent: Africa<br />pop:    4369038","gdpPercap:  1704.0637<br />lifeExp: 50.651<br />continent: Africa<br />pop:   10238807","gdpPercap:   986.1479<br />lifeExp: 65.152<br />continent: Africa<br />pop:     710960","gdpPercap:   277.5519<br />lifeExp: 46.462<br />continent: Africa<br />pop:   64606759","gdpPercap:  3632.5578<br />lifeExp: 55.322<br />continent: Africa<br />pop:    3800610","gdpPercap:  1544.7501<br />lifeExp: 48.328<br />continent: Africa<br />pop:   18013409","gdpPercap:  2082.4816<br />lifeExp: 54.791<br />continent: Africa<br />pop:     496374","gdpPercap:  5581.1810<br />lifeExp: 71.338<br />continent: Africa<br />pop:   80264543","gdpPercap: 12154.0897<br />lifeExp: 51.579<br />continent: Africa<br />pop:     551201","gdpPercap:   641.3695<br />lifeExp: 58.040<br />continent: Africa<br />pop:    4906585","gdpPercap:   690.8056<br />lifeExp: 52.947<br />continent: Africa<br />pop:   76511887","gdpPercap: 13206.4845<br />lifeExp: 56.735<br />continent: Africa<br />pop:    1454867","gdpPercap:   752.7497<br />lifeExp: 59.448<br />continent: Africa<br />pop:    1688359","gdpPercap:  1327.6089<br />lifeExp: 60.022<br />continent: Africa<br />pop:   22873338","gdpPercap:   942.6542<br />lifeExp: 56.007<br />continent: Africa<br />pop:    9947814","gdpPercap:   579.2317<br />lifeExp: 46.388<br />continent: Africa<br />pop:    1472041","gdpPercap:  1463.2493<br />lifeExp: 54.110<br />continent: Africa<br />pop:   35610177","gdpPercap:  1569.3314<br />lifeExp: 42.592<br />continent: Africa<br />pop:    2012649","gdpPercap:   414.5073<br />lifeExp: 45.678<br />continent: Africa<br />pop:    3193942","gdpPercap: 12057.4993<br />lifeExp: 73.952<br />continent: Africa<br />pop:    6036914","gdpPercap:  1044.7701<br />lifeExp: 59.443<br />continent: Africa<br />pop:   19167654","gdpPercap:   759.3499<br />lifeExp: 48.303<br />continent: Africa<br />pop:   13327079","gdpPercap:  1042.5816<br />lifeExp: 54.467<br />continent: Africa<br />pop:   12031795","gdpPercap:  1803.1515<br />lifeExp: 64.164<br />continent: Africa<br />pop:    3270065","gdpPercap: 10956.9911<br />lifeExp: 72.801<br />continent: Africa<br />pop:    1250882","gdpPercap:  3820.1752<br />lifeExp: 71.164<br />continent: Africa<br />pop:   33757175","gdpPercap:   823.6856<br />lifeExp: 42.082<br />continent: Africa<br />pop:   19951656","gdpPercap:  4811.0604<br />lifeExp: 52.906<br />continent: Africa<br />pop:    2055080","gdpPercap:   619.6769<br />lifeExp: 56.867<br />continent: Africa<br />pop:   12894865","gdpPercap:  2013.9773<br />lifeExp: 46.859<br />continent: Africa<br />pop:  135031164","gdpPercap:  7670.1226<br />lifeExp: 76.442<br />continent: Africa<br />pop:     798094","gdpPercap:   863.0885<br />lifeExp: 46.242<br />continent: Africa<br />pop:    8860588","gdpPercap:  1598.4351<br />lifeExp: 65.528<br />continent: Africa<br />pop:     199579","gdpPercap:  1712.4721<br />lifeExp: 63.062<br />continent: Africa<br />pop:   12267493","gdpPercap:   862.5408<br />lifeExp: 42.568<br />continent: Africa<br />pop:    6144562","gdpPercap:   926.1411<br />lifeExp: 48.159<br />continent: Africa<br />pop:    9118773","gdpPercap:  9269.6578<br />lifeExp: 49.339<br />continent: Africa<br />pop:   43997828","gdpPercap:  2602.3950<br />lifeExp: 58.556<br />continent: Africa<br />pop:   42292929","gdpPercap:  4513.4806<br />lifeExp: 39.613<br />continent: Africa<br />pop:    1133066","gdpPercap:  1107.4822<br />lifeExp: 52.517<br />continent: Africa<br />pop:   38139640","gdpPercap:   882.9699<br />lifeExp: 58.420<br />continent: Africa<br />pop:    5701579","gdpPercap:  7092.9230<br />lifeExp: 73.923<br />continent: Africa<br />pop:   10276158","gdpPercap:  1056.3801<br />lifeExp: 51.542<br />continent: Africa<br />pop:   29170398","gdpPercap:  1271.2116<br />lifeExp: 42.384<br />continent: Africa<br />pop:   11746035","gdpPercap:   469.7093<br />lifeExp: 43.487<br />continent: Africa<br />pop:   12311143"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":[6.7752717325492302,5.5989004118630001,5.2403533070783466,4.4039576839973833,5.7356199392207996,5.2690143958143745,5.9564773609874049,4.8422259478740974,5.4285263116604412,4.1516985016395616,7.9562662998770968,4.7671332830722601,5.9761166381701099,4.0630571938388131,8.4363687173296391,4.0881362755000454,4.9086539137274148,8.32592567062337,4.3626259687113649,4.4145446751277628,6.2577023306009796,5.4044519713261234,4.366601197011196,6.8764961358924266,4.4803007102230001,4.6801077545067349,5.0369392016926247,6.0461636385333,5.6651779774839266,5.5697344023561026,4.6914832316617332,4.3131500431206629,6.7943767241052386,6.0925324617448933,4.4884533308975465,5.6338762963755968,9.8227139332733113,4.1821590023924538,5.3111594952501031,3.7795275590551185,5.5874769596414557,5.0484803839022625,5.3338208539114369,7.2238082937782924,7.156106546896897,4.282361176813005,6.9852002740989851,5.0002880392083817,5.4315910179617095,6.5807690784340016,5.5479846257867891,5.5907437114111733],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Africa","legendgroup":"Africa","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.1065097720176862,3.5823062593168782,3.957406173408569,4.5601366924251883,4.1196398143870931,3.8455061110473117,3.9843049975871763,3.9517309708016475,3.7799840633073747,3.837162919576186,3.7580298117512663,3.7148366998460376,3.0797733480287044,3.550024106620056,3.8645633037284566,4.0783688975107708,3.4392254438054342,3.991632953509189,3.6204315729333021,3.8697540590018766,4.2862028478952521,4.2554777630339444,4.6329798832790043,4.0257752637018411,4.0575065679833457],"y":[75.319999999999993,65.554000000000002,72.390000000000001,80.653000000000006,78.552999999999997,72.888999999999996,78.781999999999996,78.272999999999996,72.234999999999999,74.994,71.878,70.259,60.915999999999997,70.197999999999993,72.566999999999993,76.194999999999993,72.899000000000001,75.537000000000006,71.751999999999995,71.421000000000006,78.745999999999995,69.819000000000003,78.242000000000004,76.384,73.747],"text":["gdpPercap: 12779.3796<br />lifeExp: 75.320<br />continent: Americas<br />pop:   40301927","gdpPercap:  3822.1371<br />lifeExp: 65.554<br />continent: Americas<br />pop:    9119152","gdpPercap:  9065.8008<br />lifeExp: 72.390<br />continent: Americas<br />pop:  190010647","gdpPercap: 36319.2350<br />lifeExp: 80.653<br />continent: Americas<br />pop:   33390141","gdpPercap: 13171.6388<br />lifeExp: 78.553<br />continent: Americas<br />pop:   16284741","gdpPercap:  7006.5804<br />lifeExp: 72.889<br />continent: Americas<br />pop:   44227550","gdpPercap:  9645.0614<br />lifeExp: 78.782<br />continent: Americas<br />pop:    4133884","gdpPercap:  8948.1029<br />lifeExp: 78.273<br />continent: Americas<br />pop:   11416987","gdpPercap:  6025.3748<br />lifeExp: 72.235<br />continent: Americas<br />pop:    9319622","gdpPercap:  6873.2623<br />lifeExp: 74.994<br />continent: Americas<br />pop:   13755680","gdpPercap:  5728.3535<br />lifeExp: 71.878<br />continent: Americas<br />pop:    6939688","gdpPercap:  5186.0500<br />lifeExp: 70.259<br />continent: Americas<br />pop:   12572928","gdpPercap:  1201.6372<br />lifeExp: 60.916<br />continent: Americas<br />pop:    8502814","gdpPercap:  3548.3308<br />lifeExp: 70.198<br />continent: Americas<br />pop:    7483763","gdpPercap:  7320.8803<br />lifeExp: 72.567<br />continent: Americas<br />pop:    2780132","gdpPercap: 11977.5750<br />lifeExp: 76.195<br />continent: Americas<br />pop:  108700891","gdpPercap:  2749.3210<br />lifeExp: 72.899<br />continent: Americas<br />pop:    5675356","gdpPercap:  9809.1856<br />lifeExp: 75.537<br />continent: Americas<br />pop:    3242173","gdpPercap:  4172.8385<br />lifeExp: 71.752<br />continent: Americas<br />pop:    6667147","gdpPercap:  7408.9056<br />lifeExp: 71.421<br />continent: Americas<br />pop:   28674757","gdpPercap: 19328.7090<br />lifeExp: 78.746<br />continent: Americas<br />pop:    3942491","gdpPercap: 18008.5092<br />lifeExp: 69.819<br />continent: Americas<br />pop:    1056608","gdpPercap: 42951.6531<br />lifeExp: 78.242<br />continent: Americas<br />pop:  301139947","gdpPercap: 10611.4630<br />lifeExp: 76.384<br />continent: Americas<br />pop:    3447496","gdpPercap: 11415.8057<br />lifeExp: 73.747<br />continent: Americas<br />pop:   26084662"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","opacity":1,"size":[7.0752836928954501,5.333853876564663,10.949722028706249,6.7778440362522812,5.8668180179899734,7.2328291141492445,4.8118234074533222,5.5226039735491259,5.3512237886724172,5.69571313317988,5.1306777542305024,5.6102133034773436,5.2791910995855069,5.1841532973733377,4.6155666029278022,9.2006306129298405,4.9973754404969783,4.687331723294788,5.1030785274449162,6.5567034863678497,4.7864012116365817,4.2613288143832744,12.807919245623044,4.7174623155002786,6.4273871341173354],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(163,165,0,1)"}},"hoveron":"points","name":"Americas","legendgroup":"Americas","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.9888176454912858,4.4741586701859664,3.1434063610570009,3.2339547372751722,3.6954041667466049,4.5990636726886356,3.3895577312128795,3.5490831898821575,4.0646718823630357,3.6504106831196688,4.406936435530084,4.5004569709846161,3.6550866594992835,3.2022336270366805,4.3682522837381041,4.6749253140699576,4.0195756382230385,4.095227107013149,3.4907690059237622,2.9749719942980688,3.0379679438446519,4.3486201061894318,3.4159656754035375,3.5038561648270914,4.3355548175826542,4.6734188707962172,3.5988009435983197,3.6216485631534296,4.4581583777244909,3.8726454573379581,3.3876703191654678,3.4807755960325997,3.3580814739680283],"y":[43.828000000000003,75.635000000000005,64.061999999999998,59.722999999999999,72.960999999999999,82.207999999999998,64.697999999999993,70.650000000000006,70.963999999999999,59.545000000000002,80.745000000000005,82.602999999999994,72.534999999999997,67.296999999999997,78.623000000000005,77.587999999999994,71.992999999999995,74.241,66.802999999999997,62.069000000000003,63.784999999999997,75.640000000000001,65.483000000000004,71.688000000000002,72.777000000000001,79.971999999999994,72.396000000000001,74.143000000000001,78.400000000000006,70.616,74.248999999999995,73.421999999999997,62.698],"text":["gdpPercap:   974.5803<br />lifeExp: 43.828<br />continent: Asia<br />pop:   31889923","gdpPercap: 29796.0483<br />lifeExp: 75.635<br />continent: Asia<br />pop:     708573","gdpPercap:  1391.2538<br />lifeExp: 64.062<br />continent: Asia<br />pop:  150448339","gdpPercap:  1713.7787<br />lifeExp: 59.723<br />continent: Asia<br />pop:   14131858","gdpPercap:  4959.1149<br />lifeExp: 72.961<br />continent: Asia<br />pop: 1318683096","gdpPercap: 39724.9787<br />lifeExp: 82.208<br />continent: Asia<br />pop:    6980412","gdpPercap:  2452.2104<br />lifeExp: 64.698<br />continent: Asia<br />pop: 1110396331","gdpPercap:  3540.6516<br />lifeExp: 70.650<br />continent: Asia<br />pop:  223547000","gdpPercap: 11605.7145<br />lifeExp: 70.964<br />continent: Asia<br />pop:   69453570","gdpPercap:  4471.0619<br />lifeExp: 59.545<br />continent: Asia<br />pop:   27499638","gdpPercap: 25523.2771<br />lifeExp: 80.745<br />continent: Asia<br />pop:    6426679","gdpPercap: 31656.0681<br />lifeExp: 82.603<br />continent: Asia<br />pop:  127467972","gdpPercap:  4519.4612<br />lifeExp: 72.535<br />continent: Asia<br />pop:    6053193","gdpPercap:  1593.0655<br />lifeExp: 67.297<br />continent: Asia<br />pop:   23301725","gdpPercap: 23348.1397<br />lifeExp: 78.623<br />continent: Asia<br />pop:   49044790","gdpPercap: 47306.9898<br />lifeExp: 77.588<br />continent: Asia<br />pop:    2505559","gdpPercap: 10461.0587<br />lifeExp: 71.993<br />continent: Asia<br />pop:    3921278","gdpPercap: 12451.6558<br />lifeExp: 74.241<br />continent: Asia<br />pop:   24821286","gdpPercap:  3095.7723<br />lifeExp: 66.803<br />continent: Asia<br />pop:    2874127","gdpPercap:   944.0000<br />lifeExp: 62.069<br />continent: Asia<br />pop:   47761980","gdpPercap:  1091.3598<br />lifeExp: 63.785<br />continent: Asia<br />pop:   28901790","gdpPercap: 22316.1929<br />lifeExp: 75.640<br />continent: Asia<br />pop:    3204897","gdpPercap:  2605.9476<br />lifeExp: 65.483<br />continent: Asia<br />pop:  169270617","gdpPercap:  3190.4810<br />lifeExp: 71.688<br />continent: Asia<br />pop:   91077287","gdpPercap: 21654.8319<br />lifeExp: 72.777<br />continent: Asia<br />pop:   27601038","gdpPercap: 47143.1796<br />lifeExp: 79.972<br />continent: Asia<br />pop:    4553009","gdpPercap:  3970.0954<br />lifeExp: 72.396<br />continent: Asia<br />pop:   20378239","gdpPercap:  4184.5481<br />lifeExp: 74.143<br />continent: Asia<br />pop:   19314747","gdpPercap: 28718.2768<br />lifeExp: 78.400<br />continent: Asia<br />pop:   23174294","gdpPercap:  7458.3963<br />lifeExp: 70.616<br />continent: Asia<br />pop:   65068149","gdpPercap:  2441.5764<br />lifeExp: 74.249<br />continent: Asia<br />pop:   85262356","gdpPercap:  3025.3498<br />lifeExp: 73.422<br />continent: Asia<br />pop:    4018332","gdpPercap:  2280.7699<br />lifeExp: 62.698<br />continent: Asia<br />pop:   22211743"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","opacity":1,"size":[6.7092983513552849,4.1508288847181953,10.158865608179935,5.7221180107506537,22.677165354330711,5.1347534580541501,21.120368095307143,11.557396830375804,8.1105713155374861,6.4987952406877376,5.0782402616746616,9.6507758736364799,5.0386912985713304,6.2810035011451255,7.4168446506103951,4.569838394810894,4.7835439230220365,6.3619616591074761,4.6306565167244802,7.368763875897594,6.5677527377566554,4.6817536552960464,10.5466615830696,8.7408659686259185,6.5038406176847667,4.8654178527954128,6.1173758740791646,6.0549352830716545,6.2740949140912097,7.9711999339905422,8.5795132943757064,4.7965509761407246,6.2212794811128056],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,125,1)"}},"hoveron":"points","name":"Asia","legendgroup":"Asia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.7735692087621691,4.5578258006221848,4.5275345915133105,3.8719404594797928,4.0286034909483179,4.1649242825131747,4.3585688446278343,4.5475091108168488,4.5212307459814749,4.4838726922507623,4.5074561155365247,4.4399388911990529,4.2554882582210949,4.5584780356339154,4.6093381996914395,4.4559059795027833,3.9663246195778949,4.5658234281049346,4.6933504280025318,4.1872364943512697,4.3119582019159575,4.0337644468812863,3.9906289409349966,4.271337680163577,4.4110850532178922,4.4597100052953031,4.5296837260525233,4.574105601810623,3.927281872119107,4.5211807429313629],"y":[76.423000000000002,79.828999999999994,79.441000000000003,74.852000000000004,73.004999999999995,75.748000000000005,76.486000000000004,78.331999999999994,79.313000000000002,80.656999999999996,79.406000000000006,79.483000000000004,73.337999999999994,81.757000000000005,78.885000000000005,80.546000000000006,74.543000000000006,79.762,80.195999999999998,75.563000000000002,78.097999999999999,72.475999999999999,74.001999999999995,74.662999999999997,77.926000000000002,80.941000000000003,80.884,81.700999999999993,71.777000000000001,79.424999999999997],"text":["gdpPercap:  5937.0295<br />lifeExp: 76.423<br />continent: Europe<br />pop:    3600523","gdpPercap: 36126.4927<br />lifeExp: 79.829<br />continent: Europe<br />pop:    8199783","gdpPercap: 33692.6051<br />lifeExp: 79.441<br />continent: Europe<br />pop:   10392226","gdpPercap:  7446.2988<br />lifeExp: 74.852<br />continent: Europe<br />pop:    4552198","gdpPercap: 10680.7928<br />lifeExp: 73.005<br />continent: Europe<br />pop:    7322858","gdpPercap: 14619.2227<br />lifeExp: 75.748<br />continent: Europe<br />pop:    4493312","gdpPercap: 22833.3085<br />lifeExp: 76.486<br />continent: Europe<br />pop:   10228744","gdpPercap: 35278.4187<br />lifeExp: 78.332<br />continent: Europe<br />pop:    5468120","gdpPercap: 33207.0844<br />lifeExp: 79.313<br />continent: Europe<br />pop:    5238460","gdpPercap: 30470.0167<br />lifeExp: 80.657<br />continent: Europe<br />pop:   61083916","gdpPercap: 32170.3744<br />lifeExp: 79.406<br />continent: Europe<br />pop:   82400996","gdpPercap: 27538.4119<br />lifeExp: 79.483<br />continent: Europe<br />pop:   10706290","gdpPercap: 18008.9444<br />lifeExp: 73.338<br />continent: Europe<br />pop:    9956108","gdpPercap: 36180.7892<br />lifeExp: 81.757<br />continent: Europe<br />pop:     301931","gdpPercap: 40675.9964<br />lifeExp: 78.885<br />continent: Europe<br />pop:    4109086","gdpPercap: 28569.7197<br />lifeExp: 80.546<br />continent: Europe<br />pop:   58147733","gdpPercap:  9253.8961<br />lifeExp: 74.543<br />continent: Europe<br />pop:     684736","gdpPercap: 36797.9333<br />lifeExp: 79.762<br />continent: Europe<br />pop:   16570613","gdpPercap: 49357.1902<br />lifeExp: 80.196<br />continent: Europe<br />pop:    4627926","gdpPercap: 15389.9247<br />lifeExp: 75.563<br />continent: Europe<br />pop:   38518241","gdpPercap: 20509.6478<br />lifeExp: 78.098<br />continent: Europe<br />pop:   10642836","gdpPercap: 10808.4756<br />lifeExp: 72.476<br />continent: Europe<br />pop:   22276056","gdpPercap:  9786.5347<br />lifeExp: 74.002<br />continent: Europe<br />pop:   10150265","gdpPercap: 18678.3144<br />lifeExp: 74.663<br />continent: Europe<br />pop:    5447502","gdpPercap: 25768.2576<br />lifeExp: 77.926<br />continent: Europe<br />pop:    2009245","gdpPercap: 28821.0637<br />lifeExp: 80.941<br />continent: Europe<br />pop:   40448191","gdpPercap: 33859.7484<br />lifeExp: 80.884<br />continent: Europe<br />pop:    9031088","gdpPercap: 37506.4191<br />lifeExp: 81.701<br />continent: Europe<br />pop:    7554661","gdpPercap:  8458.2764<br />lifeExp: 71.777<br />continent: Europe<br />pop:   71158647","gdpPercap: 33203.2613<br />lifeExp: 79.425<br />continent: Europe<br />pop:   60776238"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","opacity":1,"size":[4.7393036097654502,5.2515712457990968,5.4410784978691735,4.8653167028921844,5.1685528258485842,4.8579469438752234,5.4276996527368331,4.9741078643628294,4.9477814048195228,7.8404337662196868,8.498091237446733,5.4664828069929365,5.4051430840065446,3.9460291298414996,4.8085649745634003,7.7413040551619607,4.1420303205279438,5.8852844160763711,4.8747213942514058,7.0011551525914504,5.4613810121458615,6.2248439161044908,5.421238450332476,4.9717681273532666,4.4796425578879777,7.0812884751230953,5.3261618194654057,5.1909724557450065,8.1635636391520627,7.8301599085784517],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,176,246,1)"}},"hoveron":"points","name":"Europe","legendgroup":"Europe","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.5370047214526892,4.4011421122881123],"y":[81.234999999999999,80.203999999999994],"text":["gdpPercap: 34435.3674<br />lifeExp: 81.235<br />continent: Oceania<br />pop:   20434176","gdpPercap: 25185.0091<br />lifeExp: 80.204<br />continent: Oceania<br />pop:    4115771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","opacity":1,"size":[6.1206139909462598,4.8094443919586789],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,107,243,1)"}},"hoveron":"points","name":"Oceania","legendgroup":"Oceania","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":37.260273972602747,"l":37.260273972602747},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2.330843825648564,4.8058507424003398],"tickmode":"array","ticktext":["300","1000","3000","10000","30000"],"tickvals":[2.4771212547196626,3,3.4771212547196626,4,4.4771212547196626],"categoryorder":"array","categoryarray":["300","1000","3000","10000","30000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[37.463499999999996,84.752499999999998],"tickmode":"array","ticktext":["40","50","60","70","80"],"tickvals":[40,50,60,70,80],"categoryorder":"array","categoryarray":["40","50","60","70","80"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0,"zeroline":false,"anchor":"x","title":{"text":"lifeExp","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","layer":"below","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pop<br />continent","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"154213b3024c5":{"x":{},"y":{},"colour":{},"size":{},"type":"scatter"}},"cur_data":"154213b3024c5","visdat":{"154213b3024c5":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-027eed48526d1eaca3d1" style="width:960px;height:480px;"></div>
+<script type="application/json" data-for="htmlwidget-027eed48526d1eaca3d1">{"x":{"data":[{"x":[3.7940254450966644,3.6809906556268164,3.1587498285200959,4.0993301562976825,3.0853023521971163,2.6335398473202094,3.3100759930113757,2.8488148736349985,3.2314858313133699,2.9939420450679588,2.443344140046372,3.5602125331291146,3.1888582353745463,3.3185811659560813,3.7467261069384517,4.0847224390037145,2.8071083194109296,2.8393558343569563,4.120787226641542,2.8766506063906259,3.1230701584328973,2.9743524119826992,2.7628523540039867,3.1653183196828425,3.195714676047237,2.6175322269121151,4.0812572446605149,3.0190207459573766,2.8804419458658828,3.0181100381010961,3.2560322165243099,4.0396913096789095,3.5820832842930348,2.9157614843495785,3.6822408118633683,2.7921653017164396,3.3040545722906871,3.884802303432406,2.9360553118387509,3.2036950046605677,3.2336235137236495,2.9357796251727324,2.9666771427490164,3.9670637023386344,3.4153732150271123,3.6545115842375888,3.0443367476975203,2.9459459204926648,3.8508252467512323,3.0238202200422353,3.1042178448294138,2.6718291573166399],"y":[72.301000000000002,42.731000000000002,56.728000000000002,50.728000000000002,52.295000000000002,49.579999999999998,50.43,44.741,50.651000000000003,65.152000000000001,46.462000000000003,55.322000000000003,48.328000000000003,54.790999999999997,71.337999999999994,51.579000000000001,58.039999999999999,52.947000000000003,56.734999999999999,59.448,60.021999999999998,56.006999999999998,46.387999999999998,54.109999999999999,42.591999999999999,45.677999999999997,73.951999999999998,59.442999999999998,48.302999999999997,54.466999999999999,64.164000000000001,72.801000000000002,71.164000000000001,42.082000000000001,52.905999999999999,56.866999999999997,46.859000000000002,76.441999999999993,46.241999999999997,65.528000000000006,63.061999999999998,42.567999999999998,48.158999999999999,49.338999999999999,58.555999999999997,39.613,52.517000000000003,58.420000000000002,73.923000000000002,51.542000000000002,42.384,43.487000000000002],"text":["gdpPercap:  6223.3675<br />lifeExp: 72.301<br />continent: Africa<br />pop:   33333216","gdpPercap:  4797.2313<br />lifeExp: 42.731<br />continent: Africa<br />pop:   12420476","gdpPercap:  1441.2849<br />lifeExp: 56.728<br />continent: Africa<br />pop:    8078314","gdpPercap: 12569.8518<br />lifeExp: 50.728<br />continent: Africa<br />pop:    1639131","gdpPercap:  1217.0330<br />lifeExp: 52.295<br />continent: Africa<br />pop:   14326203","gdpPercap:   430.0707<br />lifeExp: 49.580<br />continent: Africa<br />pop:    8390505","gdpPercap:  2042.0952<br />lifeExp: 50.430<br />continent: Africa<br />pop:   17696293","gdpPercap:   706.0165<br />lifeExp: 44.741<br />continent: Africa<br />pop:    4369038","gdpPercap:  1704.0637<br />lifeExp: 50.651<br />continent: Africa<br />pop:   10238807","gdpPercap:   986.1479<br />lifeExp: 65.152<br />continent: Africa<br />pop:     710960","gdpPercap:   277.5519<br />lifeExp: 46.462<br />continent: Africa<br />pop:   64606759","gdpPercap:  3632.5578<br />lifeExp: 55.322<br />continent: Africa<br />pop:    3800610","gdpPercap:  1544.7501<br />lifeExp: 48.328<br />continent: Africa<br />pop:   18013409","gdpPercap:  2082.4816<br />lifeExp: 54.791<br />continent: Africa<br />pop:     496374","gdpPercap:  5581.1810<br />lifeExp: 71.338<br />continent: Africa<br />pop:   80264543","gdpPercap: 12154.0897<br />lifeExp: 51.579<br />continent: Africa<br />pop:     551201","gdpPercap:   641.3695<br />lifeExp: 58.040<br />continent: Africa<br />pop:    4906585","gdpPercap:   690.8056<br />lifeExp: 52.947<br />continent: Africa<br />pop:   76511887","gdpPercap: 13206.4845<br />lifeExp: 56.735<br />continent: Africa<br />pop:    1454867","gdpPercap:   752.7497<br />lifeExp: 59.448<br />continent: Africa<br />pop:    1688359","gdpPercap:  1327.6089<br />lifeExp: 60.022<br />continent: Africa<br />pop:   22873338","gdpPercap:   942.6542<br />lifeExp: 56.007<br />continent: Africa<br />pop:    9947814","gdpPercap:   579.2317<br />lifeExp: 46.388<br />continent: Africa<br />pop:    1472041","gdpPercap:  1463.2493<br />lifeExp: 54.110<br />continent: Africa<br />pop:   35610177","gdpPercap:  1569.3314<br />lifeExp: 42.592<br />continent: Africa<br />pop:    2012649","gdpPercap:   414.5073<br />lifeExp: 45.678<br />continent: Africa<br />pop:    3193942","gdpPercap: 12057.4993<br />lifeExp: 73.952<br />continent: Africa<br />pop:    6036914","gdpPercap:  1044.7701<br />lifeExp: 59.443<br />continent: Africa<br />pop:   19167654","gdpPercap:   759.3499<br />lifeExp: 48.303<br />continent: Africa<br />pop:   13327079","gdpPercap:  1042.5816<br />lifeExp: 54.467<br />continent: Africa<br />pop:   12031795","gdpPercap:  1803.1515<br />lifeExp: 64.164<br />continent: Africa<br />pop:    3270065","gdpPercap: 10956.9911<br />lifeExp: 72.801<br />continent: Africa<br />pop:    1250882","gdpPercap:  3820.1752<br />lifeExp: 71.164<br />continent: Africa<br />pop:   33757175","gdpPercap:   823.6856<br />lifeExp: 42.082<br />continent: Africa<br />pop:   19951656","gdpPercap:  4811.0604<br />lifeExp: 52.906<br />continent: Africa<br />pop:    2055080","gdpPercap:   619.6769<br />lifeExp: 56.867<br />continent: Africa<br />pop:   12894865","gdpPercap:  2013.9773<br />lifeExp: 46.859<br />continent: Africa<br />pop:  135031164","gdpPercap:  7670.1226<br />lifeExp: 76.442<br />continent: Africa<br />pop:     798094","gdpPercap:   863.0885<br />lifeExp: 46.242<br />continent: Africa<br />pop:    8860588","gdpPercap:  1598.4351<br />lifeExp: 65.528<br />continent: Africa<br />pop:     199579","gdpPercap:  1712.4721<br />lifeExp: 63.062<br />continent: Africa<br />pop:   12267493","gdpPercap:   862.5408<br />lifeExp: 42.568<br />continent: Africa<br />pop:    6144562","gdpPercap:   926.1411<br />lifeExp: 48.159<br />continent: Africa<br />pop:    9118773","gdpPercap:  9269.6578<br />lifeExp: 49.339<br />continent: Africa<br />pop:   43997828","gdpPercap:  2602.3950<br />lifeExp: 58.556<br />continent: Africa<br />pop:   42292929","gdpPercap:  4513.4806<br />lifeExp: 39.613<br />continent: Africa<br />pop:    1133066","gdpPercap:  1107.4822<br />lifeExp: 52.517<br />continent: Africa<br />pop:   38139640","gdpPercap:   882.9699<br />lifeExp: 58.420<br />continent: Africa<br />pop:    5701579","gdpPercap:  7092.9230<br />lifeExp: 73.923<br />continent: Africa<br />pop:   10276158","gdpPercap:  1056.3801<br />lifeExp: 51.542<br />continent: Africa<br />pop:   29170398","gdpPercap:  1271.2116<br />lifeExp: 42.384<br />continent: Africa<br />pop:   11746035","gdpPercap:   469.7093<br />lifeExp: 43.487<br />continent: Africa<br />pop:   12311143"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(248,118,109,1)","opacity":1,"size":[6.7752717325492302,5.5989004118630001,5.2403533070783466,4.4039576839973833,5.7356199392207996,5.2690143958143745,5.9564773609874049,4.8422259478740974,5.4285263116604412,4.1516985016395616,7.9562662998770968,4.7671332830722601,5.9761166381701099,4.0630571938388131,8.4363687173296391,4.0881362755000454,4.9086539137274148,8.32592567062337,4.3626259687113649,4.4145446751277628,6.2577023306009796,5.4044519713261234,4.366601197011196,6.8764961358924266,4.4803007102230001,4.6801077545067349,5.0369392016926247,6.0461636385333,5.6651779774839266,5.5697344023561026,4.6914832316617332,4.3131500431206629,6.7943767241052386,6.0925324617448933,4.4884533308975465,5.6338762963755968,9.8227139332733113,4.1821590023924538,5.3111594952501031,3.7795275590551185,5.5874769596414557,5.0484803839022625,5.3338208539114369,7.2238082937782924,7.156106546896897,4.282361176813005,6.9852002740989851,5.0002880392083817,5.4315910179617095,6.5807690784340016,5.5479846257867891,5.5907437114111733],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(248,118,109,1)"}},"hoveron":"points","name":"Africa","legendgroup":"Africa","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.1065097720176862,3.5823062593168782,3.957406173408569,4.5601366924251883,4.1196398143870931,3.8455061110473117,3.9843049975871763,3.9517309708016475,3.7799840633073747,3.837162919576186,3.7580298117512663,3.7148366998460376,3.0797733480287044,3.550024106620056,3.8645633037284566,4.0783688975107708,3.4392254438054342,3.991632953509189,3.6204315729333021,3.8697540590018766,4.2862028478952521,4.2554777630339444,4.6329798832790043,4.0257752637018411,4.0575065679833457],"y":[75.319999999999993,65.554000000000002,72.390000000000001,80.653000000000006,78.552999999999997,72.888999999999996,78.781999999999996,78.272999999999996,72.234999999999999,74.994,71.878,70.259,60.915999999999997,70.197999999999993,72.566999999999993,76.194999999999993,72.899000000000001,75.537000000000006,71.751999999999995,71.421000000000006,78.745999999999995,69.819000000000003,78.242000000000004,76.384,73.747],"text":["gdpPercap: 12779.3796<br />lifeExp: 75.320<br />continent: Americas<br />pop:   40301927","gdpPercap:  3822.1371<br />lifeExp: 65.554<br />continent: Americas<br />pop:    9119152","gdpPercap:  9065.8008<br />lifeExp: 72.390<br />continent: Americas<br />pop:  190010647","gdpPercap: 36319.2350<br />lifeExp: 80.653<br />continent: Americas<br />pop:   33390141","gdpPercap: 13171.6388<br />lifeExp: 78.553<br />continent: Americas<br />pop:   16284741","gdpPercap:  7006.5804<br />lifeExp: 72.889<br />continent: Americas<br />pop:   44227550","gdpPercap:  9645.0614<br />lifeExp: 78.782<br />continent: Americas<br />pop:    4133884","gdpPercap:  8948.1029<br />lifeExp: 78.273<br />continent: Americas<br />pop:   11416987","gdpPercap:  6025.3748<br />lifeExp: 72.235<br />continent: Americas<br />pop:    9319622","gdpPercap:  6873.2623<br />lifeExp: 74.994<br />continent: Americas<br />pop:   13755680","gdpPercap:  5728.3535<br />lifeExp: 71.878<br />continent: Americas<br />pop:    6939688","gdpPercap:  5186.0500<br />lifeExp: 70.259<br />continent: Americas<br />pop:   12572928","gdpPercap:  1201.6372<br />lifeExp: 60.916<br />continent: Americas<br />pop:    8502814","gdpPercap:  3548.3308<br />lifeExp: 70.198<br />continent: Americas<br />pop:    7483763","gdpPercap:  7320.8803<br />lifeExp: 72.567<br />continent: Americas<br />pop:    2780132","gdpPercap: 11977.5750<br />lifeExp: 76.195<br />continent: Americas<br />pop:  108700891","gdpPercap:  2749.3210<br />lifeExp: 72.899<br />continent: Americas<br />pop:    5675356","gdpPercap:  9809.1856<br />lifeExp: 75.537<br />continent: Americas<br />pop:    3242173","gdpPercap:  4172.8385<br />lifeExp: 71.752<br />continent: Americas<br />pop:    6667147","gdpPercap:  7408.9056<br />lifeExp: 71.421<br />continent: Americas<br />pop:   28674757","gdpPercap: 19328.7090<br />lifeExp: 78.746<br />continent: Americas<br />pop:    3942491","gdpPercap: 18008.5092<br />lifeExp: 69.819<br />continent: Americas<br />pop:    1056608","gdpPercap: 42951.6531<br />lifeExp: 78.242<br />continent: Americas<br />pop:  301139947","gdpPercap: 10611.4630<br />lifeExp: 76.384<br />continent: Americas<br />pop:    3447496","gdpPercap: 11415.8057<br />lifeExp: 73.747<br />continent: Americas<br />pop:   26084662"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(163,165,0,1)","opacity":1,"size":[7.0752836928954501,5.333853876564663,10.949722028706249,6.7778440362522812,5.8668180179899734,7.2328291141492445,4.8118234074533222,5.5226039735491259,5.3512237886724172,5.69571313317988,5.1306777542305024,5.6102133034773436,5.2791910995855069,5.1841532973733377,4.6155666029278022,9.2006306129298405,4.9973754404969783,4.687331723294788,5.1030785274449162,6.5567034863678497,4.7864012116365817,4.2613288143832744,12.807919245623044,4.7174623155002786,6.4273871341173354],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(163,165,0,1)"}},"hoveron":"points","name":"Americas","legendgroup":"Americas","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[2.9888176454912858,4.4741586701859664,3.1434063610570009,3.2339547372751722,3.6954041667466049,4.5990636726886356,3.3895577312128795,3.5490831898821575,4.0646718823630357,3.6504106831196688,4.406936435530084,4.5004569709846161,3.6550866594992835,3.2022336270366805,4.3682522837381041,4.6749253140699576,4.0195756382230385,4.095227107013149,3.4907690059237622,2.9749719942980688,3.0379679438446519,4.3486201061894318,3.4159656754035375,3.5038561648270914,4.3355548175826542,4.6734188707962172,3.5988009435983197,3.6216485631534296,4.4581583777244909,3.8726454573379581,3.3876703191654678,3.4807755960325997,3.3580814739680283],"y":[43.828000000000003,75.635000000000005,64.061999999999998,59.722999999999999,72.960999999999999,82.207999999999998,64.697999999999993,70.650000000000006,70.963999999999999,59.545000000000002,80.745000000000005,82.602999999999994,72.534999999999997,67.296999999999997,78.623000000000005,77.587999999999994,71.992999999999995,74.241,66.802999999999997,62.069000000000003,63.784999999999997,75.640000000000001,65.483000000000004,71.688000000000002,72.777000000000001,79.971999999999994,72.396000000000001,74.143000000000001,78.400000000000006,70.616,74.248999999999995,73.421999999999997,62.698],"text":["gdpPercap:   974.5803<br />lifeExp: 43.828<br />continent: Asia<br />pop:   31889923","gdpPercap: 29796.0483<br />lifeExp: 75.635<br />continent: Asia<br />pop:     708573","gdpPercap:  1391.2538<br />lifeExp: 64.062<br />continent: Asia<br />pop:  150448339","gdpPercap:  1713.7787<br />lifeExp: 59.723<br />continent: Asia<br />pop:   14131858","gdpPercap:  4959.1149<br />lifeExp: 72.961<br />continent: Asia<br />pop: 1318683096","gdpPercap: 39724.9787<br />lifeExp: 82.208<br />continent: Asia<br />pop:    6980412","gdpPercap:  2452.2104<br />lifeExp: 64.698<br />continent: Asia<br />pop: 1110396331","gdpPercap:  3540.6516<br />lifeExp: 70.650<br />continent: Asia<br />pop:  223547000","gdpPercap: 11605.7145<br />lifeExp: 70.964<br />continent: Asia<br />pop:   69453570","gdpPercap:  4471.0619<br />lifeExp: 59.545<br />continent: Asia<br />pop:   27499638","gdpPercap: 25523.2771<br />lifeExp: 80.745<br />continent: Asia<br />pop:    6426679","gdpPercap: 31656.0681<br />lifeExp: 82.603<br />continent: Asia<br />pop:  127467972","gdpPercap:  4519.4612<br />lifeExp: 72.535<br />continent: Asia<br />pop:    6053193","gdpPercap:  1593.0655<br />lifeExp: 67.297<br />continent: Asia<br />pop:   23301725","gdpPercap: 23348.1397<br />lifeExp: 78.623<br />continent: Asia<br />pop:   49044790","gdpPercap: 47306.9898<br />lifeExp: 77.588<br />continent: Asia<br />pop:    2505559","gdpPercap: 10461.0587<br />lifeExp: 71.993<br />continent: Asia<br />pop:    3921278","gdpPercap: 12451.6558<br />lifeExp: 74.241<br />continent: Asia<br />pop:   24821286","gdpPercap:  3095.7723<br />lifeExp: 66.803<br />continent: Asia<br />pop:    2874127","gdpPercap:   944.0000<br />lifeExp: 62.069<br />continent: Asia<br />pop:   47761980","gdpPercap:  1091.3598<br />lifeExp: 63.785<br />continent: Asia<br />pop:   28901790","gdpPercap: 22316.1929<br />lifeExp: 75.640<br />continent: Asia<br />pop:    3204897","gdpPercap:  2605.9476<br />lifeExp: 65.483<br />continent: Asia<br />pop:  169270617","gdpPercap:  3190.4810<br />lifeExp: 71.688<br />continent: Asia<br />pop:   91077287","gdpPercap: 21654.8319<br />lifeExp: 72.777<br />continent: Asia<br />pop:   27601038","gdpPercap: 47143.1796<br />lifeExp: 79.972<br />continent: Asia<br />pop:    4553009","gdpPercap:  3970.0954<br />lifeExp: 72.396<br />continent: Asia<br />pop:   20378239","gdpPercap:  4184.5481<br />lifeExp: 74.143<br />continent: Asia<br />pop:   19314747","gdpPercap: 28718.2768<br />lifeExp: 78.400<br />continent: Asia<br />pop:   23174294","gdpPercap:  7458.3963<br />lifeExp: 70.616<br />continent: Asia<br />pop:   65068149","gdpPercap:  2441.5764<br />lifeExp: 74.249<br />continent: Asia<br />pop:   85262356","gdpPercap:  3025.3498<br />lifeExp: 73.422<br />continent: Asia<br />pop:    4018332","gdpPercap:  2280.7699<br />lifeExp: 62.698<br />continent: Asia<br />pop:   22211743"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,191,125,1)","opacity":1,"size":[6.7092983513552849,4.1508288847181953,10.158865608179935,5.7221180107506537,22.677165354330711,5.1347534580541501,21.120368095307143,11.557396830375804,8.1105713155374861,6.4987952406877376,5.0782402616746616,9.6507758736364799,5.0386912985713304,6.2810035011451255,7.4168446506103951,4.569838394810894,4.7835439230220365,6.3619616591074761,4.6306565167244802,7.368763875897594,6.5677527377566554,4.6817536552960464,10.5466615830696,8.7408659686259185,6.5038406176847667,4.8654178527954128,6.1173758740791646,6.0549352830716545,6.2740949140912097,7.9711999339905422,8.5795132943757064,4.7965509761407246,6.2212794811128056],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,191,125,1)"}},"hoveron":"points","name":"Asia","legendgroup":"Asia","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[3.7735692087621691,4.5578258006221848,4.5275345915133105,3.8719404594797928,4.0286034909483179,4.1649242825131747,4.3585688446278343,4.5475091108168488,4.5212307459814749,4.4838726922507623,4.5074561155365247,4.4399388911990529,4.2554882582210949,4.5584780356339154,4.6093381996914395,4.4559059795027833,3.9663246195778949,4.5658234281049346,4.6933504280025318,4.1872364943512697,4.3119582019159575,4.0337644468812863,3.9906289409349966,4.271337680163577,4.4110850532178922,4.4597100052953031,4.5296837260525233,4.574105601810623,3.927281872119107,4.5211807429313629],"y":[76.423000000000002,79.828999999999994,79.441000000000003,74.852000000000004,73.004999999999995,75.748000000000005,76.486000000000004,78.331999999999994,79.313000000000002,80.656999999999996,79.406000000000006,79.483000000000004,73.337999999999994,81.757000000000005,78.885000000000005,80.546000000000006,74.543000000000006,79.762,80.195999999999998,75.563000000000002,78.097999999999999,72.475999999999999,74.001999999999995,74.662999999999997,77.926000000000002,80.941000000000003,80.884,81.700999999999993,71.777000000000001,79.424999999999997],"text":["gdpPercap:  5937.0295<br />lifeExp: 76.423<br />continent: Europe<br />pop:    3600523","gdpPercap: 36126.4927<br />lifeExp: 79.829<br />continent: Europe<br />pop:    8199783","gdpPercap: 33692.6051<br />lifeExp: 79.441<br />continent: Europe<br />pop:   10392226","gdpPercap:  7446.2988<br />lifeExp: 74.852<br />continent: Europe<br />pop:    4552198","gdpPercap: 10680.7928<br />lifeExp: 73.005<br />continent: Europe<br />pop:    7322858","gdpPercap: 14619.2227<br />lifeExp: 75.748<br />continent: Europe<br />pop:    4493312","gdpPercap: 22833.3085<br />lifeExp: 76.486<br />continent: Europe<br />pop:   10228744","gdpPercap: 35278.4187<br />lifeExp: 78.332<br />continent: Europe<br />pop:    5468120","gdpPercap: 33207.0844<br />lifeExp: 79.313<br />continent: Europe<br />pop:    5238460","gdpPercap: 30470.0167<br />lifeExp: 80.657<br />continent: Europe<br />pop:   61083916","gdpPercap: 32170.3744<br />lifeExp: 79.406<br />continent: Europe<br />pop:   82400996","gdpPercap: 27538.4119<br />lifeExp: 79.483<br />continent: Europe<br />pop:   10706290","gdpPercap: 18008.9444<br />lifeExp: 73.338<br />continent: Europe<br />pop:    9956108","gdpPercap: 36180.7892<br />lifeExp: 81.757<br />continent: Europe<br />pop:     301931","gdpPercap: 40675.9964<br />lifeExp: 78.885<br />continent: Europe<br />pop:    4109086","gdpPercap: 28569.7197<br />lifeExp: 80.546<br />continent: Europe<br />pop:   58147733","gdpPercap:  9253.8961<br />lifeExp: 74.543<br />continent: Europe<br />pop:     684736","gdpPercap: 36797.9333<br />lifeExp: 79.762<br />continent: Europe<br />pop:   16570613","gdpPercap: 49357.1902<br />lifeExp: 80.196<br />continent: Europe<br />pop:    4627926","gdpPercap: 15389.9247<br />lifeExp: 75.563<br />continent: Europe<br />pop:   38518241","gdpPercap: 20509.6478<br />lifeExp: 78.098<br />continent: Europe<br />pop:   10642836","gdpPercap: 10808.4756<br />lifeExp: 72.476<br />continent: Europe<br />pop:   22276056","gdpPercap:  9786.5347<br />lifeExp: 74.002<br />continent: Europe<br />pop:   10150265","gdpPercap: 18678.3144<br />lifeExp: 74.663<br />continent: Europe<br />pop:    5447502","gdpPercap: 25768.2576<br />lifeExp: 77.926<br />continent: Europe<br />pop:    2009245","gdpPercap: 28821.0637<br />lifeExp: 80.941<br />continent: Europe<br />pop:   40448191","gdpPercap: 33859.7484<br />lifeExp: 80.884<br />continent: Europe<br />pop:    9031088","gdpPercap: 37506.4191<br />lifeExp: 81.701<br />continent: Europe<br />pop:    7554661","gdpPercap:  8458.2764<br />lifeExp: 71.777<br />continent: Europe<br />pop:   71158647","gdpPercap: 33203.2613<br />lifeExp: 79.425<br />continent: Europe<br />pop:   60776238"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,176,246,1)","opacity":1,"size":[4.7393036097654502,5.2515712457990968,5.4410784978691735,4.8653167028921844,5.1685528258485842,4.8579469438752234,5.4276996527368331,4.9741078643628294,4.9477814048195228,7.8404337662196868,8.498091237446733,5.4664828069929365,5.4051430840065446,3.9460291298414996,4.8085649745634003,7.7413040551619607,4.1420303205279438,5.8852844160763711,4.8747213942514058,7.0011551525914504,5.4613810121458615,6.2248439161044908,5.421238450332476,4.9717681273532666,4.4796425578879777,7.0812884751230953,5.3261618194654057,5.1909724557450065,8.1635636391520627,7.8301599085784517],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(0,176,246,1)"}},"hoveron":"points","name":"Europe","legendgroup":"Europe","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null},{"x":[4.5370047214526892,4.4011421122881123],"y":[81.234999999999999,80.203999999999994],"text":["gdpPercap: 34435.3674<br />lifeExp: 81.235<br />continent: Oceania<br />pop:   20434176","gdpPercap: 25185.0091<br />lifeExp: 80.204<br />continent: Oceania<br />pop:    4115771"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(231,107,243,1)","opacity":1,"size":[6.1206139909462598,4.8094443919586789],"symbol":"circle","line":{"width":1.8897637795275593,"color":"rgba(231,107,243,1)"}},"hoveron":"points","name":"Oceania","legendgroup":"Oceania","showlegend":true,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":23.305936073059364,"r":7.3059360730593621,"b":37.260273972602747,"l":37.260273972602747},"paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724},"xaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[2.330843825648564,4.8058507424003398],"tickmode":"array","ticktext":["300","1000","3000","10000","30000"],"tickvals":[2.4771212547196626,3,3.4771212547196626,4,4.4771212547196626],"categoryorder":"array","categoryarray":["300","1000","3000","10000","30000"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"y","title":{"text":"gdpPercap","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"automargin":true,"type":"linear","autorange":false,"range":[37.463499999999996,84.752499999999998],"tickmode":"array","ticktext":["40","50","60","70","80"],"tickvals":[40,50,60,70,80],"categoryorder":"array","categoryarray":["40","50","60","70","80"],"nticks":null,"ticks":"","tickcolor":null,"ticklen":3.6529680365296811,"tickwidth":0,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.68949771689498},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(235,235,235,1)","gridwidth":0.66417600664176002,"zeroline":false,"anchor":"x","title":{"text":"lifeExp","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}},"hoverformat":".2f"},"shapes":[],"showlegend":true,"legend":{"bgcolor":null,"bordercolor":null,"borderwidth":0,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.68949771689498},"title":{"text":"pop<br />continent","font":{"color":"rgba(0,0,0,1)","family":"","size":14.611872146118724}}},"hovermode":"closest","barmode":"relative"},"config":{"doubleClick":"reset","modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false},"source":"A","attrs":{"b72f062b64694":{"x":{},"y":{},"colour":{},"size":{},"type":"scatter"}},"cur_data":"b72f062b64694","visdat":{"b72f062b64694":["function (y) ","x"]},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div></section><section class="slide level2">
 
-<h3 id="ggplot-figures-are-objects">ggplot figures are objects</h3>
-<p>You can assign plots to an object and then re-use them. You can add a layer to an existing plot. Let’s make a plot and try different themes with it.</p>
+<h3 id="ggplot-görselleri-birer-nesnedir">ggplot görselleri birer nesnedir</h3>
+<p>Grafikleri bir nesneye (programlama terimi olan object=nesne) atayıp sonra yeniden kullanabilirsiniz. Var olan bir grafiğe katman da ekleyebilirsiniz. Bir grafik oluşturup onunla farklı temaları deneyelim.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>baseplot <span class="ot">&lt;-</span> gapminder <span class="sc">%&gt;%</span> </span>
-<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">%&gt;%</span> </span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>baseplot <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> </span>
+<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">filter</span>(year<span class="sc">==</span><span class="st">"2007"</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb22-3"><a aria-label="3"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x=</span>gdpPercap, <span class="at">y=</span>lifeExp, <span class="at">color=</span>continent)) <span class="sc">+</span></span>
 <span id="cb22-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">size=</span>pop)) <span class="sc">+</span></span>
 <span id="cb22-5"><a aria-label="5"></a>  <span class="fu">scale_x_log10</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -650,7 +2503,7 @@ alper yilmaz
 </section>
 <section class="slide level2">
 
-<h3 id="ggplot-figures-are-objects-1">ggplot figures are objects</h3>
+<h3 id="ggplot-görselleri-birer-nesnedir-1">ggplot görselleri birer nesnedir</h3>
 <div class="columns">
 <div class="column">
 <div class="cell">
@@ -675,21 +2528,21 @@ alper yilmaz
 </div>
 </div>
 </div></div>
-<p>Plots as objects also help compositing figures from independent figures. Please check <a href="https://patchwork.data-imaginist.com/">patchwork</a> and <a href="https://wilkelab.org/cowplot/articles/introduction.html">cowplot</a> packages.</p>
+<p>Grafiklerin nesne olması, bağımsız grafiklerden bileşik figürler oluşturmaya da olanak sağlar. <a href="https://patchwork.data-imaginist.com/#basic-example">patchwork</a> ve <a href="https://wilkelab.org/cowplot/articles/introduction.html#arranging-plots-into-a-grid">cowplot</a> paketlerine göz atın.</p>
 </section>
 <section class="slide level2">
 
-<h3 id="saving-figures">Saving figures</h3>
-<p><code>ggsave()</code> function is used to save the plots you generated. It can save plots in PNG, PDF, SVG formats. The resolution and size of the image can be adjusted for high quality/resolution images.</p>
+<h3 id="görselleri-kaydetme">Görselleri kaydetme</h3>
+<p><code>ggsave()</code> fonksiyonu ürettiğiniz grafikleri kaydetmek için kullanılır. Grafikleri PNG, PDF, SVG formatlarında kaydedebilir. Yüksek kalite/çözünürlüklü görseller için görüntünün çözünürlüğü ve boyutu ayarlanabilir.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>newplot <span class="ot">&lt;-</span> baseplot <span class="sc">+</span> <span class="fu">theme_classic</span>()  </span>
 <span id="cb25-2"><a aria-label="2"></a>  </span>
 <span id="cb25-3"><a aria-label="3"></a><span class="fu">ggsave</span>(newplot, <span class="at">filename=</span><span class="st">"gpd-health.png"</span>, <span class="at">dpi =</span> <span class="dv">200</span>, <span class="at">width =</span> <span class="dv">6</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="custom-plot" class="slide level2">
-<h2>Custom plot</h2>
-<p>Let’s plot a custom plot showing Turkey’s change over years, adding OECD mean as horizontal line with The Economist theme. Let’s prepare the data to be overlaid:</p>
+<section id="özelleşmiş-bir-görsel" class="slide level2">
+<h2>Özelleşmiş bir görsel</h2>
+<p>Türkiye’nin yıllara göre değişimini gösteren, OECD ortalamasını yatay çizgi olarak ekleyen ve The Economist temasını kullanan özel bir grafik çizelim. Üstüne bindireceğimiz veriyi hazırlayalım:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a aria-label="1"></a>milli <span class="ot">&lt;-</span> gapminder <span class="sc">|&gt;</span> <span class="fu">filter</span>(country<span class="sc">==</span><span class="st">"Turkey"</span>)</span>
 <span id="cb26-2"><a aria-label="2"></a>etiket <span class="ot">&lt;-</span> milli <span class="sc">|&gt;</span> <span class="fu">filter</span>(year<span class="sc">==</span><span class="dv">1982</span>)</span>
@@ -725,39 +2578,51 @@ alper yilmaz
 </figure>
 </div>
 </div>
-</div></section><section id="galleries" class="slide level2 smaller">
-<h2>Galleries</h2>
-<p>Please check the comprehensive list of <code>ggplot</code> related resources at <a href="https://github.com/erikgahner/awesome-ggplot2">awesome-ggplot2</a> repo at Github.</p>
-<p><a href="https://r-graph-gallery.com/">R Graph Gallery</a> has nicely categorized possible plots which might give an idea about what is available.</p>
-<p>Ggplot is much more powerful than you can ever imagine. Please browse the galleries by the following users. For some users you might need to browse the individual folders.</p>
+</div></section><section id="galeriler" class="slide level2 smaller">
+<h2>Galeriler</h2>
+<p>Github’daki <a href="https://github.com/erikgahner/awesome-ggplot2">awesome-ggplot2</a> reposu kapsamlı bir kaynak listesidir</p>
+<p><a href="https://r-graph-gallery.com/">R Graph Gallery</a> kategorilere ayrılmış halde mümkün grafikleri gösterir</p>
+<p><code>ggplot</code> oldukça esnek bu yüzden çok özelleşmiş grafikler hazırlamak için kullanılabilir. Aşağıdaki kullanıcılar ggplot ile oldukça güzel grafikler hazırlamışlar (Bazı kullanıcılar için ayrı klasörlere bakmanız gerekebilir)</p>
 <ul>
-<li><p>Cédric Scherer makes professional plots with ggplot. Check out his gallery at https://github.com/z3tt/TidyTuesday (visit <a href="https://github.com/z3tt/TidyTuesday/tree/main/plots">individual folders</a> for R code)</p></li>
+<li><p>Cédric Scherer ggplot ile profesyonel düzeyde grafikler yapıyor. <a href="https://github.com/z3tt/TidyTuesday">Galerisine</a> göz atın (R kodu için <a href="https://github.com/z3tt/TidyTuesday/tree/main/plots">ayrı klasörlere</a> bakın) Bu tasarımcı tarafından çizilen kahve puanlamasına dair grafiğin detayları için <a href="./coffee.html">kahve</a> sayfasını ziyaret ediniz.</p></li>
 <li><p>Tanya Shapiro <a href="https://github.com/tashapiro/TidyTuesday">https://github.com/tashapiro/TidyTuesday</a></p></li>
 <li><p>Ryan Hart <a href="https://github.com/curatedmess/TidyTuesday">https://github.com/curatedmess/TidyTuesday</a></p></li>
 <li><p>Christophe Nicault <a href="https://github.com/cnicault/tidytuesday">https://github.com/cnicault/tidytuesday</a></p></li>
 <li><p>Georgios Karamanis <a href="https://github.com/gkaramanis/tidytuesday">https://github.com/gkaramanis/tidytuesday</a></p></li>
 </ul>
 </section>
-<section id="biology-and-bioinformatics-related-ggplot-packages" class="slide level2 segue">
-<h2>Biology and bioinformatics related ggplot packages</h2>
+<section id="biyoloji-ve-biyoinformatik-ile-ilgili-ggplot-paketleri" class="slide level2 segue">
+<h2>Biyoloji ve biyoinformatik ile ilgili ggplot paketleri</h2>
 </section>
 <section id="ggbio" class="slide level2">
 <h2>ggbio</h2>
 
-<img data-src="https://raw.githubusercontent.com/tengfei/ggbio/gh-pages/images/interval.png" class="r-stretch"></section>
+<img data-src="https://raw.githubusercontent.com/tengfei/ggbio/gh-pages/images/interval.png" class="r-stretch"><div class="footer">
+<p>Kaynak: <a href="https://lawremi.github.io/ggbio/">ggbio sitesi</a></p>
+</div>
+</section>
 <section id="ggenomes" class="slide level2">
 <h2>ggenomes</h2>
 
-<img data-src="https://raw.githubusercontent.com/thackl/gggenomes/master/man/figures/emales.png" class="r-stretch"></section>
+<img data-src="https://raw.githubusercontent.com/thackl/gggenomes/master/man/figures/emales.png" class="r-stretch"><div class="footer">
+<p>Kaynak: <a href="https://thackl.github.io/gggenomes/">gggenomes sitesi</a> Bu paket, <code>geom_seq()</code>, <code>geom_gene()</code> gibi katmanlar kullanır</p>
+</div>
+</section>
 <section id="ggtrees-ggtreeextra" class="slide level2" data-background-image="https://yulab-smu.top/treedata-book/treedata_files/figure-html/HMPplot-1.png" data-background-size="contain">
 <h2>ggtrees / ggtreeextra</h2>
+<div class="footer">
+<p><a href="https://yulab-smu.top/treedata-book/chapter4.html">Kaynak</a></p>
+</div>
 </section>
 <section id="ggmsa" class="slide level2">
 <h2>ggmsa</h2>
 
+<img data-src="images/ggmsa.png" class="r-stretch"><div class="footer">
+<p><a href="https://yulab-smu.top/ggmsa/">Kaynak</a></p>
+</div>
 
 
-<img data-src="images/ggmsa.png" class="r-stretch"></section>
+</section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
@@ -1181,6 +3046,122 @@ alper yilmaz
         }
       });
       </script>
+    <script type="module">
+    // Handle cell initialization initialization
+    qwebrCellDetails.map(
+      (entry) => {
+        // Handle the creation of the element
+        qwebrCreateHTMLElement(entry);
+        // In the event of interactive, initialize the monaco editor
+        if (entry.options.context == EvalTypes.Interactive) {
+          qwebrCreateMonacoEditorInstance(entry);
+        }
+      }
+    );
+
+    // Identify non-interactive cells (in order)
+    const filteredEntries = qwebrCellDetails.filter(entry => {
+      const contextOption = entry.options && entry.options.context;
+      return ['output', 'setup'].includes(contextOption) || (contextOption == "interactive" && entry.options && entry.options.autorun === 'true');
+    });
+
+    // Condition non-interactive cells to only be run after webR finishes its initialization.
+    qwebrInstance.then(
+      async () => {
+        const nHiddenCells = filteredEntries.length;
+        var currentHiddenCell = 0;
+
+
+        // Modify button state
+        qwebrSetInteractiveButtonState(`🟡 Running hidden code cells ...`, false);
+
+        // Begin processing non-interactive sections
+        // Due to the iteration policy, we must use a for() loop.
+        // Otherwise, we would need to switch to using reduce with an empty
+        // starting promise
+        for (const entry of filteredEntries) {
+
+          // Determine cell being examined
+          currentHiddenCell = currentHiddenCell + 1;
+          const formattedMessage = `Evaluating hidden cell ${currentHiddenCell} out of ${nHiddenCells}`;
+
+          // Update the document status header
+          if (qwebrShowStartupMessage) {
+            qwebrUpdateStatusHeader(formattedMessage);
+          }
+
+          // Display the update in non-active areas
+          qwebrUpdateStatusMessage(formattedMessage);
+
+          // Extract details on the active cell
+          const evalType = entry.options.context;
+          const cellCode = entry.code;
+          const qwebrCounter = entry.id;
+
+          if (['output', 'setup'].includes(evalType)) {
+            // Disable further global status updates
+            const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+            activeContainer.classList.remove('qwebr-cell-needs-evaluation');
+            activeContainer.classList.add('qwebr-cell-evaluated');
+
+            // Update status on the code cell
+            const activeStatus = document.getElementById(`qwebr-status-text-${qwebrCounter}`);
+            activeStatus.innerText = " Evaluating hidden code cell...";
+            activeStatus.classList.remove('qwebr-cell-needs-evaluation');
+            activeStatus.classList.add('qwebr-cell-evaluated');
+          }
+
+          switch (evalType) {
+            case 'interactive':
+              // TODO: Make this more standardized.
+              // At the moment, we're overriding the interactive status update by pretending its
+              // output-like. 
+              const tempOptions = entry.options;
+              tempOptions["context"] = "output"
+              // Run the code in a non-interactive state that is geared to displaying output
+              await qwebrExecuteCode(`${cellCode}`, qwebrCounter, tempOptions);
+              break;
+            case 'output':
+              // Run the code in a non-interactive state that is geared to displaying output
+              await qwebrExecuteCode(`${cellCode}`, qwebrCounter, entry.options);
+              break;
+            case 'setup':
+              const activeDiv = document.getElementById(`qwebr-noninteractive-setup-area-${qwebrCounter}`);
+
+              // Store code in history
+              qwebrLogCodeToHistory(cellCode, entry.options);
+
+              // Run the code in a non-interactive state with all output thrown away
+              await mainWebR.evalRVoid(`${cellCode}`);
+              break;
+            default: 
+              break; 
+          }
+
+          if (['output', 'setup'].includes(evalType)) {
+            // Disable further global status updates
+            const activeContainer = document.getElementById(`qwebr-non-interactive-loading-container-${qwebrCounter}`);
+            // Disable visibility
+            activeContainer.style.visibility = 'hidden';
+            activeContainer.style.display = 'none';
+          }
+        }
+      }
+    ).then(
+      () => {
+        // Release document status as ready
+
+        if (qwebrShowStartupMessage) {
+          qwebrStartupMessage.innerText = "🟢 Ready!"
+        }
+      
+        qwebrSetInteractiveButtonState(
+          `<i class="fa-solid fa-play qwebr-icon-run-code"></i> <span>Run Code</span>`, 
+          true
+        );  
+      }
+    );
+    </script>
     
 
 </body></html>
