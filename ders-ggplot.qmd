@@ -484,6 +484,8 @@ gapminder |>
 
 ```{r}
 #| output-location: slide
+#| fig-width: 10.5
+#| fig-height: 6.2
 library(plotly)
 
 gap_plot <- gapminder |> 
@@ -493,7 +495,9 @@ gap_plot <- gapminder |>
   scale_x_log10() +
   theme_minimal()
 
-ggplotly(gap_plot)
+# width/height pinlenmezse plotly her slayt geçişinde konteyneri yeniden ölçüp
+# küçülür (revealjs transform'u ölçeklenmiş boyutu geri besler)
+ggplotly(gap_plot, width = 1008, height = 595)
 ```
 
 ---
