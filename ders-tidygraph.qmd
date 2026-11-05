@@ -2,7 +2,7 @@
 title: "Tidy graph analysis with {tidygraph}"
 subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders7"
 author: "Alper Yılmaz"
-date: 2025-05-02
+date: 2026-11-30
 format:
   revealjs:
     chalkboard: true

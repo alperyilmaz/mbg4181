@@ -2,7 +2,7 @@
 title: "Tidy Text Mining with {tidytext}"
 subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders6"
 author: "Alper Yılmaz"
-date: 2025-04-18
+date: 2026-11-23
 format:
   revealjs:
     chalkboard: true
