@@ -311,7 +311,7 @@ gapminder |>
 
 ### X veya Y koordinatlarının ölçeklenmesi {.smaller}
 
-Pratik bir kural: değer aralığı çok genişse ve büyük sayılar sonuçları görmeyi engelliyorsa logaritmik ölçek kullanın. Ya `mutate` ile yeni bir sütun üretebilir ya da ölçekleme fonksiyonlarını kullanabilirsiniz. Aşağıda *pop* verisini ölçeklemek için `scale_y_log10()` kullanıldı.
+Pratik bir kural: değer aralığı çok genişse ve büyük sayılar sonuçları görmeyi engelliyorsa logaritmik ölçek kullanın. Ya `mutate` ile yeni bir sütun üretebilir ya da ölçekleme fonksiyonlarını kullanabilirsiniz. Aşağıda [**pop**]{.red-box} verisini ölçeklemek için `scale_y_log10()` kullanıldı.
 
 :::: {.columns}
 
