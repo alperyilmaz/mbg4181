@@ -1,0 +1,703 @@
+---
+title: "Metin ve Ağlarda Veri Analizi"
+subtitle: "MBG4181 Biyolojik Veri Analizi ve Görüntüleme - Ders7"
+author: "Alper Yılmaz"
+date: 2026-11-09
+lang: tr
+format:
+  revealjs:
+    chalkboard: true
+    css: custom.css
+    smaller: true
+    scrollable: true
+    controls: true
+    touch: true
+    history: false
+    progress: true
+    slide-number: c/t
+    typora-copy-images-to: images
+resources:
+  - data
+webr:
+  packages: ['dplyr','tidytext','stringr','ggplot2']
+  autoload-packages: false
+  show-startup-message: true
+#  render-df: gt-interactive
+filters:
+  - webr
+engine: knitr
+execute:
+  echo: true
+---
+
+## İki farklı veri tipi
+
+1. **Metin** → {tidytext}: bir özeti (ya da 612 özeti) tabloya çevirmek
+2. **Ağ** → {tidygraph}: protein etkileşimlerini grafiğe çevirmek
+3. **Metinden ağa**: ikisini birleştirmek
+
+Ortak fikir: veriyi **tidy** formata çevir, **dplyr** fiilleriyle veriyi işle, birbirine eklenen parçalar şeklinde analiz.
+
+::: footer
+[Kaynak](https://r4ds.hadley.nz/intro.html)
+:::
+
+## Neden bu iki konu?
+
+Biyolojik veri iki biçimde gelir:
+
+- **Ölçüm**: tablo halinde sayılar (önceki derslerde kullandığımız `unvotes`,`gapminder` verileri)
+- **İlişki**: "A, B ile etkileşiyor" (protein–protein etkileşim ağı, metabolik ağ, sitogenetik harita)
+
+Bugün iki **gerçek** veri setiyle çalışacağız:
+
+| Veri | Ne? | Boyut |
+|---|---|---|
+| PubMed özetleri | EGFR + akciğer kanseri literatürü | 612 özet (2015–2026) |
+| İnsan PPI ağı | protein–protein etkileşimleri | 544.494 etkileşim, 19.162 protein |
+
+::: footer
+[Kaynak](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+:::
+
+## Eski ders notları
+
+tidytext hakkında eski ders notları: [link](ders-tidytext.qmd)
+
+tidygraph hakkında eski ders notları: [link](ders-tidygraph.qmd)
+
+## Bölüm 1: Metin
+
+{tidytext} ile metni tabloya çeviriyoruz.
+
+---
+
+## Metni satırlara ayırmak
+
+Bir özet aslında bir **kelime torbası**. {tidytext} bunu "bir satır = bir (belge, kelime)" tablosuna çevirir.
+
+```{r}
+library(dplyr); library(tidytext); library(stringr); library(ggplot2)
+library(purrr); library(tidyr); library(forcats)
+
+sample_text <- "EGFR mutations drive non-small cell lung cancer."
+```
+
+```{r}
+#| output-location: slide
+tidy_text <- tibble(line = 1, text = sample_text) |>
+  unnest_tokens(word, text)
+
+tidy_text
+```
+
+Metin verisi de tıpkı tablo verisi gibi **tidy**: her satır tek bir gözlem.
+
+::: footer
+[Kaynak](https://www.tidytext.org/)
+:::
+
+## Kelimeleri temizlemek
+
+Her metinde aynı "gürültü" kelimeleri var: *the, and, of, in*...
+
+{tidytext} bir **stop words** sözlüğü ile gelir; `anti_join()` ile atarız.
+
+```{webr}
+library(dplyr)
+library(tidytext)
+
+metin <- tibble(line = 1:3, text = c(
+  "The patients with EGFR mutation were treated with osimertinib.",
+  "Resistance to osimertinib was observed in lung cancer patients.",
+  "EGFR mutation status was tested in the lung adenocarcinoma."
+))
+
+metin |>
+  unnest_tokens(word, text) |>
+  anti_join(stop_words, by = "word") |>
+  count(word, sort = TRUE)
+```
+
+`anti_join()` = "bu sözlükteki kelimeleri at".
+
+::: footer
+[Kaynak](https://juliaconstantinou.com/2016/10/26/tidytext/)
+:::
+
+## Durak: bugünün verisi
+
+Özetleri PubMed'den indirdik. İndirme kodu `data/fetch_pubmed.R` dosyasında:
+
+```{r}
+#| eval: false
+base_query <- 'EGFR[tiab] AND lung[tiab]'
+years      <- 2015:2026
+per_year   <- 60
+
+pmids <- map(years, function(y) {
+  url <- paste0("https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi",
+                "?db=pubmed&retmode=json&retmax=", per_year,
+                "&term=", URLencode(paste0(base_query, " AND ", y, "[dp]")))
+  fromJSON(url)$esearchresult$idlist
+})
+```
+
+Sonra `efetch` ile özet metinleri indirilir, `map_dfr()` ile tabloya çevrilir.
+
+::: footer
+[Kaynak](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+:::
+
+## Korpusumuzu tanıyalım
+
+```{r}
+library(readr)
+corpus <- read_csv("data/pubmed_egfr.csv", show_col_types = FALSE) |>
+  mutate(year = as.integer(year))
+
+corpus
+```
+
+Beş sütun: `pmid`, `year`, `journal`, `title`, `abstract`.
+
+## Korpusumuzu tanıyalım
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.2
+#| output-location: slide
+corpus |>
+  count(year) |>
+  ggplot(aes(factor(year), n)) +
+  geom_col(fill = "#2c7fb8") +
+  labs(x = NULL, y = "Özet sayısı") +
+  theme_classic(base_size = 13) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+```
+
+Her yıl en fazla 60 özet: yıllar arası karşılaştırma **dengeli** bir veriyle yapılsın diye.
+
+::: footer
+[Kaynak](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+:::
+
+## En sık kelimeler
+
+```{r}
+tokens <- corpus |>
+  unnest_tokens(word, abstract) |>
+  anti_join(stop_words, by = "word")
+
+tokens |>
+  count(word, sort = TRUE) |>
+  slice_head(n = 10)
+```
+
+## En sık kelimeler
+
+```{r}
+#| fig-width: 7.5
+#| fig-height: 5.5
+#| output-location: slide
+tokens |>
+  count(word, sort = TRUE) |>
+  slice_head(n = 15) |>
+  ggplot(aes(fct_reorder(word, n), n)) +
+  geom_col(fill = "#2c7fb8") +
+  coord_flip() +
+  labs(x = NULL, y = "Özetlerde geçen sayı") +
+  theme_classic(base_size = 13)
+```
+
+`egfr`, `lung`, `cancer` ... korpusun konusu burada çıkıyor.
+
+## Literatürün yönü
+
+Sadece kelime saymak yetmez: **hangi terim hangi yıl itibarıyla öne çıktı?**
+
+```{r}
+terms <- c("osimertinib", "gefitinib", "erlotinib",
+           "immunotherapy", "single-cell", "ctdna")
+
+n_per_year <- corpus |> count(year)
+
+trend <- map_dfr(terms, function(tm) {
+  corpus |>
+    mutate(hit = grepl(paste0("\\b", tm, "\\b"), tolower(paste(title, abstract)))) |>
+    group_by(year) |>
+    summarise(n = sum(hit), .groups = "drop") |>
+    mutate(term = tm, pct = 100 * n / max(n_per_year$n))
+}) |>
+  mutate(term = factor(term, levels = terms))
+```
+
+## Literatürün yönü
+
+```{r}
+#| fig-width: 9
+#| fig-height: 4.8
+#| output-location: slide
+trend |>
+  ggplot(aes(year, pct, color = term)) +
+  geom_line(linewidth = 0.9) +
+  geom_point(size = 1.2) +
+  scale_x_continuous(breaks = sort(unique(corpus$year))) +
+  labs(x = NULL, y = "Özetlerin %'si", color = NULL) +
+  theme_classic(base_size = 13) +
+  theme(legend.position = "bottom")
+```
+
+Osimertinib yükseliyor, gefitinib/erlotinib düşüyor, **immunotherapy** ve **single-cell** son yıllarda beliriyor.
+
+## purrr: aynı işi terim terim yapmak
+
+Aynı analizi 6 terim için yaptık. Bu "tekrar eden iş" tipik bir **purrr** işidir:
+
+- `map()` → listedeki her eleman için sonuç listesi
+- `map_dfr()` → sonuçları **tek tablo**ya birleştirir
+
+```r
+map_dfr(terms, function(tm) { ... })   # 6 satır tablo
+```
+
+`map_dfr()` fonksiyonunu ilk kez `data/fetch_pubmed.R` içinde kullandık (yıl yıl PubMed sorgusu).
+
+## İki kelime birlikte: bigram
+
+Tek kelime yetmez: **"lung cancer"**, **"EGFR mutation"**, **"tyrosine kinase"** gibi ifadeler birlikte anlamlıdır.
+
+```{r}
+#| output-location: slide
+bigrams <- corpus |>
+  unnest_tokens(bigram, abstract, token = "ngrams", n = 2) |>
+  separate_wider_delim(bigram, delim = " ", names = c("word1", "word2")) |>
+  anti_join(stop_words, by = c("word1" = "word")) |>
+  anti_join(stop_words, by = c("word2" = "word")) |>
+  filter(!is.na(word1), !is.na(word2)) |>
+  count(word1, word2, sort = TRUE)
+
+bigrams |> slice_head(n = 10)
+```
+
+`anti_join()` burada tek kelimeye yetmez: iki kelimeyi `separate()` ile ayırıp ikisini de temizliyoruz.
+
+## TF-IDF: ayırt edici kelimeler
+
+- **tf**: kelime bir belgede ne kadar sık
+- **idf**: kelime tüm belgelerde ne kadar **nadir**
+
+$$idf(\text{terim}) = \ln{\left(\frac{n_{\text{belge}}}{n_{\text{terimi içeren belge}}}\right)}$$
+
+```{r}
+#| eval: false
+yil_bazli <- corpus |>
+  mutate(doc = as.character(year)) |>
+  unnest_tokens(word, abstract) |>
+  count(doc, word) |>
+  filter(n >= 3)
+
+yil_bazli |> bind_tf_idf(word, doc, n)
+```
+
+::: {.callout-warning}
+## Gerçek hayatta gürültü olur
+
+tf-idf **nadir** kelimeleri öne çıkarır; küçük veri kümelerinde bu "nadir" kelimeler bazen yazar adı ya da kısaltma olur. Bu yüzden filtreleme (`n >= 3`, en az 5 harf) şart.
+:::
+
+## Bölüm 2: Ağ
+
+{tidygraph} ile ilişkileri grafiğe çeviriyoruz.
+
+---
+
+## Ağ nedir?
+
+- **Düğüm (node)**: bir nesne (protein, gen, kelime)
+- **Kenar (edge)**: iki düğüm arasındaki ilişki
+
+![](images/basics.jpg)
+
+::: footer
+[Kaynak](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/introduction-to-graph-theory/graph-theory-graph-types-and-edge-properties/)
+:::
+
+## Düğüm ve kenar
+
+Soldaki iki düğüm arasına, sağdaki gibi bir **kenar** (bağ) çizilir.
+
+:::: {.columns}
+::: {.column width="50%"}
+![](images/nodes.gif){height="280"}
+:::
+::: {.column width="50%"}
+![](images/edges.jpg){height="280"}
+:::
+::::
+
+---
+
+## Tidy graph: iki tablo
+
+{tidygraph} bir grafiği **iki tablo** ile tutar: düğümler ve kenarlar. İkisi de {dplyr} fiilleriyle işlenir.
+
+![](images/tbl_graph.png)
+
+::: footer
+[Kaynak](https://bookdown.org/wangminjie/R4DS/eda-tidygraph.html)
+:::
+
+## Mini örnek: arkadaşlık ağı
+
+Küçük bir ağla başlayalım (arkadaşlık = yönsüz).
+
+```{r}
+friends <- tibble(
+  person1 = c("alice", "charles", "david", "bob", "fiona",
+               "gary", "bob", "alice", "david"),
+  person2 = c("bob", "bob", "bob", "allen", "bob",
+               "bob", "henry", "allen", "fiona")
+)
+friends
+```
+
+## Arkadaşlık ağı grafiği
+
+```{r}
+library(tidygraph)
+friends_g <- friends |> as_tbl_graph(directed = FALSE)
+
+friends_g
+```
+
+## Ağı görselleştirmek
+
+{ggraph} = {ggplot} mantığı, ama `x`/`y` yerine **düğüm** ve **kenar** bilgisi.
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| output-location: slide
+library(ggraph)
+friends_g |>
+  ggraph(layout = "kk") +
+  geom_edge_link() +
+  geom_node_point(aes(size = centrality_degree()), color = "#de2d26") +
+  geom_node_label(aes(label = name), repel = TRUE) +
+  theme_graph()
+```
+
+## Derece (degree)
+
+Bir düğümün kaç **kenarı** var? (Yönsüz ağda "kaç kişiyle bağlantılı")
+
+```{r}
+friends_g |>
+  mutate(deg = centrality_degree()) |>
+  as_tibble() |>
+  arrange(-deg)
+```
+
+**Yönlü** ağda ayrım önemlidir:
+
+## Yönlü ağda derece
+
+```{r}
+#| eval: false
+friends_g |>
+  mutate(
+    in_deg  = centrality_degree(mode = "in"),
+    out_deg = centrality_degree(mode = "out"),
+    all_deg = centrality_degree(mode = "all")
+  )
+```
+
+Varsayılan yön **out**'tur. Yönlü/ yönsüz kararını verirken bunu unutmayın.
+
+## Durak: bugünün verisi (PPI ağı)
+
+```{r}
+ppi <- read_tsv("data/human_ppi.tsv.gz", show_col_types = FALSE)
+
+ppi |> slice_head(n = 5)
+```
+
+İki sütun: `interactor_A`, `interactor_B`. Kısaltılmış protein adları (UniProt/S_HUMAN). Tablo **19.162 protein / 544.494 etkileşim**: çok büyük, bu yüzden sonraki adımlarda alt küme alacağız.
+
+::: footer
+[Kaynak](https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/)
+:::
+
+## Tablodan grafiğe
+
+```{r}
+ppi_g <- ppi |> as_tbl_graph(directed = FALSE)
+
+cat("Düğüm (protein):  ", ppi_g |> activate(nodes) |> nrow(), "\n")
+cat("Kenar (etkileşim):", ppi_g |> activate(edges) |> nrow(), "\n")
+```
+
+`as_tbl_graph()` iki sütunlu tabloyu alır, **düğüm + kenar** tablosuna çevirir.
+
+## Ağın hub genleri
+
+Derecesi en yüksek proteinler ağın **hub**'larıdır.
+
+```{r}
+deg_tbl <- ppi_g |>
+  activate(nodes) |>
+  mutate(deg = centrality_degree()) |>
+  as_tibble() |>
+  arrange(-deg)
+
+deg_tbl |> slice_head(n = 8)
+```
+
+## Hub genleri grafiği
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+#| output-location: slide
+deg_tbl |>
+  mutate(grp = if_else(name %in% c("EGFR", "TP53", "KRAS", "MYC", "ESR1", "ESR2"),
+                       "Dersimizde gördüğümüz genler", "Diğer proteinler")) |>
+  slice_head(n = 15) |>
+  ggplot(aes(deg, fct_reorder(name, deg), fill = grp)) +
+  geom_col() +
+  scale_fill_manual(values = c("Diğer proteinler" = "#74c476",
+                               "Dersimizde gördüğümüz genler" = "#de2d26")) +
+  labs(x = "Derece (etkileşim sayısı)", y = NULL, fill = NULL) +
+  theme_classic(base_size = 13) +
+  theme(legend.position = "bottom")
+```
+
+::: {.callout-note}
+## Veri kalitesi notu
+
+`PLEKHA4`, `KIAA1429` gibi çok etkileşime giren proteinler, çoğu zaman **çok sayıda düşük güvenli** etkileşimin birikmesidir. "Hub" olmak biyolojik bir üstünlük değil, bazen bir **veri özelliğidir**.
+:::
+
+## EGFR'nin çevresi
+
+EGFR'nin ağda **1583** etkileşim ortağı var. Görünür kılmak için en yoğun 20'sini alıp bu düğümler arasındaki kenarları çizdik.
+
+```{r}
+nbr <- ppi |>
+  filter(interactor_A == "EGFR" | interactor_B == "EGFR") |>
+  mutate(other = if_else(interactor_A == "EGFR", interactor_B, interactor_A)) |>
+  distinct(other) |>
+  pull(other)
+
+ego_set <- c("EGFR", deg_tbl |> filter(name %in% nbr) |>
+                          slice_head(n = 20) |> pull(name))
+
+ego_edges <- ppi |>
+  filter(interactor_A %in% ego_set & interactor_B %in% ego_set) |>
+  distinct()
+```
+
+## EGFR alt ağı
+
+```{r}
+ego_tbl <- tbl_graph(
+  nodes = tibble(name = ego_set),
+  edges = tibble(from = match(ego_edges$interactor_A, ego_set),
+                  to   = match(ego_edges$interactor_B, ego_set)),
+  directed = FALSE
+) |>
+  activate(nodes) |>
+  mutate(deg = centrality_degree(), betw = centrality_betweenness())
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5.8
+#| output-location: slide
+ego_tbl |>
+  ggraph(layout = "kk") +
+  geom_edge_link(colour = "grey70") +
+  geom_node_point(aes(size = deg, colour = name == "EGFR")) +
+  scale_colour_manual(values = c("TRUE" = "#de2d26",
+                                 "FALSE" = "#3182bd"), guide = "none") +
+  geom_node_label(aes(label = name,
+                      fontface = if_else(name == "EGFR", "bold", "plain")),
+                  repel = TRUE, segment.colour = "grey70") +
+  theme_graph()
+```
+
+## Merkezilik: betweenness
+
+ Derece "çok kapısı var" demektir. **Betweenness** ise "ağın *ortasında* mı?": en kısa yolların kaçından geçiyor.
+
+```{r}
+ego_tbl |>
+  activate(nodes) |>
+  as_tibble() |>
+  arrange(-betw) |>
+  slice_head(n = 6)
+```
+
+EGFR bu ağda **en yüksek betweenness**'e sahip: yollar onun üzerinden geçiyor.
+
+## Yol haritası: RAS/MAPK kaskadı
+
+Ağdan biyolojiyi nasıl okuruz? Bilinen bir yolun proteinlerini seçip **alt grafiği** çıkarıyoruz: sıralama bizim bilgimizden, kenarlar PPI verisinden.
+
+```{r}
+katman <- tibble(
+  name = c("EGFR","GRB2","SOS1","KRAS","NRAS","HRAS","RAF1","BRAF",
+           "MAP2K1","MAP2K2","MAPK1","MAPK3"),
+  sira = c(1,2,3,4,4,4,5,5,6,6,7,7),
+  y    = c(0,0,0, 1,0,-1, 0.5,-0.5, 0.5,-0.5, 0.5,-0.5)
+)
+
+kaskad_ed <- ppi |>
+  filter(interactor_A %in% katman$name, interactor_B %in% katman$name) |>
+  distinct() |>
+  mutate(ka = katman$sira[match(interactor_A, katman$name)],
+         kb = katman$sira[match(interactor_B, katman$name)],
+         from = if_else(ka < kb, interactor_A, interactor_B),
+         to   = if_else(ka < kb, interactor_B, interactor_A),
+         tip  = if_else(abs(ka - kb) == 1, "Kaskadın adımı", "Diğer etkileşim")) |>
+  filter(ka != kb) |>
+  distinct(from, to, tip)
+```
+
+## Kaskadı çizmek
+
+```{r}
+#| fig-width: 10
+#| fig-height: 4.2
+#| output-location: slide
+kaskad_g <- tbl_graph(
+  nodes = katman,
+  edges = tibble(from = match(kaskad_ed$from, katman$name),
+                 to   = match(kaskad_ed$to,   katman$name),
+                 tip  = kaskad_ed$tip),
+  directed = TRUE
+)
+
+kaskad_g |>
+  ggraph(layout = "manual", x = katman$sira, y = katman$y) +
+  geom_edge_link(aes(edge_colour = tip), arrow = arrow(length = unit(0.16, "cm"))) +
+  scale_edge_colour_manual(values = c("Kaskadın adımı" = "#de2d26",
+                                      "Diğer etkileşim" = "#e6e6e6")) +
+  geom_node_point(size = 4.5, colour = "#3182bd") +
+  geom_node_text(aes(label = name), nudge_y = 0.16) +
+  labs(edge_colour = NULL) +
+  theme_graph() +
+  theme(legend.position = "bottom")
+```
+
+Kırmızı kenarlar kaskadın **ardışık adımları**, gri kenarlar aynı proteinler arasındaki diğer etkileşimler. Yerleşimi elle verdik: **düzen veriden gelmez**, çizim tercihidir.
+
+## Düzen (layout)
+
+Ağın *şekli* veriden gelmez, **çizim seçiminden** gelir. En iyisi birkaçını denemektir.
+
+![](images/graph-layouts.png)
+
+::: footer
+[Kaynak](https://kateto.net/network-visualization)
+:::
+
+## Bölüm 3: Metinden ağa
+
+Aynı fikir, metin verisiyle.
+
+---
+
+## Bigram ağı
+
+Bigram sayımında elimizde `word1`, `word2` ve bir **sayı** var. Bu tam olarak "iki düğüm + aralarındaki kenar" demek.
+
+```{r}
+bg_top <- bigrams |> slice_head(n = 25)
+
+bg_graph <- bg_top |> as_tbl_graph(directed = FALSE)
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+#| output-location: slide
+bg_graph |>
+  ggraph(layout = "kk") +
+  geom_edge_link(aes(width = n), colour = "grey55", alpha = 0.6) +
+  geom_node_point(aes(size = centrality_degree()), colour = "#de2d26") +
+  geom_node_label(aes(label = name), repel = TRUE, segment.colour = "grey70") +
+  theme_graph()
+```
+
+`egfr` düğümü merkezde: *EGFR – TKI'lar*, *EGFR – mutasyonlar* etrafında toplanıyor.
+
+## İki ağ, aynı gramer
+
+| | Metin ağı | Protein ağı |
+|---|---|---|
+| Düğüm | kelime | protein |
+| Kenar | "bu kelime şu kelimeden sonra geçti" | "bu iki protein etkileşiyor" |
+| Ağırlık | kaç kez geçti | kaç etkileşim |
+| Merkezilik | en çok "köprü" kuran kelime | sinyal yolunun kilit geni |
+
+Aynı araçlar, farklı alan.
+
+## Tidy fiillerin lego iması
+
+Farklı paketlerin fonksiyonları tidy veri alıp tidy veri verir; bu yüzden uç uca takılırlar.
+
+```{r}
+#| eval: false
+corpus |>                                    # veri
+  unnest_tokens(word, abstract) |>          # tidytext
+  anti_join(stop_words, by = "word") |>     # dplyr
+  count(year, word) |>                      # dplyr
+  filter(n > 5) |>                          # dplyr
+  pivot_wider(names_from = word, values_from = n) |>   # tidyr
+  as_tbl_graph(directed = FALSE) |>         # tidygraph
+  activate(edges) |>
+  mutate(betw = centrality_edge_betweenness()) |>      # tidygraph
+  ggraph(layout = "kk") +                   # ggraph
+  geom_node_point() +                       # ggraph
+  geom_edge_link()                          # ggraph
+```
+
+## Senin sıran
+
+1. `corpus` içinde **2015** yılı özetlerini alın; en sık 10 kelimeyi bulun.
+2. `trend` tablosundan **2020** yılında en yüksek terimi bulun; o terimin yıllar boyunca yüzdelerini çizdirin.
+3. `ppi_g` içinde **"EGFR"** düğümünü bulun; derecesini ve kaç komşusu olduğunu yazdırın.
+4. `bigrams` içinden "egfr" kelimesini içeren 10 ikili kelime çıkarın.
+
+## Posterin verisi nerede?
+
+Poster için veriyi nereden çekeceksiniz? Ücretsiz ve **programatik** (R ile okunabilen) kaynaklar:
+
+| Kaynak | Ne verir? | Adres |
+|---|---|---|
+| **NCBI GEO** | ekspresyon / dizileme verisi | [ncbi.nlm.nih.gov/geo](https://www.ncbi.nlm.nih.gov/geo/) |
+| **Ensembl** | gen, transkript, genom koordinatı | [ensembl.org](https://www.ensembl.org) |
+| **UniProt** | protein dizisi ve fonksiyon | [uniprot.org](https://www.uniprot.org) |
+| **EMBL-EBI** | etkileşim ağları (IntAct) | [ebi.ac.uk/intact](https://www.ebi.ac.uk/intact/) |
+| **PubMed E-utilities** | özet metni | [ncbi.nlm.nih.gov](https://www.ncbi.nlm.nih.gov/books/NBK25501/) |
+
+Bu kaynakların hepsinde **JSON/XML/TSV** indirme var: `download.file()` + `readr` ile okunur. Ödevinizde yaptığınız gibi veriyi **indirip kaydedin**, sonra analiz edin.
+
+::: footer
+[Kaynak](https://www.ncbi.nlm.nih.gov/books/NBK25501/)
+:::
+
+## Özet
+
+1. **Metin** de, **ağ** da tabloyla başlar: tidy veri + dplyr fiilleri.
+2. {tidytext} metni kelime/bigram tablosuna çevirir; {tidygraph} ilişkiyi grafiğe çevirir.
+3. İkisi aynı fikrin iki yüzü: **tablo → ölçüm**, **ağ → ilişki**.
+4. Aynı araç zinciri farklı veriyle çalışır: **PubMed özeti** de, **PPI ağı** de.
+
+Sonraki ders: [Quarto ile Raporlama](ders-quarto-alternative.qmd) — analizi poster/rapor hâline getiriyoruz.
+
+::: footer
+[Kaynak](https://www.tidytext.org/) · [Kaynak](https://www.tidygraph.org/)
+:::

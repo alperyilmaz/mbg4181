@@ -30,7 +30,7 @@
 
 ## Ders7
 
-*9 Kasım 2026 13:00* | **İçerik**:  *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd)
+*9 Kasım 2026 13:00* | **İçerik**: *tidytext* ve *tidygraph* ile metin ve ağ analizi (birleşik ders). [Sunum linki](ders-tidy-graph-text.qmd)
 
 ## Vize1
 
@@ -38,11 +38,11 @@
 
 ## Ders8
 
-*23 Kasım 2026 13:00* | **İçerik**: *tidytext* ile doğal dil işleme. [Sunum linki](ders-tidytext.qmd)
+*23 Kasım 2026 13:00* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd)
 
 ## Ders9
 
-*30 Kasım 2026 13:00* | **İçerik**: *tidygraph* ile ağ analizi. [Sunum linki](ders-tidygraph.qmd) (Quiz3)
+*30 Kasım 2026 13:00* | **İçerik**: (Quiz3)
 
 ## Ders10
 
