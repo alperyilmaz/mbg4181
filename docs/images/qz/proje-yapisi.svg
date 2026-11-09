@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 370" font-family="Helvetica, Arial, sans-serif">
+<text x="60" y="46" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#222B57" font-weight="bold">repo/</text>
+<text x="330" y="46" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#059669" font-weight="bold">proje kökü</text>
+<text x="60" y="90" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1E293B" font-weight="normal">├── _quarto.yml</text>
+<text x="330" y="90" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">site ayarları (çıktı klasörü, stiller)</text>
+<text x="60" y="134" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1E293B" font-weight="normal">├── index.qmd</text>
+<text x="330" y="134" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">giriş sayfası — ders takvimi</text>
+<text x="60" y="178" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1E293B" font-weight="normal">├── ders-*.qmd</text>
+<text x="330" y="178" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">sunumlar (bu dosya)</text>
+<text x="60" y="222" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1E293B" font-weight="normal">├── images/</text>
+<text x="330" y="222" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">görseller: PNG, SVG diyagramlar</text>
+<text x="60" y="266" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#1E293B" font-weight="normal">├── data/</text>
+<text x="330" y="266" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">veri dosyaları (CSV, TSV)</text>
+<rect x="40" y="284" width="700" height="40" rx="6" fill="#ECFDF5"/>
+<text x="60" y="310" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#059669" font-weight="bold">└── docs/</text>
+<text x="330" y="310" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#059669" font-weight="bold">RENDER ÇIKTISI — otomatik oluşur</text>
+</svg>

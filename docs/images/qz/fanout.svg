@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 690 350" font-family="Helvetica, Arial, sans-serif">
+<rect x="30" y="130" width="170" height="80" rx="6" fill="#F1F5F9" stroke="#222B57" stroke-width="1.6"/>
+<text x="115" y="165" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="17" fill="#222B57" font-weight="bold">ders7.qmd</text>
+<text x="115" y="188" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#64748B" font-weight="normal">tek kaynak</text>
+<rect x="430" y="20" width="220" height="50" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="540" y="51" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">HTML rapor</text>
+<line x1="200" y1="170" x2="330" y2="45" stroke="#222B57" stroke-width="2.5"/>
+<line x1="330" y1="45" x2="422.8" y2="45" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,45 418,39.6 418,50.4" fill="#222B57"/>
+<rect x="430" y="86" width="220" height="50" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="540" y="117" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">PDF (makale)</text>
+<line x1="200" y1="170" x2="330" y2="111" stroke="#222B57" stroke-width="2.5"/>
+<line x1="330" y1="111" x2="422.8" y2="111" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,111 418,105.6 418,116.4" fill="#222B57"/>
+<rect x="430" y="152" width="220" height="50" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="540" y="183" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Word (.docx)</text>
+<line x1="200" y1="170" x2="330" y2="177" stroke="#222B57" stroke-width="2.5"/>
+<line x1="330" y1="177" x2="422.8" y2="177" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,177 418,171.6 418,182.4" fill="#222B57"/>
+<rect x="430" y="218" width="220" height="50" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="540" y="249" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Sunum (revealjs)</text>
+<line x1="200" y1="170" x2="330" y2="243" stroke="#222B57" stroke-width="2.5"/>
+<line x1="330" y1="243" x2="422.8" y2="243" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,243 418,237.6 418,248.4" fill="#222B57"/>
+<rect x="430" y="284" width="220" height="50" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="540" y="315" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Poster</text>
+<line x1="200" y1="170" x2="330" y2="309" stroke="#222B57" stroke-width="2.5"/>
+<line x1="330" y1="309" x2="422.8" y2="309" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,309 418,303.6 418,314.4" fill="#222B57"/>
+<text x="115" y="240" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">quarto render</text>
+<text x="115" y="262" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">--to html / pdf / docx</text>
+</svg>

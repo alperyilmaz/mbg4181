@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 390" font-family="Helvetica, Arial, sans-serif">
+<rect x="40" y="40" width="820" height="56" rx="8" fill="#222B57"/>
+<text x="60" y="76" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="16" fill="#FFFFFF" font-weight="bold">Markdown'da yazdığınız</text>
+<text x="480" y="76" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold">Ekranda görünen</text>
+<rect x="40" y="96" width="820" height="42" rx="0" fill="#F1F5F9"/>
+<text x="60" y="123" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal">**kalın metin**</text>
+<text x="480" y="123" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">kalın metin</text>
+<text x="60" y="165" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal">*italik metin*</text>
+<text x="480" y="165" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">italik metin</text>
+<rect x="40" y="180" width="820" height="42" rx="0" fill="#F1F5F9"/>
+<text x="60" y="207" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal">`kod`</text>
+<text x="480" y="207" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="15" fill="#1E293B" font-weight="normal">kod</text>
+<text x="60" y="249" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal"># Başlık</text>
+<text x="480" y="249" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222B57" font-weight="bold">Başlık</text>
+<rect x="40" y="264" width="820" height="42" rx="0" fill="#F1F5F9"/>
+<text x="60" y="291" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal">- birinci öğe</text>
+<text x="480" y="291" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="normal">•  birinci öğe</text>
+<text x="60" y="333" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#1E293B" font-weight="normal">[bağlantı](https://quarto.org)</text>
+<text x="480" y="333" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#2563EB" font-weight="normal">bağlantı</text>
+<text x="450" y="375" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="" font-style="italic">yazım kuralları = kısa bir kağıt, 10 dakikada öğrenilir</text>
+</svg>

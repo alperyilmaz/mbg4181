@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 335" font-family="Helvetica, Arial, sans-serif">
+<rect x="40" y="30" width="430" height="40" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="55" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Başlık</text>
+<text x="200" y="55" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">kısa ve net</text>
+<rect x="40" y="76" width="430" height="38" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="101" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Özet</text>
+<text x="200" y="101" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">3–4 cümle</text>
+<rect x="40" y="120" width="430" height="38" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="145" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Giriş</text>
+<text x="200" y="145" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">1 paragraf: sorun</text>
+<rect x="40" y="164" width="430" height="38" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="189" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Yöntem</text>
+<text x="200" y="189" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">veri + araçlar + adımlar</text>
+<rect x="40" y="208" width="430" height="38" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="233" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Sonuç</text>
+<text x="200" y="233" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">2–3 cümle + yorum</text>
+<rect x="40" y="252" width="430" height="38" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="60" y="277" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Kaynakça</text>
+<text x="200" y="277" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">ne kullandın?</text>
+<rect x="520" y="30" width="340" height="120" rx="6" fill="#FAF6EE" stroke="#AC966E" stroke-width="1.6"/>
+<text x="540" y="62" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#AC966E" font-weight="bold">Şekil 1</text>
+<text x="540" y="88" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1E293B" font-weight="normal">grafik + başlık (caption)</text>
+<text x="540" y="112" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">@fig-ozon ile metinden çağrılır</text>
+<rect x="520" y="170" width="340" height="120" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+<text x="540" y="202" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#2563EB" font-weight="bold">Tablo 1</text>
+<text x="540" y="228" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#1E293B" font-weight="normal">özet tablo + başlık</text>
+<text x="540" y="252" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">@tbl-ozon ile metinden çağrılır</text>
+<text x="690" y="320" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#64748B" font-weight="" font-style="italic">numaralar otomatik; metin değişince güncellenir</text>
+</svg>

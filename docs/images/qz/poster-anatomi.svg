@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 420" font-family="Helvetica, Arial, sans-serif">
+<rect x="120" y="20" width="460" height="380" rx="8" fill="#FFFFFF" stroke="#222B57" stroke-width="2"/>
+<rect x="140" y="38" width="420" height="46" rx="6" fill="#222B57"/>
+<text x="350" y="68" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#FFFFFF" font-weight="bold">Başlık + yazar + kurum</text>
+<rect x="140" y="100" width="150" height="150" rx="6" fill="#F1F5F9"/>
+<text x="215" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Giriş</text>
+<line x1="156" y1="150" x2="274" y2="150" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="156" y1="170" x2="274" y2="170" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="156" y1="190" x2="274" y2="190" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="156" y1="210" x2="274" y2="210" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<rect x="300" y="100" width="150" height="150" rx="6" fill="#F1F5F9"/>
+<text x="375" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Yöntem</text>
+<line x1="316" y1="150" x2="434" y2="150" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="316" y1="170" x2="434" y2="170" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="316" y1="190" x2="434" y2="190" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="316" y1="210" x2="434" y2="210" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<rect x="460" y="100" width="150" height="150" rx="6" fill="#F1F5F9"/>
+<text x="535" y="128" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#222B57" font-weight="bold">Sonuç</text>
+<line x1="476" y1="150" x2="594" y2="150" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="476" y1="170" x2="594" y2="170" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="476" y1="190" x2="594" y2="190" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<line x1="476" y1="210" x2="594" y2="210" stroke="#CBD5E1" stroke-width="6" stroke-linecap="round"/>
+<rect x="140" y="266" width="250" height="74" rx="6" fill="#FAF6EE" stroke="#AC966E" stroke-width="1.6"/>
+<text x="265" y="298" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15.5" fill="#AC966E" font-weight="bold">Şekil 1</text>
+<text x="265" y="322" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#1E293B" font-weight="normal">grafik</text>
+<rect x="400" y="266" width="160" height="74" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+<text x="480" y="298" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15.5" fill="#2563EB" font-weight="bold">Tablo 1</text>
+<text x="480" y="322" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#1E293B" font-weight="normal">özet</text>
+<rect x="140" y="352" width="420" height="32" rx="6" fill="#ECFDF5" stroke="#059669" stroke-width="1.6"/>
+<text x="350" y="374" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#059669" font-weight="bold">Kaynakça + veri kodu (QR)</text>
+<text x="620" y="120" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="bold">A0 dikey</text>
+<text x="620" y="150" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">3 sütun</text>
+<text x="620" y="300" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">tek büyük görsel</text>
+<text x="620" y="370" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">altta kaynakça</text>
+</svg>

@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 260" font-family="Helvetica, Arial, sans-serif">
+<rect x="30" y="50" width="270" height="190" rx="6" fill="#FFFFFF" stroke="#AC966E" stroke-width="1.6"/>
+<rect x="30" y="50" width="270" height="44" rx="8" fill="#FAF6EE" stroke="#AC966E" stroke-width="0"/>
+<rect x="30" y="80" width="270" height="14" rx="0" fill="#FAF6EE"/>
+<text x="165" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#AC966E" font-weight="bold">RStudio</text>
+<text x="165" y="128" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">Render butonu</text>
+<text x="165" y="154" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">Ctrl+Shift+K</text>
+<text x="165" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#64748B" font-weight="" font-style="italic">en hızlı yol; önizleme açılır</text>
+<rect x="315" y="50" width="270" height="190" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<rect x="315" y="50" width="270" height="44" rx="8" fill="#F1F5F9" stroke="#222B57" stroke-width="0"/>
+<rect x="315" y="80" width="270" height="14" rx="0" fill="#F1F5F9"/>
+<text x="450" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#222B57" font-weight="bold">Terminal</text>
+<text x="450" y="128" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">quarto render ders7.qmd</text>
+<text x="450" y="154" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">quarto render --to pdf</text>
+<text x="450" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#64748B" font-weight="" font-style="italic">toplu üretim, script içinde</text>
+<rect x="600" y="50" width="270" height="190" rx="6" fill="#FFFFFF" stroke="#2563EB" stroke-width="1.6"/>
+<rect x="600" y="50" width="270" height="44" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="0"/>
+<rect x="600" y="80" width="270" height="14" rx="0" fill="#EFF6FF"/>
+<text x="735" y="80" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="17" fill="#2563EB" font-weight="bold">Canlı önizleme</text>
+<text x="735" y="128" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">quarto preview</text>
+<text x="735" y="154" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#1E293B" font-weight="normal">http://localhost:4200</text>
+<text x="735" y="216" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13" fill="#64748B" font-weight="" font-style="italic">yazdıkça tarayıcıda güncellenir</text>
+</svg>

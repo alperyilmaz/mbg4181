@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 305" font-family="Helvetica, Arial, sans-serif">
+<text x="60" y="46" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="17" fill="#222B57" font-weight="bold">cache: true</text>
+<text x="250" y="46" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">chunk düzeyinde — sadece değişen bloklar yeniden çalışır</text>
+<rect x="40" y="62" width="820" height="58" rx="8" fill="#F1F5F9"/>
+<text x="70" y="97" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">kod değişti</text>
+<line x1="180" y1="91" x2="232.8" y2="91" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="240,91 228,85.6 228,96.4" fill="#222B57"/>
+<text x="260" y="97" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">blok yeniden çalışır</text>
+<line x1="430" y1="91" x2="482.8" y2="91" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="490,91 478,85.6 478,96.4" fill="#222B57"/>
+<text x="510" y="97" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#64748B" font-weight="normal">klasör:  ders7_cache/</text>
+<text x="60" y="176" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="17" fill="#222B57" font-weight="bold">freeze: auto</text>
+<text x="250" y="176" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="normal">belge düzeyinde — HTML'in tamamı saklanır, R hiç çalışmaz</text>
+<rect x="40" y="192" width="820" height="58" rx="8" fill="#F1F5F9"/>
+<text x="70" y="227" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#1E293B" font-weight="bold">veri değişti</text>
+<line x1="180" y1="221" x2="232.8" y2="221" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/><polygon points="240,221 228,215.6 228,226.4" fill="#DC2626"/>
+<text x="260" y="227" text-anchor="start" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#DC2626" font-weight="bold">HTML hâlâ eski veriyi gösterir!</text>
+<line x1="490" y1="221" x2="542.8" y2="221" stroke="#DC2626" stroke-width="3" stroke-linecap="round"/><polygon points="550,221 538,215.6 538,226.4" fill="#DC2626"/>
+<text x="570" y="227" text-anchor="start" font-family="Menlo, Consolas, monospace" font-size="14.5" fill="#64748B" font-weight="normal">klasör:  _freeze/</text>
+<text x="450" y="290" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="" font-style="italic">Ödevde: freeze kullanmayın — eski çıktı gösterir</text>
+</svg>

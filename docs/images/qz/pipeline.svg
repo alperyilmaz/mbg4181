@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 300" font-family="Helvetica, Arial, sans-serif">
+<rect x="20" y="80" width="150" height="70" rx="6" fill="#F1F5F9" stroke="#222B57" stroke-width="1.6"/>
+<text x="95.0" y="110" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="16" fill="#222B57" font-weight="bold">ders7.qmd</text>
+<text x="95.0" y="132" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">metin + kod</text>
+<rect x="215" y="80" width="170" height="70" rx="6" fill="#FAF6EE" stroke="#AC966E" stroke-width="1.6"/>
+<text x="300.0" y="110" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="16" fill="#AC966E" font-weight="bold">knitr</text>
+<text x="300.0" y="132" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">R kodunu çalıştırır</text>
+<rect x="430" y="80" width="150" height="70" rx="6" fill="#F1F5F9" stroke="#222B57" stroke-width="1.6"/>
+<text x="505.0" y="110" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="16" fill="#222B57" font-weight="bold">ara .md</text>
+<text x="505.0" y="132" text-anchor="middle" font-family="Menlo, Consolas, monospace" font-size="13.5" fill="#64748B" font-weight="normal">kod + çıktı</text>
+<rect x="625" y="80" width="150" height="70" rx="6" fill="#EFF6FF" stroke="#2563EB" stroke-width="1.6"/>
+<text x="700.0" y="110" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="16" fill="#2563EB" font-weight="bold">pandoc</text>
+<text x="700.0" y="132" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="13.5" fill="#64748B" font-weight="normal">biçim dönüşümü</text>
+<line x1="170" y1="115" x2="207.8" y2="115" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="215,115 203,109.6 203,120.4" fill="#222B57"/>
+<line x1="385" y1="115" x2="422.8" y2="115" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="430,115 418,109.6 418,120.4" fill="#222B57"/>
+<line x1="580" y1="115" x2="617.8" y2="115" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="625,115 613,109.6 613,120.4" fill="#222B57"/>
+<rect x="180" y="205" width="160" height="52" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="260" y="237" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222B57" font-weight="bold">HTML rapor</text>
+<line x1="260" y1="195" x2="252.8" y2="205" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="260,205 248,199.6 248,210.4" fill="#222B57"/>
+<rect x="360" y="205" width="160" height="52" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="440" y="237" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222B57" font-weight="bold">PDF (makale)</text>
+<line x1="440" y1="195" x2="432.8" y2="205" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="440,205 428,199.6 428,210.4" fill="#222B57"/>
+<rect x="540" y="205" width="160" height="52" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="620" y="237" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222B57" font-weight="bold">Word (.docx)</text>
+<line x1="620" y1="195" x2="612.8" y2="205" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="620,205 608,199.6 608,210.4" fill="#222B57"/>
+<rect x="720" y="205" width="160" height="52" rx="6" fill="#FFFFFF" stroke="#222B57" stroke-width="1.6"/>
+<text x="800" y="237" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="15" fill="#222B57" font-weight="bold">Sunum / poster</text>
+<line x1="800" y1="195" x2="792.8" y2="205" stroke="#222B57" stroke-width="3" stroke-linecap="round"/><polygon points="800,205 788,199.6 788,210.4" fill="#222B57"/>
+<line x1="260" y1="195" x2="800" y2="195" stroke="#222B57" stroke-width="3"/>
+<line x1="700" y1="150" x2="700" y2="195" stroke="#222B57" stroke-width="3"/>
+<text x="480" y="285" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="14" fill="#64748B" font-weight="" font-style="italic">aynı .qmd → farklı biçimler</text>
+</svg>
