@@ -535,9 +535,9 @@ bg_graph |>
 
 Aynı araçlar, farklı alan.
 
-## Tidy fiillerin lego iması
+## Tidy fiiller lego gibi birleştirilebilir
 
-Farklı paketlerin fonksiyonları tidy veri alıp tidy veri verir; bu yüzden uç uca takılırlar.
+Farklı paketlerin fonksiyonları tidy veri alıp tidy veri verir; bu yüzden uç uca eklenebilirler.
 
 ```{r}
 #| eval: false
