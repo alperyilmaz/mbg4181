@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="tr"><head>
+<html lang="en"><head>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-html/tabby.min.js"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -2112,21 +2112,18 @@ Alper Yılmaz
 <section id="bölüm-1-metin" class="slide level2">
 <h2>Bölüm 1: Metin</h2>
 <p>{tidytext} ile metni tabloya çeviriyoruz.</p>
-</section>
-<section id="metni-satırlara-ayırmak" class="slide level2">
-<h2>Metni satırlara ayırmak</h2>
-<p>Bir özet aslında bir <strong>kelime torbası</strong>. {tidytext} bunu “bir satır = bir (belge, kelime)” tablosuna çevirir.</p>
+<p>Bir metin aslında bir <strong>kelime torbası</strong>. {tidytext} bunu “bir satır = bir (belge, kelime)” tablosuna çevirir.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a aria-label="1"></a><span class="fu">library</span>(dplyr); <span class="fu">library</span>(tidytext); <span class="fu">library</span>(stringr); <span class="fu">library</span>(ggplot2)</span>
 <span id="cb1-2"><a aria-label="2"></a><span class="fu">library</span>(purrr); <span class="fu">library</span>(tidyr); <span class="fu">library</span>(forcats)</span>
 <span id="cb1-3"><a aria-label="3"></a></span>
-<span id="cb1-4"><a aria-label="4"></a>sample_text <span class="ot">&lt;-</span> <span class="st">"EGFR mutations drive non-small cell lung cancer."</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-4"><a aria-label="4"></a>sample_text <span class="ot">&lt;-</span> <span class="st">"EGFR mutations drive non-small cell lung cancer."</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a>tidy_text <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">line =</span> <span class="dv">1</span>, <span class="at">text =</span> sample_text) <span class="sc">|&gt;</span></span>
 <span id="cb2-2"><a aria-label="2"></a>  <span class="fu">unnest_tokens</span>(word, text)</span>
 <span id="cb2-3"><a aria-label="3"></a></span>
-<span id="cb2-4"><a aria-label="4"></a>tidy_text</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb2-4"><a aria-label="4"></a>tidy_text</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <p>Metin verisi de tıpkı tablo verisi gibi <strong>tidy</strong>: her satır tek bir gözlem.</p>
@@ -2134,7 +2131,7 @@ Alper Yılmaz
 <p><a href="https://www.tidytext.org/">Kaynak</a></p>
 </div>
 </section>
-<section id="metni-satırlara-ayırmak-output" class="slide level2 output-location-slide"><h2>Metni satırlara ayırmak</h2><div class="cell output-location-slide">
+<section id="bölüm-1-metin-output" class="slide level2 output-location-slide"><h2>Bölüm 1: Metin</h2><div class="cell output-location-slide">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
    line word     
@@ -2161,8 +2158,8 @@ Alper Yılmaz
 <p><a href="https://juliaconstantinou.com/2016/10/26/tidytext/">Kaynak</a></p>
 </div>
 </section>
-<section id="durak-bugünün-verisi" class="slide level2">
-<h2>Durak: bugünün verisi</h2>
+<section id="örnek-veri-makale-özetleri" class="slide level2">
+<h2>Örnek veri: makale özetleri</h2>
 <p>Özetleri PubMed’den indirdik. İndirme kodu <code>data/fetch_pubmed.R</code> dosyasında:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a>base_query <span class="ot">&lt;-</span> <span class="st">'EGFR[tiab] AND lung[tiab]'</span></span>
@@ -2174,7 +2171,7 @@ Alper Yılmaz
 <span id="cb4-7"><a aria-label="7"></a>                <span class="st">"?db=pubmed&amp;retmode=json&amp;retmax="</span>, per_year,</span>
 <span id="cb4-8"><a aria-label="8"></a>                <span class="st">"&amp;term="</span>, <span class="fu">URLencode</span>(<span class="fu">paste0</span>(base_query, <span class="st">" AND "</span>, y, <span class="st">"[dp]"</span>)))</span>
 <span id="cb4-9"><a aria-label="9"></a>  <span class="fu">fromJSON</span>(url)<span class="sc">$</span>esearchresult<span class="sc">$</span>idlist</span>
-<span id="cb4-10"><a aria-label="10"></a>})</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb4-10"><a aria-label="10"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Sonra <code>efetch</code> ile özet metinleri indirilir, <code>map_dfr()</code> ile tabloya çevrilir.</p>
 <div class="footer">
@@ -2185,10 +2182,11 @@ Alper Yılmaz
 <h2>Korpusumuzu tanıyalım</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a aria-label="1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb5-2"><a aria-label="2"></a>corpus <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/pubmed_egfr.csv"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb5-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year))</span>
-<span id="cb5-4"><a aria-label="4"></a></span>
-<span id="cb5-5"><a aria-label="5"></a>corpus</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb5-2"><a aria-label="2"></a>pubmed_data_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/pubmed_egfr.csv"</span></span>
+<span id="cb5-3"><a aria-label="3"></a>corpus <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(pubmed_data_url, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb5-4"><a aria-label="4"></a>  <span class="fu">mutate</span>(<span class="at">year =</span> <span class="fu">as.integer</span>(year))</span>
+<span id="cb5-5"><a aria-label="5"></a></span>
+<span id="cb5-6"><a aria-label="6"></a>corpus</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 612 × 5
        pmid  year journal                                         title abstract
@@ -2217,7 +2215,7 @@ Alper Yılmaz
 <span id="cb7-4"><a aria-label="4"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2c7fb8"</span>) <span class="sc">+</span></span>
 <span id="cb7-5"><a aria-label="5"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Özet sayısı"</span>) <span class="sc">+</span></span>
 <span id="cb7-6"><a aria-label="6"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a aria-label="7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb7-7"><a aria-label="7"></a>  <span class="fu">theme</span>(<span class="at">axis.text.x =</span> <span class="fu">element_text</span>(<span class="at">angle =</span> <span class="dv">45</span>, <span class="at">hjust =</span> <span class="dv">1</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <p>Her yıl en fazla 60 özet: yıllar arası karşılaştırma <strong>dengeli</strong> bir veriyle yapılsın diye.</p>
@@ -2242,7 +2240,7 @@ Alper Yılmaz
 <span id="cb8-4"><a aria-label="4"></a></span>
 <span id="cb8-5"><a aria-label="5"></a>tokens <span class="sc">|&gt;</span></span>
 <span id="cb8-6"><a aria-label="6"></a>  <span class="fu">count</span>(word, <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
-<span id="cb8-7"><a aria-label="7"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb8-7"><a aria-label="7"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 10 × 2
    word           n
@@ -2270,7 +2268,7 @@ Alper Yılmaz
 <span id="cb10-5"><a aria-label="5"></a>  <span class="fu">geom_col</span>(<span class="at">fill =</span> <span class="st">"#2c7fb8"</span>) <span class="sc">+</span></span>
 <span id="cb10-6"><a aria-label="6"></a>  <span class="fu">coord_flip</span>() <span class="sc">+</span></span>
 <span id="cb10-7"><a aria-label="7"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Özetlerde geçen sayı"</span>) <span class="sc">+</span></span>
-<span id="cb10-8"><a aria-label="8"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb10-8"><a aria-label="8"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <p><code>egfr</code>, <code>lung</code>, <code>cancer</code> … korpusun konusu burada çıkıyor.</p>
@@ -2283,41 +2281,55 @@ Alper Yılmaz
 </figure>
 </div>
 </div>
-</div></section><section id="literatürün-yönü" class="slide level2">
-<h2>Literatürün yönü</h2>
-<p>Sadece kelime saymak yetmez: <strong>hangi terim hangi yıl itibarıyla öne çıktı?</strong></p>
+</div></section><section id="kavramların-yıllara-göre-sayımı" class="slide level2">
+<h2>Kavramların yıllara göre sayımı</h2>
+<p><strong>Hangi terim yıllara göre ne kadar sık kullanıldı?</strong> sorusu tidy formattaki veri ile kolayca hesaplanabilir.</p>
+<p>Aradığımız kelimeleri bir <strong>tablo</strong>ya yazıp metni <strong>kelimelere</strong> bölelim; ikisini <code>join</code> ile eşleştirelim.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a>terms <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"osimertinib"</span>, <span class="st">"gefitinib"</span>, <span class="st">"erlotinib"</span>,</span>
-<span id="cb11-2"><a aria-label="2"></a>           <span class="st">"immunotherapy"</span>, <span class="st">"single-cell"</span>, <span class="st">"ctdna"</span>)</span>
-<span id="cb11-3"><a aria-label="3"></a></span>
-<span id="cb11-4"><a aria-label="4"></a>n_per_year <span class="ot">&lt;-</span> corpus <span class="sc">|&gt;</span> <span class="fu">count</span>(year)</span>
-<span id="cb11-5"><a aria-label="5"></a></span>
-<span id="cb11-6"><a aria-label="6"></a>trend <span class="ot">&lt;-</span> <span class="fu">map_dfr</span>(terms, <span class="cf">function</span>(tm) {</span>
-<span id="cb11-7"><a aria-label="7"></a>  corpus <span class="sc">|&gt;</span></span>
-<span id="cb11-8"><a aria-label="8"></a>    <span class="fu">mutate</span>(<span class="at">hit =</span> <span class="fu">grepl</span>(<span class="fu">paste0</span>(<span class="st">"</span><span class="sc">\\</span><span class="st">b"</span>, tm, <span class="st">"</span><span class="sc">\\</span><span class="st">b"</span>), <span class="fu">tolower</span>(<span class="fu">paste</span>(title, abstract)))) <span class="sc">|&gt;</span></span>
-<span id="cb11-9"><a aria-label="9"></a>    <span class="fu">group_by</span>(year) <span class="sc">|&gt;</span></span>
-<span id="cb11-10"><a aria-label="10"></a>    <span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">sum</span>(hit), <span class="at">.groups =</span> <span class="st">"drop"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb11-11"><a aria-label="11"></a>    <span class="fu">mutate</span>(<span class="at">term =</span> tm, <span class="at">pct =</span> <span class="dv">100</span> <span class="sc">*</span> n <span class="sc">/</span> <span class="fu">max</span>(n_per_year<span class="sc">$</span>n))</span>
-<span id="cb11-12"><a aria-label="12"></a>}) <span class="sc">|&gt;</span></span>
-<span id="cb11-13"><a aria-label="13"></a>  <span class="fu">mutate</span>(<span class="at">term =</span> <span class="fu">factor</span>(term, <span class="at">levels =</span> terms))</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a aria-label="1"></a><span class="co"># Terim tablosu: aradığımız kelimeler</span></span>
+<span id="cb11-2"><a aria-label="2"></a>terms_tbl <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">term =</span> terms <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"osimertinib"</span>, <span class="st">"gefitinib"</span>, </span>
+<span id="cb11-3"><a aria-label="3"></a>             <span class="st">"erlotinib"</span>, <span class="st">"immunotherapy"</span>, <span class="st">"ctdna"</span>)) </span>
+<span id="cb11-4"><a aria-label="4"></a>trend <span class="ot">&lt;-</span> corpus <span class="sc">|&gt;</span></span>
+<span id="cb11-5"><a aria-label="5"></a>  <span class="fu">unnest_tokens</span>(term, abstract) <span class="sc">|&gt;</span></span>
+<span id="cb11-6"><a aria-label="6"></a>  <span class="fu">inner_join</span>(terms_tbl, <span class="at">by =</span> <span class="st">"term"</span>) <span class="sc">|&gt;</span></span>
+<span id="cb11-7"><a aria-label="7"></a>  <span class="fu">distinct</span>(pmid, year, term) <span class="sc">|&gt;</span></span>
+<span id="cb11-8"><a aria-label="8"></a>  <span class="fu">count</span>(year, term, <span class="at">name =</span> <span class="st">"n"</span>)</span>
+<span id="cb11-9"><a aria-label="9"></a></span>
+<span id="cb11-10"><a aria-label="10"></a>trend</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 51 × 3
+    year term              n
+   &lt;int&gt; &lt;chr&gt;         &lt;int&gt;
+ 1  2015 erlotinib        11
+ 2  2015 gefitinib        13
+ 3  2016 erlotinib        10
+ 4  2016 gefitinib        11
+ 5  2016 immunotherapy     1
+ 6  2016 osimertinib       5
+ 7  2017 ctdna             2
+ 8  2017 erlotinib         8
+ 9  2017 gefitinib         5
+10  2017 immunotherapy     2
+# ℹ 41 more rows</code></pre>
+</div>
 </div>
 </section>
-<section id="literatürün-yönü-1" class="slide level2">
-<h2>Literatürün yönü</h2>
+<section id="trend-grafiği" class="slide level2">
+<h2>Trend grafiği</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>trend <span class="sc">|&gt;</span></span>
-<span id="cb12-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, pct, <span class="at">color =</span> term)) <span class="sc">+</span></span>
-<span id="cb12-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
-<span id="cb12-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb12-5"><a aria-label="5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(corpus<span class="sc">$</span>year))) <span class="sc">+</span></span>
-<span id="cb12-6"><a aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Özetlerin %'si"</span>, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb12-7"><a aria-label="7"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb12-8"><a aria-label="8"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a>trend <span class="sc">|&gt;</span></span>
+<span id="cb13-2"><a aria-label="2"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(year, n, <span class="at">color =</span> term)) <span class="sc">+</span></span>
+<span id="cb13-3"><a aria-label="3"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
+<span id="cb13-4"><a aria-label="4"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
+<span id="cb13-5"><a aria-label="5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">sort</span>(<span class="fu">unique</span>(corpus<span class="sc">$</span>year))) <span class="sc">+</span></span>
+<span id="cb13-6"><a aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="cn">NULL</span>, <span class="at">y =</span> <span class="st">"Özetlerin sayısı"</span>, <span class="at">color =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
+<span id="cb13-7"><a aria-label="7"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
+<span id="cb13-8"><a aria-label="8"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
-<p>Osimertinib yükseliyor, gefitinib/erlotinib düşüyor, <strong>immunotherapy</strong> ve <strong>single-cell</strong> son yıllarda beliriyor.</p>
+<p>Osimertinib yükseliyor.</p>
 </section>
-<section id="literatürün-yönü-1-output" class="slide level2 output-location-slide"><h2>Literatürün yönü</h2><div class="cell output-location-slide">
+<section id="trend-grafiği-output" class="slide level2 output-location-slide"><h2>Trend grafiği</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
@@ -2325,17 +2337,7 @@ Alper Yılmaz
 </figure>
 </div>
 </div>
-</div></section><section id="purrr-aynı-işi-terim-terim-yapmak" class="slide level2">
-<h2>purrr: aynı işi terim terim yapmak</h2>
-<p>Aynı analizi 6 terim için yaptık. Bu “tekrar eden iş” tipik bir <strong>purrr</strong> işidir:</p>
-<ul>
-<li><code>map()</code> → listedeki her eleman için sonuç listesi</li>
-<li><code>map_dfr()</code> → sonuçları <strong>tek tablo</strong>ya birleştirir</li>
-</ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a aria-label="1"></a><span class="fu">map_dfr</span>(terms, <span class="cf">function</span>(tm) { ... })   <span class="co"># 6 satır tablo</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-<p><code>map_dfr()</code> fonksiyonunu ilk kez <code>data/fetch_pubmed.R</code> içinde kullandık (yıl yıl PubMed sorgusu).</p>
-</section>
-<section id="iki-kelime-birlikte-bigram" class="slide level2">
+</div></section><section id="iki-kelime-birlikte-bigram" class="slide level2">
 <h2>İki kelime birlikte: bigram</h2>
 <p>Tek kelime yetmez: <strong>“lung cancer”</strong>, <strong>“EGFR mutation”</strong>, <strong>“tyrosine kinase”</strong> gibi ifadeler birlikte anlamlıdır.</p>
 <div class="cell">
@@ -2347,10 +2349,10 @@ Alper Yılmaz
 <span id="cb14-6"><a aria-label="6"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(word1), <span class="sc">!</span><span class="fu">is.na</span>(word2)) <span class="sc">|&gt;</span></span>
 <span id="cb14-7"><a aria-label="7"></a>  <span class="fu">count</span>(word1, word2, <span class="at">sort =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb14-8"><a aria-label="8"></a></span>
-<span id="cb14-9"><a aria-label="9"></a>bigrams <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb14-9"><a aria-label="9"></a>bigrams <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
-<p><code>anti_join()</code> burada tek kelimeye yetmez: iki kelimeyi <code>separate()</code> ile ayırıp ikisini de temizliyoruz.</p>
+<p><code>anti_join()</code> ile <em>stop_words</em> temizliği yapamayız, ikili kelimelerin iki ayrı kolona ayrılması (<em>separate_</em>) daha sonra her iki kolondaki <em>stop_words</em> ayrı ayrı temizlenmesi gerekmektedir..</p>
 </section>
 <section id="iki-kelime-birlikte-bigram-output" class="slide level2 output-location-slide"><h2>İki kelime birlikte: bigram</h2><div class="cell output-location-slide">
 <div class="cell-output cell-output-stdout">
@@ -2376,13 +2378,28 @@ Alper Yılmaz
 </ul>
 <p><span class="math display">\[idf(\text{terim}) = \ln{\left(\frac{n_{\text{belge}}}{n_{\text{terimi içeren belge}}}\right)}\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>yil_bazli <span class="ot">&lt;-</span> corpus <span class="sc">|&gt;</span></span>
-<span id="cb16-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">doc =</span> <span class="fu">as.character</span>(year)) <span class="sc">|&gt;</span></span>
-<span id="cb16-3"><a aria-label="3"></a>  <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span></span>
-<span id="cb16-4"><a aria-label="4"></a>  <span class="fu">count</span>(doc, word) <span class="sc">|&gt;</span></span>
-<span id="cb16-5"><a aria-label="5"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;=</span> <span class="dv">3</span>)</span>
-<span id="cb16-6"><a aria-label="6"></a></span>
-<span id="cb16-7"><a aria-label="7"></a>yil_bazli <span class="sc">|&gt;</span> <span class="fu">bind_tf_idf</span>(word, doc, n)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a aria-label="1"></a>corpus <span class="sc">|&gt;</span></span>
+<span id="cb16-2"><a aria-label="2"></a>   <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span></span>
+<span id="cb16-3"><a aria-label="3"></a>   <span class="fu">count</span>(pmid, word) <span class="sc">|&gt;</span></span>
+<span id="cb16-4"><a aria-label="4"></a>   <span class="fu">bind_tf_idf</span>(pmid, word, n) <span class="sc">|&gt;</span> </span>
+<span id="cb16-5"><a aria-label="5"></a>   <span class="fu">filter</span>(n<span class="sc">&gt;</span><span class="dv">3</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb16-6"><a aria-label="6"></a>   <span class="fu">arrange</span>(<span class="sc">-</span>tf_idf) </span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6,122 × 6
+       pmid word         n    tf   idf tf_idf
+      &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;
+ 1 39720671 as1          4     1  4.71   4.71
+ 2 28783064 estrogen     6     1  4.64   4.64
+ 3 27149849 pkm2         6     1  4.63   4.63
+ 4 29133145 ddx59        5     1  4.63   4.63
+ 5 25656847 smarce1      5     1  4.62   4.62
+ 6 27760600 sqclc        4     1  4.62   4.62
+ 7 31420907 atf1         4     1  4.62   4.62
+ 8 36975376 tmprss2      5     1  4.59   4.59
+ 9 36268218 hts          5     1  4.57   4.57
+10 36410436 2d5          4     1  4.57   4.57
+# ℹ 6,112 more rows</code></pre>
+</div>
 </div>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -2393,7 +2410,7 @@ Alper Yılmaz
 <p><strong>Gerçek hayatta gürültü olur</strong></p>
 </div>
 <div class="callout-content">
-<p>tf-idf <strong>nadir</strong> kelimeleri öne çıkarır; küçük veri kümelerinde bu “nadir” kelimeler bazen yazar adı ya da kısaltma olur. Bu yüzden filtreleme (<code>n &gt;= 3</code>, en az 5 harf) şart.</p>
+<p>tf-idf <strong>nadir</strong> kelimeleri öne çıkarır; küçük veri kümelerinde bu “nadir” kelimeler bazen yazar adı ya da kısaltma olur. Bu yüzden filtreleme (<code>n &gt;= 3</code>) gerekebilir.</p>
 </div>
 </div>
 </div>
@@ -2401,9 +2418,7 @@ Alper Yılmaz
 <section id="bölüm-2-ağ" class="slide level2">
 <h2>Bölüm 2: Ağ</h2>
 <p>{tidygraph} ile ilişkileri grafiğe çeviriyoruz.</p>
-</section>
-<section id="ağ-nedir" class="slide level2">
-<h2>Ağ nedir?</h2>
+<h3 id="ağ-nedir">Ağ nedir?</h3>
 <ul>
 <li><strong>Düğüm (node)</strong>: bir nesne (protein, gen, kelime)</li>
 <li><strong>Kenar (edge)</strong>: iki düğüm arasındaki ilişki</li>
@@ -2435,13 +2450,13 @@ Alper Yılmaz
 <h2>Mini örnek: arkadaşlık ağı</h2>
 <p>Küçük bir ağla başlayalım (arkadaşlık = yönsüz).</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a aria-label="1"></a>friends <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb17-2"><a aria-label="2"></a>  <span class="at">person1 =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>,</span>
-<span id="cb17-3"><a aria-label="3"></a>               <span class="st">"gary"</span>, <span class="st">"bob"</span>, <span class="st">"alice"</span>, <span class="st">"david"</span>),</span>
-<span id="cb17-4"><a aria-label="4"></a>  <span class="at">person2 =</span> <span class="fu">c</span>(<span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"allen"</span>, <span class="st">"bob"</span>,</span>
-<span id="cb17-5"><a aria-label="5"></a>               <span class="st">"bob"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>, <span class="st">"fiona"</span>)</span>
-<span id="cb17-6"><a aria-label="6"></a>)</span>
-<span id="cb17-7"><a aria-label="7"></a>friends</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a aria-label="1"></a>friends <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
+<span id="cb18-2"><a aria-label="2"></a>  <span class="at">person1 =</span> <span class="fu">c</span>(<span class="st">"alice"</span>, <span class="st">"charles"</span>, <span class="st">"david"</span>, <span class="st">"bob"</span>, <span class="st">"fiona"</span>,</span>
+<span id="cb18-3"><a aria-label="3"></a>               <span class="st">"gary"</span>, <span class="st">"bob"</span>, <span class="st">"alice"</span>, <span class="st">"david"</span>),</span>
+<span id="cb18-4"><a aria-label="4"></a>  <span class="at">person2 =</span> <span class="fu">c</span>(<span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"bob"</span>, <span class="st">"allen"</span>, <span class="st">"bob"</span>,</span>
+<span id="cb18-5"><a aria-label="5"></a>               <span class="st">"bob"</span>, <span class="st">"henry"</span>, <span class="st">"allen"</span>, <span class="st">"fiona"</span>)</span>
+<span id="cb18-6"><a aria-label="6"></a>)</span>
+<span id="cb18-7"><a aria-label="7"></a>friends</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 9 × 2
   person1 person2
@@ -2461,10 +2476,10 @@ Alper Yılmaz
 <section id="arkadaşlık-ağı-grafiği" class="slide level2">
 <h2>Arkadaşlık ağı grafiği</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a aria-label="1"></a><span class="fu">library</span>(tidygraph)</span>
-<span id="cb19-2"><a aria-label="2"></a>friends_g <span class="ot">&lt;-</span> friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb19-3"><a aria-label="3"></a></span>
-<span id="cb19-4"><a aria-label="4"></a>friends_g</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a aria-label="1"></a><span class="fu">library</span>(tidygraph)</span>
+<span id="cb20-2"><a aria-label="2"></a>friends_g <span class="ot">&lt;-</span> friends <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb20-3"><a aria-label="3"></a></span>
+<span id="cb20-4"><a aria-label="4"></a>friends_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tbl_graph: 8 nodes and 9 edges
 #
@@ -2496,13 +2511,13 @@ Alper Yılmaz
 <h2>Ağı görselleştirmek</h2>
 <p>{ggraph} = {ggplot} mantığı, ama <code>x</code>/<code>y</code> yerine <strong>düğüm</strong> ve <strong>kenar</strong> bilgisi.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a aria-label="1"></a><span class="fu">library</span>(ggraph)</span>
-<span id="cb21-2"><a aria-label="2"></a>friends_g <span class="sc">|&gt;</span></span>
-<span id="cb21-3"><a aria-label="3"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
-<span id="cb21-4"><a aria-label="4"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
-<span id="cb21-5"><a aria-label="5"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="fu">centrality_degree</span>()), <span class="at">color =</span> <span class="st">"#de2d26"</span>) <span class="sc">+</span></span>
-<span id="cb21-6"><a aria-label="6"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
-<span id="cb21-7"><a aria-label="7"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a><span class="fu">library</span>(ggraph)</span>
+<span id="cb22-2"><a aria-label="2"></a>friends_g <span class="sc">|&gt;</span></span>
+<span id="cb22-3"><a aria-label="3"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb22-4"><a aria-label="4"></a>  <span class="fu">geom_edge_link</span>() <span class="sc">+</span></span>
+<span id="cb22-5"><a aria-label="5"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="fu">centrality_degree</span>()), <span class="at">color =</span> <span class="st">"#de2d26"</span>) <span class="sc">+</span></span>
+<span id="cb22-6"><a aria-label="6"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">repel =</span> <span class="cn">TRUE</span>) <span class="sc">+</span></span>
+<span id="cb22-7"><a aria-label="7"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 </section>
@@ -2518,10 +2533,10 @@ Alper Yılmaz
 <h2>Derece (degree)</h2>
 <p>Bir düğümün kaç <strong>kenarı</strong> var? (Yönsüz ağda “kaç kişiyle bağlantılı”)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a aria-label="1"></a>friends_g <span class="sc">|&gt;</span></span>
-<span id="cb22-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb22-3"><a aria-label="3"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb22-4"><a aria-label="4"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a aria-label="1"></a>friends_g <span class="sc">|&gt;</span></span>
+<span id="cb23-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb23-3"><a aria-label="3"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb23-4"><a aria-label="4"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
   name      deg
@@ -2540,22 +2555,50 @@ Alper Yılmaz
 </section>
 <section id="yönlü-ağda-derece" class="slide level2">
 <h2>Yönlü ağda derece</h2>
+<p>Arkadaşlık ağını “yönlü” olarak oluşturup içe doğru, dışa doğru ve toplam derece sayımı yapalım</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a aria-label="1"></a>friends_g <span class="sc">|&gt;</span></span>
-<span id="cb24-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb24-3"><a aria-label="3"></a>    <span class="at">in_deg  =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"in"</span>),</span>
-<span id="cb24-4"><a aria-label="4"></a>    <span class="at">out_deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"out"</span>),</span>
-<span id="cb24-5"><a aria-label="5"></a>    <span class="at">all_deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"all"</span>)</span>
-<span id="cb24-6"><a aria-label="6"></a>  )</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>friends <span class="sc">|&gt;</span> </span>
+<span id="cb25-2"><a aria-label="2"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">TRUE</span>) <span class="sc">|&gt;</span></span>
+<span id="cb25-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb25-4"><a aria-label="4"></a>    <span class="at">in_deg  =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"in"</span>),</span>
+<span id="cb25-5"><a aria-label="5"></a>    <span class="at">out_deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"out"</span>),</span>
+<span id="cb25-6"><a aria-label="6"></a>    <span class="at">all_deg =</span> <span class="fu">centrality_degree</span>(<span class="at">mode =</span> <span class="st">"all"</span>)</span>
+<span id="cb25-7"><a aria-label="7"></a>  )</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tbl_graph: 8 nodes and 9 edges
+#
+# A directed acyclic simple graph with 1 component
+#
+# Node Data: 8 × 4 (active)
+  name    in_deg out_deg all_deg
+  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;
+1 alice        0       2       2
+2 charles      0       1       1
+3 david        0       2       2
+4 bob          5       2       7
+5 fiona        1       1       2
+6 gary         0       1       1
+7 allen        2       0       2
+8 henry        1       0       1
+#
+# Edge Data: 9 × 2
+   from    to
+  &lt;int&gt; &lt;int&gt;
+1     1     4
+2     2     4
+3     3     4
+# ℹ 6 more rows</code></pre>
 </div>
-<p>Varsayılan yön <strong>out</strong>’tur. Yönlü/ yönsüz kararını verirken bunu unutmayın.</p>
+</div>
 </section>
-<section id="durak-bugünün-verisi-ppi-ağı" class="slide level2">
-<h2>Durak: bugünün verisi (PPI ağı)</h2>
+<section id="örnek-veri-ppi-ağı" class="slide level2">
+<h2>Örnek veri: PPI ağı</h2>
+<p>Protein-protein etkileşim ağları biyolojide önemli bir veri tipidir.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a aria-label="1"></a>ppi <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(<span class="st">"data/human_ppi.tsv.gz"</span>, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb25-2"><a aria-label="2"></a></span>
-<span id="cb25-3"><a aria-label="3"></a>ppi <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>ppi_url <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/human_ppi.tsv.gz"</span></span>
+<span id="cb27-2"><a aria-label="2"></a>ppi <span class="ot">&lt;-</span> <span class="fu">read_tsv</span>(ppi_url, <span class="at">show_col_types =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb27-3"><a aria-label="3"></a></span>
+<span id="cb27-4"><a aria-label="4"></a>ppi <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
   interactor_A interactor_B
@@ -2572,33 +2615,99 @@ Alper Yılmaz
 <p><a href="https://www.ebi.ac.uk/training/online/courses/network-analysis-of-protein-interaction-data-an-introduction/">Kaynak</a></p>
 </div>
 </section>
-<section id="tablodan-grafiğe" class="slide level2">
-<h2>Tablodan grafiğe</h2>
+<section id="protein-protein-etkileşim-verileri" class="slide level2">
+<h2>Protein-protein etkileşim verileri</h2>
+<p>Aşağıdaki veritabanlarından protein-protein etkileşim verileri elde edilebilir (Halka açık veritabanlarında genelde <em>Download</em> kısmında, veritabanındaki tüm veri csv formatında paylaşılır)</p>
+<ul>
+<li>STRING (string-db.org): 12.000’den fazla organizmadaki bilinen ve tahmin edilen protein etkileşimlerini (fiziksel bağlanma ve işlevsel yolaklar) kapsar.</li>
+<li>BioGRID (thebiogrid.org): Başlıca model organizmalar ve insan literatüründen derlenen kapsamlı protein, genetik ve kimyasal etkileşimleri içeren biyomedikal bir depodur.</li>
+<li>IntAct (ebi.ac.uk/intact): EMBL-EBI tarafından yönetilen, literatürdeki deneysel verilerin manuel olarak düzenlendiği ücretsiz ve açık kaynaklı bir moleküler etkileşim veritabanıdır.</li>
+</ul>
+</section>
+<section id="tablodan-ağa-grafiğe" class="slide level2">
+<h2>Tablodan ağa (grafiğe)</h2>
+<p><code>as_tbl_graph</code> komutu, bir tabloyu ağ yapısına çevirir, iki tablo halinde, <strong>düğüm + kenar</strong>, saklar.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a aria-label="1"></a>ppi_g <span class="ot">&lt;-</span> ppi <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb27-2"><a aria-label="2"></a></span>
-<span id="cb27-3"><a aria-label="3"></a><span class="fu">cat</span>(<span class="st">"Düğüm (protein):  "</span>, ppi_g <span class="sc">|&gt;</span> <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span> <span class="fu">nrow</span>(), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a>ppi_g <span class="ot">&lt;-</span> ppi <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb29-2"><a aria-label="2"></a></span>
+<span id="cb29-3"><a aria-label="3"></a>ppi_g</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Düğüm (protein):   </code></pre>
+<pre><code># A tbl_graph: 19162 nodes and 544494 edges
+#
+# An undirected multigraph with 3 components
+#
+# Node Data: 19,162 × 1 (active)
+   name  
+   &lt;chr&gt; 
+ 1 MAP2K4
+ 2 MYPN  
+ 3 ACVR1 
+ 4 GATA2 
+ 5 RPA2  
+ 6 ARF1  
+ 7 ARF3  
+ 8 XRN1  
+ 9 APP   
+10 APLP1 
+# ℹ 19,152 more rows
+#
+# Edge Data: 544,494 × 2
+   from    to
+  &lt;int&gt; &lt;int&gt;
+1     1  3667
+2     2  2393
+3     3  3803
+# ℹ 544,491 more rows</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a aria-label="1"></a><span class="fu">cat</span>(<span class="st">"Kenar (etkileşim):"</span>, ppi_g <span class="sc">|&gt;</span> <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span> <span class="fu">nrow</span>(), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="düğüm-ve-kenar-tabloları" class="slide level2">
+<h2>Düğüm ve kenar tabloları</h2>
+<p>Aksi belirtilmedikçe, aktif olan tablo düğüm tablosudur, kenar tablosu üzerinde, select, filter, mutate, join uygulanacak ise, <code>activate(edges)</code> kullanılmalıdır</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>ppi_g <span class="sc">|&gt;</span></span>
+<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">activate</span>(edges)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Kenar (etkileşim): </code></pre>
+<pre><code># A tbl_graph: 19162 nodes and 544494 edges
+#
+# An undirected multigraph with 3 components
+#
+# Edge Data: 544,494 × 2 (active)
+    from    to
+   &lt;int&gt; &lt;int&gt;
+ 1     1  3667
+ 2     2  2393
+ 3     3  3803
+ 4     4  1415
+ 5     5  2286
+ 6     6   569
+ 7     7   329
+ 8     7  4241
+ 9     8  8204
+10     9   840
+# ℹ 544,484 more rows
+#
+# Node Data: 19,162 × 1
+  name  
+  &lt;chr&gt; 
+1 MAP2K4
+2 MYPN  
+3 ACVR1 
+# ℹ 19,159 more rows</code></pre>
 </div>
 </div>
-<p><code>as_tbl_graph()</code> iki sütunlu tabloyu alır, <strong>düğüm + kenar</strong> tablosuna çevirir.</p>
 </section>
 <section id="ağın-hub-genleri" class="slide level2">
 <h2>Ağın hub genleri</h2>
 <p>Derecesi en yüksek proteinler ağın <strong>hub</strong>’larıdır.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a aria-label="1"></a>deg_tbl <span class="ot">&lt;-</span> ppi_g <span class="sc">|&gt;</span></span>
-<span id="cb31-2"><a aria-label="2"></a>  <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
-<span id="cb31-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
-<span id="cb31-4"><a aria-label="4"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb31-5"><a aria-label="5"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span>
-<span id="cb31-6"><a aria-label="6"></a></span>
-<span id="cb31-7"><a aria-label="7"></a>deg_tbl <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>deg_tbl <span class="ot">&lt;-</span> ppi_g <span class="sc">|&gt;</span></span>
+<span id="cb33-2"><a aria-label="2"></a>  <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
+<span id="cb33-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
+<span id="cb33-5"><a aria-label="5"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>deg)</span>
+<span id="cb33-6"><a aria-label="6"></a></span>
+<span id="cb33-7"><a aria-label="7"></a>deg_tbl <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">8</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 8 × 2
   name       deg
@@ -2617,90 +2726,25 @@ Alper Yılmaz
 <section id="hub-genleri-grafiği" class="slide level2">
 <h2>Hub genleri grafiği</h2>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a aria-label="1"></a>deg_tbl <span class="sc">|&gt;</span></span>
-<span id="cb33-2"><a aria-label="2"></a>  <span class="fu">mutate</span>(<span class="at">grp =</span> <span class="fu">if_else</span>(name <span class="sc">%in%</span> <span class="fu">c</span>(<span class="st">"EGFR"</span>, <span class="st">"TP53"</span>, <span class="st">"KRAS"</span>, <span class="st">"MYC"</span>, <span class="st">"ESR1"</span>, <span class="st">"ESR2"</span>),</span>
-<span id="cb33-3"><a aria-label="3"></a>                       <span class="st">"Dersimizde gördüğümüz genler"</span>, <span class="st">"Diğer proteinler"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb33-4"><a aria-label="4"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">15</span>) <span class="sc">|&gt;</span></span>
-<span id="cb33-5"><a aria-label="5"></a>  <span class="fu">ggplot</span>(<span class="fu">aes</span>(deg, <span class="fu">fct_reorder</span>(name, deg), <span class="at">fill =</span> grp)) <span class="sc">+</span></span>
-<span id="cb33-6"><a aria-label="6"></a>  <span class="fu">geom_col</span>() <span class="sc">+</span></span>
-<span id="cb33-7"><a aria-label="7"></a>  <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Diğer proteinler"</span> <span class="ot">=</span> <span class="st">"#74c476"</span>,</span>
-<span id="cb33-8"><a aria-label="8"></a>                               <span class="st">"Dersimizde gördüğümüz genler"</span> <span class="ot">=</span> <span class="st">"#de2d26"</span>)) <span class="sc">+</span></span>
-<span id="cb33-9"><a aria-label="9"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Derece (etkileşim sayısı)"</span>, <span class="at">y =</span> <span class="cn">NULL</span>, <span class="at">fill =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb33-10"><a aria-label="10"></a>  <span class="fu">theme_classic</span>(<span class="at">base_size =</span> <span class="dv">13</span>) <span class="sc">+</span></span>
-<span id="cb33-11"><a aria-label="11"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>ppi_g <span class="sc">|&gt;</span></span>
+<span id="cb35-2"><a aria-label="2"></a>      <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
+<span id="cb35-3"><a aria-label="3"></a>      <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb35-4"><a aria-label="4"></a>      <span class="fu">filter</span>(deg <span class="sc">&gt;=</span> <span class="dv">1500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb35-5"><a aria-label="5"></a>      <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb35-6"><a aria-label="6"></a>      <span class="fu">geom_edge_link</span>(<span class="at">colour =</span> <span class="st">"grey75"</span>) <span class="sc">+</span></span>
+<span id="cb35-7"><a aria-label="7"></a>      <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> deg), <span class="at">colour =</span> <span class="st">"#de2d26"</span>) <span class="sc">+</span></span>
+<span id="cb35-8"><a aria-label="8"></a>      <span class="fu">scale_size_area</span>(<span class="at">max_size =</span> <span class="dv">11</span>) <span class="sc">+</span></span>
+<span id="cb35-9"><a aria-label="9"></a>      <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">size =</span> <span class="fl">3.4</span>,</span>
+<span id="cb35-10"><a aria-label="10"></a>                      <span class="at">segment.colour =</span> <span class="st">"grey60"</span>, <span class="at">fill =</span> <span class="st">"white"</span>) <span class="sc">+</span></span>
+<span id="cb35-11"><a aria-label="11"></a>      <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
-<div class="callout callout-note callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Veri kalitesi notu</strong></p>
-</div>
-<div class="callout-content">
-<p><code>PLEKHA4</code>, <code>KIAA1429</code> gibi çok etkileşime giren proteinler, çoğu zaman <strong>çok sayıda düşük güvenli</strong> etkileşimin birikmesidir. “Hub” olmak biyolojik bir üstünlük değil, bazen bir <strong>veri özelliğidir</strong>.</p>
-</div>
-</div>
-</div>
 </section>
 <section id="hub-genleri-grafiği-output" class="slide level2 output-location-slide"><h2>Hub genleri grafiği</h2><div class="cell output-location-slide">
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-21-1.png" width="768"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="egfrnin-çevresi" class="slide level2">
-<h2>EGFR’nin çevresi</h2>
-<p>EGFR’nin ağda <strong>1583</strong> etkileşim ortağı var. Görünür kılmak için en yoğun 20’sini alıp bu düğümler arasındaki kenarları çizdik.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a aria-label="1"></a>nbr <span class="ot">&lt;-</span> ppi <span class="sc">|&gt;</span></span>
-<span id="cb34-2"><a aria-label="2"></a>  <span class="fu">filter</span>(interactor_A <span class="sc">==</span> <span class="st">"EGFR"</span> <span class="sc">|</span> interactor_B <span class="sc">==</span> <span class="st">"EGFR"</span>) <span class="sc">|&gt;</span></span>
-<span id="cb34-3"><a aria-label="3"></a>  <span class="fu">mutate</span>(<span class="at">other =</span> <span class="fu">if_else</span>(interactor_A <span class="sc">==</span> <span class="st">"EGFR"</span>, interactor_B, interactor_A)) <span class="sc">|&gt;</span></span>
-<span id="cb34-4"><a aria-label="4"></a>  <span class="fu">distinct</span>(other) <span class="sc">|&gt;</span></span>
-<span id="cb34-5"><a aria-label="5"></a>  <span class="fu">pull</span>(other)</span>
-<span id="cb34-6"><a aria-label="6"></a></span>
-<span id="cb34-7"><a aria-label="7"></a>ego_set <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"EGFR"</span>, deg_tbl <span class="sc">|&gt;</span> <span class="fu">filter</span>(name <span class="sc">%in%</span> nbr) <span class="sc">|&gt;</span></span>
-<span id="cb34-8"><a aria-label="8"></a>                          <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">20</span>) <span class="sc">|&gt;</span> <span class="fu">pull</span>(name))</span>
-<span id="cb34-9"><a aria-label="9"></a></span>
-<span id="cb34-10"><a aria-label="10"></a>ego_edges <span class="ot">&lt;-</span> ppi <span class="sc">|&gt;</span></span>
-<span id="cb34-11"><a aria-label="11"></a>  <span class="fu">filter</span>(interactor_A <span class="sc">%in%</span> ego_set <span class="sc">&amp;</span> interactor_B <span class="sc">%in%</span> ego_set) <span class="sc">|&gt;</span></span>
-<span id="cb34-12"><a aria-label="12"></a>  <span class="fu">distinct</span>()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="egfr-alt-ağı" class="slide level2">
-<h2>EGFR alt ağı</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a aria-label="1"></a>ego_tbl <span class="ot">&lt;-</span> <span class="fu">tbl_graph</span>(</span>
-<span id="cb35-2"><a aria-label="2"></a>  <span class="at">nodes =</span> <span class="fu">tibble</span>(<span class="at">name =</span> ego_set),</span>
-<span id="cb35-3"><a aria-label="3"></a>  <span class="at">edges =</span> <span class="fu">tibble</span>(<span class="at">from =</span> <span class="fu">match</span>(ego_edges<span class="sc">$</span>interactor_A, ego_set),</span>
-<span id="cb35-4"><a aria-label="4"></a>                  <span class="at">to   =</span> <span class="fu">match</span>(ego_edges<span class="sc">$</span>interactor_B, ego_set)),</span>
-<span id="cb35-5"><a aria-label="5"></a>  <span class="at">directed =</span> <span class="cn">FALSE</span></span>
-<span id="cb35-6"><a aria-label="6"></a>) <span class="sc">|&gt;</span></span>
-<span id="cb35-7"><a aria-label="7"></a>  <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
-<span id="cb35-8"><a aria-label="8"></a>  <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>(), <span class="at">betw =</span> <span class="fu">centrality_betweenness</span>())</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>ego_tbl <span class="sc">|&gt;</span></span>
-<span id="cb36-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
-<span id="cb36-3"><a aria-label="3"></a>  <span class="fu">geom_edge_link</span>(<span class="at">colour =</span> <span class="st">"grey70"</span>) <span class="sc">+</span></span>
-<span id="cb36-4"><a aria-label="4"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> deg, <span class="at">colour =</span> name <span class="sc">==</span> <span class="st">"EGFR"</span>)) <span class="sc">+</span></span>
-<span id="cb36-5"><a aria-label="5"></a>  <span class="fu">scale_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"TRUE"</span> <span class="ot">=</span> <span class="st">"#de2d26"</span>,</span>
-<span id="cb36-6"><a aria-label="6"></a>                                 <span class="st">"FALSE"</span> <span class="ot">=</span> <span class="st">"#3182bd"</span>), <span class="at">guide =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb36-7"><a aria-label="7"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name,</span>
-<span id="cb36-8"><a aria-label="8"></a>                      <span class="at">fontface =</span> <span class="fu">if_else</span>(name <span class="sc">==</span> <span class="st">"EGFR"</span>, <span class="st">"bold"</span>, <span class="st">"plain"</span>)),</span>
-<span id="cb36-9"><a aria-label="9"></a>                  <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">segment.colour =</span> <span class="st">"grey70"</span>) <span class="sc">+</span></span>
-<span id="cb36-10"><a aria-label="10"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-</section>
-<section id="egfr-alt-ağı-output" class="slide level2 output-location-slide"><h2>EGFR alt ağı</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-24-1.png" width="960"></p>
+<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-22-1.png" width="768"></p>
 </figure>
 </div>
 </div>
@@ -2708,82 +2752,41 @@ Alper Yılmaz
 <h2>Merkezilik: betweenness</h2>
 <p>Derece “çok kapısı var” demektir. <strong>Betweenness</strong> ise “ağın <em>ortasında</em> mı?”: en kısa yolların kaçından geçiyor.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a aria-label="1"></a>ego_tbl <span class="sc">|&gt;</span></span>
-<span id="cb37-2"><a aria-label="2"></a>  <span class="fu">activate</span>(nodes) <span class="sc">|&gt;</span></span>
-<span id="cb37-3"><a aria-label="3"></a>  <span class="fu">as_tibble</span>() <span class="sc">|&gt;</span></span>
-<span id="cb37-4"><a aria-label="4"></a>  <span class="fu">arrange</span>(<span class="sc">-</span>betw) <span class="sc">|&gt;</span></span>
-<span id="cb37-5"><a aria-label="5"></a>  <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">6</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a aria-label="1"></a>ppi_g <span class="sc">|&gt;</span></span>
+<span id="cb36-2"><a aria-label="2"></a>     <span class="fu">mutate</span>(<span class="at">deg =</span> <span class="fu">centrality_degree</span>()) <span class="sc">|&gt;</span></span>
+<span id="cb36-3"><a aria-label="3"></a>     <span class="fu">filter</span>(deg <span class="sc">&gt;</span> <span class="dv">500</span>) <span class="sc">|&gt;</span></span>
+<span id="cb36-4"><a aria-label="4"></a>     <span class="fu">mutate</span>(<span class="at">betw=</span><span class="fu">centrality_betweenness</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 6 × 3
-  name       deg  betw
-  &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;
-1 EGFR        23 15.1 
-2 TP53        21  8.54
-3 RBM39       18  7.57
-4 KIAA1429    16  6.77
-5 TRIM28      16  5.38
-6 HNRNPL      16  5.32</code></pre>
+<pre><code># A tbl_graph: 184 nodes and 7450 edges
+#
+# An undirected multigraph with 1 component
+#
+# Node Data: 184 × 3 (active)
+   name     deg  betw
+   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;
+ 1 RPA2     563  20.9
+ 2 APP     2515  87.9
+ 3 EP300    919  66.4
+ 4 BRCA1   1247  68.4
+ 5 RPA1     603  38.9
+ 6 YWHAZ    557 124. 
+ 7 CSK      815  18.3
+ 8 CREBBP   567  16.2
+ 9 ESR1    2320 119. 
+10 NR3C1    886  12.3
+# ℹ 174 more rows
+#
+# Edge Data: 7,450 × 2
+   from    to
+  &lt;int&gt; &lt;int&gt;
+1     1    56
+2     5    56
+3    21   153
+# ℹ 7,447 more rows</code></pre>
 </div>
-</div>
-<p>EGFR bu ağda <strong>en yüksek betweenness</strong>’e sahip: yollar onun üzerinden geçiyor.</p>
-</section>
-<section id="yol-haritası-rasmapk-kaskadı" class="slide level2">
-<h2>Yol haritası: RAS/MAPK kaskadı</h2>
-<p>Ağdan biyolojiyi nasıl okuruz? Bilinen bir yolun proteinlerini seçip <strong>alt grafiği</strong> çıkarıyoruz: sıralama bizim bilgimizden, kenarlar PPI verisinden.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a>katman <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb39-2"><a aria-label="2"></a>  <span class="at">name =</span> <span class="fu">c</span>(<span class="st">"EGFR"</span>,<span class="st">"GRB2"</span>,<span class="st">"SOS1"</span>,<span class="st">"KRAS"</span>,<span class="st">"NRAS"</span>,<span class="st">"HRAS"</span>,<span class="st">"RAF1"</span>,<span class="st">"BRAF"</span>,</span>
-<span id="cb39-3"><a aria-label="3"></a>           <span class="st">"MAP2K1"</span>,<span class="st">"MAP2K2"</span>,<span class="st">"MAPK1"</span>,<span class="st">"MAPK3"</span>),</span>
-<span id="cb39-4"><a aria-label="4"></a>  <span class="at">sira =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">7</span>),</span>
-<span id="cb39-5"><a aria-label="5"></a>  <span class="at">y    =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>, <span class="dv">1</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">1</span>, <span class="fl">0.5</span>,<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>,<span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">0.5</span>,<span class="sc">-</span><span class="fl">0.5</span>)</span>
-<span id="cb39-6"><a aria-label="6"></a>)</span>
-<span id="cb39-7"><a aria-label="7"></a></span>
-<span id="cb39-8"><a aria-label="8"></a>kaskad_ed <span class="ot">&lt;-</span> ppi <span class="sc">|&gt;</span></span>
-<span id="cb39-9"><a aria-label="9"></a>  <span class="fu">filter</span>(interactor_A <span class="sc">%in%</span> katman<span class="sc">$</span>name, interactor_B <span class="sc">%in%</span> katman<span class="sc">$</span>name) <span class="sc">|&gt;</span></span>
-<span id="cb39-10"><a aria-label="10"></a>  <span class="fu">distinct</span>() <span class="sc">|&gt;</span></span>
-<span id="cb39-11"><a aria-label="11"></a>  <span class="fu">mutate</span>(<span class="at">ka =</span> katman<span class="sc">$</span>sira[<span class="fu">match</span>(interactor_A, katman<span class="sc">$</span>name)],</span>
-<span id="cb39-12"><a aria-label="12"></a>         <span class="at">kb =</span> katman<span class="sc">$</span>sira[<span class="fu">match</span>(interactor_B, katman<span class="sc">$</span>name)],</span>
-<span id="cb39-13"><a aria-label="13"></a>         <span class="at">from =</span> <span class="fu">if_else</span>(ka <span class="sc">&lt;</span> kb, interactor_A, interactor_B),</span>
-<span id="cb39-14"><a aria-label="14"></a>         <span class="at">to   =</span> <span class="fu">if_else</span>(ka <span class="sc">&lt;</span> kb, interactor_B, interactor_A),</span>
-<span id="cb39-15"><a aria-label="15"></a>         <span class="at">tip  =</span> <span class="fu">if_else</span>(<span class="fu">abs</span>(ka <span class="sc">-</span> kb) <span class="sc">==</span> <span class="dv">1</span>, <span class="st">"Kaskadın adımı"</span>, <span class="st">"Diğer etkileşim"</span>)) <span class="sc">|&gt;</span></span>
-<span id="cb39-16"><a aria-label="16"></a>  <span class="fu">filter</span>(ka <span class="sc">!=</span> kb) <span class="sc">|&gt;</span></span>
-<span id="cb39-17"><a aria-label="17"></a>  <span class="fu">distinct</span>(from, to, tip)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="kaskadı-çizmek" class="slide level2">
-<h2>Kaskadı çizmek</h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>kaskad_g <span class="ot">&lt;-</span> <span class="fu">tbl_graph</span>(</span>
-<span id="cb40-2"><a aria-label="2"></a>  <span class="at">nodes =</span> katman,</span>
-<span id="cb40-3"><a aria-label="3"></a>  <span class="at">edges =</span> <span class="fu">tibble</span>(<span class="at">from =</span> <span class="fu">match</span>(kaskad_ed<span class="sc">$</span>from, katman<span class="sc">$</span>name),</span>
-<span id="cb40-4"><a aria-label="4"></a>                 <span class="at">to   =</span> <span class="fu">match</span>(kaskad_ed<span class="sc">$</span>to,   katman<span class="sc">$</span>name),</span>
-<span id="cb40-5"><a aria-label="5"></a>                 <span class="at">tip  =</span> kaskad_ed<span class="sc">$</span>tip),</span>
-<span id="cb40-6"><a aria-label="6"></a>  <span class="at">directed =</span> <span class="cn">TRUE</span></span>
-<span id="cb40-7"><a aria-label="7"></a>)</span>
-<span id="cb40-8"><a aria-label="8"></a></span>
-<span id="cb40-9"><a aria-label="9"></a>kaskad_g <span class="sc">|&gt;</span></span>
-<span id="cb40-10"><a aria-label="10"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"manual"</span>, <span class="at">x =</span> katman<span class="sc">$</span>sira, <span class="at">y =</span> katman<span class="sc">$</span>y) <span class="sc">+</span></span>
-<span id="cb40-11"><a aria-label="11"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">edge_colour =</span> tip), <span class="at">arrow =</span> <span class="fu">arrow</span>(<span class="at">length =</span> <span class="fu">unit</span>(<span class="fl">0.16</span>, <span class="st">"cm"</span>))) <span class="sc">+</span></span>
-<span id="cb40-12"><a aria-label="12"></a>  <span class="fu">scale_edge_colour_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"Kaskadın adımı"</span> <span class="ot">=</span> <span class="st">"#de2d26"</span>,</span>
-<span id="cb40-13"><a aria-label="13"></a>                                      <span class="st">"Diğer etkileşim"</span> <span class="ot">=</span> <span class="st">"#e6e6e6"</span>)) <span class="sc">+</span></span>
-<span id="cb40-14"><a aria-label="14"></a>  <span class="fu">geom_node_point</span>(<span class="at">size =</span> <span class="fl">4.5</span>, <span class="at">colour =</span> <span class="st">"#3182bd"</span>) <span class="sc">+</span></span>
-<span id="cb40-15"><a aria-label="15"></a>  <span class="fu">geom_node_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">nudge_y =</span> <span class="fl">0.16</span>) <span class="sc">+</span></span>
-<span id="cb40-16"><a aria-label="16"></a>  <span class="fu">labs</span>(<span class="at">edge_colour =</span> <span class="cn">NULL</span>) <span class="sc">+</span></span>
-<span id="cb40-17"><a aria-label="17"></a>  <span class="fu">theme_graph</span>() <span class="sc">+</span></span>
-<span id="cb40-18"><a aria-label="18"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-
-<p>Kırmızı kenarlar kaskadın <strong>ardışık adımları</strong>, gri kenarlar aynı proteinler arasındaki diğer etkileşimler. Yerleşimi elle verdik: <strong>düzen veriden gelmez</strong>, çizim tercihidir.</p>
-</section>
-<section id="kaskadı-çizmek-output" class="slide level2 output-location-slide"><h2>Kaskadı çizmek</h2><div class="cell output-location-slide">
-<div class="cell-output-display">
-<div>
-<figure>
-<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-27-1.png" width="960"></p>
-</figure>
-</div>
-</div>
-</div></section><section id="düzen-layout" class="slide level2">
+<section id="düzen-layout" class="slide level2">
 <h2>Düzen (layout)</h2>
 <p>Ağın <em>şekli</em> veriden gelmez, <strong>çizim seçiminden</strong> gelir. En iyisi birkaçını denemektir.</p>
 
@@ -2799,17 +2802,17 @@ Alper Yılmaz
 <h2>Bigram ağı</h2>
 <p>Bigram sayımında elimizde <code>word1</code>, <code>word2</code> ve bir <strong>sayı</strong> var. Bu tam olarak “iki düğüm + aralarındaki kenar” demek.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a aria-label="1"></a>bg_top <span class="ot">&lt;-</span> bigrams <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">25</span>)</span>
-<span id="cb41-2"><a aria-label="2"></a></span>
-<span id="cb41-3"><a aria-label="3"></a>bg_graph <span class="ot">&lt;-</span> bg_top <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a aria-label="1"></a>bg_top <span class="ot">&lt;-</span> bigrams <span class="sc">|&gt;</span> <span class="fu">slice_head</span>(<span class="at">n =</span> <span class="dv">25</span>)</span>
+<span id="cb38-2"><a aria-label="2"></a></span>
+<span id="cb38-3"><a aria-label="3"></a>bg_graph <span class="ot">&lt;-</span> bg_top <span class="sc">|&gt;</span> <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a aria-label="1"></a>bg_graph <span class="sc">|&gt;</span></span>
-<span id="cb42-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
-<span id="cb42-3"><a aria-label="3"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">width =</span> n), <span class="at">colour =</span> <span class="st">"grey55"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb42-4"><a aria-label="4"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="fu">centrality_degree</span>()), <span class="at">colour =</span> <span class="st">"#de2d26"</span>) <span class="sc">+</span></span>
-<span id="cb42-5"><a aria-label="5"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">segment.colour =</span> <span class="st">"grey70"</span>) <span class="sc">+</span></span>
-<span id="cb42-6"><a aria-label="6"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a aria-label="1"></a>bg_graph <span class="sc">|&gt;</span></span>
+<span id="cb39-2"><a aria-label="2"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span></span>
+<span id="cb39-3"><a aria-label="3"></a>  <span class="fu">geom_edge_link</span>(<span class="fu">aes</span>(<span class="at">width =</span> n), <span class="at">colour =</span> <span class="st">"grey55"</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
+<span id="cb39-4"><a aria-label="4"></a>  <span class="fu">geom_node_point</span>(<span class="fu">aes</span>(<span class="at">size =</span> <span class="fu">centrality_degree</span>()), <span class="at">colour =</span> <span class="st">"#de2d26"</span>) <span class="sc">+</span></span>
+<span id="cb39-5"><a aria-label="5"></a>  <span class="fu">geom_node_label</span>(<span class="fu">aes</span>(<span class="at">label =</span> name), <span class="at">repel =</span> <span class="cn">TRUE</span>, <span class="at">segment.colour =</span> <span class="st">"grey70"</span>) <span class="sc">+</span></span>
+<span id="cb39-6"><a aria-label="6"></a>  <span class="fu">theme_graph</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 
 <p><code>egfr</code> düğümü merkezde: <em>EGFR – TKI’lar</em>, <em>EGFR – mutasyonlar</em> etrafında toplanıyor.</p>
@@ -2818,7 +2821,7 @@ Alper Yılmaz
 <div class="cell-output-display">
 <div>
 <figure>
-<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-29-1.png" width="960"></p>
+<p><img data-src="ders-tidy-graph-text_files/figure-revealjs/unnamed-chunk-25-1.png" width="960"></p>
 </figure>
 </div>
 </div>
@@ -2866,72 +2869,28 @@ Alper Yılmaz
 <h2>Tidy fiillerin lego iması</h2>
 <p>Farklı paketlerin fonksiyonları tidy veri alıp tidy veri verir; bu yüzden uç uca takılırlar.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a aria-label="1"></a>corpus <span class="sc">|&gt;</span>                                    <span class="co"># veri</span></span>
-<span id="cb43-2"><a aria-label="2"></a>  <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span>          <span class="co"># tidytext</span></span>
-<span id="cb43-3"><a aria-label="3"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span>     <span class="co"># dplyr</span></span>
-<span id="cb43-4"><a aria-label="4"></a>  <span class="fu">count</span>(year, word) <span class="sc">|&gt;</span>                      <span class="co"># dplyr</span></span>
-<span id="cb43-5"><a aria-label="5"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">|&gt;</span>                          <span class="co"># dplyr</span></span>
-<span id="cb43-6"><a aria-label="6"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> word, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span>   <span class="co"># tidyr</span></span>
-<span id="cb43-7"><a aria-label="7"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span>         <span class="co"># tidygraph</span></span>
-<span id="cb43-8"><a aria-label="8"></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span></span>
-<span id="cb43-9"><a aria-label="9"></a>  <span class="fu">mutate</span>(<span class="at">betw =</span> <span class="fu">centrality_edge_betweenness</span>()) <span class="sc">|&gt;</span>      <span class="co"># tidygraph</span></span>
-<span id="cb43-10"><a aria-label="10"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span>                   <span class="co"># ggraph</span></span>
-<span id="cb43-11"><a aria-label="11"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span>                       <span class="co"># ggraph</span></span>
-<span id="cb43-12"><a aria-label="12"></a>  <span class="fu">geom_edge_link</span>()                          <span class="co"># ggraph</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a aria-label="1"></a>corpus <span class="sc">|&gt;</span>                                    <span class="co"># veri</span></span>
+<span id="cb40-2"><a aria-label="2"></a>  <span class="fu">unnest_tokens</span>(word, abstract) <span class="sc">|&gt;</span>          <span class="co"># tidytext</span></span>
+<span id="cb40-3"><a aria-label="3"></a>  <span class="fu">anti_join</span>(stop_words, <span class="at">by =</span> <span class="st">"word"</span>) <span class="sc">|&gt;</span>     <span class="co"># dplyr</span></span>
+<span id="cb40-4"><a aria-label="4"></a>  <span class="fu">count</span>(year, word) <span class="sc">|&gt;</span>                      <span class="co"># dplyr</span></span>
+<span id="cb40-5"><a aria-label="5"></a>  <span class="fu">filter</span>(n <span class="sc">&gt;</span> <span class="dv">5</span>) <span class="sc">|&gt;</span>                          <span class="co"># dplyr</span></span>
+<span id="cb40-6"><a aria-label="6"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> word, <span class="at">values_from =</span> n) <span class="sc">|&gt;</span>   <span class="co"># tidyr</span></span>
+<span id="cb40-7"><a aria-label="7"></a>  <span class="fu">as_tbl_graph</span>(<span class="at">directed =</span> <span class="cn">FALSE</span>) <span class="sc">|&gt;</span>         <span class="co"># tidygraph</span></span>
+<span id="cb40-8"><a aria-label="8"></a>  <span class="fu">activate</span>(edges) <span class="sc">|&gt;</span></span>
+<span id="cb40-9"><a aria-label="9"></a>  <span class="fu">mutate</span>(<span class="at">betw =</span> <span class="fu">centrality_edge_betweenness</span>()) <span class="sc">|&gt;</span>      <span class="co"># tidygraph</span></span>
+<span id="cb40-10"><a aria-label="10"></a>  <span class="fu">ggraph</span>(<span class="at">layout =</span> <span class="st">"kk"</span>) <span class="sc">+</span>                   <span class="co"># ggraph</span></span>
+<span id="cb40-11"><a aria-label="11"></a>  <span class="fu">geom_node_point</span>() <span class="sc">+</span>                       <span class="co"># ggraph</span></span>
+<span id="cb40-12"><a aria-label="12"></a>  <span class="fu">geom_edge_link</span>()                          <span class="co"># ggraph</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="senin-sıran" class="slide level2 scrollable">
-<h2>Senin sıran</h2>
+<section id="sorular" class="slide level2 scrollable">
+<h2>Sorular</h2>
 <ol type="1">
 <li><code>corpus</code> içinde <strong>2015</strong> yılı özetlerini alın; en sık 10 kelimeyi bulun.</li>
 <li><code>trend</code> tablosundan <strong>2020</strong> yılında en yüksek terimi bulun; o terimin yıllar boyunca yüzdelerini çizdirin.</li>
 <li><code>ppi_g</code> içinde <strong>“EGFR”</strong> düğümünü bulun; derecesini ve kaç komşusu olduğunu yazdırın.</li>
 <li><code>bigrams</code> içinden “egfr” kelimesini içeren 10 ikili kelime çıkarın.</li>
 </ol>
-</section>
-<section id="posterin-verisi-nerede" class="slide level2">
-<h2>Posterin verisi nerede?</h2>
-<p>Poster için veriyi nereden çekeceksiniz? Ücretsiz ve <strong>programatik</strong> (R ile okunabilen) kaynaklar:</p>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th>Kaynak</th>
-<th>Ne verir?</th>
-<th>Adres</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><strong>NCBI GEO</strong></td>
-<td>ekspresyon / dizileme verisi</td>
-<td><a href="https://www.ncbi.nlm.nih.gov/geo/">ncbi.nlm.nih.gov/geo</a></td>
-</tr>
-<tr class="even">
-<td><strong>Ensembl</strong></td>
-<td>gen, transkript, genom koordinatı</td>
-<td><a href="https://www.ensembl.org">ensembl.org</a></td>
-</tr>
-<tr class="odd">
-<td><strong>UniProt</strong></td>
-<td>protein dizisi ve fonksiyon</td>
-<td><a href="https://www.uniprot.org">uniprot.org</a></td>
-</tr>
-<tr class="even">
-<td><strong>EMBL-EBI</strong></td>
-<td>etkileşim ağları (IntAct)</td>
-<td><a href="https://www.ebi.ac.uk/intact/">ebi.ac.uk/intact</a></td>
-</tr>
-<tr class="odd">
-<td><strong>PubMed E-utilities</strong></td>
-<td>özet metni</td>
-<td><a href="https://www.ncbi.nlm.nih.gov/books/NBK25501/">ncbi.nlm.nih.gov</a></td>
-</tr>
-</tbody>
-</table>
-<p>Bu kaynakların hepsinde <strong>JSON/XML/TSV</strong> indirme var: <code>download.file()</code> + <code>readr</code> ile okunur. Ödevinizde yaptığınız gibi veriyi <strong>indirip kaydedin</strong>, sonra analiz edin.</p>
-<div class="footer">
-<p><a href="https://www.ncbi.nlm.nih.gov/books/NBK25501/">Kaynak</a></p>
-</div>
 </section>
 <section id="özet" class="slide level2 scrollable">
 <h2>Özet</h2>
@@ -2941,7 +2900,6 @@ Alper Yılmaz
 <li>İkisi aynı fikrin iki yüzü: <strong>tablo → ölçüm</strong>, <strong>ağ → ilişki</strong>.</li>
 <li>Aynı araç zinciri farklı veriyle çalışır: <strong>PubMed özeti</strong> de, <strong>PPI ağı</strong> de.</li>
 </ol>
-<p>Sonraki ders: <a href="./ders-quarto-alternative.html">Quarto ile Raporlama</a> — analizi poster/rapor hâline getiriyoruz.</p>
 <div class="footer">
 <p><a href="https://www.tidytext.org/">Kaynak</a> · <a href="https://www.tidygraph.org/">Kaynak</a></p>
 </div>
@@ -3225,12 +3183,12 @@ Alper Yılmaz
           // flash "checked"
           button.classList.add('code-copy-button-checked');
           var currentTitle = button.getAttribute("title");
-          button.setAttribute("title", "Kopyalandı");
+          button.setAttribute("title", "Copied!");
           let tooltip;
           if (window.bootstrap) {
             button.setAttribute("data-bs-toggle", "tooltip");
             button.setAttribute("data-bs-placement", "left");
-            button.setAttribute("data-bs-title", "Kopyalandı");
+            button.setAttribute("data-bs-title", "Copied!");
             tooltip = new bootstrap.Tooltip(button, 
               { trigger: "manual", 
                 customClass: "code-copy-button-tooltip",

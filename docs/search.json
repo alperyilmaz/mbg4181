@@ -802,7 +802,7 @@
     "href": "ders-tidy-graph-text.html#bölüm-1-metin",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Bölüm 1: Metin",
-    "text": "Bölüm 1: Metin\n{tidytext} ile metni tabloya çeviriyoruz."
+    "text": "Bölüm 1: Metin\n{tidytext} ile metni tabloya çeviriyoruz.\nBir metin aslında bir kelime torbası. {tidytext} bunu “bir satır = bir (belge, kelime)” tablosuna çevirir.\n\nlibrary(dplyr); library(tidytext); library(stringr); library(ggplot2)\nlibrary(purrr); library(tidyr); library(forcats)\n\nsample_text &lt;- \"EGFR mutations drive non-small cell lung cancer.\"\n\n\ntidy_text &lt;- tibble(line = 1, text = sample_text) |&gt;\n  unnest_tokens(word, text)\n\ntidy_text\n\n\nMetin verisi de tıpkı tablo verisi gibi tidy: her satır tek bir gözlem.\n\nKaynak"
   },
   {
     "objectID": "ders-tidy-graph-text.html#metni-satırlara-ayırmak",
@@ -837,7 +837,7 @@
     "href": "ders-tidy-graph-text.html#korpusumuzu-tanıyalım",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Korpusumuzu tanıyalım",
-    "text": "Korpusumuzu tanıyalım\n\nlibrary(readr)\ncorpus &lt;- read_csv(\"data/pubmed_egfr.csv\", show_col_types = FALSE) |&gt;\n  mutate(year = as.integer(year))\n\ncorpus\n\n# A tibble: 612 × 5\n       pmid  year journal                                         title abstract\n      &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                                           &lt;chr&gt; &lt;chr&gt;   \n 1 26051236  2015 The Lancet. Oncology                            Clin… \"Most p…\n 2 25923549  2015 The New England journal of medicine             AZD9… \"The EG…\n 3 25589191  2015 The Lancet. Oncology                            Afat… \"We aim…\n 4 25936890  2015 Zhongguo fei ai za zhi = Chinese journal of lu… [TKI… \"Epider…\n 5 25745851  2015 Respiratory investigation                       Dise… \"A rece…\n 6 25983263  2015 Archives of toxicology                          Role… \"Lung c…\n 7 26514492  2015 Asian Pacific journal of cancer prevention : A… Corr… \"Epider…\n 8 26022942  2015 Molecular aspects of medicine                   Targ… \"The de…\n 9 25908911  2015 Current oncology (Toronto, Ont.)                Mana… \"Target…\n10 25870795  2015 Translational lung cancer research              Mole… \"Somati…\n# ℹ 602 more rows\n\n\nBeş sütun: pmid, year, journal, title, abstract."
+    "text": "Korpusumuzu tanıyalım\n\nlibrary(readr)\npubmed_data_url &lt;- \"https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/pubmed_egfr.csv\"\ncorpus &lt;- read_csv(pubmed_data_url, show_col_types = FALSE) |&gt;\n  mutate(year = as.integer(year))\n\ncorpus\n\n# A tibble: 612 × 5\n       pmid  year journal                                         title abstract\n      &lt;dbl&gt; &lt;int&gt; &lt;chr&gt;                                           &lt;chr&gt; &lt;chr&gt;   \n 1 26051236  2015 The Lancet. Oncology                            Clin… \"Most p…\n 2 25923549  2015 The New England journal of medicine             AZD9… \"The EG…\n 3 25589191  2015 The Lancet. Oncology                            Afat… \"We aim…\n 4 25936890  2015 Zhongguo fei ai za zhi = Chinese journal of lu… [TKI… \"Epider…\n 5 25745851  2015 Respiratory investigation                       Dise… \"A rece…\n 6 25983263  2015 Archives of toxicology                          Role… \"Lung c…\n 7 26514492  2015 Asian Pacific journal of cancer prevention : A… Corr… \"Epider…\n 8 26022942  2015 Molecular aspects of medicine                   Targ… \"The de…\n 9 25908911  2015 Current oncology (Toronto, Ont.)                Mana… \"Target…\n10 25870795  2015 Translational lung cancer research              Mole… \"Somati…\n# ℹ 602 more rows\n\n\nBeş sütun: pmid, year, journal, title, abstract."
   },
   {
     "objectID": "ders-tidy-graph-text.html#korpusumuzu-tanıyalım-1",
@@ -879,14 +879,14 @@
     "href": "ders-tidy-graph-text.html#literatürün-yönü",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Literatürün yönü",
-    "text": "Literatürün yönü\nSadece kelime saymak yetmez: hangi terim hangi yıl itibarıyla öne çıktı?\n\nterms &lt;- c(\"osimertinib\", \"gefitinib\", \"erlotinib\",\n           \"immunotherapy\", \"single-cell\", \"ctdna\")\n\nn_per_year &lt;- corpus |&gt; count(year)\n\ntrend &lt;- map_dfr(terms, function(tm) {\n  corpus |&gt;\n    mutate(hit = grepl(paste0(\"\\\\b\", tm, \"\\\\b\"), tolower(paste(title, abstract)))) |&gt;\n    group_by(year) |&gt;\n    summarise(n = sum(hit), .groups = \"drop\") |&gt;\n    mutate(term = tm, pct = 100 * n / max(n_per_year$n))\n}) |&gt;\n  mutate(term = factor(term, levels = terms))"
+    "text": "Literatürün yönü\nSadece kelime saymak yetmez: hangi terim hangi yıl itibarıyla öne çıktı?\nAradığımız kelimeleri bir tabloya yazıp metni kelimelere bölelim; ikisini join ile eşleştirince düzenli ifadeye gerek kalmıyor.\n\n# 1) Terim tablosu: aradığımız kelimeler\nterms &lt;- c(\"osimertinib\", \"gefitinib\", \"erlotinib\",\n           \"immunotherapy\", \"ctdna\")\n\nterms_tbl &lt;- tibble(term = terms) |&gt;\n  mutate(word = tolower(term))\n\n# 2) Metni kelimelere böl\nwords &lt;- corpus |&gt;\n  mutate(text = str_c(title, \" \", abstract)) |&gt;\n  unnest_tokens(word, text) |&gt;\n  mutate(word = tolower(word))"
   },
   {
     "objectID": "ders-tidy-graph-text.html#literatürün-yönü-1",
     "href": "ders-tidy-graph-text.html#literatürün-yönü-1",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Literatürün yönü",
-    "text": "Literatürün yönü\n\ntrend |&gt;\n  ggplot(aes(year, pct, color = term)) +\n  geom_line(linewidth = 0.9) +\n  geom_point(size = 1.2) +\n  scale_x_continuous(breaks = sort(unique(corpus$year))) +\n  labs(x = NULL, y = \"Özetlerin %'si\", color = NULL) +\n  theme_classic(base_size = 13) +\n  theme(legend.position = \"bottom\")\n\n\nOsimertinib yükseliyor, gefitinib/erlotinib düşüyor, immunotherapy ve single-cell son yıllarda beliriyor."
+    "text": "Literatürün yönü\n\ntrend |&gt;\n  ggplot(aes(year, pct, color = term)) +\n  geom_line(linewidth = 0.9) +\n  geom_point(size = 1.2) +\n  scale_x_continuous(breaks = sort(unique(corpus$year))) +\n  labs(x = NULL, y = \"Özetlerin %'si\", color = NULL) +\n  theme_classic(base_size = 13) +\n  theme(legend.position = \"bottom\")\n\n\nOsimertinib yükseliyor, gefitinib/erlotinib düşüyor, immunotherapy son yıllarda beliriyor."
   },
   {
     "objectID": "ders-tidy-graph-text.html#literatürün-yönü-1-output",
@@ -900,14 +900,14 @@
     "href": "ders-tidy-graph-text.html#purrr-aynı-işi-terim-terim-yapmak",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "purrr: aynı işi terim terim yapmak",
-    "text": "purrr: aynı işi terim terim yapmak\nAynı analizi 6 terim için yaptık. Bu “tekrar eden iş” tipik bir purrr işidir:\n\nmap() → listedeki her eleman için sonuç listesi\nmap_dfr() → sonuçları tek tabloya birleştirir\n\nmap_dfr(terms, function(tm) { ... })   # 6 satır tablo\nmap_dfr() fonksiyonunu ilk kez data/fetch_pubmed.R içinde kullandık (yıl yıl PubMed sorgusu)."
+    "text": "purrr: aynı işi terim terim yapmak\nTerimleri tek tek saymak da mümkündü; bu “tekrar eden iş” tipik bir purrr işidir:\n\nmap() → listedeki her eleman için sonuç listesi\nmap_dfr() → sonuçları tek tabloya birleştirir\n\nmap_dfr(terms, function(tm) { ... })   # her terim için ayrı tablo\nBizde join aynı işi tek adımda verdi: kelimeleri terim tablosuyla eşleştirip yıl bazında saydık. purrr’i her eleman için ayrı bir iş gerektiğinde kullanırız — data/fetch_pubmed.R içindeki yıl yıl PubMed sorgusu tam olarak böyle."
   },
   {
     "objectID": "ders-tidy-graph-text.html#iki-kelime-birlikte-bigram",
     "href": "ders-tidy-graph-text.html#iki-kelime-birlikte-bigram",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "İki kelime birlikte: bigram",
-    "text": "İki kelime birlikte: bigram\nTek kelime yetmez: “lung cancer”, “EGFR mutation”, “tyrosine kinase” gibi ifadeler birlikte anlamlıdır.\n\nbigrams &lt;- corpus |&gt;\n  unnest_tokens(bigram, abstract, token = \"ngrams\", n = 2) |&gt;\n  separate_wider_delim(bigram, delim = \" \", names = c(\"word1\", \"word2\")) |&gt;\n  anti_join(stop_words, by = c(\"word1\" = \"word\")) |&gt;\n  anti_join(stop_words, by = c(\"word2\" = \"word\")) |&gt;\n  filter(!is.na(word1), !is.na(word2)) |&gt;\n  count(word1, word2, sort = TRUE)\n\nbigrams |&gt; slice_head(n = 10)\n\n\nanti_join() burada tek kelimeye yetmez: iki kelimeyi separate() ile ayırıp ikisini de temizliyoruz."
+    "text": "İki kelime birlikte: bigram\nTek kelime yetmez: “lung cancer”, “EGFR mutation”, “tyrosine kinase” gibi ifadeler birlikte anlamlıdır.\n\nbigrams &lt;- corpus |&gt;\n  unnest_tokens(bigram, abstract, token = \"ngrams\", n = 2) |&gt;\n  separate_wider_delim(bigram, delim = \" \", names = c(\"word1\", \"word2\")) |&gt;\n  anti_join(stop_words, by = c(\"word1\" = \"word\")) |&gt;\n  anti_join(stop_words, by = c(\"word2\" = \"word\")) |&gt;\n  filter(!is.na(word1), !is.na(word2)) |&gt;\n  count(word1, word2, sort = TRUE)\n\nbigrams |&gt; slice_head(n = 10)\n\n\nanti_join() ile stop_words temizliği yapamayız, ikili kelimelerin iki ayrı kolona ayrılması (separate_) daha sonra her iki kolondaki stop_words ayrı ayrı temizlenmesi gerekmektedir.."
   },
   {
     "objectID": "ders-tidy-graph-text.html#iki-kelime-birlikte-bigram-output",
@@ -921,14 +921,14 @@
     "href": "ders-tidy-graph-text.html#tf-idf-ayırt-edici-kelimeler",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "TF-IDF: ayırt edici kelimeler",
-    "text": "TF-IDF: ayırt edici kelimeler\n\ntf: kelime bir belgede ne kadar sık\nidf: kelime tüm belgelerde ne kadar nadir\n\n\\[idf(\\text{terim}) = \\ln{\\left(\\frac{n_{\\text{belge}}}{n_{\\text{terimi içeren belge}}}\\right)}\\]\n\nyil_bazli &lt;- corpus |&gt;\n  mutate(doc = as.character(year)) |&gt;\n  unnest_tokens(word, abstract) |&gt;\n  count(doc, word) |&gt;\n  filter(n &gt;= 3)\n\nyil_bazli |&gt; bind_tf_idf(word, doc, n)\n\n\n\n\n\n\n\nGerçek hayatta gürültü olur\n\n\ntf-idf nadir kelimeleri öne çıkarır; küçük veri kümelerinde bu “nadir” kelimeler bazen yazar adı ya da kısaltma olur. Bu yüzden filtreleme (n &gt;= 3, en az 5 harf) şart."
+    "text": "TF-IDF: ayırt edici kelimeler\n\ntf: kelime bir belgede ne kadar sık\nidf: kelime tüm belgelerde ne kadar nadir\n\n\\[idf(\\text{terim}) = \\ln{\\left(\\frac{n_{\\text{belge}}}{n_{\\text{terimi içeren belge}}}\\right)}\\]\n\ncorpus |&gt;\n   unnest_tokens(word, abstract) |&gt;\n   count(pmid, word) |&gt;\n   bind_tf_idf(pmid, word, n) |&gt; \n   filter(n&gt;3) |&gt; \n   arrange(-tf_idf) \n\n# A tibble: 6,122 × 6\n       pmid word         n    tf   idf tf_idf\n      &lt;dbl&gt; &lt;chr&gt;    &lt;int&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n 1 39720671 as1          4     1  4.71   4.71\n 2 28783064 estrogen     6     1  4.64   4.64\n 3 27149849 pkm2         6     1  4.63   4.63\n 4 29133145 ddx59        5     1  4.63   4.63\n 5 25656847 smarce1      5     1  4.62   4.62\n 6 27760600 sqclc        4     1  4.62   4.62\n 7 31420907 atf1         4     1  4.62   4.62\n 8 36975376 tmprss2      5     1  4.59   4.59\n 9 36268218 hts          5     1  4.57   4.57\n10 36410436 2d5          4     1  4.57   4.57\n# ℹ 6,112 more rows\n\n\n\n\n\n\n\n\nGerçek hayatta gürültü olur\n\n\ntf-idf nadir kelimeleri öne çıkarır; küçük veri kümelerinde bu “nadir” kelimeler bazen yazar adı ya da kısaltma olur. Bu yüzden filtreleme (n &gt;= 3) gerekebilir."
   },
   {
     "objectID": "ders-tidy-graph-text.html#bölüm-2-ağ",
     "href": "ders-tidy-graph-text.html#bölüm-2-ağ",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Bölüm 2: Ağ",
-    "text": "Bölüm 2: Ağ\n{tidygraph} ile ilişkileri grafiğe çeviriyoruz."
+    "text": "Bölüm 2: Ağ\n{tidygraph} ile ilişkileri grafiğe çeviriyoruz.\nAğ nedir?\n\nDüğüm (node): bir nesne (protein, gen, kelime)\nKenar (edge): iki düğüm arasındaki ilişki\n\n\n\nKaynak"
   },
   {
     "objectID": "ders-tidy-graph-text.html#ağ-nedir",
@@ -991,21 +991,21 @@
     "href": "ders-tidy-graph-text.html#yönlü-ağda-derece",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Yönlü ağda derece",
-    "text": "Yönlü ağda derece\n\nfriends_g |&gt;\n  mutate(\n    in_deg  = centrality_degree(mode = \"in\"),\n    out_deg = centrality_degree(mode = \"out\"),\n    all_deg = centrality_degree(mode = \"all\")\n  )\n\nVarsayılan yön out’tur. Yönlü/ yönsüz kararını verirken bunu unutmayın."
+    "text": "Yönlü ağda derece\nArkadaşlık ağını “yönlü” olarak oluşturup içe doğru, dışa doğru ve toplam derece sayımı yapalım\n\nfriends |&gt; \n  as_tbl_graph(directed = TRUE) |&gt;\n  mutate(\n    in_deg  = centrality_degree(mode = \"in\"),\n    out_deg = centrality_degree(mode = \"out\"),\n    all_deg = centrality_degree(mode = \"all\")\n  )\n\n# A tbl_graph: 8 nodes and 9 edges\n#\n# A directed acyclic simple graph with 1 component\n#\n# Node Data: 8 × 4 (active)\n  name    in_deg out_deg all_deg\n  &lt;chr&gt;    &lt;dbl&gt;   &lt;dbl&gt;   &lt;dbl&gt;\n1 alice        0       2       2\n2 charles      0       1       1\n3 david        0       2       2\n4 bob          5       2       7\n5 fiona        1       1       2\n6 gary         0       1       1\n7 allen        2       0       2\n8 henry        1       0       1\n#\n# Edge Data: 9 × 2\n   from    to\n  &lt;int&gt; &lt;int&gt;\n1     1     4\n2     2     4\n3     3     4\n# ℹ 6 more rows"
   },
   {
     "objectID": "ders-tidy-graph-text.html#durak-bugünün-verisi-ppi-ağı",
     "href": "ders-tidy-graph-text.html#durak-bugünün-verisi-ppi-ağı",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Durak: bugünün verisi (PPI ağı)",
-    "text": "Durak: bugünün verisi (PPI ağı)\n\nppi &lt;- read_tsv(\"data/human_ppi.tsv.gz\", show_col_types = FALSE)\n\nppi |&gt; slice_head(n = 5)\n\n# A tibble: 5 × 2\n  interactor_A interactor_B\n  &lt;chr&gt;        &lt;chr&gt;       \n1 MAP2K4       FLNC        \n2 MYPN         ACTN2       \n3 ACVR1        FNTA        \n4 GATA2        PML         \n5 RPA2         STAT3       \n\n\nİki sütun: interactor_A, interactor_B. Kısaltılmış protein adları (UniProt/S_HUMAN). Tablo 19.162 protein / 544.494 etkileşim: çok büyük, bu yüzden sonraki adımlarda alt küme alacağız.\n\nKaynak"
+    "text": "Durak: bugünün verisi (PPI ağı)\n\nppi_url &lt;- \"https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/human_ppi.tsv.gz\"\nppi &lt;- read_tsv(ppi_url, show_col_types = FALSE)\n\nppi |&gt; slice_head(n = 5)\n\n# A tibble: 5 × 2\n  interactor_A interactor_B\n  &lt;chr&gt;        &lt;chr&gt;       \n1 MAP2K4       FLNC        \n2 MYPN         ACTN2       \n3 ACVR1        FNTA        \n4 GATA2        PML         \n5 RPA2         STAT3       \n\n\nİki sütun: interactor_A, interactor_B. Kısaltılmış protein adları (UniProt/S_HUMAN). Tablo 19.162 protein / 544.494 etkileşim: çok büyük, bu yüzden sonraki adımlarda alt küme alacağız.\n\nKaynak"
   },
   {
     "objectID": "ders-tidy-graph-text.html#tablodan-grafiğe",
     "href": "ders-tidy-graph-text.html#tablodan-grafiğe",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Tablodan grafiğe",
-    "text": "Tablodan grafiğe\n\nppi_g &lt;- ppi |&gt; as_tbl_graph(directed = FALSE)\n\ncat(\"Düğüm (protein):  \", ppi_g |&gt; activate(nodes) |&gt; nrow(), \"\\n\")\n\nDüğüm (protein):   \n\ncat(\"Kenar (etkileşim):\", ppi_g |&gt; activate(edges) |&gt; nrow(), \"\\n\")\n\nKenar (etkileşim): \n\n\nas_tbl_graph() iki sütunlu tabloyu alır, düğüm + kenar tablosuna çevirir."
+    "text": "Tablodan grafiğe\nas_tbl_graph komutu, bir tabloyu ağ yapısına çevirir\n\nppi_g &lt;- ppi |&gt; as_tbl_graph(directed = FALSE)\n\nppi_g\n\n# A tbl_graph: 19162 nodes and 544494 edges\n#\n# An undirected multigraph with 3 components\n#\n# Node Data: 19,162 × 1 (active)\n   name  \n   &lt;chr&gt; \n 1 MAP2K4\n 2 MYPN  \n 3 ACVR1 \n 4 GATA2 \n 5 RPA2  \n 6 ARF1  \n 7 ARF3  \n 8 XRN1  \n 9 APP   \n10 APLP1 \n# ℹ 19,152 more rows\n#\n# Edge Data: 544,494 × 2\n   from    to\n  &lt;int&gt; &lt;int&gt;\n1     1  3667\n2     2  2393\n3     3  3803\n# ℹ 544,491 more rows\n\n\nas_tbl_graph() iki sütunlu tabloyu alır, düğüm + kenar tablosuna çevirir."
   },
   {
     "objectID": "ders-tidy-graph-text.html#ağın-hub-genleri",
@@ -1019,7 +1019,7 @@
     "href": "ders-tidy-graph-text.html#hub-genleri-grafiği",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Hub genleri grafiği",
-    "text": "Hub genleri grafiği\n\ndeg_tbl |&gt;\n  mutate(grp = if_else(name %in% c(\"EGFR\", \"TP53\", \"KRAS\", \"MYC\", \"ESR1\", \"ESR2\"),\n                       \"Dersimizde gördüğümüz genler\", \"Diğer proteinler\")) |&gt;\n  slice_head(n = 15) |&gt;\n  ggplot(aes(deg, fct_reorder(name, deg), fill = grp)) +\n  geom_col() +\n  scale_fill_manual(values = c(\"Diğer proteinler\" = \"#74c476\",\n                               \"Dersimizde gördüğümüz genler\" = \"#de2d26\")) +\n  labs(x = \"Derece (etkileşim sayısı)\", y = NULL, fill = NULL) +\n  theme_classic(base_size = 13) +\n  theme(legend.position = \"bottom\")\n\n\n\n\n\n\n\n\nVeri kalitesi notu\n\n\nPLEKHA4, KIAA1429 gibi çok etkileşime giren proteinler, çoğu zaman çok sayıda düşük güvenli etkileşimin birikmesidir. “Hub” olmak biyolojik bir üstünlük değil, bazen bir veri özelliğidir."
+    "text": "Hub genleri grafiği\n\nppi_g |&gt;\n      activate(nodes) |&gt;\n      mutate(deg = centrality_degree()) |&gt;\n      filter(deg &gt;= 1500) |&gt;\n      ggraph(layout = \"kk\") +\n      geom_edge_link(colour = \"grey75\") +\n      geom_node_point(aes(size = deg), colour = \"#de2d26\") +\n      scale_size_area(max_size = 11) +\n      geom_node_label(aes(label = name), repel = TRUE, size = 3.4,\n                      segment.colour = \"grey60\", fill = \"white\") +\n      theme_graph()"
   },
   {
     "objectID": "ders-tidy-graph-text.html#hub-genleri-grafiği-output",
@@ -1054,7 +1054,7 @@
     "href": "ders-tidy-graph-text.html#merkezilik-betweenness",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Merkezilik: betweenness",
-    "text": "Merkezilik: betweenness\nDerece “çok kapısı var” demektir. Betweenness ise “ağın ortasında mı?”: en kısa yolların kaçından geçiyor.\n\nego_tbl |&gt;\n  activate(nodes) |&gt;\n  as_tibble() |&gt;\n  arrange(-betw) |&gt;\n  slice_head(n = 6)\n\n# A tibble: 6 × 3\n  name       deg  betw\n  &lt;chr&gt;    &lt;dbl&gt; &lt;dbl&gt;\n1 EGFR        23 15.1 \n2 TP53        21  8.54\n3 RBM39       18  7.57\n4 KIAA1429    16  6.77\n5 TRIM28      16  5.38\n6 HNRNPL      16  5.32\n\n\nEGFR bu ağda en yüksek betweenness’e sahip: yollar onun üzerinden geçiyor."
+    "text": "Merkezilik: betweenness\nDerece “çok kapısı var” demektir. Betweenness ise “ağın ortasında mı?”: en kısa yolların kaçından geçiyor.\n\nppi_g |&gt;\n     mutate(deg = centrality_degree()) |&gt;\n     filter(deg &gt; 500) |&gt;\n     mutate(betw=centrality_betweenness())\n\n# A tbl_graph: 184 nodes and 7450 edges\n#\n# An undirected multigraph with 1 component\n#\n# Node Data: 184 × 3 (active)\n   name     deg  betw\n   &lt;chr&gt;  &lt;dbl&gt; &lt;dbl&gt;\n 1 RPA2     563  20.9\n 2 APP     2515  87.9\n 3 EP300    919  66.4\n 4 BRCA1   1247  68.4\n 5 RPA1     603  38.9\n 6 YWHAZ    557 124. \n 7 CSK      815  18.3\n 8 CREBBP   567  16.2\n 9 ESR1    2320 119. \n10 NR3C1    886  12.3\n# ℹ 174 more rows\n#\n# Edge Data: 7,450 × 2\n   from    to\n  &lt;int&gt; &lt;int&gt;\n1     1    56\n2     5    56\n3    21   153\n# ℹ 7,447 more rows"
   },
   {
     "objectID": "ders-tidy-graph-text.html#yol-haritası-rasmapk-kaskadı",
@@ -1138,7 +1138,7 @@
     "href": "ders-tidy-graph-text.html#özet",
     "title": "Metin ve Ağlarda Veri Analizi",
     "section": "Özet",
-    "text": "Özet\n\nMetin de, ağ da tabloyla başlar: tidy veri + dplyr fiilleri.\n{tidytext} metni kelime/bigram tablosuna çevirir; {tidygraph} ilişkiyi grafiğe çevirir.\nİkisi aynı fikrin iki yüzü: tablo → ölçüm, ağ → ilişki.\nAynı araç zinciri farklı veriyle çalışır: PubMed özeti de, PPI ağı de.\n\nSonraki ders: Quarto ile Raporlama — analizi poster/rapor hâline getiriyoruz.\n\nKaynak · Kaynak"
+    "text": "Özet\n\nMetin de, ağ da tabloyla başlar: tidy veri + dplyr fiilleri.\n{tidytext} metni kelime/bigram tablosuna çevirir; {tidygraph} ilişkiyi grafiğe çevirir.\nİkisi aynı fikrin iki yüzü: tablo → ölçüm, ağ → ilişki.\nAynı araç zinciri farklı veriyle çalışır: PubMed özeti de, PPI ağı de.\n\n\nKaynak · Kaynak"
   },
   {
     "objectID": "ders-tidygraph.html#network-analysis",
@@ -2364,5 +2364,82 @@
     "title": "Deneme",
     "section": "Three.js deneme",
     "text": "Three.js deneme\n\n\n\n\n\nNGL viewer deneme\n\n\n\n\n\nigv genome browser deneme"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#örnek-veri-makale-özetleri",
+    "href": "ders-tidy-graph-text.html#örnek-veri-makale-özetleri",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Örnek veri: makale özetleri",
+    "text": "Örnek veri: makale özetleri\nÖzetleri PubMed’den indirdik. İndirme kodu data/fetch_pubmed.R dosyasında:\n\nbase_query &lt;- 'EGFR[tiab] AND lung[tiab]'\nyears      &lt;- 2015:2026\nper_year   &lt;- 60\n\npmids &lt;- map(years, function(y) {\n  url &lt;- paste0(\"https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esearch.fcgi\",\n                \"?db=pubmed&retmode=json&retmax=\", per_year,\n                \"&term=\", URLencode(paste0(base_query, \" AND \", y, \"[dp]\")))\n  fromJSON(url)$esearchresult$idlist\n})\n\nSonra efetch ile özet metinleri indirilir, map_dfr() ile tabloya çevrilir.\n\nKaynak"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#örnek-veri-ppi-ağı",
+    "href": "ders-tidy-graph-text.html#örnek-veri-ppi-ağı",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Örnek veri: PPI ağı",
+    "text": "Örnek veri: PPI ağı\nProtein-protein etkileşim ağları biyolojide önemli bir veri tipidir.\n\nppi_url &lt;- \"https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/human_ppi.tsv.gz\"\nppi &lt;- read_tsv(ppi_url, show_col_types = FALSE)\n\nppi |&gt; slice_head(n = 5)\n\n# A tibble: 5 × 2\n  interactor_A interactor_B\n  &lt;chr&gt;        &lt;chr&gt;       \n1 MAP2K4       FLNC        \n2 MYPN         ACTN2       \n3 ACVR1        FNTA        \n4 GATA2        PML         \n5 RPA2         STAT3       \n\n\nİki sütun: interactor_A, interactor_B. Kısaltılmış protein adları (UniProt/S_HUMAN). Tablo 19.162 protein / 544.494 etkileşim: çok büyük, bu yüzden sonraki adımlarda alt küme alacağız.\n\nKaynak"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#protein-protein-etkileşim-verileri",
+    "href": "ders-tidy-graph-text.html#protein-protein-etkileşim-verileri",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Protein-protein etkileşim verileri",
+    "text": "Protein-protein etkileşim verileri\nAşağıdaki veritabanlarından protein-protein etkileşim verileri elde edilebilir (Halka açık veritabanlarında genelde Download kısmında, veritabanındaki tüm veri csv formatında paylaşılır)\n\nSTRING (string-db.org): 12.000’den fazla organizmadaki bilinen ve tahmin edilen protein etkileşimlerini (fiziksel bağlanma ve işlevsel yolaklar) kapsar.\nBioGRID (thebiogrid.org): Başlıca model organizmalar ve insan literatüründen derlenen kapsamlı protein, genetik ve kimyasal etkileşimleri içeren biyomedikal bir depodur.\nIntAct (ebi.ac.uk/intact): EMBL-EBI tarafından yönetilen, literatürdeki deneysel verilerin manuel olarak düzenlendiği ücretsiz ve açık kaynaklı bir moleküler etkileşim veritabanıdır."
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#kelimeleri-terimlerle-eşleştirmek-join",
+    "href": "ders-tidy-graph-text.html#kelimeleri-terimlerle-eşleştirmek-join",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Kelimeleri terimlerle eşleştirmek: join",
+    "text": "Kelimeleri terimlerle eşleştirmek: join\n\n# 3) JOIN: kelimeleri terim tablosuyla eşleştir, yıl başına say\nn_per_year &lt;- corpus |&gt; count(year)\n\ntrend &lt;- words |&gt;\n  inner_join(terms_tbl, by = \"word\") |&gt;\n  distinct(pmid, year, term) |&gt;\n  count(year, term, name = \"n\") |&gt;\n  complete(year, term, fill = list(n = 0)) |&gt;\n  mutate(year = as.integer(as.character(year)),\n         term = factor(term, levels = terms),\n         pct = 100 * n / max(n_per_year$n))\n\n\ninner_join(): kelimeleri terim tablosuyla eşleştirdi, grepl() gerekmedi\ndistinct(): bir özette aynı terim bir kez sayılır\ncomplete(): o yıl o terimi hiç anmayanlar 0 olarak eklenir"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#kavramların-yıllara-göre-sayımı",
+    "href": "ders-tidy-graph-text.html#kavramların-yıllara-göre-sayımı",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Kavramların yıllara göre sayımı",
+    "text": "Kavramların yıllara göre sayımı\nHangi terim yıllara göre ne kadar sık kullanıldı? sorusu tidy formattaki veri ile kolayca hesaplanabilir.\nAradığımız kelimeleri bir tabloya yazıp metni kelimelere bölelim; ikisini join ile eşleştirelim.\n\n# Terim tablosu: aradığımız kelimeler\nterms_tbl &lt;- tibble(term = terms &lt;- c(\"osimertinib\", \"gefitinib\", \n             \"erlotinib\", \"immunotherapy\", \"ctdna\")) \ntrend &lt;- corpus |&gt;\n  unnest_tokens(term, abstract) |&gt;\n  inner_join(terms_tbl, by = \"term\") |&gt;\n  distinct(pmid, year, term) |&gt;\n  count(year, term, name = \"n\")\n\ntrend\n\n# A tibble: 51 × 3\n    year term              n\n   &lt;int&gt; &lt;chr&gt;         &lt;int&gt;\n 1  2015 erlotinib        11\n 2  2015 gefitinib        13\n 3  2016 erlotinib        10\n 4  2016 gefitinib        11\n 5  2016 immunotherapy     1\n 6  2016 osimertinib       5\n 7  2017 ctdna             2\n 8  2017 erlotinib         8\n 9  2017 gefitinib         5\n10  2017 immunotherapy     2\n# ℹ 41 more rows"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#trend-grafiği",
+    "href": "ders-tidy-graph-text.html#trend-grafiği",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Trend grafiği",
+    "text": "Trend grafiği\n\ntrend |&gt;\n  ggplot(aes(year, n, color = term)) +\n  geom_line(linewidth = 0.9) +\n  geom_point(size = 1.2) +\n  scale_x_continuous(breaks = sort(unique(corpus$year))) +\n  labs(x = NULL, y = \"Özetlerin sayısı\", color = NULL) +\n  theme_classic(base_size = 13) +\n  theme(legend.position = \"bottom\")\n\n\nOsimertinib yükseliyor."
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#trend-grafiği-output",
+    "href": "ders-tidy-graph-text.html#trend-grafiği-output",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Trend grafiği",
+    "text": "Trend grafiği"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#bölüm-1-metin-output",
+    "href": "ders-tidy-graph-text.html#bölüm-1-metin-output",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Bölüm 1: Metin",
+    "text": "Bölüm 1: Metin\n\n# A tibble: 8 × 2\n   line word     \n  &lt;dbl&gt; &lt;chr&gt;    \n1     1 egfr     \n2     1 mutations\n3     1 drive    \n4     1 non      \n5     1 small    \n6     1 cell     \n7     1 lung     \n8     1 cancer"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#tablodan-ağa-grafiğe",
+    "href": "ders-tidy-graph-text.html#tablodan-ağa-grafiğe",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Tablodan ağa (grafiğe)",
+    "text": "Tablodan ağa (grafiğe)\nas_tbl_graph komutu, bir tabloyu ağ yapısına çevirir, iki tablo halinde, düğüm + kenar, saklar.\n\nppi_g &lt;- ppi |&gt; as_tbl_graph(directed = FALSE)\n\nppi_g\n\n# A tbl_graph: 19162 nodes and 544494 edges\n#\n# An undirected multigraph with 3 components\n#\n# Node Data: 19,162 × 1 (active)\n   name  \n   &lt;chr&gt; \n 1 MAP2K4\n 2 MYPN  \n 3 ACVR1 \n 4 GATA2 \n 5 RPA2  \n 6 ARF1  \n 7 ARF3  \n 8 XRN1  \n 9 APP   \n10 APLP1 \n# ℹ 19,152 more rows\n#\n# Edge Data: 544,494 × 2\n   from    to\n  &lt;int&gt; &lt;int&gt;\n1     1  3667\n2     2  2393\n3     3  3803\n# ℹ 544,491 more rows"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#düğüm-ve-kenar-tabloları",
+    "href": "ders-tidy-graph-text.html#düğüm-ve-kenar-tabloları",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Düğüm ve kenar tabloları",
+    "text": "Düğüm ve kenar tabloları\nAksi belirtilmedikçe, aktif olan tablo düğüm tablosudur, kenar tablosu üzerinde, select, filter, mutate, join uygulanacak ise, activate(edges) kullanılmalıdır\n\nppi_g |&gt;\n  activate(edges)\n\n# A tbl_graph: 19162 nodes and 544494 edges\n#\n# An undirected multigraph with 3 components\n#\n# Edge Data: 544,494 × 2 (active)\n    from    to\n   &lt;int&gt; &lt;int&gt;\n 1     1  3667\n 2     2  2393\n 3     3  3803\n 4     4  1415\n 5     5  2286\n 6     6   569\n 7     7   329\n 8     7  4241\n 9     8  8204\n10     9   840\n# ℹ 544,484 more rows\n#\n# Node Data: 19,162 × 1\n  name  \n  &lt;chr&gt; \n1 MAP2K4\n2 MYPN  \n3 ACVR1 \n# ℹ 19,159 more rows"
+  },
+  {
+    "objectID": "ders-tidy-graph-text.html#sorular",
+    "href": "ders-tidy-graph-text.html#sorular",
+    "title": "Metin ve Ağlarda Veri Analizi",
+    "section": "Sorular",
+    "text": "Sorular\n\ncorpus içinde 2015 yılı özetlerini alın; en sık 10 kelimeyi bulun.\ntrend tablosundan 2020 yılında en yüksek terimi bulun; o terimin yıllar boyunca yüzdelerini çizdirin.\nppi_g içinde “EGFR” düğümünü bulun; derecesini ve kaç komşusu olduğunu yazdırın.\nbigrams içinden “egfr” kelimesini içeren 10 ikili kelime çıkarın."
   }
 ]
