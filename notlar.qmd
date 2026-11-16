@@ -5,16 +5,16 @@ format: html
 
 ## Quiz
 
-Quiz1 sonuçları aşağıdaki gibidir.
+Quiz1 ve Quiz2 sonuçları aşağıdaki gibidir.
 
 ```{r}
 #| echo: false
 #| warning: false
 library(gt)
 
-readr::read_csv("~/Documents/YTU/DERSLER/2026GUZ/MBG4181-DAV/dav-quiz1.csv") |>
-  dplyr::select(id,quiz1) |> 
-  dplyr::arrange(id) |>
+readr::read_csv("~/Documents/YTU/DERSLER/2026GUZ/MBG4181-DAV/dav-quiz1-2.csv") |>
+  dplyr::select(id,quiz1,quiz2) |> 
+  #dplyr::arrange(id) |>
   gt() |>
   cols_align(
     align = c("center"),
