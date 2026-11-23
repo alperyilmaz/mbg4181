@@ -49,11 +49,25 @@
     "text": "Rapor yazmak: neden zor?\nBir analiz biter, sonra rapor başlar.\n\nVeri her güncelleniyor: yeni ölçüm, yeni sürüm, yeni filtre. Elle kopyaladığınız figürler sessizce eski kalır — ve rapor artık yanlış.\n\n\n\n\n\n\nÇözüm: raporu elle yazmayın\n\n\nMetni, kodu ve çıktıyı tek bir dosyada tutun; dosyayı “derleyin”. Veri değişince raporu yeniden üretirsiniz."
   },
   {
+    "objectID": "ders-quarto-alternative.html#iletişim",
+    "href": "ders-quarto-alternative.html#iletişim",
+    "title": "Quarto ile Raporlama",
+    "section": "İletişim",
+    "text": "İletişim\n\n\n\nWhat good is an image/analysis/result if you are unable to communicate\n\n\n\n\n\nKaynak"
+  },
+  {
     "objectID": "ders-quarto-alternative.html#quarto-tek-dosyada-metin-kod-çıktı",
     "href": "ders-quarto-alternative.html#quarto-tek-dosyada-metin-kod-çıktı",
     "title": "Quarto ile Raporlama",
     "section": "Quarto: tek dosyada metin + kod + çıktı",
     "text": "Quarto: tek dosyada metin + kod + çıktı\n\nders7.qmd → HTML / PDF / Word / sunum / poster\n\nMarkdown: düz metin — okunabilir, sürüm kontrolünde rahat\nKod bloğu: R kodu, belge içinde, normal R komutu gibi\nÇıktı: render sırasında otomatik üretilir, elle kopyalanmaz\n\n\nKaynak"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#quarto-rmarkdownın-yeri",
+    "href": "ders-quarto-alternative.html#quarto-rmarkdownın-yeri",
+    "title": "Quarto ile Raporlama",
+    "section": "Quarto (RMarkdown’ın yeri)",
+    "text": "Quarto (RMarkdown’ın yeri)\n\n\n\n\n\n\n\nİpucu\n\n\nİpucu. RMarkdown hâlâ aktif olarak kullanılıyor, ama lütfen Quarto kullanın."
   },
   {
     "objectID": "ders-quarto-alternative.html#nasıl-çalışır",
@@ -75,6 +89,48 @@
     "title": "Quarto ile Raporlama",
     "section": "Markdown: metin + biçim",
     "text": "Markdown: metin + biçim\n\n\nYazarken “kalın” yazarsınız, ekranda kalın görünür\nKod yazarkin `airquality` gibi ters tırnak kullanırsınız\nBaşlık #, liste -, bağlantı [metin](url)\n\n\nKaynak"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#qmd-düz-metin-dosyası",
+    "href": "ders-quarto-alternative.html#qmd-düz-metin-dosyası",
+    "title": "Quarto ile Raporlama",
+    "section": ".qmd: düz metin dosyası",
+    "text": ".qmd: düz metin dosyası\nQuarto belgesi, farklı biçimlere derlenebilen sıradan bir düz metin dosyadır:\n\nRStudio’da açılmış bir .qmd: üstte YAML, altında metin ve kod blokları."
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#html",
+    "href": "ders-quarto-alternative.html#html",
+    "title": "Quarto ile Raporlama",
+    "section": "… HTML",
+    "text": "… HTML\nAynı dosyayı derleyince (Render) tarayıcıda açılan bir HTML rapor olur:"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#sıra-sizde",
+    "href": "ders-quarto-alternative.html#sıra-sizde",
+    "title": "Quarto ile Raporlama",
+    "section": "Sıra sizde",
+    "text": "Sıra sizde\nİlk Quarto belgemizi oluşturup derleyelim.\n\n\n\n\n\n\n\nNot\n\n\nNot. quarto, rstudio.cloud projesinde kurulu geliyor. Kendi bilgisayarınızdaki RStudio’yu kullanıyorsanız önce quarto’yu kurun."
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#belgeye-başlık-verin-bu-dosya-adı-değil",
+    "href": "ders-quarto-alternative.html#belgeye-başlık-verin-bu-dosya-adı-değil",
+    "title": "Quarto ile Raporlama",
+    "section": "Belgeye başlık verin (bu, dosya adı değil!)",
+    "text": "Belgeye başlık verin (bu, dosya adı değil!)"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#dosya-untitled-olarak-açıldı-şimdi-kaydedelim",
+    "href": "ders-quarto-alternative.html#dosya-untitled-olarak-açıldı-şimdi-kaydedelim",
+    "title": "Quarto ile Raporlama",
+    "section": "Dosya Untitled olarak açıldı; şimdi kaydedelim",
+    "text": "Dosya Untitled olarak açıldı; şimdi kaydedelim"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#artık-belgeyi-derleyebiliriz-render",
+    "href": "ders-quarto-alternative.html#artık-belgeyi-derleyebiliriz-render",
+    "title": "Quarto ile Raporlama",
+    "section": "Artık belgeyi derleyebiliriz (Render)",
+    "text": "Artık belgeyi derleyebiliriz (Render)\n\n\n\n\n\n\n\nİpucu\n\n\nİpucu. İlk derlemede Console’a install.packages(\"rmarkdown\") yazarak rmarkdown paketini kurmanız istenebilir."
   },
   {
     "objectID": "ders-quarto-alternative.html#kod-bloğu-anatomisi",
@@ -105,25 +161,60 @@
     "text": "Inline kod: sayıyı yazma, hesaplat\nMetin içine doğrudan R kodu yazabilirsiniz:\nVeri setinde 153 gözlem, ortalama ozon 42.1 ppb.\nRender sırasında hesaplanır ve metne gömülür.\n\n\n\n\n\n\nNeden önemli?\n\n\nRaporda “veride 153 satır vardı” yazıp sonra veri değişirse sayı yanlış kalır. Inline kod sayıyı her derlemede günceller."
   },
   {
+    "objectID": "ders-quarto-alternative.html#inline-kod-kaynak-ve-sonuç",
+    "href": "ders-quarto-alternative.html#inline-kod-kaynak-ve-sonuç",
+    "title": "Quarto ile Raporlama",
+    "section": "Inline kod: kaynak ve sonuç",
+    "text": "Inline kod: kaynak ve sonuç\nBelgeye şu satırı yazarsınız:\n`mtcars` verisinde `r nrow(mtcars)` gözlem vardır. Aşağıdaki tablo ortalama\nşehir ve otoyol tüketimini marka ve silindir sayısına göre gösterir.\nDerleme sonucu ekranda şöyle görünür:\nmtcars verisinde 32 gözlem vardır. Aşağıdaki tablo ortalama şehir ve otoyol tüketimini marka ve silindir sayısına göre gösterir.\n\n\n\n\n\n\nİpucu\n\n\nİpucu. Üstteki satır kaynak, alttakini ise Quarto derleme sırasında hesaplayıp yazdı."
+  },
+  {
     "objectID": "ders-quarto-alternative.html#şekil-üretmek",
     "href": "ders-quarto-alternative.html#şekil-üretmek",
     "title": "Quarto ile Raporlama",
     "section": "Şekil üretmek",
-    "text": "Şekil üretmek\n\nlibrary(ggplot2)\nozon &lt;- aggregate(Ozone ~ Month, airquality, mean, na.rm = TRUE)\nggplot(ozon, aes(Month, Ozone)) +\n  geom_line(color = \"#222B57\", linewidth = 0.9) +\n  scale_x_continuous(breaks = 5:9, labels = c(\"May\", \"Haz\", \"Tem\", \"Ağu\", \"Eyl\")) +\n  labs(x = \"Ay\", y = \"Ozon (ppb)\", title = \"Ozon mevsimsel değişimi\") +\n  theme_minimal(base_size = 14)\n\n\n\nŞekil 1: Aylık ortalama ozon seviyesi (airquality, 1973)"
+    "text": "Şekil üretmek\n#| label: fig-ozon\n#| fig-cap: \"Aylık ortalama ozon seviyesi (airquality, 1973)\"\n#| fig-width: 8\n#| fig-height: 4\n\nlibrary(ggplot2)\nozon &lt;- aggregate(Ozone ~ Month, airquality, mean, na.rm = TRUE)\nggplot(ozon, aes(Month, Ozone)) +\n  geom_line(color = \"#222B57\", linewidth = 0.9) +\n  scale_x_continuous(breaks = 5:9, labels = c(\"May\", \"Haz\", \"Tem\", \"Ağu\", \"Eyl\")) +\n  labs(x = \"Ay\", y = \"Ozon (ppb)\", title = \"Ozon mevsimsel değişimi\") +\n  theme_minimal(base_size = 14)"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#section",
+    "href": "ders-quarto-alternative.html#section",
+    "title": "Quarto ile Raporlama",
+    "section": "",
+    "text": "library(ggplot2)\nozon &lt;- aggregate(Ozone ~ Month, airquality, mean, na.rm = TRUE)\nggplot(ozon, aes(Month, Ozone)) +\n  geom_line(color = \"#222B57\", linewidth = 0.9) +\n  scale_x_continuous(breaks = 5:9, labels = c(\"May\", \"Haz\", \"Tem\", \"Ağu\", \"Eyl\")) +\n  labs(x = \"Ay\", y = \"Ozon (ppb)\", title = \"Ozon mevsimsel değişimi\") +\n  theme_minimal(base_size = 14)\n\n\n\nŞekil 1: Aylık ortalama ozon seviyesi (airquality, 1973)"
   },
   {
     "objectID": "ders-quarto-alternative.html#çapraz-referans",
     "href": "ders-quarto-alternative.html#çapraz-referans",
     "title": "Quarto ile Raporlama",
     "section": "Çapraz referans",
-    "text": "Çapraz referans\nŞekle metinden bakın: Şekil 1\n\n\n\nTablo 1: Aylık ortalama ozon seviyesi (airquality)\n\n\n\n\n\nAy\nOrtalama ozon (ppb)\n\n\n\n\nMayıs\n23.6\n\n\nTemmuz\n59.1\n\n\nEylül\n31.4\n\n\n\n\n\n\nMetinden tabloya bakın: Tablo 1\n\n\n\n\n\n\nNumaralar otomatik\n\n\nŞekil/tablo numarası elle yazılmaz; metin değişince güncellenir. Yeni bir şekil eklerseniz numaralar kendiliğinden kayar."
+    "text": "Çapraz referans\nŞekle metinden bakın: Şekil 1\n\n\n\nTablo 1: Aylık ortalama ozon seviyesi (airquality)\n\n\n\n\n\nAy\nOrtalama ozon (ppb)\n\n\n\n\nMayıs\n23.6\n\n\nTemmuz\n59.1\n\n\nEylül\n31.4\n\n\n\n\n\n\nMetinden tabloya bakın: Tablo 1\n\n\n\n\n\n\nNumaralar otomatik\n\n\nŞekil/tablo numarası elle yazılmaz; metin değişince güncellenir. Yeni bir şekil eklerseniz numaralar kendiliğinden kayar. Bu slaytta, @fig-ozon ve @tbl-ozon ifadeleri Şekil 1 ve Tablo 1 olarak gösterilmiştir."
   },
   {
     "objectID": "ders-quarto-alternative.html#tablolar-knitrkable",
     "href": "ders-quarto-alternative.html#tablolar-knitrkable",
     "title": "Quarto ile Raporlama",
     "section": "Tablolar: knitr::kable",
-    "text": "Tablolar: knitr::kable\n\n\n\n\nTablo 2: Aylık ortalama ozon seviyesi\n\n\n\n\n\n\nAy\nOrtalama ozon (ppb)\n\n\n\n\n5\n23.61538\n\n\n6\n29.44444\n\n\n7\n59.11538\n\n\n8\n59.96154\n\n\n9\n31.44828\n\n\n\n\n\n\n\n\n\nkable() — hızlı, bağımlılıksız, pandoc uyumlu tablo\ngt paketi — biçimlendirilmiş, “yayın kalitesinde” tablolar\nRaporun tablo bölümü, knitr::kable + caption ile hazırlanır\n\n\nKaynak"
+    "text": "Tablolar: knitr::kable\n#| label: tbl-kable\n#| echo: false\nlibrary(knitr)\nozon &lt;- aggregate(Ozone ~ Month, data = airquality, FUN = mean, na.rm = TRUE)\nnames(ozon) &lt;- c(\"Ay\", \"Ortalama ozon (ppb)\")\nkable(ozon, caption = \"Aylık ortalama ozon seviyesi\", align = \"l\")\n\nkable() — hızlı, bağımlılıksız, pandoc uyumlu tablo\ngt paketi — biçimlendirilmiş, “yayın kalitesinde” tablolar\nRaporun tablo bölümü, knitr::kable + caption ile hazırlanır\nBir sonraki slaytta bu kodun yorumlanmış halini görebilirsiniz. Otomatik olarak “Tablo 2” olarak numaralandırılmıştır\n\n\nKaynak"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#section-1",
+    "href": "ders-quarto-alternative.html#section-1",
+    "title": "Quarto ile Raporlama",
+    "section": "",
+    "text": "Tablo 2: Aylık ortalama ozon seviyesi\n\n\n\n\n\n\nAy\nOrtalama ozon (ppb)\n\n\n\n\n5\n23.61538\n\n\n6\n29.44444\n\n\n7\n59.11538\n\n\n8\n59.96154\n\n\n9\n31.44828"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#gt-tablo-örneği-1",
+    "href": "ders-quarto-alternative.html#gt-tablo-örneği-1",
+    "title": "Quarto ile Raporlama",
+    "section": "gt tablo örneği 1",
+    "text": "gt tablo örneği 1\n\n\nKaynak"
+  },
+  {
+    "objectID": "ders-quarto-alternative.html#gt-tablo-örneği-2",
+    "href": "ders-quarto-alternative.html#gt-tablo-örneği-2",
+    "title": "Quarto ile Raporlama",
+    "section": "gt tablo örneği 2",
+    "text": "gt tablo örneği 2\n\n\nKaynak"
   },
   {
     "objectID": "ders-quarto-alternative.html#yaml-başlığı-belgenin-ayarları",
@@ -165,7 +256,7 @@
     "href": "ders-quarto-alternative.html#kaynakça-ve-atıf",
     "title": "Quarto ile Raporlama",
     "section": "Kaynakça ve atıf",
-    "text": "Kaynakça ve atıf\nbibliography: references.bib\nMetinde: (Wickham ve Grolemund 2023)\nRaporun sonuna Quarto, kaynakçayı otomatik ekler. Biyoenformatikte atıf kültürü önemlidir — veri ve yöntem kaynakları da listelenmelidir.\n\nKaynak"
+    "text": "Kaynakça ve atıf\nbibliography: references.bib\nMetinde: [@wickham2022] yazdığınızda (Wickham ve Grolemund 2023) şeklinde atıfa çevrilir.\nRaporun sonuna Quarto, kaynakçayı otomatik ekler. Biyoenformatikte atıf kültürü önemlidir — veri ve yöntem kaynakları da listelenmelidir.\n\nKaynak"
   },
   {
     "objectID": "ders-quarto-alternative.html#projenin-yapısı",
@@ -193,14 +284,7 @@
     "href": "ders-quarto-alternative.html#parametreler-aynı-analiz-farklı-ayarlar",
     "title": "Quarto ile Raporlama",
     "section": "Parametreler: aynı analiz, farklı ayarlar",
-    "text": "Parametreler: aynı analiz, farklı ayarlar\n\nparams:\n  nash: 100\n  yil: 2024\nquarto render analiz.qmd --execute-param nash=500\nParametreler YAML başlığında tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz."
-  },
-  {
-    "objectID": "ders-quarto-alternative.html#tarayıcıda-çalıştırma-webr",
-    "href": "ders-quarto-alternative.html#tarayıcıda-çalıştırma-webr",
-    "title": "Quarto ile Raporlama",
-    "section": "Tarayıcıda çalıştırma: webR",
-    "text": "Tarayıcıda çalıştırma: webR\nBu hücre sunucuda değil, sizin tarayıcınızda çalışır (R → WebAssembly):\n\n\nPlease enable JavaScript to experience the dynamic code cell content on this page.\n\n\n\n\n\n\n\nwebR kuralları\n\n\n\nBioconductor yok: DESeq2, edgeR, GenomicRanges webR’de kurulamaz\nİlk açılışta paket kurulumu yavaş (WASM’den indirilir)\nÇıktılar tarayıcıda üretildiği için çapraz referans çalışmaz\nBu sunumdaki diğer bloklar render sırasında (derste benim makinemde) çalışır\n\n\n\n\n\nKaynak"
+    "text": "Parametreler: aynı analiz, farklı ayarlar\n\nparams:\n  quarter: Q1\n  yil: 2024\nquarto render analiz.qmd --execute-param quarter=\"Q1\"\nquarto render analiz.qmd --execute-param quarter=\"Q2\"\nquarto render analiz.qmd --execute-param quarter=\"Q3\"\nquarto render analiz.qmd --execute-param quarter=\"Q4\"\nParametreler YAML başlığında tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz."
   },
   {
     "objectID": "ders-quarto-alternative.html#rapor-anatomisi",
@@ -217,6 +301,13 @@
     "text": "Poster\n\n\nA0 dikey: 3 sütun, üstte başlık, altta kaynakça\nTek mesaj, tek ana görsel — poster bir rapor değil, bir özet\nİçerik aynı Quarto dosyasından üretilir:\n\nquarto use template bbucior/docposter   # poster şablonunu kurar\nquarto render poster.qmd                 # posterı üretir"
   },
   {
+    "objectID": "ders-quarto-alternative.html#poster-adım-adım",
+    "href": "ders-quarto-alternative.html#poster-adım-adım",
+    "title": "Quarto ile Raporlama",
+    "section": "Poster: adım adım",
+    "text": "Poster: adım adım\n\nposit.cloud’a girin ya da kendi bilgisayarınızda RStudio’yu açın\nposit.cloud’da yeni bir proje başlatın\nTerminal’de şu komutu çalıştırın: quarto use template bbucior/docposter\nArdından şu cevapları verin:\n\nDo you trust: yes\nSubdirectory: yes\nName: istediğiniz ad\nContinue: yes\n\nBazı paketleri kurabilir/güncelleyebilir (yalnızca ilk seferde)\nSonra klasöre gidin, verdiğiniz adla .qmd dosyasını açın\nBelgeyi Render edin (ilk derlemede paket kurulabilir)\nOluşan html dosyasını Web Browser’da açın"
+  },
+  {
     "objectID": "ders-quarto-alternative.html#sık-hatalar",
     "href": "ders-quarto-alternative.html#sık-hatalar",
     "title": "Quarto ile Raporlama",
@@ -224,11 +315,11 @@
     "text": "Sık hatalar\n\n\nVeri / yol hataları\n\nVeriyi mutlak yolla (/Users/...) çağırmak → başkasında çalışmaz\nread_csv(\"veri.csv\") → çalışma klasörü farklıysa hata\nDosya adında Türkçe karakter / boşluk\nŞekli PNG yerine kaybetmeyen formatta (SVG/PDF) saklamamak\n\n\nQuarto hataları\n\nfreeze açık kalmış → eski çıktı\ncache açık kalmış → değişen kod eski sonucu gösteriyor\nfig-cap unutulmuş → şekilsiz rapor\nÇapraz referans yerine elle “Şekil 1” yazmak\nRender edilen docs/ dosyasını elle düzenlemek"
   },
   {
-    "objectID": "ders-quarto-alternative.html#ödeviniz",
-    "href": "ders-quarto-alternative.html#ödeviniz",
+    "objectID": "ders-quarto-alternative.html#sıra-sizde-1",
+    "href": "ders-quarto-alternative.html#sıra-sizde-1",
     "title": "Quarto ile Raporlama",
-    "section": "Ödeviniz",
-    "text": "Ödeviniz\nKendi analizinizi bir Quarto raporuna dönüştürün.\n\nVerinizi data/ altına koyun, read_csv() ile okuyun\nEn az 1 tablo (özet) ve 2 şekil üretin\nŞekil/tablolara başlık (caption) ve çapraz referans ekleyin\nRapor bölümleri: Giriş → Yöntem → Sonuçlar\nquarto render ile HTML ve PDF üretin\nPoster taslağı: aynı .qmdden 3 sütunlu poster\n\nTeslim: kaynak .qmd + üretilmiş .html (.pdf isteğe bağlı)"
+    "section": "Sıra Sizde",
+    "text": "Sıra Sizde\nKendi analizinizi bir Quarto raporuna dönüştürün.\n\nVerinizi data/ altına koyun, read_csv() ile okuyun\nEn az 1 tablo (özet) ve 2 şekil üretin\nŞekil/tablolara başlık (caption) ve çapraz referans ekleyin\nRapor bölümleri: Giriş → Yöntem → Sonuçlar\nquarto render ile HTML ve PDF üretin\nPoster taslağı: aynı .qmd dosyasından 3 sütunlu poster"
   },
   {
     "objectID": "ders-quarto-alternative.html#kaynaklar",
