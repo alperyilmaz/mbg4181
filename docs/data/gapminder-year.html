@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
-<meta name="author" content="alper">
-<meta name="dcterms.date" content="2023-06-01">
-<title>ggplot2 demo – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
+
+
+<title>Gapminder by years – MBG4181 Biyolojik Veri Analizi ve Görüntüleme</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -25,60 +26,27 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/quarto-nav/headroom.min.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a73ec68fc428f0f6b19b63ab01e05491.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light"><script id="quarto-search-options" type="application/json">{
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-d07eb7303bb9585021513513b67f0636.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
   "collapse-after": 3,
@@ -104,40 +72,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-submit-button-title": "Submit",
     "search-label": "Search"
   }
-}</script><link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet">
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script><script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script><script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script><script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
+}</script>
+
+
 </head>
+
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top"><nav class="navbar navbar-expand-lg " data-bs-theme="dark"><div class="navbar-container container-fluid">
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">MBG4181 Biyolojik Veri Analizi ve Görüntüleme</span>
     </a>
   </div>
@@ -147,165 +94,181 @@ window.Quarto = {
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
-<li class="nav-item">
-    <a class="nav-link" href="./index.html"> 
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
 <span class="menu-text">Ana Sayfa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../about.html"> 
 <span class="menu-text">Hakkında</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./notlar.html"> 
+    <a class="nav-link" href="../notlar.html"> 
 <span class="menu-text">Notlar</span></a>
   </li>  
 </ul>
-</div> <!-- /navcollapse -->
+          </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
 </div>
       </div> <!-- /container-fluid -->
-    </nav></header><!-- content --><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active"><h2 id="toc-title">On this page</h2>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
    
   <ul>
-<li><a href="#air-quality" id="toc-air-quality" class="nav-link active" data-scroll-target="#air-quality"><span class="header-section-number">1</span> Air Quality</a></li>
-  <li>
-<a href="#mpg-data" id="toc-mpg-data" class="nav-link" data-scroll-target="#mpg-data"><span class="header-section-number">2</span> mpg data</a>
-  <ul class="collapse">
-<li><a href="#mpg-scatter-plot" id="toc-mpg-scatter-plot" class="nav-link" data-scroll-target="#mpg-scatter-plot"><span class="header-section-number">2.1</span> mpg scatter plot</a></li>
-  <li><a href="#the-mpg-data-as-table" id="toc-the-mpg-data-as-table" class="nav-link" data-scroll-target="#the-mpg-data-as-table"><span class="header-section-number">2.2</span> the mpg data as table</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link active" data-scroll-target="#data"><span class="header-section-number">1</span> Data</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot"><span class="header-section-number">2</span> Plot</a></li>
   </ul>
-</li>
-  <li><a href="#formulas" id="toc-formulas" class="nav-link" data-scroll-target="#formulas"><span class="header-section-number">3</span> Formulas</a></li>
-  <li><a href="#citations" id="toc-citations" class="nav-link" data-scroll-target="#citations"><span class="header-section-number">4</span> Citations</a></li>
-  <li>
-<a href="#layout" id="toc-layout" class="nav-link" data-scroll-target="#layout"><span class="header-section-number">5</span> Layout</a>
-  <ul class="collapse">
-<li><a href="#callouts" id="toc-callouts" class="nav-link" data-scroll-target="#callouts"><span class="header-section-number">5.1</span> Callouts</a></li>
-  </ul>
-</li>
-  </ul><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="test2.docx"><i class="bi bi-file-word"></i>MS Word</a></li></ul></div></nav>
+</nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block default"><div class="quarto-title">
-<h1 class="title">ggplot2 demo</h1>
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Gapminder by years</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>alper </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Published</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">June 1, 2023</p>
-    </div>
-  </div>
   
     
   </div>
   
 
 
-</header><section id="air-quality" class="level1" data-number="1"><h1 data-number="1">
-<span class="header-section-number">1</span> Air Quality</h1>
-<p><a href="#fig-airquality" class="quarto-xref">Figure&nbsp;1</a> further explores the impact of temperature on ozone level.</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://tidyverse.tidyverse.org">tidyverse</a></span><span class="op">)</span></span>
-<span><span class="kw"><a href="https://rdrr.io/r/base/library.html">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org">ggplot2</a></span><span class="op">)</span></span>
-<span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">airquality</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">Temp</span>, <span class="va">Ozone</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_smooth.html">geom_smooth</a></span><span class="op">(</span>method <span class="op">=</span> <span class="st">"loess"</span></span>
-<span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
-<div id="fig-airquality" class="quarto-float quarto-figure quarto-figure-center anchored">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-airquality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="test2_files/figure-html/fig-airquality-1.png" class="img-fluid figure-img" width="768">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-airquality-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;1: Temperature and ozone level.
-</figcaption></figure>
-</div>
-</div>
-</div>
-</section><section id="mpg-data" class="level1" data-number="2"><h1 data-number="2">
-<span class="header-section-number">2</span> mpg data</h1>
-<section id="mpg-scatter-plot" class="level2" data-number="2.1"><h2 data-number="2.1" class="anchored" data-anchor-id="mpg-scatter-plot">
-<span class="header-section-number">2.1</span> mpg scatter plot</h2>
-<p><a href="#fig-scatterplot" class="quarto-xref">Figure&nbsp;2</a> shows correlation between highway and city mileages.</p>
-<div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html">ggplot</a></span><span class="op">(</span><span class="va">mpg</span>, <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/aes.html">aes</a></span><span class="op">(</span><span class="va">hwy</span>, <span class="va">cty</span>, color<span class="op">=</span><span class="va">cyl</span><span class="op">)</span><span class="op">)</span> <span class="op">+</span> </span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_point.html">geom_point</a></span><span class="op">(</span>alpha<span class="op">=</span><span class="fl">0.5</span>, size<span class="op">=</span><span class="fl">2</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/scale_viridis.html">scale_color_viridis_c</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
-<span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details><div class="cell-output-display">
-<div id="fig-scatterplot" class="quarto-float quarto-figure quarto-figure-center anchored" alt="Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases.">
-<figure class="quarto-float quarto-float-fig figure"><div aria-describedby="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-<img src="test2_files/figure-html/fig-scatterplot-1.png" class="img-fluid figure-img" alt="Scatterplot of city vs. highway mileage for cars, where points are colored by the number of cylinders. The plot displays a positive, linear, and strong relationship between city and highway mileage, and mileage increases as the number of cylinders decreases." width="576">
-</div>
-<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatterplot-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
-Figure&nbsp;2: City and highway mileage for 38 popular models of cars.
-</figcaption></figure>
-</div>
-</div>
-</div>
-</section><section id="the-mpg-data-as-table" class="level2" data-number="2.2"><h2 data-number="2.2" class="anchored" data-anchor-id="the-mpg-data-as-table">
-<span class="header-section-number">2.2</span> the mpg data as table</h2>
-<p>There are 32 observations in our data.</p>
+</header>
+
+
+<section id="data" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="data"><span class="header-section-number">1</span> Data</h2>
+<p>In this report we’ll prepare Gapminder plot for year 1997</p>
 <div class="cell">
 <div class="cell-output-display">
-<div data-pagedtable="false">
-  <script data-pagedtable-source="" type="application/json">
-{"columns":[{"label":["manufacturer"],"name":[1],"type":["chr"],"align":["left"]},{"label":["cyl"],"name":[2],"type":["int"],"align":["right"]},{"label":["avg_cty"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["avg_hwy"],"name":[4],"type":["dbl"],"align":["right"]}],"data":[{"1":"audi","2":"4","3":"19.12500","4":"28.12500"},{"1":"audi","2":"6","3":"16.44444","4":"25.33333"},{"1":"audi","2":"8","3":"16.00000","4":"23.00000"},{"1":"chevrolet","2":"4","3":"20.50000","4":"28.50000"},{"1":"chevrolet","2":"6","3":"17.66667","4":"27.00000"},{"1":"chevrolet","2":"8","3":"13.64286","4":"19.85714"},{"1":"dodge","2":"4","3":"18.00000","4":"24.00000"},{"1":"dodge","2":"6","3":"15.00000","4":"20.66667"},{"1":"dodge","2":"8","3":"11.57143","4":"15.71429"},{"1":"ford","2":"6","3":"15.30000","4":"20.70000"},{"1":"ford","2":"8","3":"13.13333","4":"18.46667"},{"1":"honda","2":"4","3":"24.44444","4":"32.55556"},{"1":"hyundai","2":"4","3":"19.50000","4":"28.00000"},{"1":"hyundai","2":"6","3":"17.50000","4":"25.33333"},{"1":"jeep","2":"6","3":"15.66667","4":"20.33333"},{"1":"jeep","2":"8","3":"12.20000","4":"16.00000"},{"1":"land rover","2":"8","3":"11.50000","4":"16.50000"},{"1":"lincoln","2":"8","3":"11.33333","4":"17.00000"},{"1":"mercury","2":"6","3":"13.50000","4":"18.00000"},{"1":"mercury","2":"8","3":"13.00000","4":"18.00000"},{"1":"nissan","2":"4","3":"21.50000","4":"29.75000"},{"1":"nissan","2":"6","3":"17.12500","4":"22.87500"},{"1":"nissan","2":"8","3":"12.00000","4":"18.00000"},{"1":"pontiac","2":"6","3":"17.25000","4":"26.75000"},{"1":"pontiac","2":"8","3":"16.00000","4":"25.00000"},{"1":"subaru","2":"4","3":"19.28571","4":"25.57143"},{"1":"toyota","2":"4","3":"20.88889","4":"28.22222"},{"1":"toyota","2":"6","3":"16.61538","4":"22.23077"},{"1":"toyota","2":"8","3":"12.66667","4":"16.66667"},{"1":"volkswagen","2":"4","3":"22.47059","4":"30.88235"},{"1":"volkswagen","2":"5","3":"20.50000","4":"28.75000"},{"1":"volkswagen","2":"6","3":"16.83333","4":"24.83333"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+<table class="caption-top table table-sm table-striped small">
+<caption>Top 10 counties by Population in given year</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;">country</th>
+<th style="text-align: center;">continent</th>
+<th style="text-align: center;">year</th>
+<th style="text-align: center;">lifeExp</th>
+<th style="text-align: center;">pop</th>
+<th style="text-align: center;">gdpPercap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">China</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">70.426</td>
+<td style="text-align: center;">1230075000</td>
+<td style="text-align: center;">2289.234</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">India</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">61.765</td>
+<td style="text-align: center;">959000000</td>
+<td style="text-align: center;">1458.817</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">United States</td>
+<td style="text-align: center;">Americas</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">76.810</td>
+<td style="text-align: center;">272911760</td>
+<td style="text-align: center;">35767.433</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Indonesia</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">66.041</td>
+<td style="text-align: center;">199278000</td>
+<td style="text-align: center;">3119.336</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Brazil</td>
+<td style="text-align: center;">Americas</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">69.388</td>
+<td style="text-align: center;">168546719</td>
+<td style="text-align: center;">7957.981</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Pakistan</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">61.818</td>
+<td style="text-align: center;">135564834</td>
+<td style="text-align: center;">2049.351</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Japan</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">80.690</td>
+<td style="text-align: center;">125956499</td>
+<td style="text-align: center;">28816.585</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Bangladesh</td>
+<td style="text-align: center;">Asia</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">59.412</td>
+<td style="text-align: center;">123315288</td>
+<td style="text-align: center;">972.770</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Nigeria</td>
+<td style="text-align: center;">Africa</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">47.464</td>
+<td style="text-align: center;">106207839</td>
+<td style="text-align: center;">1624.941</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Mexico</td>
+<td style="text-align: center;">Americas</td>
+<td style="text-align: center;">1997</td>
+<td style="text-align: center;">73.670</td>
+<td style="text-align: center;">95895146</td>
+<td style="text-align: center;">9767.298</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
-</div>
-<p>Hypothetical <code>table_viewer</code> will show your tables in a much better way.</p>
+</section>
+<section id="plot" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="plot"><span class="header-section-number">2</span> Plot</h2>
 <div class="cell">
-<details class="code-fold"><summary>Code</summary><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb3"><pre class="downlit sourceCode r code-with-copy"><code class="sourceCode R"><span><span class="fu">table_viewer</span><span class="op">(</span><span class="va">mpg</span><span class="op">)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</details>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="gapminder-year_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="1152"></p>
+</figure>
 </div>
-</section></section><section id="formulas" class="level1" data-number="3"><h1 data-number="3">
-<span class="header-section-number">3</span> Formulas</h1>
-<p>you can have formulas in your document</p>
-<p><span class="math display">\[
-price = \hat{\beta}_0 + \hat{\beta}_1 \times area + \epsilon
-\]</span></p>
-</section><section id="citations" class="level1" data-number="4"><h1 data-number="4">
-<span class="header-section-number">4</span> Citations</h1>
-<p>We’re going to do this analysis using literate programming <span class="citation" data-cites="Knuth1984">[@Knuth1984]</span>.</p>
-</section><section id="layout" class="level1" data-number="5"><h1 data-number="5">
-<span class="header-section-number">5</span> Layout</h1>
-<section id="callouts" class="level2" data-number="5.1"><h2 data-number="5.1" class="anchored" data-anchor-id="callouts">
-<span class="header-section-number">5.1</span> Callouts</h2>
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Here’s some information</p>
 </div>
 </div>
 
 
-</section></section></main><!-- /main --><script id="quarto-html-after-body" type="application/javascript">
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
     const anchorJS = new window.AnchorJS();
@@ -706,6 +669,7 @@ Note
   });
   </script>
 </div> <!-- /content -->
+
 
 
 

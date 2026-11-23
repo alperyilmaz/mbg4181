@@ -236,25 +236,6 @@ Alper Yılmaz
 
   <p class="date">2026-11-23</p>
 </section>
-<section id="rapor-yazmak-neden-zor" class="slide level2">
-<h2>Rapor yazmak: neden zor?</h2>
-<p>Bir analiz biter, sonra <strong>rapor</strong> başlar.</p>
-
-<img src="images/qz/manuel-oto.svg" width="92%" class="r-stretch"><p>Veri her güncelleniyor: yeni ölçüm, yeni sürüm, yeni filtre. Elle kopyaladığınız figürler sessizce <strong>eski</strong> kalır — ve rapor artık yanlış.</p>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Çözüm: raporu elle yazmayın</strong></p>
-</div>
-<div class="callout-content">
-<p>Metni, kodu ve çıktıyı <strong>tek bir dosyada</strong> tutun; dosyayı “derleyin”. Veri değişince raporu yeniden üretirsiniz.</p>
-</div>
-</div>
-</div>
-</section>
 <section id="iletişim" class="slide level2">
 <h2>İletişim</h2>
 <div class="columns">
@@ -267,6 +248,25 @@ Alper Yılmaz
 </div></div>
 <div class="footer">
 <p><a href="https://imgflip.com/memetemplate/320562108/What-good-is-a-phone-call-if-you-are-unable-to-speak">Kaynak</a></p>
+</div>
+</section>
+<section id="rapor-yazmak-neden-zor" class="slide level2">
+<h2>Rapor yazmak: neden zor?</h2>
+<p>Analizden sonra <strong>rapor</strong> hazırlarken:</p>
+
+<img src="images/qz/manuel-oto.svg" width="92%" class="r-stretch"><p>Veri güncellendiğinde: yeni ölçüm, yeni sürüm, yeni filtre. Elle kopyalanan figürler, tablolar <strong>eski</strong> kalır, rapor artık doğru olmaz.</p>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Çözüm: raporu elle yazmayın</strong></p>
+</div>
+<div class="callout-content">
+<p>Metni, kodu ve çıktıyı <strong>tek bir dosyada</strong> tutun; dosyayı “derleyin”. Veri değişince raporu yeniden derlenir ve güncel olur.</p>
+</div>
+</div>
 </div>
 </section>
 <section id="quarto-tek-dosyada-metin-kod-çıktı" class="slide level2">
@@ -282,8 +282,8 @@ Alper Yılmaz
 <p><a href="https://quarto.org/docs/get-started/">Kaynak</a></p>
 </div>
 </section>
-<section id="quarto-rmarkdownın-yeri" class="slide level2">
-<h2>Quarto (RMarkdown’ın yeri)</h2>
+<section id="quarto-rmarkdownın-yanında" class="slide level2">
+<h2>Quarto (RMarkdown’ın yanında)</h2>
 
 <img data-src="images/image-20230601130108468.png" class="r-stretch"><div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
@@ -361,12 +361,14 @@ Alper Yılmaz
 </div>
 </div>
 </section>
-<section id="belgeye-başlık-verin-bu-dosya-adı-değil" class="slide level2">
-<h2>Belgeye başlık verin (bu, <strong>dosya adı</strong> değil!)</h2>
+<section id="belgeye-başlık-verin" class="slide level2">
+<h2>Belgeye başlık verin</h2>
 
-<img data-src="images/image-20230603194140902.png" class="r-stretch"></section>
-<section id="dosya-untitled-olarak-açıldı-şimdi-kaydedelim" class="slide level2">
-<h2>Dosya <strong>Untitled</strong> olarak açıldı; şimdi kaydedelim</h2>
+<img data-src="images/image-20230603194140902.png" class="r-stretch"><p>Bu, <strong>dosya adı</strong> değil, dökümanın başlığıdır</p>
+</section>
+<section id="dosyayı-kaydedelim" class="slide level2">
+<h2>Dosyayı kaydedelim</h2>
+<p>En başta <strong>Untitled/Adsız</strong> olarak açıldı; şimdi farklı isimle kaydedelim</p>
 
 <img data-src="images/rename-new-file.png" class="r-stretch"></section>
 <section id="artık-belgeyi-derleyebiliriz-render" class="slide level2">
@@ -389,16 +391,7 @@ Alper Yılmaz
 <section id="kod-bloğu-anatomisi" class="slide level2">
 <h2>Kod bloğu anatomisi</h2>
 
-<img src="images/qz/chunk-anatomi.svg" width="95%" class="r-stretch"><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a aria-label="1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-2"><a aria-label="2"></a>ozon <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Ozone <span class="sc">~</span> Month, airquality, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-3"><a aria-label="3"></a><span class="fu">ggplot</span>(ozon, <span class="fu">aes</span>(Month, Ozone)) <span class="sc">+</span></span>
-<span id="cb2-4"><a aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#222B57"</span>, <span class="at">linewidth =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
-<span id="cb2-5"><a aria-label="5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"May"</span>, <span class="st">"Haz"</span>, <span class="st">"Tem"</span>, <span class="st">"Ağu"</span>, <span class="st">"Eyl"</span>)) <span class="sc">+</span></span>
-<span id="cb2-6"><a aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Ay"</span>, <span class="at">y =</span> <span class="st">"Ozon (ppb)"</span>, <span class="at">title =</span> <span class="st">"Ozon mevsimsel değişimi"</span>) <span class="sc">+</span></span>
-<span id="cb2-7"><a aria-label="7"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
+<img src="images/qz/chunk-anatomi.svg" width="95%" class="r-stretch"></section>
 <section id="chunk-seçenekleri" class="slide level2">
 <h2>Chunk seçenekleri</h2>
 <table class="caption-top">
@@ -467,7 +460,7 @@ Alper Yılmaz
 </div><div class="column" style="width:48%;">
 <p><code>echo: true</code> — kod + sonuç</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a aria-label="1"></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a aria-label="1"></a><span class="fu">mean</span>(airquality<span class="sc">$</span>Ozone, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 42.12931</code></pre>
 </div>
@@ -487,10 +480,12 @@ Alper Yılmaz
 </div>
 </div>
 </section>
-<section id="inline-kod-sayıyı-yazma-hesaplat" class="slide level2">
-<h2>Inline kod: sayıyı yazma, hesaplat</h2>
+<section id="aynı-satırda-inline-kod" class="slide level2">
+<h2>Aynı satırda (inline) kod</h2>
 <p>Metin içine doğrudan R kodu yazabilirsiniz:</p>
-<p>Veri setinde 153 gözlem, ortalama ozon 42.1 ppb.</p>
+<pre><code>Veri setinde 153 gözlem, ortalama ozon 42.1 ppb.</code></pre>
+<p>yerine</p>
+<pre><code>Veri setinde `r nrow(airquality)` gözlem, ortalama ozon `r round(mean(airquality$Ozon, na.rm = TRUE), 1)` ppb.</code></pre>
 <p>Render sırasında hesaplanır ve <strong>metne gömülür</strong>.</p>
 <div class="callout callout-warning callout-titled callout-style-default">
 <div class="callout-body">
@@ -544,22 +539,28 @@ ggplot(ozon, aes(Month, Ozone)) +
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a aria-label="1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb8-2"><a aria-label="2"></a>ozon <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(Ozone <span class="sc">~</span> Month, airquality, mean, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb8-3"><a aria-label="3"></a><span class="fu">ggplot</span>(ozon, <span class="fu">aes</span>(Month, Ozone)) <span class="sc">+</span></span>
-<span id="cb8-4"><a aria-label="4"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"#222B57"</span>, <span class="at">linewidth =</span> <span class="fl">0.9</span>) <span class="sc">+</span></span>
-<span id="cb8-5"><a aria-label="5"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="dv">5</span><span class="sc">:</span><span class="dv">9</span>, <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"May"</span>, <span class="st">"Haz"</span>, <span class="st">"Tem"</span>, <span class="st">"Ağu"</span>, <span class="st">"Eyl"</span>)) <span class="sc">+</span></span>
-<span id="cb8-6"><a aria-label="6"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"Ay"</span>, <span class="at">y =</span> <span class="st">"Ozon (ppb)"</span>, <span class="at">title =</span> <span class="st">"Ozon mevsimsel değişimi"</span>) <span class="sc">+</span></span>
-<span id="cb8-7"><a aria-label="7"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">14</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 
-</div>
 <img data-src="ders-quarto-alternative_files/figure-revealjs/fig-ozon-1.png" width="768" class="r-stretch quarto-figure-center" id="fig-ozon"><p class="caption">
 Şekil&nbsp;1: Aylık ortalama ozon seviyesi (airquality, 1973)
 </p></section>
 <section id="çapraz-referans" class="slide level2">
 <h2>Çapraz referans</h2>
-<p>Şekle metinden bakın: <a href="#/fig-ozon" class="quarto-xref">Şekil&nbsp;1</a></p>
+<p>derlenmeden önce:</p>
+<pre><code>Bakınız: @fig-ozon
+
+| Ay | Ortalama ozon (ppb) |
+|---|---|
+| Mayıs | 23.6 |
+| Temmuz | 59.1 |
+| Eylül | 31.4 |
+
+Table: Aylık ortalama ozon seviyesi (airquality) {#tbl-ozon}
+
+Bakınız: @tbl-ozon</code></pre>
+</section>
+<section id="çapraz-referans-1" class="slide level2">
+<h2>Çapraz referans</h2>
+<p>Bakınız: <a href="#/fig-ozon" class="quarto-xref">Şekil&nbsp;1</a></p>
 <div id="tbl-ozon" class="quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-ozon-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -591,7 +592,7 @@ Tablo&nbsp;1: Aylık ortalama ozon seviyesi (airquality)
 </div>
 </figure>
 </div>
-<p>Metinden tabloya bakın: <a href="#/tbl-ozon" class="quarto-xref">Tablo&nbsp;1</a></p>
+<p>Bakınız: <a href="#/tbl-ozon" class="quarto-xref">Tablo&nbsp;1</a></p>
 <div class="callout callout-tip callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -606,27 +607,34 @@ Tablo&nbsp;1: Aylık ortalama ozon seviyesi (airquality)
 </div>
 </div>
 </section>
-<section id="tablolar-knitrkable" class="slide level2">
-<h2>Tablolar: <code>knitr::kable</code></h2>
-<pre><code>#| label: tbl-kable
-#| echo: false
-library(knitr)
-ozon &lt;- aggregate(Ozone ~ Month, data = airquality, FUN = mean, na.rm = TRUE)
-names(ozon) &lt;- c("Ay", "Ortalama ozon (ppb)")
-kable(ozon, caption = "Aylık ortalama ozon seviyesi", align = "l")</code></pre>
-<ul>
-<li><code>kable()</code> — hızlı, bağımlılıksız, pandoc uyumlu tablo</li>
-<li><code>gt</code> paketi — biçimlendirilmiş, “yayın kalitesinde” tablolar</li>
-<li>Raporun <em>tablo</em> bölümü, <code>knitr::kable</code> + <code>caption</code> ile hazırlanır</li>
-<li>Bir sonraki slaytta bu kodun yorumlanmış halini görebilirsiniz. Otomatik olarak “Tablo 2” olarak numaralandırılmıştır</li>
-</ul>
-<div class="footer">
-<p><a href="https://yihui.org/knitr/">Kaynak</a></p>
-</div>
-</section>
-<section id="section-1" class="slide level2">
-<h2></h2>
+<section id="tablolar" class="slide level2">
+<h2>Tablolar</h2>
+<p>R verisini tek başına kullandığınızda tablo olarak gösterilir</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a aria-label="1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb10-2"><a aria-label="2"></a></span>
+<span id="cb10-3"><a aria-label="3"></a>ozon <span class="ot">&lt;-</span> airquality <span class="sc">|&gt;</span></span>
+<span id="cb10-4"><a aria-label="4"></a>  <span class="fu">group_by</span>(Month) <span class="sc">|&gt;</span></span>
+<span id="cb10-5"><a aria-label="5"></a>  <span class="fu">summarize</span>(<span class="at">ortalama_ozon =</span> <span class="fu">mean</span>(Ozone, <span class="at">na.rm=</span><span class="cn">TRUE</span>))</span>
+<span id="cb10-6"><a aria-label="6"></a></span>
+<span id="cb10-7"><a aria-label="7"></a>ozon</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 2
+  Month ortalama_ozon
+  &lt;int&gt;         &lt;dbl&gt;
+1     5          23.6
+2     6          29.4
+3     7          59.1
+4     8          60.0
+5     9          31.4</code></pre>
+</div>
+</div>
+<p>Fakat bu HTML, PDF veya Word’deki tablo gibi değildir. Bunun için <code>knitr::kable</code> veya <code>gt</code> kullanılmalıdır.</p>
+</section>
+<section id="knitrkable" class="slide level2">
+<h2><code>knitr::kable</code></h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a aria-label="1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(ozon, <span class="at">caption =</span> <span class="st">"Aylık ortalama ozon seviyesi"</span>, <span class="at">align =</span> <span class="st">"l"</span>)</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <div id="tbl-kable" class="cell quarto-float quarto-figure quarto-figure-center">
 <figure class="quarto-float quarto-float-tbl">
 <figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-kable-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
@@ -637,8 +645,8 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 <table class="cell caption-top">
 <thead>
 <tr class="header">
-<th style="text-align: left;">Ay</th>
-<th style="text-align: left;">Ortalama ozon (ppb)</th>
+<th style="text-align: left;">Month</th>
+<th style="text-align: left;">ortalama_ozon</th>
 </tr>
 </thead>
 <tbody>
@@ -669,6 +677,14 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </figure>
 </div>
 </div>
+<ul>
+<li><code>kable()</code> — hızlı, başkaR kütüphanelerine bağlı olmayan, pandoc uyumlu tablo oluşturur (HTML, PDF ve Word’e çevrilebilen tablolar)</li>
+<li>bu örnek otomatik olarak “Tablo 2” olarak numaralandırılmıştır</li>
+<li><code>gt</code> paketi — biçimlendirilmiş, “yayın kalitesinde” tablolar</li>
+</ul>
+<div class="footer">
+<p><a href="https://yihui.org/knitr/">Kaynak</a></p>
+</div>
 </section>
 <section id="gt-tablo-örneği-1" class="slide level2">
 <h2>gt tablo örneği 1</h2>
@@ -686,21 +702,21 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </section>
 <section id="yaml-başlığı-belgenin-ayarları" class="slide level2">
 <h2>YAML başlığı: belgenin ayarları</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb10"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb10-1"><a aria-label="1"></a><span class="pp">---</span></span>
-<span id="cb10-2"><a aria-label="2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto ile Raporlama"</span><span class="co">       # belge başlığı</span></span>
-<span id="cb10-3"><a aria-label="3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Alper Yılmaz"</span></span>
-<span id="cb10-4"><a aria-label="4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2026-11-09</span></span>
-<span id="cb10-5"><a aria-label="5"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb10-6"><a aria-label="6"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb10-7"><a aria-label="7"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">                     # içindekiler</span></span>
-<span id="cb10-8"><a aria-label="8"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">        # bölüm numaraları</span></span>
-<span id="cb10-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> show</span><span class="co">               # kodu katlanabilir yap</span></span>
-<span id="cb10-10"><a aria-label="10"></a><span class="at">    </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span><span class="co">               # veri tabloları</span></span>
-<span id="cb10-11"><a aria-label="11"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb10-12"><a aria-label="12"></a><span class="fu">execute</span><span class="kw">:</span></span>
-<span id="cb10-13"><a aria-label="13"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb10-14"><a aria-label="14"></a><span class="at">  </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
-<span id="cb10-15"><a aria-label="15"></a><span class="pp">---</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb13-1"><a aria-label="1"></a><span class="pp">---</span></span>
+<span id="cb13-2"><a aria-label="2"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">"Quarto ile Raporlama"</span><span class="co">       # belge başlığı</span></span>
+<span id="cb13-3"><a aria-label="3"></a><span class="fu">author</span><span class="kw">:</span><span class="at"> </span><span class="st">"Alper Yılmaz"</span></span>
+<span id="cb13-4"><a aria-label="4"></a><span class="fu">date</span><span class="kw">:</span><span class="at"> 2026-11-09</span></span>
+<span id="cb13-5"><a aria-label="5"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb13-6"><a aria-label="6"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb13-7"><a aria-label="7"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">                       # içindekiler</span></span>
+<span id="cb13-8"><a aria-label="8"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">           # bölüm numaraları</span></span>
+<span id="cb13-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> show</span><span class="co">                 # kodu katlanabilir yap</span></span>
+<span id="cb13-10"><a aria-label="10"></a><span class="at">    </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span><span class="co">                 # veri tabloları</span></span>
+<span id="cb13-11"><a aria-label="11"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb13-12"><a aria-label="12"></a><span class="fu">execute</span><span class="kw">:</span></span>
+<span id="cb13-13"><a aria-label="13"></a><span class="at">  </span><span class="fu">echo</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb13-14"><a aria-label="14"></a><span class="at">  </span><span class="fu">cache</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span></span>
+<span id="cb13-15"><a aria-label="15"></a><span class="pp">---</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <p>YAML <strong>belgenin kimlik kartıdır</strong>: başlık, yazar, çıktı biçimi, çalıştırma ayarları.</p>
 <div class="footer">
 <p><a href="https://quarto.org/docs/reference/">Kaynak</a></p>
@@ -753,16 +769,16 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </section>
 <section id="html-raporunu-ayarlamak" class="slide level2">
 <h2>HTML raporunu ayarlamak</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb11"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb11-1"><a aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
-<span id="cb11-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
-<span id="cb11-3"><a aria-label="3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">              # sol tarafta içindekiler</span></span>
-<span id="cb11-4"><a aria-label="4"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # 1. Giriş, 2. Yöntem, 3. Sonuç</span></span>
-<span id="cb11-5"><a aria-label="5"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> show</span><span class="co">       # kod katlanır, tıklanınca açılır</span></span>
-<span id="cb11-6"><a aria-label="6"></a><span class="at">    </span><span class="fu">code-summary</span><span class="kw">:</span><span class="at"> </span><span class="st">"Kodu göster"</span></span>
-<span id="cb11-7"><a aria-label="7"></a><span class="at">    </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span><span class="co">        # veri tabloları kable biçiminde</span></span>
-<span id="cb11-8"><a aria-label="8"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co"> # tek dosya HTML (paylaşım için)</span></span>
-<span id="cb11-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
-<span id="cb11-10"><a aria-label="10"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> </span><span class="dv">11</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a aria-label="1"></a><span class="fu">format</span><span class="kw">:</span></span>
+<span id="cb14-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">html</span><span class="kw">:</span></span>
+<span id="cb14-3"><a aria-label="3"></a><span class="at">    </span><span class="fu">toc</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">                   # sol tarafta içindekiler</span></span>
+<span id="cb14-4"><a aria-label="4"></a><span class="at">    </span><span class="fu">number-sections</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">       # 1. Giriş, 2. Yöntem, 3. Sonuç</span></span>
+<span id="cb14-5"><a aria-label="5"></a><span class="at">    </span><span class="fu">code-fold</span><span class="kw">:</span><span class="at"> show</span><span class="co">             # kod katlanır, tıklanınca açılır</span></span>
+<span id="cb14-6"><a aria-label="6"></a><span class="at">    </span><span class="fu">code-summary</span><span class="kw">:</span><span class="at"> </span><span class="st">"Kodu göster"</span></span>
+<span id="cb14-7"><a aria-label="7"></a><span class="at">    </span><span class="fu">df-print</span><span class="kw">:</span><span class="at"> kable</span><span class="co">             # veri tabloları kable biçiminde</span></span>
+<span id="cb14-8"><a aria-label="8"></a><span class="at">    </span><span class="fu">embed-resources</span><span class="kw">:</span><span class="at"> </span><span class="ch">true</span><span class="co">       # tek dosya HTML (paylaşım için)</span></span>
+<span id="cb14-9"><a aria-label="9"></a><span class="at">    </span><span class="fu">theme</span><span class="kw">:</span><span class="at"> cosmo</span></span>
+<span id="cb14-10"><a aria-label="10"></a><span class="at">    </span><span class="fu">fontsize</span><span class="kw">:</span><span class="at"> </span><span class="dv">11</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -779,6 +795,10 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </section>
 <section id="zengin-içerik-callout" class="slide level2">
 <h2>Zengin içerik: callout</h2>
+<pre><code>::: {.callout-note}
+**Not.** Bilgilendirme cümlesi.
+:::</code></pre>
+<p>şeklindeki içerik, aşağıdaki gibi yorumlanır</p>
 <div class="callout callout-note callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
@@ -792,36 +812,29 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </div>
 </div>
 </div>
-<div class="callout callout-tip callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>İpucu</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>İpucu.</strong> Öneri, kısa yol.</p>
-</div>
-</div>
-</div>
-<div class="callout callout-warning callout-titled callout-style-default">
-<div class="callout-body">
-<div class="callout-title">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<p><strong>Uyarı</strong></p>
-</div>
-<div class="callout-content">
-<p><strong>Uyarı.</strong> Dikkat edilmesi gereken durum.</p>
-</div>
-</div>
-</div>
 <p>Callout’lar “kutu” değil, okuma rehberidir: <strong>5 tip</strong> (note, tip, warning, caution, important).</p>
 </section>
-<section id="sekmeler-ve-sütunlar" class="slide level2">
-<h2>Sekmeler ve sütunlar</h2>
+<section id="sekmeler" class="slide level2">
+<h2>Sekmeler</h2>
+<p>Aşağıdaki içeriğin yorumlanmış halini bir sonraki slaytta inceleyiniz:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb16-1"><a aria-label="1"></a>::: {.panel-tabset}</span>
+<span id="cb16-2"><a aria-label="2"></a>### Veri</span>
+<span id="cb16-3"><a aria-label="3"></a></span>
+<span id="cb16-4"><a aria-label="4"></a>```{r}</span>
+<span id="cb16-5"><a aria-label="5"></a>#| echo: false</span>
+<span id="cb16-6"><a aria-label="6"></a>str(airquality)</span>
+<span id="cb16-7"><a aria-label="7"></a>```</span>
+<span id="cb16-8"><a aria-label="8"></a></span>
+<span id="cb16-9"><a aria-label="9"></a>### Özet</span>
+<span id="cb16-10"><a aria-label="10"></a>```{r}</span>
+<span id="cb16-11"><a aria-label="11"></a>#| echo: false</span>
+<span id="cb16-12"><a aria-label="12"></a>summary(airquality$Ozone)</span>
+<span id="cb16-13"><a aria-label="13"></a>```</span>
+<span id="cb16-14"><a aria-label="14"></a></span>
+<span id="cb16-15"><a aria-label="15"></a>:::</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-1" class="slide level2">
+<h2></h2>
 <div class="panel-tabset">
 <ul id="tabset-1" class="panel-tabset-tabby"><li><a data-tabby-default="" href="#tabset-1-1">Veri</a></li><li><a href="#tabset-1-2">Özet</a></li></ul>
 <div class="tab-content">
@@ -848,42 +861,72 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </div>
 </div>
 </div>
+</section>
+<section id="sütunlar" class="slide level2">
+<h2>Sütunlar</h2>
+<p>Aşağıdaki içeriğin yorumlanmış halini bir sonraki slaytta inceleyiniz:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb19"><pre class="sourceCode numberSource default number-lines code-with-copy"><code class="sourceCode default"><span id="cb19-1"><a aria-label="1"></a>::: {.columns}</span>
+<span id="cb19-2"><a aria-label="2"></a>::: {.column width="30%"}</span>
+<span id="cb19-3"><a aria-label="3"></a>**Sütun 1** — yöntem</span>
+<span id="cb19-4"><a aria-label="4"></a></span>
+<span id="cb19-5"><a aria-label="5"></a>- adım1</span>
+<span id="cb19-6"><a aria-label="6"></a>- adım2</span>
+<span id="cb19-7"><a aria-label="7"></a>- adım3</span>
+<span id="cb19-8"><a aria-label="8"></a>:::</span>
+<span id="cb19-9"><a aria-label="9"></a>::: {.column width="70%"}</span>
+<span id="cb19-10"><a aria-label="10"></a>**Sütun 2** </span>
+<span id="cb19-11"><a aria-label="11"></a></span>
+<span id="cb19-12"><a aria-label="12"></a>![örnek resim](https://rcnadvies.nl/wp-content/uploads/2023/02/3-step-approach-2.png)</span>
+<span id="cb19-13"><a aria-label="13"></a></span>
+<span id="cb19-14"><a aria-label="14"></a>:::</span>
+<span id="cb19-15"><a aria-label="15"></a>:::</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
 <div class="columns">
-<div class="column" style="width:50%;">
+<div class="column" style="width:30%;">
 <p><strong>Sütun 1</strong> — yöntem</p>
-</div><div class="column" style="width:50%;">
-<p><strong>Sütun 2</strong> — sonuç</p>
+<ul>
+<li>adım1</li>
+<li>adım2</li>
+<li>adım3</li>
+</ul>
+</div><div class="column" style="width:70%;">
+<p><strong>Sütun 2</strong></p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="https://rcnadvies.nl/wp-content/uploads/2023/02/3-step-approach-2.png"></p>
+<figcaption>örnek resim</figcaption>
+</figure>
+</div>
 </div></div>
 </section>
 <section id="kaynakça-ve-atıf" class="slide level2">
 <h2>Kaynakça ve atıf</h2>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb14"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb14-1"><a aria-label="1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb20"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb20-1"><a aria-label="1"></a><span class="fu">bibliography</span><span class="kw">:</span><span class="at"> references.bib</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Metinde: <code>[@wickham2022]</code> yazdığınızda <span class="citation" data-cites="wickham2022">(<a href="#/bibliography" role="doc-biblioref" onclick="">Wickham ve Grolemund 2023</a>)</span> şeklinde atıfa çevrilir.</p>
-<p>Raporun sonuna Quarto, kaynakçayı otomatik ekler. Biyoenformatikte atıf kültürü önemlidir — veri ve yöntem kaynakları da listelenmelidir.</p>
+<p>Raporun sonuna Quarto, kaynakçayı otomatik ekler.</p>
 <div class="footer">
 <p><a href="https://quarto.org/docs/citations/">Kaynak</a></p>
 </div>
 </section>
-<section id="projenin-yapısı" class="slide level2">
-<h2>Projenin yapısı</h2>
-
-<img src="images/qz/proje-yapisi.svg" width="78%" class="r-stretch"><ul>
-<li><code>index.qmd</code> → ders takvimi (site girişi)</li>
-<li><code>ders-*.qmd</code> → her biri bir sunum</li>
-<li><code>data/</code> → veri (CSV/TSV) — <strong>sürüm kontrolüne girer</strong></li>
-<li><code>images/</code> → görseller ve diyagramlar</li>
-<li><code>docs/</code> → render çıktısı: <strong>otomatik oluşur, elle düzenlenmez</strong></li>
-</ul>
-<div class="footer">
-<p><a href="https://quarto.org/docs/projects/">Kaynak</a></p>
-</div>
+<section id="ders-notlarımızın-klasör-yapısı" class="slide level2">
+<h2>Ders notlarımızın klasör yapısı</h2>
+<p>Ders notlarımızın kaynak kodları <a href="https://github.com/alperyilmaz/mbg4181/">alperyilmaz/mbg4181</a> reposunda, aşağıdaki şekildedir</p>
+<pre><code>├── 404.qmd      # bulunamayan sayfalar için gösterilecek mesaj
+├── about.qmd    # hakkında sayfası
+├── data/
+├── ders*.qmd    # her bir dersin sunumu
+├── docs/        # qmd dosyalarının render hali
+├── images/
+├── index.qmd    # ders takvimi (site girişi)
+└── _quarto.yml  # proje hakkında ayarlar</code></pre>
 </section>
 <section id="raporu-üretmek" class="slide level2">
 <h2>Raporu üretmek</h2>
 
-<img src="images/qz/render-yollari.svg" width="95%" class="r-stretch"><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb15"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb15-1"><a aria-label="1"></a><span class="ex">quarto</span> render index.qmd        <span class="co"># tüm siteyi üret</span></span>
-<span id="cb15-2"><a aria-label="2"></a><span class="ex">quarto</span> preview                 <span class="co"># canlı önizleme (localhost:4200)</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-<p>RStudio’da: <strong>Render</strong> butonu (<code>Ctrl+Shift+K</code>) — önizlemeyi açıp kapanır.</p>
+<img src="images/qz/render-yollari.svg" width="95%" class="r-stretch"><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb22"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb22-1"><a aria-label="1"></a><span class="ex">quarto</span> render index.qmd        <span class="co"># tüm siteyi üret</span></span>
+<span id="cb22-2"><a aria-label="2"></a><span class="ex">quarto</span> preview                 <span class="co"># canlı önizleme</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="cache-ve-freeze" class="slide level2">
 <h2><code>cache</code> ve <code>freeze</code></h2>
@@ -906,16 +949,15 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 </div>
 </div>
 </section>
-<section id="parametreler-aynı-analiz-farklı-ayarlar" class="slide level2">
-<h2>Parametreler: aynı analiz, farklı ayarlar</h2>
-
-<img src="images/qz/params.svg" width="92%" class="r-stretch"><div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb16"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb16-1"><a aria-label="1"></a><span class="fu">params</span><span class="kw">:</span></span>
-<span id="cb16-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">quarter</span><span class="kw">:</span><span class="at"> Q1</span></span>
-<span id="cb16-3"><a aria-label="3"></a><span class="at">  </span><span class="fu">yil</span><span class="kw">:</span><span class="at"> </span><span class="dv">2024</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb17"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb17-1"><a aria-label="1"></a><span class="ex">quarto</span> render analiz.qmd <span class="at">--execute-param</span> quarter=<span class="st">"Q1"</span></span>
-<span id="cb17-2"><a aria-label="2"></a><span class="ex">quarto</span> render analiz.qmd <span class="at">--execute-param</span> quarter=<span class="st">"Q2"</span></span>
-<span id="cb17-3"><a aria-label="3"></a><span class="ex">quarto</span> render analiz.qmd <span class="at">--execute-param</span> quarter=<span class="st">"Q3"</span></span>
-<span id="cb17-4"><a aria-label="4"></a><span class="ex">quarto</span> render analiz.qmd <span class="at">--execute-param</span> quarter=<span class="st">"Q4"</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="parametreler-ile-raporlama" class="slide level2">
+<h2>Parametreler ile raporlama</h2>
+<p>ggplot dersinin <a href="https://alperyilmaz.github.io/mbg4181/ders-ggplot.html#/sonunda-output">sonundaki görsel</a> için <a href="https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/gapminder-year.qmd">qmd dosyası</a> hazırlayalım ve her bir yıl için çıktı üretelim.</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a aria-label="1"></a><span class="fu">params</span><span class="kw">:</span></span>
+<span id="cb23-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2007</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-label="1"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"2007"</span> <span class="at">-o</span> gapminder-2007.html</span>
+<span id="cb24-2"><a aria-label="2"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"2002"</span> <span class="at">-o</span> gapminder-2002.html</span>
+<span id="cb24-3"><a aria-label="3"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"1997"</span> <span class="at">-o</span> gapminder-1997.html</span>
+<span id="cb24-4"><a aria-label="4"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"1992"</span> <span class="at">-o</span> gapminder-1992.html</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Parametreler <strong>YAML başlığında</strong> tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.</p>
 </section>
 <section id="rapor-anatomisi" class="slide level2">
@@ -931,8 +973,8 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 <li><strong>Tek mesaj</strong>, <strong>tek ana görsel</strong> — poster bir rapor değil, bir özet</li>
 <li>İçerik aynı Quarto dosyasından üretilir:</li>
 </ul>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb18"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb18-1"><a aria-label="1"></a><span class="ex">quarto</span> use template bbucior/docposter   <span class="co"># poster şablonunu kurar</span></span>
-<span id="cb18-2"><a aria-label="2"></a><span class="ex">quarto</span> render poster.qmd                 <span class="co"># posterı üretir</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb25"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb25-1"><a aria-label="1"></a><span class="ex">quarto</span> use template bbucior/docposter   <span class="co"># poster şablonunu kurar</span></span>
+<span id="cb25-2"><a aria-label="2"></a><span class="ex">quarto</span> render poster.qmd                 <span class="co"># posterı üretir</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="poster-adım-adım" class="slide level2">
 <h2>Poster: adım adım</h2>
