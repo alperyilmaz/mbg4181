@@ -954,11 +954,11 @@ Tablo&nbsp;2: Aylık ortalama ozon seviyesi
 <p>ggplot dersinin <a href="https://alperyilmaz.github.io/mbg4181/ders-ggplot.html#/sonunda-output">sonundaki görsel</a> için <a href="https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/gapminder-year.qmd">qmd dosyası</a> hazırlayalım ve her bir yıl için çıktı üretelim.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb23"><pre class="sourceCode numberSource yaml number-lines code-with-copy"><code class="sourceCode yaml"><span id="cb23-1"><a aria-label="1"></a><span class="fu">params</span><span class="kw">:</span></span>
 <span id="cb23-2"><a aria-label="2"></a><span class="at">  </span><span class="fu">year</span><span class="kw">:</span><span class="at"> </span><span class="dv">2007</span></span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Parametreler <strong>YAML başlığında</strong> tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.</p>
 <div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb24"><pre class="sourceCode numberSource bash number-lines code-with-copy"><code class="sourceCode bash"><span id="cb24-1"><a aria-label="1"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"2007"</span> <span class="at">-o</span> gapminder-2007.html</span>
 <span id="cb24-2"><a aria-label="2"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"2002"</span> <span class="at">-o</span> gapminder-2002.html</span>
 <span id="cb24-3"><a aria-label="3"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"1997"</span> <span class="at">-o</span> gapminder-1997.html</span>
 <span id="cb24-4"><a aria-label="4"></a><span class="ex">quarto</span> render gapminder-year.qmd <span class="at">--execute-param</span> year=<span class="st">"1992"</span> <span class="at">-o</span> gapminder-1992.html</span></code></pre></div><button title="Panoya Kopyala" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Parametreler <strong>YAML başlığında</strong> tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.</p>
 </section>
 <section id="rapor-anatomisi" class="slide level2">
 <h2>Rapor anatomisi</h2>

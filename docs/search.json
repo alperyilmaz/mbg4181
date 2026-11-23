@@ -2363,7 +2363,7 @@
     "href": "ders-quarto-alternative.html#parametreler-ile-raporlama",
     "title": "Quarto ile Raporlama",
     "section": "Parametreler ile raporlama",
-    "text": "Parametreler ile raporlama\nggplot dersinin sonundaki görsel için qmd dosyası hazırlayalım ve her bir yıl için çıktı üretelim.\nparams:\n  year: 2007\nquarto render gapminder-year.qmd --execute-param year=\"2007\" -o gapminder-2007.html\nquarto render gapminder-year.qmd --execute-param year=\"2002\" -o gapminder-2002.html\nquarto render gapminder-year.qmd --execute-param year=\"1997\" -o gapminder-1997.html\nquarto render gapminder-year.qmd --execute-param year=\"1992\" -o gapminder-1992.html\nParametreler YAML başlığında tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz."
+    "text": "Parametreler ile raporlama\nggplot dersinin sonundaki görsel için qmd dosyası hazırlayalım ve her bir yıl için çıktı üretelim.\nparams:\n  year: 2007\nParametreler YAML başlığında tanımlanır, komut satırından değiştirilir: aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.\nquarto render gapminder-year.qmd --execute-param year=\"2007\" -o gapminder-2007.html\nquarto render gapminder-year.qmd --execute-param year=\"2002\" -o gapminder-2002.html\nquarto render gapminder-year.qmd --execute-param year=\"1997\" -o gapminder-1997.html\nquarto render gapminder-year.qmd --execute-param year=\"1992\" -o gapminder-1992.html"
   },
   {
     "objectID": "ders-quarto-alternative.html#rapor-anatomisi",
