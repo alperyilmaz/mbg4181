@@ -597,6 +597,10 @@ params:
   year: 2007
 ```
 
+Parametreler **YAML başlığında** tanımlanır, komut satırından değiştirilir:
+aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.
+
+
 ```bash
 quarto render gapminder-year.qmd --execute-param year="2007" -o gapminder-2007.html
 quarto render gapminder-year.qmd --execute-param year="2002" -o gapminder-2002.html
@@ -604,8 +608,6 @@ quarto render gapminder-year.qmd --execute-param year="1997" -o gapminder-1997.h
 quarto render gapminder-year.qmd --execute-param year="1992" -o gapminder-1992.html
 ```
 
-Parametreler **YAML başlığında** tanımlanır, komut satırından değiştirilir:
-aynı analiz kodunu farklı veri aralıklarıyla çalıştırabilirsiniz.
 
 ## Rapor anatomisi
 
