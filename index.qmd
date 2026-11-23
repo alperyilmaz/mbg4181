@@ -38,7 +38,7 @@
 
 ## Ders8
 
-*23 Kasım 2026 13:00* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto.qmd)
+*23 Kasım 2026 13:00* | **İçerik**: *quarto* veya *Rmarkdown* ile rapor, websayfası veya sunum oluşturma. [Sunum linki](ders-quarto-alternative.qmd)
 
 ## Ders9
 
