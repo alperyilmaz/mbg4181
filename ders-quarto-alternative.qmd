@@ -30,21 +30,6 @@ webr:
   show-startup-message: false
 ---
 
-## Rapor yazmak: neden zor?
-
-Bir analiz biter, sonra **rapor** başlar.
-
-<img src="images/qz/manuel-oto.svg" width="92%">
-
-Veri her güncelleniyor: yeni ölçüm, yeni sürüm, yeni filtre.
-Elle kopyaladığınız figürler sessizce **eski** kalır — ve rapor artık yanlış.
-
-::: {.callout-tip}
-## Çözüm: raporu elle yazmayın
-Metni, kodu ve çıktıyı **tek bir dosyada** tutun; dosyayı "derleyin".
-Veri değişince raporu yeniden üretirsiniz.
-:::
-
 ## İletişim
 
 ::: {.columns}
@@ -60,6 +45,23 @@ Veri değişince raporu yeniden üretirsiniz.
 [Kaynak](https://imgflip.com/memetemplate/320562108/What-good-is-a-phone-call-if-you-are-unable-to-speak)
 :::
 
+
+## Rapor yazmak: neden zor?
+
+Analizden sonra **rapor** hazırlarken:
+
+<img src="images/qz/manuel-oto.svg" width="92%">
+
+Veri güncellendiğinde: yeni ölçüm, yeni sürüm, yeni filtre.
+Elle kopyalanan figürler, tablolar **eski** kalır, rapor artık doğru olmaz.
+
+::: {.callout-tip}
+## Çözüm: raporu elle yazmayın
+Metni, kodu ve çıktıyı **tek bir dosyada** tutun; dosyayı "derleyin".
+Veri değişince raporu yeniden derlenir ve güncel olur.
+:::
+
+
 ## Quarto: tek dosyada metin + kod + çıktı
 
 <img src="images/qz/qmd-anatomi.svg" width="95%">
@@ -74,7 +76,7 @@ Veri değişince raporu yeniden üretirsiniz.
 [Kaynak](https://quarto.org/docs/get-started/)
 :::
 
-## Quarto (RMarkdown'ın yeri)
+## Quarto (RMarkdown'ın yanında)
 
 ![](images/image-20230601130108468.png)
 
@@ -144,11 +146,16 @@ Aynı dosyayı derleyince (Render) tarayıcıda açılan bir HTML rapor olur:
 **Not.** `quarto`, rstudio.cloud projesinde kurulu geliyor. Kendi bilgisayarınızdaki RStudio'yu kullanıyorsanız önce [quarto'yu kurun](https://quarto.org/docs/get-started/).
 :::
 
-## Belgeye başlık verin (bu, **dosya adı** değil!)
+## Belgeye başlık verin 
 
 ![](images/image-20230603194140902.png)
 
-## Dosya **Untitled** olarak açıldı; şimdi kaydedelim
+Bu, **dosya adı** değil, dökümanın başlığıdır
+
+
+## Dosyayı kaydedelim
+
+En başta **Untitled/Adsız** olarak açıldı; şimdi farklı isimle kaydedelim
 
 ![](images/rename-new-file.png)
 
@@ -164,21 +171,6 @@ Aynı dosyayı derleyince (Render) tarayıcıda açılan bir HTML rapor olur:
 
 <img src="images/qz/chunk-anatomi.svg" width="95%">
 
-```{r}
-#| eval: false
-#| label: fig-blok
-#| fig-cap: "Aylık ortalama ozon seviyesi"
-#| fig-width: 8
-#| fig-height: 4
-
-library(ggplot2)
-ozon <- aggregate(Ozone ~ Month, airquality, mean, na.rm = TRUE)
-ggplot(ozon, aes(Month, Ozone)) +
-  geom_line(color = "#222B57", linewidth = 0.9) +
-  scale_x_continuous(breaks = 5:9, labels = c("May", "Haz", "Tem", "Ağu", "Eyl")) +
-  labs(x = "Ay", y = "Ozon (ppb)", title = "Ozon mevsimsel değişimi") +
-  theme_minimal(base_size = 14)
-```
 
 ## Chunk seçenekleri
 
@@ -222,11 +214,18 @@ mean(airquality$Ozone, na.rm = TRUE)
 Aynı `.qmd`yi farklı çıktılara dönüştürürken bu ayrım önemlidir.
 :::
 
-## Inline kod: sayıyı yazma, hesaplat
+## Aynı satırda (inline) kod
 
 Metin içine doğrudan R kodu yazabilirsiniz:
 
-Veri setinde `r nrow(airquality)` gözlem, ortalama ozon `r round(mean(airquality$Ozon, na.rm = TRUE), 1)` ppb.
+```
+Veri setinde 153 gözlem, ortalama ozon 42.1 ppb.
+```
+yerine
+
+```
+Veri setinde `r knitr::inline_expr("nrow(airquality)")` gözlem, ortalama ozon `r knitr::inline_expr("round(mean(airquality$Ozon, na.rm = TRUE), 1)")` ppb.
+```
 
 Render sırasında hesaplanır ve **metne gömülür**.
 
@@ -279,6 +278,7 @@ ggplot(ozon, aes(Month, Ozone)) +
 #| fig-cap: "Aylık ortalama ozon seviyesi (airquality, 1973)"
 #| fig-width: 8
 #| fig-height: 4
+#| echo: false
 
 library(ggplot2)
 ozon <- aggregate(Ozone ~ Month, airquality, mean, na.rm = TRUE)
@@ -291,7 +291,10 @@ ggplot(ozon, aes(Month, Ozone)) +
 
 ## Çapraz referans
 
-Şekle metinden bakın: @fig-ozon
+derlenmeden önce:
+
+```
+Bakınız: @fig-ozon
 
 | Ay | Ortalama ozon (ppb) |
 |---|---|
@@ -301,7 +304,21 @@ ggplot(ozon, aes(Month, Ozone)) +
 
 Table: Aylık ortalama ozon seviyesi (airquality) {#tbl-ozon}
 
-Metinden tabloya bakın: @tbl-ozon
+Bakınız: @tbl-ozon
+```
+## Çapraz referans
+
+Bakınız: @fig-ozon
+
+| Ay | Ortalama ozon (ppb) |
+|---|---|
+| Mayıs | 23.6 |
+| Temmuz | 59.1 |
+| Eylül | 31.4 |
+
+Table: Aylık ortalama ozon seviyesi (airquality) {#tbl-ozon}
+
+Bakınız: @tbl-ozon
 
 ::: {.callout-tip}
 ## Numaralar otomatik
@@ -309,36 +326,37 @@ Metinden tabloya bakın: @tbl-ozon
 Yeni bir şekil eklerseniz numaralar kendiliğinden kayar. Bu slaytta, `@fig-ozon` ve `@tbl-ozon` ifadeleri Şekil 1 ve Tablo 1 olarak gösterilmiştir. 
 :::
 
-## Tablolar: `knitr::kable`
+## Tablolar
 
+R verisini tek başına kullandığınızda tablo olarak gösterilir
+
+```{r}
+library(dplyr)
+
+ozon <- airquality |>
+  group_by(Month) |>
+  summarize(ortalama_ozon = mean(Ozone, na.rm=TRUE))
+
+ozon
 ```
+
+Fakat bu HTML, PDF veya Word'deki tablo gibi değildir. Bunun için `knitr::kable` veya `gt` kullanılmalıdır.
+
+## `knitr::kable`
+
+```{r}
 #| label: tbl-kable
-#| echo: false
-library(knitr)
-ozon <- aggregate(Ozone ~ Month, data = airquality, FUN = mean, na.rm = TRUE)
-names(ozon) <- c("Ay", "Ortalama ozon (ppb)")
-kable(ozon, caption = "Aylık ortalama ozon seviyesi", align = "l")
+knitr::kable(ozon, caption = "Aylık ortalama ozon seviyesi", align = "l")
 ```
 
-- `kable()` — hızlı, bağımlılıksız, pandoc uyumlu tablo
+
+- `kable()` — hızlı, başkaR kütüphanelerine bağlı olmayan, pandoc uyumlu tablo oluşturur (HTML, PDF ve Word'e çevrilebilen tablolar)
+- bu örnek otomatik olarak "Tablo 2" olarak numaralandırılmıştır
 - `gt` paketi — biçimlendirilmiş, "yayın kalitesinde" tablolar
-- Raporun *tablo* bölümü, `knitr::kable` + `caption` ile hazırlanır
-- Bir sonraki slaytta bu kodun yorumlanmış halini görebilirsiniz. Otomatik olarak "Tablo 2" olarak numaralandırılmıştır
 
 :::footer
 [Kaynak](https://yihui.org/knitr/)
 :::
-
-##
-
-```{r}
-#| label: tbl-kable
-#| echo: false
-library(knitr)
-ozon <- aggregate(Ozone ~ Month, data = airquality, FUN = mean, na.rm = TRUE)
-names(ozon) <- c("Ay", "Ortalama ozon (ppb)")
-kable(ozon, caption = "Aylık ortalama ozon seviyesi", align = "l")
-```
 
 ## gt tablo örneği 1
 
@@ -365,10 +383,10 @@ author: "Alper Yılmaz"
 date: 2026-11-09
 format:
   html:
-    toc: true                     # içindekiler
-    number-sections: true        # bölüm numaraları
-    code-fold: show               # kodu katlanabilir yap
-    df-print: kable               # veri tabloları
+    toc: true                       # içindekiler
+    number-sections: true           # bölüm numaraları
+    code-fold: show                 # kodu katlanabilir yap
+    df-print: kable                 # veri tabloları
     theme: cosmo
 execute:
   echo: true
@@ -400,12 +418,12 @@ Biçimi YAML'de seçersiniz ya da komut satırından `--to` ile değiştirirsini
 ```yaml
 format:
   html:
-    toc: true              # sol tarafta içindekiler
-    number-sections: true # 1. Giriş, 2. Yöntem, 3. Sonuç
-    code-fold: show       # kod katlanır, tıklanınca açılır
+    toc: true                   # sol tarafta içindekiler
+    number-sections: true       # 1. Giriş, 2. Yöntem, 3. Sonuç
+    code-fold: show             # kod katlanır, tıklanınca açılır
     code-summary: "Kodu göster"
-    df-print: kable        # veri tabloları kable biçiminde
-    embed-resources: true # tek dosya HTML (paylaşım için)
+    df-print: kable             # veri tabloları kable biçiminde
+    embed-resources: true       # tek dosya HTML (paylaşım için)
     theme: cosmo
     fontsize: 11
 ```
@@ -418,23 +436,49 @@ biçiminde teslim eder. Analiz kodu tek yerde kalır.
 
 ## Zengin içerik: callout
 
+```
 ::: {.callout-note}
 **Not.** Bilgilendirme cümlesi.
 :::
-::: {.callout-tip}
-**İpucu.** Öneri, kısa yol.
+```
+
+şeklindeki içerik, aşağıdaki gibi yorumlanır
+
+::: {.callout-note}
+**Not.** Bilgilendirme cümlesi.
 :::
-::: {.callout-warning}
-**Uyarı.** Dikkat edilmesi gereken durum.
-:::
+
+
 
 Callout'lar "kutu" değil, okuma rehberidir: **5 tip** (note, tip, warning, caution, important).
 
-## Sekmeler ve sütunlar
+## Sekmeler 
+
+Aşağıdaki içeriğin yorumlanmış halini bir sonraki slaytta inceleyiniz:
+
+````{verbatim}
+::: {.panel-tabset}
+### Veri
+
+```{r}
+#| echo: false
+str(airquality)
+```
+
+### Özet
+```{r}
+#| echo: false
+summary(airquality$Ozone)
+```
+
+:::
+````
+
+##
 
 ::: {.panel-tabset}
-
 ### Veri
+
 ```{r}
 #| echo: false
 str(airquality)
@@ -448,14 +492,48 @@ summary(airquality$Ozone)
 
 :::
 
+## Sütunlar
+
+Aşağıdaki içeriğin yorumlanmış halini bir sonraki slaytta inceleyiniz:
+
+````{verbatim}
 ::: {.columns}
-::: {.column width="50%"}
+::: {.column width="30%"}
 **Sütun 1** — yöntem
+
+- adım1
+- adım2
+- adım3
 :::
-::: {.column width="50%"}
-**Sütun 2** — sonuç
+::: {.column width="70%"}
+**Sütun 2** 
+
+![örnek resim](https://rcnadvies.nl/wp-content/uploads/2023/02/3-step-approach-2.png)
+
 :::
 :::
+
+````
+
+##
+
+::: {.columns}
+::: {.column width="30%"}
+**Sütun 1** — yöntem
+
+- adım1
+- adım2
+- adım3
+:::
+::: {.column width="70%"}
+**Sütun 2**
+
+![örnek resim](https://rcnadvies.nl/wp-content/uploads/2023/02/3-step-approach-2.png)
+
+:::
+:::
+
+
 
 ## Kaynakça ve atıf
 
@@ -466,25 +544,25 @@ bibliography: references.bib
 Metinde: `[@wickham2022]` yazdığınızda [@wickham2022] şeklinde atıfa çevrilir.
 
 Raporun sonuna Quarto, kaynakçayı otomatik ekler.
-Biyoenformatikte atıf kültürü önemlidir — veri ve yöntem kaynakları da listelenmelidir.
 
 :::footer
 [Kaynak](https://quarto.org/docs/citations/)
 :::
 
-## Projenin yapısı
+## Ders notlarımızın klasör yapısı
 
-<img src="images/qz/proje-yapisi.svg" width="78%">
+Ders notlarımızın kaynak kodları [alperyilmaz/mbg4181](https://github.com/alperyilmaz/mbg4181/) reposunda, aşağıdaki şekildedir
 
-- `index.qmd` → ders takvimi (site girişi)
-- `ders-*.qmd` → her biri bir sunum
-- `data/` → veri (CSV/TSV) — **sürüm kontrolüne girer**
-- `images/` → görseller ve diyagramlar
-- `docs/` → render çıktısı: **otomatik oluşur, elle düzenlenmez**
-
-:::footer
-[Kaynak](https://quarto.org/docs/projects/)
-:::
+```
+├── 404.qmd      # bulunamayan sayfalar için gösterilecek mesaj
+├── about.qmd    # hakkında sayfası
+├── data/
+├── ders*.qmd    # her bir dersin sunumu
+├── docs/        # qmd dosyalarının render hali
+├── images/
+├── index.qmd    # ders takvimi (site girişi)
+└── _quarto.yml  # proje hakkında ayarlar
+```
 
 ## Raporu üretmek
 
@@ -492,10 +570,9 @@ Biyoenformatikte atıf kültürü önemlidir — veri ve yöntem kaynakları da 
 
 ```bash
 quarto render index.qmd        # tüm siteyi üret
-quarto preview                 # canlı önizleme (localhost:4200)
+quarto preview                 # canlı önizleme
 ```
 
-RStudio'da: **Render** butonu (`Ctrl+Shift+K`) — önizlemeyi açıp kapanır.
 
 ## `cache` ve `freeze`
 
@@ -510,21 +587,21 @@ RStudio'da: **Render** butonu (`Ctrl+Shift+K`) — önizlemeyi açıp kapanır.
 Ödevde `freeze` kullanmayın; sadece `cache` kullanın.
 :::
 
-## Parametreler: aynı analiz, farklı ayarlar
+## Parametreler ile raporlama
 
-<img src="images/qz/params.svg" width="92%">
+ggplot dersinin [sonundaki görsel](https://alperyilmaz.github.io/mbg4181/ders-ggplot.html#/sonunda-output) için [qmd dosyası](https://raw.githubusercontent.com/alperyilmaz/mbg4181/refs/heads/master/data/gapminder-year.qmd) hazırlayalım ve her bir yıl için çıktı üretelim.
+
 
 ```yaml
 params:
-  quarter: Q1
-  yil: 2024
+  year: 2007
 ```
 
 ```bash
-quarto render analiz.qmd --execute-param quarter="Q1"
-quarto render analiz.qmd --execute-param quarter="Q2"
-quarto render analiz.qmd --execute-param quarter="Q3"
-quarto render analiz.qmd --execute-param quarter="Q4"
+quarto render gapminder-year.qmd --execute-param year="2007" -o gapminder-2007.html
+quarto render gapminder-year.qmd --execute-param year="2002" -o gapminder-2002.html
+quarto render gapminder-year.qmd --execute-param year="1997" -o gapminder-1997.html
+quarto render gapminder-year.qmd --execute-param year="1992" -o gapminder-1992.html
 ```
 
 Parametreler **YAML başlığında** tanımlanır, komut satırından değiştirilir:
